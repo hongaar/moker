@@ -1,5 +1,8 @@
 import path from 'path'
 import fs from 'fs'
+
+import { gitignore } from '@moker/plugin-common'
+
 import { exec } from './utils'
 
 type Options = {
@@ -20,4 +23,6 @@ export function init(name: string, { cwd, license }: Options = {}) {
   })
 
   // @todo set version/license, etc.
+
+  gitignore(target, 'set', ['node_modules/'])
 }
