@@ -16,9 +16,7 @@
     "watch:build": "tsc --watch",
     "watch:test": "jest --watch"
   },
-  "dependencies": {
-    "@moker/plugin-common": "0.0.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/node": "^13.7.1",
     "jest": "^25.1.0",

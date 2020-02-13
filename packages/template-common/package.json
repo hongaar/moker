@@ -1,7 +1,7 @@
 {
-  "name": "@moker/plugin-common",
+  "name": "@moker/template-common",
   "version": "0.0.1",
-  "description": "Common Moker plugins",
+  "description": "Common Moker template",
   "repository": "https://github.com/hongaar/moker",
   "author": "joram@vandenboezem.nl",
   "license": "MIT",
@@ -17,7 +17,8 @@
     "watch:test": "jest --watch"
   },
   "dependencies": {
-    "@moker/core": "0.0.1"
+    "@moker/core": "0.0.1",
+    "@moker/plugin-common": "0.0.1"
   },
   "devDependencies": {
     "@types/node": "^13.7.1",

@@ -11,6 +11,7 @@
   ],
   "dependencies": {
     "@moker/core": "0.0.1",
+    "@moker/template-common": "0.0.1",
     "bandersnatch": "^1.0.0-alpha.4"
   },
   "devDependencies": {

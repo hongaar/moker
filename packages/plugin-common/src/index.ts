@@ -1,1 +1,5 @@
-export * from './gitignore'
+export * from './githubActions'
+export * from './jest'
+export * from './npmPackage'
+export * from './readme'
+export * from './typescript'
