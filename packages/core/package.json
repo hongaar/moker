@@ -1,0 +1,25 @@
+{
+  "name": "@moker/core",
+  "version": "0.0.1",
+  "description": "Core Moker functions",
+  "repository": "https://github.com/hongaar/moker",
+  "author": "joram@vandenboezem.nl",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "prepublishOnly": "yarn build",
+    "build": "tsc",
+    "test": "jest",
+    "watch:build": "tsc --watch",
+    "watch:test": "jest --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.1",
+    "jest": "^25.1.0",
+    "ts-jest": "^25.2.0",
+    "typescript": "^3.7.5"
+  }
+}
