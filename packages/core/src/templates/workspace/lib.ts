@@ -1,5 +1,4 @@
-import { Workspace, CreateWorkspaceOptions } from '@moker/core'
-import * as plugins from '@moker/plugin-common'
+import { plugins, Workspace, CreateWorkspaceOptions } from '../..'
 
 export function lib(workspace: Workspace, options: CreateWorkspaceOptions) {
   plugins.npmPackage(workspace, options)

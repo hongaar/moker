@@ -1,5 +1,5 @@
 {
-  "name": "moker",
+  "name": "@moker/cli",
   "version": "0.0.1",
   "description": "The Moker CLI",
   "repository": "https://github.com/hongaar/moker",
@@ -12,7 +12,8 @@
   "dependencies": {
     "@moker/core": "0.0.1",
     "@moker/template-common": "0.0.1",
-    "bandersnatch": "^1.0.0-alpha.4"
+    "bandersnatch": "^1.0.0-alpha.4",
+    "ora": "^4.0.3"
   },
   "devDependencies": {
     "@types/node": "^13.7.1",

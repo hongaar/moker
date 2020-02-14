@@ -1,3 +1,3 @@
-import { Package } from '@moker/core'
+import { Package } from '..'
 
 export function jest(pack: Package) {}

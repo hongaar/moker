@@ -5,7 +5,7 @@ class LernaJsonSchema {
   public packages?: string[]
   public npmClient?: 'npm' | 'yarn'
   public useWorkspaces?: boolean
-  public version?: 'fixed' | 'independent'
+  public version?: string | 'independent'
 
   constructor(object: LernaJsonSchema) {
     Object.assign(this, object)

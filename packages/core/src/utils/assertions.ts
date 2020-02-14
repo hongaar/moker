@@ -2,11 +2,13 @@ import { exec } from './exec'
 
 const NEEDS_VERSION = 1
 
-export function assertYarnIsAvailable() {
-  let version: ReturnType<typeof exec>
+type Unpromise<T extends Promise<any>> = T extends Promise<infer U> ? U : never
+
+export async function assertYarnIsAvailable() {
+  let version: Unpromise<ReturnType<typeof exec>>
 
   try {
-    version = exec('yarn --version')
+    version = await exec('yarn --version')
   } catch (error) {
     throw new Error('Yarn v1 is not installed.')
   }

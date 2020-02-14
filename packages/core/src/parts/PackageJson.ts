@@ -1,9 +1,9 @@
+import { exec } from '../utils'
 import { JsonFile } from './JsonFile'
-import { exec } from './utils'
 
 export class PackageJsonSchema {
   // Source: https://gist.github.com/iainreid820/5c1cc527fe6b5b7dba41fec7fe54bf6e
-  public name: string
+  public name?: string
   public version?: string
   public description?: string
   public keywords?: string[]
@@ -96,8 +96,7 @@ export class PackageJson extends JsonFile<PackageJsonSchema> {
 
   public addDependency(name: string, flags = []) {
     return exec('yarn', ['add', name, ...flags], {
-      cwd: this.directory,
-      io: 'passthrough'
+      cwd: this.directory
     })
   }
 

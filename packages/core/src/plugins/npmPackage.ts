@@ -1,4 +1,4 @@
-import { Package, PackageJsonSchema } from '@moker/core'
+import { Package, PackageJsonSchema } from '..'
 
 export function npmPackage(
   pack: Package,

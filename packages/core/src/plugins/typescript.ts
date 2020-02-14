@@ -1,5 +1,5 @@
 import { ScriptTarget, ModuleKind } from 'typescript'
-import { Package } from '@moker/core'
+import { Package } from '..'
 
 export function typescript(pack: Package) {
   pack.tsconfigJson.contents.compilerOptions = {

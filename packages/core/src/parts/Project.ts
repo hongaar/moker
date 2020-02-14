@@ -4,11 +4,26 @@ import { sync as pkgUp } from 'pkg-up'
 import { Package } from './Package'
 import { LernaJson } from './LernaJson'
 
-export type CreateProjectOptions = {
-  license?: string
+export const DEFAULT_LICENSE = 'MIT'
+export const DEFAULT_INITIAL_VERSION = '0.0.1'
+export const DEFAULT_WORKSPACES_DIRECTORY = 'packages'
+
+const defaultOptions = {
+  license: DEFAULT_LICENSE,
+  initialVersion: DEFAULT_INITIAL_VERSION,
+  workspacesDirectory: DEFAULT_WORKSPACES_DIRECTORY
 }
 
-type ProjectTemplate = (project: Project, options: CreateProjectOptions) => void
+export type CreateProjectOptions = {
+  license: string
+  initialVersion: string
+  workspacesDirectory: string
+}
+
+type ProjectTemplate = (
+  project: Project,
+  options: CreateProjectOptions
+) => Promise<void>
 
 export class Project extends Package {
   public get lernaJson() {
@@ -23,9 +38,9 @@ export class Project extends Package {
     }
   }
 
-  public create(
+  public async create(
     templateFn: ProjectTemplate,
-    options: CreateProjectOptions = {}
+    options: Partial<CreateProjectOptions> = {}
   ) {
     if (fs.existsSync(this.directory)) {
       throw new Error(`${this.directory} already exists`)
@@ -33,6 +48,8 @@ export class Project extends Package {
 
     fs.mkdirSync(this.directory)
 
-    templateFn(this, options)
+    const optionsWithDefaults = Object.assign({}, defaultOptions, options)
+
+    await templateFn(this, optionsWithDefaults)
   }
 }

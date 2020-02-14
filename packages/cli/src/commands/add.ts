@@ -1,14 +1,14 @@
 import path from 'path'
 import { command } from 'bandersnatch'
-import { Project, Workspace } from '@moker/core'
-import { workspace as templates } from '@moker/template-common'
+import ora from 'ora'
+import { Project, Workspace, templates } from '@moker/core'
 
 export const add = command('add', 'Add a workspace to the project')
   .argument('name', 'Name of the workspace', {
     prompt: true
   })
   .option('template', 'Use workspace template', {
-    choices: Object.keys(templates),
+    choices: Object.keys(templates.workspace),
     default: 'lib'
   })
   .action(({ name, template }) => {
@@ -20,7 +20,9 @@ export const add = command('add', 'Add a workspace to the project')
 
     const directory = path.join(project.directory, 'packages', name)
 
-    new Workspace(project, directory).create(templates[template])
+    const spinner = ora(`Creating workspace ${name}...`).start()
 
-    console.log(`Created workspace ${name}`)
+    new Workspace(project, directory).create(templates.workspace[template])
+
+    spinner.succeed(`Created workspace ${name}`)
   })
