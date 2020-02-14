@@ -1,24 +1,26 @@
 import path from 'path'
 import { command } from 'bandersnatch'
-import { Workspace, assertYarnIsAvailable } from '@moker/core'
-import { tsWorkspace } from '@moker/template-common'
+import { Project } from '@moker/core'
+import { project as templates } from '@moker/template-common'
 
-export const init = command('create', 'Create a new workspace')
-  .argument('name', 'Name of the workspace', {
+export const create = command('create', 'Create a new project')
+  .argument('name', 'Name of the project', {
     prompt: true
+  })
+  .option('template', 'Use project template', {
+    choices: Object.keys(templates),
+    default: 'typescript'
   })
   .option('license', 'License to use', {
     choices: ['MIT', 'GPLv3'],
-    prompt: true
+    default: 'MIT'
   })
-  .action(({ name, license }) => {
-    assertYarnIsAvailable()
-
+  .action(({ name, template, license }) => {
     const directory = path.join(process.cwd(), name)
 
-    new Workspace(directory).create(tsWorkspace, {
+    new Project(directory).create(templates[template], {
       license
     })
 
-    console.log(`Created new workspace ${name}`)
+    console.log(`Created project ${name}`)
   })

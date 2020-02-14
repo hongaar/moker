@@ -1,8 +1,8 @@
 import { ScriptTarget, ModuleKind } from 'typescript'
-import { Workspace } from '@moker/core'
+import { Package } from '@moker/core'
 
-export function typescript(workspace: Workspace) {
-  workspace.tsconfigJson.contents.compilerOptions = {
+export function typescript(pack: Package) {
+  pack.tsconfigJson.contents.compilerOptions = {
     target: ('ES2015' as unknown) as ScriptTarget,
     module: ('CommonJS' as unknown) as ModuleKind,
     esModuleInterop: true,

@@ -1,3 +1,3 @@
-import { Workspace } from '@moker/core'
+import { Package } from '@moker/core'
 
-export function jest(workspace: Workspace) {}
+export function jest(pack: Package) {}

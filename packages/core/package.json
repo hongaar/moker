@@ -16,7 +16,9 @@
     "watch:build": "tsc --watch",
     "watch:test": "jest --watch"
   },
-  "dependencies": {},
+  "dependencies": {
+    "pkg-up": "^3.1.0"
+  },
   "devDependencies": {
     "@types/node": "^13.7.1",
     "jest": "^25.1.0",

@@ -1,3 +1,3 @@
-import { Workspace } from '@moker/core'
+import { Package } from '@moker/core'
 
-export function githubActions(workspace: Workspace) {}
+export function githubActions(pack: Package) {}

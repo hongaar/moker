@@ -1,7 +1,7 @@
 import { JsonFile } from './JsonFile'
 import { exec } from './utils'
 
-class PackageJsonSchema {
+export class PackageJsonSchema {
   // Source: https://gist.github.com/iainreid820/5c1cc527fe6b5b7dba41fec7fe54bf6e
   public name: string
   public version?: string
@@ -31,6 +31,8 @@ class PackageJsonSchema {
   public preferGlobal?: boolean
   public private?: boolean
   public publishConfig?: PublishConfig
+
+  public workspaces?: string[]
 
   constructor(object: PackageJsonSchema) {
     Object.assign(this, object)
@@ -92,13 +94,22 @@ export class PackageJson extends JsonFile<PackageJsonSchema> {
     super(directory, 'package.json', PackageJsonSchema)
   }
 
-  public addDependency(name: string, dev = false) {
-    return exec('yarn', ['add', name, dev ? '--dev' : ''], {
-      cwd: this.directory
+  public addDependency(name: string, flags = []) {
+    return exec('yarn', ['add', name, ...flags], {
+      cwd: this.directory,
+      io: 'passthrough'
     })
   }
 
   public addDevDependency(name: string) {
-    return this.addDependency(name, true)
+    return this.addDependency(name, ['--dev'])
+  }
+
+  public addRootDependency(name: string) {
+    return this.addDependency(name, ['--ignore-workspace-root-check'])
+  }
+
+  public addRootDevDependency(name: string) {
+    return this.addDependency(name, ['--ignore-workspace-root-check', '--dev'])
   }
 }

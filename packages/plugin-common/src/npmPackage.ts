@@ -1,17 +1,16 @@
-import { Workspace, CreateWorkspaceOptions } from '@moker/core'
+import { Package, PackageJsonSchema } from '@moker/core'
 
 export function npmPackage(
-  workspace: Workspace,
-  options: CreateWorkspaceOptions
+  pack: Package,
+  extraContents: Partial<PackageJsonSchema>
 ) {
-  workspace.gitignore.contents = ['node_modules/']
+  pack.gitignore.contents = ['node_modules/']
 
-  workspace.packageJson.contents = {
-    name: workspace.name,
+  pack.packageJson.contents = {
+    name: pack.name,
     version: '0.0.1',
-    private: true,
-    license: options.license
+    ...extraContents
   }
 
-  workspace.packageJson.addDependency('wsrun')
+  pack.packageJson.addDevDependency('@types/node typescript jest ts-jest')
 }
