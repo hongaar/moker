@@ -1,3 +1,3 @@
 import { Package } from '..'
 
-export function jest(pack: Package) {}
+export async function jest(pack: Package) {}

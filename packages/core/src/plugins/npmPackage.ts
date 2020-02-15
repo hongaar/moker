@@ -1,6 +1,6 @@
 import { Package, PackageJsonSchema } from '..'
 
-export function npmPackage(
+export async function npmPackage(
   pack: Package,
   extraContents: Partial<PackageJsonSchema>
 ) {

@@ -1,3 +1,3 @@
 import { Package } from '..'
 
-export function githubActions(pack: Package) {}
+export async function githubActions(pack: Package) {}

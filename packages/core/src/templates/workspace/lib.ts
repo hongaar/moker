@@ -1,7 +1,10 @@
 import { plugins, Workspace, CreateWorkspaceOptions } from '../..'
 
-export function lib(workspace: Workspace, options: CreateWorkspaceOptions) {
-  plugins.npmPackage(workspace, options)
-  plugins.typescript(workspace)
-  plugins.readme(workspace)
+export async function lib(
+  workspace: Workspace,
+  options: CreateWorkspaceOptions
+) {
+  await plugins.npmPackage(workspace, options)
+  await plugins.typescript(workspace)
+  await plugins.readme(workspace)
 }

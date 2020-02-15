@@ -11,7 +11,7 @@ export const add = command('add', 'Add a workspace to the project')
     choices: Object.keys(templates.workspace),
     default: 'lib'
   })
-  .action(({ name, template }) => {
+  .action(async ({ name, template }) => {
     const project = Project.find(process.cwd())
 
     if (!project) {
@@ -22,7 +22,9 @@ export const add = command('add', 'Add a workspace to the project')
 
     const spinner = ora(`Creating workspace ${name}...`).start()
 
-    new Workspace(project, directory).create(templates.workspace[template])
+    await new Workspace(project, directory).create(
+      templates.workspace[template]
+    )
 
     spinner.succeed(`Created workspace ${name}`)
   })
