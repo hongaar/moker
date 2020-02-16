@@ -1,6 +1,6 @@
 {
   "name": "@moker/core",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Core Moker functions",
   "repository": "https://github.com/hongaar/moker",
   "author": "joram@vandenboezem.nl",
@@ -24,5 +24,8 @@
     "jest": "^25.1.0",
     "ts-jest": "^25.2.0",
     "typescript": "^3.7.5"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
