@@ -4,6 +4,7 @@
     "packages/*"
   ],
   "scripts": {
+    "publish": "lerna publish",
     "start": "lerna run --parallel start",
     "build": "lerna run build",
     "test": "lerna run test",

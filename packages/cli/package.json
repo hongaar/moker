@@ -9,19 +9,6 @@
   "files": [
     "lib"
   ],
-  "dependencies": {
-    "@moker/core": "0.0.1",
-    "@moker/template-common": "0.0.1",
-    "bandersnatch": "^1.0.0-alpha.4",
-    "ora": "^4.0.3"
-  },
-  "devDependencies": {
-    "@types/node": "^13.7.1",
-    "jest": "^25.1.0",
-    "ts-jest": "^25.2.0",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
-  },
   "scripts": {
     "prepublishOnly": "yarn build",
     "open": "ts-node moker.js",
@@ -29,5 +16,16 @@
     "test": "jest",
     "watch:build": "tsc --watch",
     "watch:test": "jest --watch"
+  },
+  "dependencies": {
+    "@moker/core": "0.0.1",
+    "bandersnatch": "^1.0.0-alpha.4",
+    "ora": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.1",
+    "jest": "^25.1.0",
+    "ts-jest": "^25.2.0",
+    "typescript": "^3.7.5"
   }
 }
