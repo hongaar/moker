@@ -28,20 +28,26 @@ export async function exec(
   let stdout = ''
   let stderr = ''
 
-  child.stdout.on('data', function(chunk) {
-    stdout += chunk
-  })
+  if (child.stdout) {
+    child.stdout.on('data', function(chunk) {
+      stdout += chunk
+    })
+  }
 
-  child.stderr.on('data', function(chunk) {
-    stdout += chunk
-  })
+  if (child.stderr) {
+    child.stderr.on('data', function(chunk) {
+      stdout += chunk
+    })
+  }
 
   const status = await childAwaiter(child)
 
   const result = { status, stdout, stderr }
 
   if (status !== 0) {
-    const error = new Error(`exec [${cmd}] returned with an error`)
+    const error = new Error(
+      `exec [${cmd}] returned with an error - ${JSON.stringify(result)}`
+    )
     Object.assign(error, result)
 
     throw error

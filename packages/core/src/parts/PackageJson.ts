@@ -1,4 +1,4 @@
-import { exec } from '../utils'
+import { exec, asyncForEach } from '../utils'
 import { JsonFile } from './JsonFile'
 
 export class PackageJsonSchema {
@@ -92,23 +92,5 @@ interface ScriptsMap {
 export class PackageJson extends JsonFile<PackageJsonSchema> {
   constructor(public directory: string) {
     super(directory, 'package.json', PackageJsonSchema)
-  }
-
-  public addDependency(name: string, flags = []) {
-    return exec('yarn', ['add', name, ...flags], {
-      cwd: this.directory
-    })
-  }
-
-  public addDevDependency(name: string) {
-    return this.addDependency(name, ['--dev'])
-  }
-
-  public addRootDependency(name: string) {
-    return this.addDependency(name, ['--ignore-workspace-root-check'])
-  }
-
-  public addRootDevDependency(name: string) {
-    return this.addDependency(name, ['--ignore-workspace-root-check', '--dev'])
   }
 }

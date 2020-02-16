@@ -10,8 +10,9 @@
     "lib"
   ],
   "scripts": {
-    "prepublishOnly": "yarn build",
+    "prepublishOnly": "yarn clean && yarn build",
     "open": "ts-node mokr.js",
+    "clean": "rimraf lib",
     "build": "tsc",
     "test": "jest",
     "watch:build": "tsc --watch",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@types/node": "^13.7.1",
     "jest": "^25.1.0",
+    "rimraf": "^3.0.2",
     "ts-jest": "^25.2.0",
     "typescript": "^3.7.5"
   },

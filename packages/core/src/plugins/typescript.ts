@@ -10,4 +10,6 @@ export async function typescript(pack: Package) {
     declaration: true,
     sourceMap: true
   }
+
+  pack.addDevDependency('typescript')
 }
