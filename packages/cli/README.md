@@ -1,3 +1,3 @@
 ```
-rm -rf test && node moker.js create test --license MIT
+rm -rf test && node mokr.js create test --license MIT
 ```

@@ -1,8 +1,8 @@
 {
-  "name": "@moker/core",
+  "name": "@mokr/core",
   "version": "0.0.0",
-  "description": "Core Moker functions",
-  "repository": "https://github.com/hongaar/moker",
+  "description": "Core Mokr functions",
+  "repository": "https://github.com/hongaar/mokr",
   "author": "joram@vandenboezem.nl",
   "license": "MIT",
   "main": "lib/index.js",

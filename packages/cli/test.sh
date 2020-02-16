@@ -1,5 +1,5 @@
 rm -rf test
-node moker.js create test
+node mokr.js create test
 pushd test > /dev/null
-node ../moker.js add react-app --template cra
+node ../mokr.js add react-app --template cra
 popd > /dev/null

@@ -1,7 +1,7 @@
 import path from 'path'
 import { command } from 'bandersnatch'
 import ora from 'ora'
-import { Project, Workspace, templates } from '@moker/core'
+import { Project, Workspace, templates } from '@mokr/core'
 
 export const add = command('add', 'Add a workspace to the project')
   .argument('name', 'Name of the workspace', {

@@ -1,7 +1,7 @@
 import path from 'path'
 import { command } from 'bandersnatch'
 import ora from 'ora'
-import { Project, templates } from '@moker/core'
+import { Project, templates } from '@mokr/core'
 
 export const create = command('create', 'Create a new project')
   .argument('name', 'Name of the project', {

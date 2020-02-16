@@ -1,12 +1,12 @@
 import { program } from 'bandersnatch'
-import { assertYarnIsAvailable } from '@moker/core'
+import { assertYarnIsAvailable } from '@mokr/core'
 import * as commands from './commands'
 
-const moker = program().withHelp()
+const mokr = program().withHelp()
 
-Object.values(commands).forEach(command => moker.add(command))
+Object.values(commands).forEach(command => mokr.add(command))
 
 // Some assertions we always need
 assertYarnIsAvailable()
 
-export default moker
+export default mokr
