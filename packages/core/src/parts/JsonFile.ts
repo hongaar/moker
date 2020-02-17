@@ -25,7 +25,7 @@ export class JsonFile<Schema extends object> extends TextFile {
   }
 
   public get contents() {
-    const object = new this.SchemaClass(JSON.parse(this.text))
+    const object = new this.SchemaClass(JSON.parse(this.text || '{}'))
     return schemaProxy(object, object => (this.contents = object))
   }
 

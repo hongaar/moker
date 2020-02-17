@@ -23,7 +23,7 @@ export const add = command('add', 'Add a workspace to the project')
     const spinner = ora(`Creating workspace ${name}...`).start()
 
     await new Workspace(project, directory).create(
-      templates.workspace[template]
+      templates.workspace[template as keyof typeof templates.workspace]
     )
 
     spinner.succeed(`Created workspace ${name}`)

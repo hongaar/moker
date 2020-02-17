@@ -34,6 +34,8 @@ export class PackageJsonSchema {
 
   public workspaces?: string[]
 
+  public mokr?: MokrOptions
+
   constructor(object: PackageJsonSchema) {
     Object.assign(this, object)
   }
@@ -77,6 +79,7 @@ interface Engines {
 }
 
 interface PublishConfig {
+  access?: string
   registry?: string
 }
 
@@ -87,6 +90,10 @@ interface Repository {
 
 interface ScriptsMap {
   [scriptName: string]: string
+}
+
+interface MokrOptions {
+  scoped?: boolean
 }
 
 export class PackageJson extends JsonFile<PackageJsonSchema> {

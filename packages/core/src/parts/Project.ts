@@ -5,16 +5,18 @@ import { Package } from './Package'
 import { LernaJson } from './LernaJson'
 
 export const DEFAULT_LICENSE = 'MIT'
-export const DEFAULT_INITIAL_VERSION = '0.0.1'
+export const DEFAULT_INITIAL_VERSION = '0.0.0'
 export const DEFAULT_WORKSPACES_DIRECTORY = 'packages'
 
 const defaultOptions = {
+  scoped: false,
   license: DEFAULT_LICENSE,
   initialVersion: DEFAULT_INITIAL_VERSION,
   workspacesDirectory: DEFAULT_WORKSPACES_DIRECTORY
 }
 
 export type CreateProjectOptions = {
+  scoped: boolean
   license: string
   initialVersion: string
   workspacesDirectory: string
@@ -26,16 +28,20 @@ type ProjectTemplate = (
 ) => Promise<void>
 
 export class Project extends Package {
-  public get lernaJson() {
-    return new LernaJson(this.directory)
-  }
-
   public static find(directory: string) {
     const root = pkgUp({ cwd: directory })
 
     if (root !== null) {
       return new Project(path.dirname(root))
     }
+  }
+
+  public get scoped() {
+    return !!this.packageJson.contents.mokr?.scoped
+  }
+
+  public get lernaJson() {
+    return new LernaJson(this.directory)
   }
 
   public async create(

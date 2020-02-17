@@ -2,16 +2,23 @@ import { plugins, Project, CreateProjectOptions } from '../..'
 
 export async function typescript(
   project: Project,
-  options: CreateProjectOptions
+  {
+    scoped,
+    license,
+    initialVersion: version,
+    workspacesDirectory
+  }: CreateProjectOptions
 ) {
-  const version = options.initialVersion
-  const workspaces = [`${options.workspacesDirectory}/*`]
-  const license = options.license
+  const workspaces = [`${workspacesDirectory}/*`]
 
-  await plugins.npmRootPackage(project, {
+  await plugins.npmPackage(project, {
+    name: project.name,
     version,
     workspaces,
-    license
+    license,
+    mokr: {
+      scoped
+    }
   })
   await plugins.lerna(project, {
     version,
@@ -20,6 +27,7 @@ export async function typescript(
   await plugins.typescript(project)
   await plugins.readme(project)
   await plugins.gitignore(project)
+  await plugins.jest(project)
 
   await project.installQueue()
 }

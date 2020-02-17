@@ -1,8 +1,10 @@
-import path from 'path'
+import path = require('path')
 import { asyncForEach, exec } from '../utils'
 import { GitIgnore } from './GitIgnore'
 import { PackageJson } from './PackageJson'
 import { TsconfigJson } from './TsconfigJson'
+import { JestConfig } from './JestConfig'
+import { Project } from './Project'
 
 type AddDependencyQueue = {
   dependencies: string[]
@@ -33,10 +35,18 @@ export class Package {
     return new TsconfigJson(this.directory)
   }
 
+  public get jestConfig() {
+    return new JestConfig(this.directory)
+  }
+
+  public isRoot(): this is Project {
+    return this.constructor.name === 'Project'
+  }
+
   public installQueue() {
     return asyncForEach(
-      Object.keys(this.addDependencyQueue),
-      async (queue: keyof AddDependencyQueue) => {
+      Object.keys(this.addDependencyQueue) as Array<keyof AddDependencyQueue>,
+      async queue => {
         if (!this.addDependencyQueue[queue].length) {
           return
         }
@@ -46,11 +56,9 @@ export class Package {
         if (queue === 'devDependencies') {
           flags.push('--dev')
         }
-        if (this.packageJson.contents.workspaces) {
+        if (this.isRoot()) {
           flags.push('--ignore-workspace-root-check')
         }
-
-        //console.log('executing yarn with', { packages, flags })
 
         await exec('yarn', ['add', ...packages, ...flags], {
           cwd: this.directory

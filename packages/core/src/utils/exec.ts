@@ -15,7 +15,7 @@ function childAwaiter(child: ChildProcess): Promise<number> {
 
 export async function exec(
   cmd: string,
-  args = [],
+  args: string[] = [],
   { cwd, env, io }: Options = {}
 ) {
   const child = childProcess.spawn(cmd, args, {

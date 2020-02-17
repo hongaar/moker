@@ -16,7 +16,7 @@ export class TextFile {
     return this.exists ? fs.readFileSync(this.path, 'utf8').trim() : null
   }
 
-  public set text(contents: string) {
-    fs.writeFileSync(this.path, contents.trim() + '\n')
+  public set text(contents: string | null) {
+    fs.writeFileSync(this.path, (contents ?? '').trim() + '\n')
   }
 }

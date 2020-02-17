@@ -1,4 +1,5 @@
 import fs from 'fs'
+import path from 'path'
 import { Project } from './Project'
 import { Package } from './Package'
 
@@ -12,6 +13,11 @@ type WorkspaceTemplate = (
 export class Workspace extends Package {
   constructor(public project: Project, public directory: string) {
     super(directory)
+  }
+
+  public get name() {
+    const name = path.basename(this.directory)
+    return this.project.scoped ? `@${this.project.name}/${name}` : name
   }
 
   public async create(
