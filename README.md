@@ -30,13 +30,13 @@ mokr add my-lib
 Add a new create-react-app workspace:
 
 ```
-mokr add frontend --template cra
+mokr add my-app --template cra
 ```
 
 Add Storybook to an existing workspace:
 
 ```
-mokr add frontend --template storybook --amend
+mokr add my-app --template storybook --amend
 ```
 
 ## Available workspace templates
