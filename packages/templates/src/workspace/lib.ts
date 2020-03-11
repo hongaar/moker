@@ -1,9 +1,9 @@
-import { plugins, Workspace, CreateWorkspaceOptions } from '../..'
-import { project } from '..'
+import { Plugins, Workspace, CreateWorkspaceOptions } from '@mokr/core'
 
 export async function lib(
   workspace: Workspace,
-  options: CreateWorkspaceOptions
+  options: CreateWorkspaceOptions,
+  plugins: Plugins
 ) {
   await plugins.npmPackage(workspace, {
     name: workspace.name,

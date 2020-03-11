@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { Plugins, plugins } from '..'
 import { Project } from './Project'
 import { Package } from './Package'
 
@@ -7,7 +8,8 @@ export type CreateWorkspaceOptions = {}
 
 type WorkspaceTemplate = (
   workspace: Workspace,
-  options: CreateWorkspaceOptions
+  options: CreateWorkspaceOptions,
+  plugins: Plugins
 ) => Promise<void>
 
 export class Workspace extends Package {
@@ -30,6 +32,6 @@ export class Workspace extends Package {
 
     fs.mkdirSync(this.directory, { recursive: true })
 
-    await templateFn(this, options)
+    await templateFn(this, options, plugins)
   }
 }

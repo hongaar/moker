@@ -1,14 +1,15 @@
 import path from 'path'
 import { command } from 'bandersnatch'
 import ora from 'ora'
-import { Project, Workspace, templates } from '@mokr/core'
+import { Project, Workspace } from '@mokr/core'
+import { workspace } from '@mokr/templates'
 
 export const add = command('add', 'Add a workspace to the project')
   .argument('name', 'Name of the workspace', {
     prompt: true
   })
   .option('template', 'Use workspace template', {
-    choices: Object.keys(templates.workspace),
+    choices: Object.keys(workspace),
     default: 'lib'
   })
   .action(async ({ name, template }) => {
@@ -23,7 +24,7 @@ export const add = command('add', 'Add a workspace to the project')
     const spinner = ora(`Creating workspace ${name}...`).start()
 
     await new Workspace(project, directory).create(
-      templates.workspace[template as keyof typeof templates.workspace]
+      workspace[template as keyof typeof workspace]
     )
 
     spinner.succeed(`Created workspace ${name}`)

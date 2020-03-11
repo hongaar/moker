@@ -1,31 +1,26 @@
 {
-  "name": "@mokr/core",
+  "name": "@mokr/templates",
   "version": "0.0.1-alpha.0",
-  "description": "Core Mokr functions",
-  "repository": "https://github.com/hongaar/mokr",
-  "author": "joram@vandenboezem.nl",
   "license": "MIT",
   "main": "lib/index.js",
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prepublishOnly": "yarn build",
     "build": "tsc",
-    "test": "jest",
     "watch:build": "tsc --watch",
+    "test": "jest",
     "watch:test": "jest --watch"
   },
   "dependencies": {
-    "pkg-up": "3.1.0"
+    "@mokr/core": "0.0.1-alpha.0"
   },
   "devDependencies": {
     "@types/node": "13.9.0",
-    "jest": "25.1.0",
-    "ts-jest": "25.2.0",
     "typescript": "3.8.3"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

@@ -3,17 +3,17 @@ import { command } from 'bandersnatch'
 import ora from 'ora'
 import {
   Project,
-  templates,
   DEFAULT_INITIAL_VERSION,
   DEFAULT_WORKSPACES_DIRECTORY
 } from '@mokr/core'
+import { project } from '@mokr/templates'
 
 export const create = command('create', 'Create a new project')
   .argument('name', 'Project name', {
     prompt: 'What is the name of your project?'
   })
   .option('template', 'Kick-start with this template', {
-    choices: Object.keys(templates.project),
+    choices: Object.keys(project),
     default: 'typescript'
   })
   .option('scoped', 'Use scoped packages', {
@@ -40,7 +40,7 @@ export const create = command('create', 'Create a new project')
     const spinner = ora(`Creating project ${name}...`).start()
 
     await new Project(directory).create(
-      templates.project[template as keyof typeof templates.project],
+      project[template as keyof typeof project],
       rest
     )
 

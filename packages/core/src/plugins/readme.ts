@@ -1,5 +1,5 @@
 import { TextFile, Package } from '..'
 
-export async function readme(pack: Package) {
-  new TextFile(pack.directory, 'README.md').text = `# ${pack.name}`
+export async function readme(pkg: Package) {
+  new TextFile(pkg.directory, 'README.md').text = `# ${pkg.name}`
 }

@@ -1,4 +1,4 @@
-import { plugins, Project, CreateProjectOptions } from '../..'
+import { Plugins, Project, CreateProjectOptions } from '@mokr/core'
 
 export async function typescript(
   project: Project,
@@ -7,15 +7,16 @@ export async function typescript(
     license,
     initialVersion: version,
     workspacesDirectory
-  }: CreateProjectOptions
+  }: CreateProjectOptions,
+  plugins: Plugins
 ) {
   const workspaces = [`${workspacesDirectory}/*`]
 
   await plugins.npmPackage(project, {
     name: project.name,
     version,
-    workspaces,
     license,
+    workspaces,
     mokr: {
       scoped
     }

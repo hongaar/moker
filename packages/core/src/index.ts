@@ -1,7 +1,8 @@
 import * as plugins from './plugins'
-import * as templates from './templates'
+
+export { plugins }
 
 export * from './parts'
 export * from './utils'
 
-export { plugins, templates }
+export type Plugins = typeof plugins

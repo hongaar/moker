@@ -1,10 +1,10 @@
 import path from 'path'
-import { plugins, Workspace, CreateWorkspaceOptions } from '../..'
-import { exec } from '../../utils'
+import { Plugins, Workspace, CreateWorkspaceOptions, exec } from '@mokr/core'
 
 export async function cra(
   workspace: Workspace,
-  options: CreateWorkspaceOptions
+  options: CreateWorkspaceOptions,
+  plugins: Plugins
 ) {
   await exec(
     'yarn',
@@ -13,7 +13,7 @@ export async function cra(
       cwd: path.dirname(workspace.directory)
     }
   )
-  //await plugins.npmPackage(workspace, options)
+  // await plugins.npmPackage(workspace, options)
   //await plugins.typescript(workspace)
   //await plugins.readme(workspace)
 }

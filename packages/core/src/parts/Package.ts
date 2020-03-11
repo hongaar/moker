@@ -5,6 +5,7 @@ import { PackageJson } from './PackageJson'
 import { TsconfigJson } from './TsconfigJson'
 import { JestConfig } from './JestConfig'
 import { Project } from './Project'
+import { Workspace } from './Workspace'
 
 type AddDependencyQueue = {
   dependencies: string[]
@@ -39,7 +40,24 @@ export class Package {
     return new JestConfig(this.directory)
   }
 
-  public isRoot(): this is Project {
+  /**
+   * Returns true if the package.json for this package has a workspaces entry.
+   */
+  public isRoot() {
+    return !!this.packageJson.contents.workspaces
+  }
+
+  /**
+   * Returns true if this package is constructed with the Workspace class.
+   */
+  public isWorkspace(): this is Workspace {
+    return this.constructor.name === 'Workspace'
+  }
+
+  /**
+   * Returns true if this package is constructed with the Project class.
+   */
+  public isProject(): this is Project {
     return this.constructor.name === 'Project'
   }
 
@@ -52,11 +70,11 @@ export class Package {
         }
 
         const packages = this.addDependencyQueue[queue]
-        const flags = []
+        const flags = ['--exact']
         if (queue === 'devDependencies') {
           flags.push('--dev')
         }
-        if (this.isRoot()) {
+        if (this.isProject()) {
           flags.push('--ignore-workspace-root-check')
         }
 

@@ -1,8 +1,14 @@
 {
+  "name": "root",
+  "version": "0.0.1-alpha.0",
+  "license": "MIT",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
+  "mokr": {
+    "scoped": true
+  },
   "scripts": {
     "publish": "lerna publish",
     "start": "lerna run --parallel start",
@@ -13,8 +19,7 @@
     "watch:test": "lerna run --parallel watch:test"
   },
   "devDependencies": {
-    "lerna": "^3.20.2",
-    "stmux": "^1.8.0"
-  },
-  "name": "workspace"
+    "lerna": "3.20.2",
+    "stmux": "1.8.0"
+  }
 }

@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { sync as pkgUp } from 'pkg-up'
+import { Plugins, plugins } from '..'
 import { Package } from './Package'
 import { LernaJson } from './LernaJson'
 
@@ -24,14 +25,22 @@ export type CreateProjectOptions = {
 
 type ProjectTemplate = (
   project: Project,
-  options: CreateProjectOptions
+  options: CreateProjectOptions,
+  plugins: Plugins
 ) => Promise<void>
 
 export class Project extends Package {
-  public static find(directory: string) {
+  public static find(directory: string): undefined | Project {
     const root = pkgUp({ cwd: directory })
 
     if (root !== null) {
+      const pkg = new Package(path.dirname(root))
+
+      if (!pkg.isRoot()) {
+        // Not a root project, proceed to parent directory
+        return Project.find(path.dirname(path.dirname(root)))
+      }
+
       return new Project(path.dirname(root))
     }
   }
@@ -56,6 +65,6 @@ export class Project extends Package {
 
     const optionsWithDefaults = Object.assign({}, defaultOptions, options)
 
-    await templateFn(this, optionsWithDefaults)
+    await templateFn(this, optionsWithDefaults, plugins)
   }
 }

@@ -1,9 +1,9 @@
 import { ScriptTarget, ModuleKind } from 'typescript'
 import { Package } from '..'
 
-export async function typescript(pack: Package) {
-  if (pack.isRoot()) {
-    pack.tsconfigJson.contents.compilerOptions = {
+export async function typescript(pkg: Package) {
+  if (pkg.isProject()) {
+    pkg.tsconfigJson.contents.compilerOptions = {
       strict: true,
       target: ('ES2015' as unknown) as ScriptTarget,
       module: ('CommonJS' as unknown) as ModuleKind,
@@ -13,13 +13,13 @@ export async function typescript(pack: Package) {
       sourceMap: true
     }
 
-    pack.packageJson.contents.scripts = {
-      ...pack.packageJson.contents.scripts,
+    pkg.packageJson.contents.scripts = {
+      ...pkg.packageJson.contents.scripts,
       build: 'lerna run build',
       'watch:build': 'lerna run --parallel watch:build'
     }
   } else {
-    pack.tsconfigJson.contents = {
+    pkg.tsconfigJson.contents = {
       extends: '../../tsconfig.json',
       compilerOptions: {
         rootDir: 'src',
@@ -27,13 +27,13 @@ export async function typescript(pack: Package) {
       }
     }
 
-    pack.packageJson.contents.scripts = {
-      ...pack.packageJson.contents.scripts,
+    pkg.packageJson.contents.scripts = {
+      ...pkg.packageJson.contents.scripts,
       prepublishOnly: 'yarn build',
       build: 'tsc',
       'watch:build': 'tsc --watch'
     }
 
-    pack.addDevDependency('typescript')
+    pkg.addDevDependency('typescript')
   }
 }

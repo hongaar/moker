@@ -1,11 +1,11 @@
 import { Package, PackageJsonSchema } from '..'
 
 export async function npmPackage(
-  pack: Package,
+  pkg: Package,
   contents: Partial<PackageJsonSchema>
 ) {
-  if (pack.isRoot()) {
-    pack.packageJson.contents = {
+  if (pkg.isProject()) {
+    pkg.packageJson.contents = {
       private: true,
       scripts: {
         publish: 'lerna publish',
@@ -15,17 +15,17 @@ export async function npmPackage(
       },
       ...contents
     }
-  } else {
-    pack.packageJson.contents = {
+  } else if (pkg.isWorkspace()) {
+    pkg.packageJson.contents = {
       ...contents
     }
 
-    if (pack.isRoot() && pack.scoped) {
-      pack.packageJson.contents.publishConfig = {
+    if (pkg.project.scoped) {
+      pkg.packageJson.contents.publishConfig = {
         access: 'public'
       }
     }
 
-    pack.addDevDependency('@types/node')
+    pkg.addDevDependency('@types/node')
   }
 }
