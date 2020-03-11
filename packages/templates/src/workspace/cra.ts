@@ -8,12 +8,20 @@ export async function cra(
 ) {
   await exec(
     'yarn',
-    ['create', 'react-app', workspace.name, '--template', 'typescript'],
+    [
+      'create',
+      'react-app',
+      path.basename(workspace.directory), // workspace.name may be scoped
+      '--template',
+      'typescript'
+    ],
     {
       cwd: path.dirname(workspace.directory)
     }
   )
-  // await plugins.npmPackage(workspace, options)
-  //await plugins.typescript(workspace)
-  //await plugins.readme(workspace)
+  await plugins.npmPackage(workspace, {
+    name: workspace.name,
+    version: workspace.project.packageJson.contents.version,
+    license: workspace.project.packageJson.contents.license
+  })
 }
