@@ -27,7 +27,7 @@
   "devDependencies": {
     "@types/node": "13.13.9",
     "rimraf": "3.0.2",
-    "typescript": "3.8.3"
+    "typescript": "3.9.3"
   },
   "publishConfig": {
     "access": "public"
