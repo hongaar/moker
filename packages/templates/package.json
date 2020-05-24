@@ -20,7 +20,7 @@
     "@mokr/core": "^0.0.1-alpha.1"
   },
   "devDependencies": {
-    "@types/node": "13.11.1",
+    "@types/node": "13.13.9",
     "typescript": "3.8.3"
   }
 }
