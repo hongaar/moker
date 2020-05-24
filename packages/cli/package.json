@@ -1,6 +1,6 @@
 {
   "name": "@mokr/cli",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "The Mokr CLI",
   "repository": "https://github.com/hongaar/mokr",
   "author": "joram@vandenboezem.nl",
@@ -19,8 +19,8 @@
     "watch:test": "jest --watch"
   },
   "dependencies": {
-    "@mokr/core": "^0.0.1-alpha.1",
-    "@mokr/templates": "^0.0.1-alpha.1",
+    "@mokr/core": "^0.0.1-alpha.2",
+    "@mokr/templates": "^0.0.1-alpha.2",
     "bandersnatch": "1.0.0-alpha.6",
     "ora": "4.0.4"
   },
