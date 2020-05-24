@@ -2,6 +2,9 @@
 
 > 👢 Kick-start TypeScript monorepos (in development)
 
+[![npm (scoped)](https://img.shields.io/npm/v/@mokr/cli?label=%40mokr%2Fcli&logo=npm&style=flat-square)](https://www.npmjs.com/package/@mokr/cli)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/hongaar/mokr?style=flat-square)](https://codeclimate.com/github/hongaar/mokr)
+
 ## Install
 
 ```
