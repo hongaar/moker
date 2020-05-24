@@ -10,11 +10,17 @@ export async function lib(
     version: workspace.project.packageJson.contents.version,
     license: workspace.project.packageJson.contents.license,
     main: 'lib/index.js',
-    files: ['lib']
+    files: ['lib'],
   })
   await plugins.typescript(workspace)
   await plugins.readme(workspace)
   await plugins.jest(workspace)
+
+  await plugins.file(
+    workspace,
+    'src/index.ts',
+    "console.log('Hello, world!')\n"
+  )
 
   await workspace.installQueue()
 }

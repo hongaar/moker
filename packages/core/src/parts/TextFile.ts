@@ -1,22 +1,31 @@
-import path from 'path'
-import fs from 'fs'
+import { join, dirname } from 'path'
+import { existsSync, readFileSync, writeFileSync } from 'fs'
+import { sync as mkdirp } from 'mkdirp'
 
 export class TextFile {
-  constructor(public directory: string, public filename: string) {}
+  constructor(public directory: string, public filename: string) {
+    this.createIfNeeded()
+  }
 
   public get path() {
-    return path.join(this.directory, this.filename)
+    return join(this.directory, this.filename)
   }
 
   public get exists() {
-    return fs.existsSync(this.path)
+    return existsSync(this.path)
   }
 
   public get text() {
-    return this.exists ? fs.readFileSync(this.path, 'utf8').trim() : null
+    return this.exists ? readFileSync(this.path, 'utf8').trim() : null
   }
 
   public set text(contents: string | null) {
-    fs.writeFileSync(this.path, (contents ?? '').trim() + '\n')
+    writeFileSync(this.path, (contents ?? '').trim() + '\n')
+  }
+
+  private createIfNeeded() {
+    if (!this.exists) {
+      mkdirp(dirname(this.path))
+    }
   }
 }

@@ -48,7 +48,7 @@ app (web client)
 ### `adonis`
 
 Uses [create-adonis-ts-app](https://github.com/AdonisCommunity/create-adonis-ts-app)
-to scaffold an Adonis app (web server)
+to scaffold an Adonis app (API server)
 
 ### `bandersnatch`
 

@@ -5,24 +5,24 @@ export async function npmPackage(
   contents: Partial<PackageJsonSchema>
 ) {
   if (pkg.isProject()) {
-    pkg.packageJson.contents = {
+    pkg.packageJson.assign({
       private: true,
       scripts: {
         publish: 'lerna publish',
         start: 'lerna run --parallel start',
         dev:
-          'stmux -w always -e ERROR -m beep,system -- [ [ "yarn watch:build" .. "yarn watch:test" ] : -s 1/3 -f "yarn start" ]'
+          'stmux -w always -e ERROR -m beep,system -- [ [ "yarn watch:build" .. "yarn watch:test" ] : -s 1/3 -f "yarn start" ]',
       },
-      ...contents
-    }
+      ...contents,
+    })
   } else if (pkg.isWorkspace()) {
-    pkg.packageJson.contents = {
-      ...contents
-    }
+    pkg.packageJson.assign({
+      ...contents,
+    })
 
     if (pkg.project.scoped) {
       pkg.packageJson.contents.publishConfig = {
-        access: 'public'
+        access: 'public',
       }
     }
 

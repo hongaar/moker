@@ -1,3 +1,4 @@
+export * from './file'
 export * from './githubActions'
 export * from './jest'
 export * from './npmPackage'
