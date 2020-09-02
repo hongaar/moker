@@ -1,38 +1,45 @@
-import path from 'path'
-import { command } from 'bandersnatch'
-import ora from 'ora'
 import {
-  Project,
   DEFAULT_INITIAL_VERSION,
-  DEFAULT_WORKSPACES_DIRECTORY
+  DEFAULT_WORKSPACES_DIRECTORY,
+  Project,
 } from '@mokr/core'
 import { project } from '@mokr/templates'
+import { command } from 'bandersnatch'
+import ora from 'ora'
+import path from 'path'
 
-export const create = command('create', 'Create a new project')
-  .argument('name', 'Project name', {
-    prompt: 'What is the name of your project?'
+export const create = command('create')
+  .description('Create a new project')
+  .argument('name', {
+    description: 'Project name',
+    prompt: 'What is the name of your project?',
   })
-  .option('template', 'Kick-start with this template', {
+  .option('template', {
+    description: 'Kick-start with this template',
     choices: Object.keys(project),
-    default: 'typescript'
+    default: 'typescript',
   })
-  .option('scoped', 'Use scoped packages', {
+  .option('scoped', {
+    description: 'Use scoped packages',
     boolean: true,
     prompt: 'Do you want to use scoped package names?',
-    default: false
+    default: false,
   })
-  .option('license', 'License', {
+  .option('license', {
+    description: 'License',
     choices: ['MIT', 'GPLv3'],
     prompt: 'What license do you want to publish your packages with?',
-    default: 'MIT'
+    default: 'MIT',
   })
-  .option('initialVersion', 'Initial version', {
+  .option('initialVersion', {
+    description: 'Initial version',
     prompt: 'What version do you want to start with?',
-    default: DEFAULT_INITIAL_VERSION
+    default: DEFAULT_INITIAL_VERSION,
   })
-  .option('workspacesDirectory', 'Workspaces directory', {
+  .option('workspacesDirectory', {
+    description: 'Workspaces directory',
     prompt: 'Which directory should we save workspaces to?',
-    default: DEFAULT_WORKSPACES_DIRECTORY
+    default: DEFAULT_WORKSPACES_DIRECTORY,
   })
   .action(async ({ name, template, ...rest }) => {
     const directory = path.join(process.cwd(), name)

@@ -4,12 +4,15 @@ import { command } from 'bandersnatch'
 import ora from 'ora'
 import path from 'path'
 
-export const add = command('add', 'Add a workspace to the project')
-  .argument('name', 'Name of the workspace', {
+export const add = command('add')
+  .description('Add a workspace to the project')
+  .argument('name', {
+    description: 'Name of the workspace',
     prompt: true,
     variadic: true,
   })
-  .option('template', 'Use workspace template', {
+  .option('template', {
+    description: 'Use workspace template',
     choices: Object.keys(workspace),
     default: 'lib',
   })
