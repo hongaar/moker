@@ -1,3 +1,4 @@
+import { execSync } from 'child_process'
 import fs from 'fs'
 import path from 'path'
 import { sync as pkgUp } from 'pkg-up'
@@ -67,6 +68,8 @@ export class Project extends Package {
     }
 
     fs.mkdirSync(this.directory)
+
+    execSync('git init', { cwd: this.directory })
 
     const optionsWithDefaults = Object.assign({}, defaultOptions, options)
 
