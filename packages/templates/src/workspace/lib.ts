@@ -1,4 +1,4 @@
-import { Plugins, Workspace, CreateWorkspaceOptions } from '@mokr/core'
+import { CreateWorkspaceOptions, Plugins, Workspace } from '@mokr/core'
 
 export async function lib(
   workspace: Workspace,
@@ -7,7 +7,7 @@ export async function lib(
 ) {
   await plugins.npmPackage(workspace, {
     name: workspace.name,
-    version: workspace.project.packageJson.contents.version,
+    version: workspace.project.lernaJson.contents.version,
     license: workspace.project.packageJson.contents.license,
     main: 'lib/index.js',
     files: ['lib'],

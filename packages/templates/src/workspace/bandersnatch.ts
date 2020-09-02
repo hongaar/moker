@@ -1,5 +1,5 @@
+import { CreateWorkspaceOptions, Plugins, Workspace } from '@mokr/core'
 import { basename } from 'path'
-import { Plugins, Workspace, CreateWorkspaceOptions } from '@mokr/core'
 
 export async function bandersnatch(
   workspace: Workspace,
@@ -9,7 +9,7 @@ export async function bandersnatch(
   const binPath = `bin/${basename(workspace.directory)}.js` // workspace.name may be scoped
   await plugins.npmPackage(workspace, {
     name: workspace.name,
-    version: workspace.project.packageJson.contents.version,
+    version: workspace.project.lernaJson.contents.version,
     license: workspace.project.packageJson.contents.license,
     bin: binPath,
     files: ['lib'],

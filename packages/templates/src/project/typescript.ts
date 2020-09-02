@@ -14,7 +14,6 @@ export async function typescript(
 
   await plugins.npmPackage(project, {
     name: project.name,
-    version,
     license,
     workspaces,
     mokr: {

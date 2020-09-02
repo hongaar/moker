@@ -1,5 +1,5 @@
+import { CreateWorkspaceOptions, exec, Plugins, Workspace } from '@mokr/core'
 import path from 'path'
-import { Plugins, Workspace, CreateWorkspaceOptions, exec } from '@mokr/core'
 
 export async function adonis(
   workspace: Workspace,
@@ -25,7 +25,7 @@ export async function adonis(
   )
   await plugins.npmPackage(workspace, {
     name: workspace.name,
-    version: workspace.project.packageJson.contents.version,
+    version: workspace.project.lernaJson.contents.version,
     license: workspace.project.packageJson.contents.license,
   })
   await plugins.readme(workspace)
