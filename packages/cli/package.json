@@ -5,7 +5,9 @@
   "repository": "https://github.com/hongaar/mokr",
   "author": "joram@vandenboezem.nl",
   "license": "MIT",
-  "bin": "mokr.js",
+  "bin": {
+    "mokr": "mokr.js"
+  },
   "files": [
     "lib"
   ],

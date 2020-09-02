@@ -10,7 +10,7 @@ export async function lerna(project: Project, options: LernaOptions = {}) {
     version: options.version,
     packages: options.workspaces,
     npmClient: 'yarn',
-    useWorkspaces: true
+    useWorkspaces: true,
   }
 
   project.addDevDependency('lerna')

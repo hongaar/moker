@@ -2,8 +2,9 @@ import fs from 'fs'
 import path from 'path'
 import { sync as pkgUp } from 'pkg-up'
 import { Plugins, plugins } from '..'
-import { Package } from './Package'
 import { LernaJson } from './LernaJson'
+import { Package } from './Package'
+import { PrettierRcJson } from './PrettierRcJson'
 
 export const DEFAULT_LICENSE = 'MIT'
 export const DEFAULT_INITIAL_VERSION = '0.0.0'
@@ -13,7 +14,7 @@ const defaultOptions = {
   scoped: false,
   license: DEFAULT_LICENSE,
   initialVersion: DEFAULT_INITIAL_VERSION,
-  workspacesDirectory: DEFAULT_WORKSPACES_DIRECTORY
+  workspacesDirectory: DEFAULT_WORKSPACES_DIRECTORY,
 }
 
 export type CreateProjectOptions = {
@@ -51,6 +52,10 @@ export class Project extends Package {
 
   public get lernaJson() {
     return new LernaJson(this.directory)
+  }
+
+  public get prettierRcJson() {
+    return new PrettierRcJson(this.directory)
   }
 
   public async create(

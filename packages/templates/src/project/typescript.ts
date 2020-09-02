@@ -1,4 +1,4 @@
-import { Plugins, Project, CreateProjectOptions } from '@mokr/core'
+import { CreateProjectOptions, Plugins, Project } from '@mokr/core'
 
 export async function typescript(
   project: Project,
@@ -6,7 +6,7 @@ export async function typescript(
     scoped,
     license,
     initialVersion: version,
-    workspacesDirectory
+    workspacesDirectory,
   }: CreateProjectOptions,
   plugins: Plugins
 ) {
@@ -18,17 +18,18 @@ export async function typescript(
     license,
     workspaces,
     mokr: {
-      scoped
-    }
+      scoped,
+    },
   })
   await plugins.lerna(project, {
     version,
-    workspaces
+    workspaces,
   })
   await plugins.typescript(project)
   await plugins.readme(project)
   await plugins.gitignore(project)
   await plugins.jest(project)
+  await plugins.prettier(project, '*.{ts,tsx}')
 
   await project.installQueue()
 }

@@ -1,4 +1,3 @@
-import { exec, asyncForEach } from '../utils'
 import { JsonFile } from './JsonFile'
 
 export class PackageJsonSchema {
@@ -35,6 +34,9 @@ export class PackageJsonSchema {
   public workspaces?: string[]
 
   public mokr?: MokrOptions
+
+  public husky?: HuskyOptions
+  public 'lint-staged'?: LintStagedOptions
 
   constructor(object: PackageJsonSchema) {
     Object.assign(this, object)
@@ -94,6 +96,45 @@ interface ScriptsMap {
 
 interface MokrOptions {
   scoped?: boolean
+}
+
+type GitHooks =
+  | 'applypatch-msg'
+  | 'pre-applypatch'
+  | 'post-applypatch'
+  | 'pre-commit'
+  | 'pre-merge-commit'
+  | 'prepare-commit-msg'
+  | 'commit-msg'
+  | 'post-commit'
+  | 'pre-rebase'
+  | 'post-checkout'
+  | 'post-merge'
+  | 'pre-push'
+  | 'pre-receive'
+  | 'update'
+  | 'post-receive'
+  | 'post-update'
+  | 'ref-transaction'
+  | 'push-to-checkout'
+  | 'pre-auto-gc'
+  | 'post-rewrite'
+  | 'sendemail-validate'
+  | 'fsmonitor-watchman'
+  | 'p4-changelist'
+  | 'p4-prepare-changelist'
+  | 'p4-post-changelist'
+  | 'p4-pre-submit'
+  | 'post-index-change'
+
+interface HuskyOptions {
+  hooks: {
+    [key in GitHooks]?: string
+  }
+}
+
+interface LintStagedOptions {
+  [key: string]: string | string[]
 }
 
 export class PackageJson extends JsonFile<PackageJsonSchema> {
