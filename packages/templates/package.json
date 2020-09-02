@@ -1,6 +1,6 @@
 {
   "name": "@mokr/templates",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1-alpha.3",
   "license": "MIT",
   "main": "lib/index.js",
   "files": [
@@ -17,7 +17,7 @@
     "watch:test": "jest --watch"
   },
   "dependencies": {
-    "@mokr/core": "^0.0.1-alpha.2"
+    "@mokr/core": "^0.0.1-alpha.3"
   },
   "devDependencies": {
     "@types/node": "13.13.9",
