@@ -1,6 +1,6 @@
 import { TextFile } from './TextFile'
 
-export class IgnoreFile extends TextFile {
+export class EntriesFile extends TextFile {
   public get contents() {
     return (this.text ?? '').split('\n')
   }

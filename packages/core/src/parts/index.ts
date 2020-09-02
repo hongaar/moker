@@ -1,5 +1,5 @@
+export * from './EntriesFile'
 export * from './GitIgnore'
-export * from './IgnoreFile'
 export * from './JsonFile'
 export * from './LernaJson'
 export * from './Package'
