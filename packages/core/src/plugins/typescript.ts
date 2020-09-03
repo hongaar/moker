@@ -1,4 +1,4 @@
-import { ScriptTarget, ModuleKind } from 'typescript'
+import { ModuleKind, ScriptTarget } from 'typescript'
 import { Package } from '..'
 
 export async function typescript(pkg: Package) {
@@ -10,28 +10,29 @@ export async function typescript(pkg: Package) {
       esModuleInterop: true,
       lib: ['ESNext'],
       declaration: true,
-      sourceMap: true
+      declarationMap: true,
+      sourceMap: true,
     }
 
     pkg.packageJson.contents.scripts = {
       ...pkg.packageJson.contents.scripts,
       build: 'lerna run build',
-      'watch:build': 'lerna run --parallel watch:build'
+      'watch:build': 'lerna run --parallel watch:build',
     }
   } else {
     pkg.tsconfigJson.contents = {
       extends: '../../tsconfig.json',
       compilerOptions: {
         rootDir: 'src',
-        outDir: 'lib'
-      }
+        outDir: 'lib',
+      },
     }
 
     pkg.packageJson.contents.scripts = {
       ...pkg.packageJson.contents.scripts,
       prepublishOnly: 'yarn build',
       build: 'tsc',
-      'watch:build': 'tsc --watch'
+      'watch:build': 'tsc --watch',
     }
 
     pkg.addDevDependency('typescript')
