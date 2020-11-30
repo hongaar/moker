@@ -64,3 +64,12 @@ to scaffold an Adonis app (API server)
 
 Uses [bandersnatch](https://github.com/hongaar/bandersnatch) to scaffold a CLI
 tool
+
+## Development
+
+To make the `mokr` cli available from a local checkout, run:
+
+```
+cd packages/cli
+yarn global add $PWD
+```
