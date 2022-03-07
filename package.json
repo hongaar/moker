@@ -18,9 +18,9 @@
     "watch:test": "lerna run --parallel watch:test"
   },
   "devDependencies": {
-    "jest": "26.4.2",
+    "jest": "27.5.1",
     "lerna": "3.22.1",
     "stmux": "1.8.1",
-    "ts-jest": "26.5.0"
+    "ts-jest": "27.1.3"
   }
 }
