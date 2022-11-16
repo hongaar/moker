@@ -12,29 +12,36 @@
 - Workspace templates for a front-end, API or CLI
 - Extensible with a plugin system
 
-## Install
+## Prepare
 
-```
-yarn global add @mokr/cli
-```
+Our only dependency is Node v16+ and Yarn v3+.
+
+- Install Node with [nvm](https://github.com/nvm-sh/nvm#install--update-script)
+  or using [nodesource](https://github.com/nodesource/distributions#debinstall).
+- Install Yarn v3 using these simple steps:
+  ```bash
+  corepack enable
+  corepack prepare yarn@stable --activate
+  ```
 
 ## Getting started
 
 Create a fresh monorepo:
 
 ```
-mokr create my-org
-cd my-org
+yarn dlx mokr create my-repo
+cd my-repo
 ```
 
-All monorepo's ship with typescript, lerna, jest, prettier and lint-staged.
+All monorepos created with mokr ship with typescript, jest, prettier and
+lint-staged.
 
 ### Workspaces
 
 Add a new shared library workspace:
 
 ```
-mokr add my-lib
+yarn mokr add my-lib
 ```
 
 Or use a workspace template (see below):
@@ -42,6 +49,20 @@ Or use a workspace template (see below):
 ```
 mokr add my-app --template <name>
 ```
+
+## What's inside
+
+### Prettier
+
+Prettier is installed with this configuration:
+
+```json
+proseWrap: "always"
+```
+
+We only set this `proseWrap` override because we think markdown files should
+always be truncated to match whatever the `printWidth` setting is. Not having to
+do this manually makes writing markdown files so much easier!
 
 ## Available workspace templates
 
@@ -57,7 +78,8 @@ app (web client)
 
 ### `adonis`
 
-Uses [create-adonis-ts-app](https://github.com/AdonisCommunity/create-adonis-ts-app)
+Uses
+[create-adonis-ts-app](https://github.com/AdonisCommunity/create-adonis-ts-app)
 to scaffold an Adonis app (API server)
 
 ### `bandersnatch`

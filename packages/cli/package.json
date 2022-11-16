@@ -23,16 +23,12 @@
   "dependencies": {
     "@mokr/core": "0.0.1-alpha.5",
     "@mokr/templates": "0.0.1-alpha.5",
-    "bandersnatch": "1.5.1",
-    "ora": "5.3.0"
+    "bandersnatch": "1.11.0",
+    "ora": "6.1.2"
   },
   "devDependencies": {
-    "@types/node": "14.14.31",
+    "@types/node": "18.11.9",
     "rimraf": "3.0.2",
-    "typescript": "4.2.4"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "gitHead": "b886677a0924d2c786e4a07a03cba9ca5f30668b"
+    "typescript": "4.9.3"
+  }
 }
