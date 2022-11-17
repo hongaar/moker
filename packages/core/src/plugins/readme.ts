@@ -1,5 +1,5 @@
-import { TextFile, Package } from '..'
+import { Package, TextFile } from "../index.js";
 
 export async function readme(pkg: Package) {
-  new TextFile(pkg.directory, 'README.md').text = `# ${pkg.name}`
+  new TextFile(pkg.directory, "README.md").text = `# ${pkg.name}`;
 }

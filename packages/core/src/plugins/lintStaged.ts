@@ -1,18 +1,18 @@
-import { Project } from '..'
-import { PackageJsonSchema } from '../parts'
+import { Monorepo } from "../index.js";
+import { PackageJsonSchema } from "../parts/index.js";
 
 export async function lintStaged(
-  project: Project,
-  linters: PackageJsonSchema['lint-staged']
+  monorepo: Monorepo,
+  linters: PackageJsonSchema["lint-staged"]
 ) {
-  project.packageJson.assign({
+  monorepo.packageJson.assign({
     husky: {
       hooks: {
-        'pre-commit': 'lint-staged',
+        "pre-commit": "lint-staged",
       },
     },
-    'lint-staged': linters,
-  })
+    "lint-staged": linters,
+  });
 
-  project.addDevDependency('husky lint-staged')
+  monorepo.addDevDependency("husky lint-staged");
 }

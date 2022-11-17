@@ -1,11 +1,11 @@
-import { TextFile } from './TextFile'
+import { TextFile } from "./TextFile.js";
 
 export class EntriesFile extends TextFile {
   public get contents() {
-    return (this.text ?? '').split('\n')
+    return (this.text ?? "").split("\n");
   }
 
   public set contents(entries) {
-    this.text = entries.join('\n')
+    this.text = entries.join("\n");
   }
 }

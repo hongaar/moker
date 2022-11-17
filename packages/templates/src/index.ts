@@ -1,4 +1,5 @@
-import * as project from './project'
-import * as workspace from './workspace'
+import * as monorepo from "./monorepo/index.js";
+import * as plugins from "./plugins/index.js";
+import * as workspace from "./workspace/index.js";
 
-export { project, workspace }
+export { monorepo, workspace, plugins };

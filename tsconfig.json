@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
-    "strict": true,
-
-    "target": "es2015",
-    "module": "commonjs",
-    "esModuleInterop": true,
+    "module": "es6",
+    "target": "es2017",
+    "lib": ["es2017"],
     "allowSyntheticDefaultImports": true,
-    "lib": ["esnext"],
-
+    "moduleResolution": "node",
+    "esModuleInterop": true,
     "declaration": true,
-    "sourceMap": true
+    "declarationMap": true,
+    "strict": true
   }
 }

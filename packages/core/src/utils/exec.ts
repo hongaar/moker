@@ -1,16 +1,16 @@
-import childProcess, { ChildProcess } from 'child_process'
+import childProcess, { ChildProcess } from "child_process";
 
 type Options = {
-  cwd?: string
-  env?: {}
-  io?: 'return' | 'passthrough'
-}
+  cwd?: string;
+  env?: {};
+  io?: "return" | "passthrough";
+};
 
 function childAwaiter(child: ChildProcess): Promise<number> {
-  return new Promise(function(resolve, reject) {
-    child.on('error', reject)
-    child.on('exit', resolve)
-  })
+  return new Promise(function (resolve, reject) {
+    child.on("error", reject);
+    child.on("exit", resolve);
+  });
 }
 
 export async function exec(
@@ -20,38 +20,38 @@ export async function exec(
 ) {
   const child = childProcess.spawn(cmd, args, {
     shell: true,
-    stdio: io === 'passthrough' ? 'inherit' : 'pipe',
+    stdio: io === "passthrough" ? "inherit" : "pipe",
     cwd,
-    env
-  })
+    env,
+  });
 
-  let stdout = ''
-  let stderr = ''
+  let stdout = "";
+  let stderr = "";
 
   if (child.stdout) {
-    child.stdout.on('data', function(chunk) {
-      stdout += chunk
-    })
+    child.stdout.on("data", function (chunk) {
+      stdout += chunk;
+    });
   }
 
   if (child.stderr) {
-    child.stderr.on('data', function(chunk) {
-      stdout += chunk
-    })
+    child.stderr.on("data", function (chunk) {
+      stdout += chunk;
+    });
   }
 
-  const status = await childAwaiter(child)
+  const status = await childAwaiter(child);
 
-  const result = { status, stdout, stderr }
+  const result = { status, stdout, stderr };
 
   if (status !== 0) {
     const error = new Error(
       `exec [${cmd}] returned with an error - ${JSON.stringify(result)}`
-    )
-    Object.assign(error, result)
+    );
+    Object.assign(error, result);
 
-    throw error
+    throw error;
   }
 
-  return result
+  return result;
 }

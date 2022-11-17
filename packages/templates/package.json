@@ -2,16 +2,17 @@
   "name": "@mokr/templates",
   "version": "0.0.1-alpha.5",
   "license": "MIT",
-  "main": "lib/index.js",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "types/index.d.ts",
   "files": [
-    "lib"
+    "dist",
+    "types"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "prepublishOnly": "yarn build",
-    "build": "tsc",
+    "clean": "rm -rf dist && rm -rf types",
+    "build": "yarn clean && tsc",
     "watch:build": "tsc --watch",
     "test": "jest",
     "watch:test": "jest --watch"

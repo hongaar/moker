@@ -1,17 +1,17 @@
-import { Project } from '..'
+import { Monorepo } from "../index.js";
 
 type LernaOptions = {
-  version?: string
-  workspaces?: string[]
-}
+  version?: string;
+  workspaces?: string[];
+};
 
-export async function lerna(project: Project, options: LernaOptions = {}) {
-  project.lernaJson.contents = {
+export async function lerna(monorepo: Monorepo, options: LernaOptions = {}) {
+  monorepo.lernaJson.contents = {
     version: options.version,
     packages: options.workspaces,
-    npmClient: 'yarn',
+    npmClient: "yarn",
     useWorkspaces: true,
-  }
+  };
 
-  project.addDevDependency('lerna')
+  monorepo.addDevDependency("lerna");
 }

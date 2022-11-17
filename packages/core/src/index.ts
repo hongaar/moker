@@ -1,8 +1,11 @@
-import * as plugins from './plugins'
+// Legacy
+import * as plugins from "./plugins/index.js";
 
-export { plugins }
+export * from "./parts/index.js";
+export { plugins };
 
-export * from './parts'
-export * from './utils'
+export type Plugins = typeof plugins;
 
-export type Plugins = typeof plugins
+// New
+export * from "./monorepo.js";
+export * from "./utils/index.js";

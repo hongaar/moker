@@ -1,13 +1,13 @@
-import { CreateProjectOptions, Plugins, Project } from "@mokr/core";
+import { CreateMonorepoOptions, Monorepo, Plugins } from "@mokr/core";
 
 export async function typescript(
-  project: Project,
+  monorepo: Monorepo,
   {
     scoped,
     license,
     initialVersion: version,
     workspacesDirectory,
-  }: CreateProjectOptions,
+  }: CreateMonorepoOptions,
   plugins: Plugins
 ) {
   const workspaces = [`${workspacesDirectory}/*`];
@@ -18,23 +18,23 @@ export async function typescript(
   // yarn plugin import interactive-tools
   // yarn plugin import typescript
   // yarn plugin import workspace-tools
-  await plugins.npmPackage(project, {
-    name: project.name,
+  await plugins.npmPackage(monorepo, {
+    name: monorepo.name,
     license,
     workspaces,
     mokr: {
       scoped,
     },
   });
-  await plugins.lerna(project, {
+  await plugins.lerna(monorepo, {
     version,
     workspaces,
   });
-  await plugins.typescript(project);
-  await plugins.readme(project);
-  await plugins.gitignore(project);
-  await plugins.jest(project);
-  await plugins.prettier(project, "*.{ts,tsx}");
+  await plugins.typescript(monorepo);
+  await plugins.readme(monorepo);
+  await plugins.gitignore(monorepo);
+  await plugins.jest(monorepo);
+  await plugins.prettier(monorepo, "*.{ts,tsx}");
 
-  await project.installQueue();
+  await monorepo.installQueue();
 }

@@ -1,4 +1,4 @@
-import { Monorepo, plugins } from "../index.js";
+import { Monorepo, plugins } from "@mokr/core";
 
 export async function prettier(monorepo: Monorepo, lintStaged?: string) {
   monorepo.prettierRcJson.contents = {

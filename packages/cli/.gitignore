@@ -1,1 +1,3 @@
-/lib
+# artifacts
+/dist
+/types

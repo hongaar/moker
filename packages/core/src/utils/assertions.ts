@@ -1,19 +1,21 @@
-import { exec } from './exec'
+import { exec } from "./exec.js";
 
-const NEEDS_VERSION = 1
-
-type Unpromise<T extends Promise<any>> = T extends Promise<infer U> ? U : never
-
-export async function assertYarnIsAvailable() {
-  let version: Unpromise<ReturnType<typeof exec>>
+export async function assertYarnVersion(version: number) {
+  let execResult: Awaited<ReturnType<typeof exec>>;
 
   try {
-    version = await exec('yarn --version')
+    execResult = await exec("yarn --version");
   } catch (error) {
-    throw new Error('Yarn v1 is not installed.')
+    throw new Error("Yarn is not installed.");
   }
 
-  if (parseInt(version.stdout, 10) !== NEEDS_VERSION) {
-    throw new Error(`Yarn is installed but not in the ^${NEEDS_VERSION} range.`)
+  if (parseInt(execResult.stdout, 10) < version) {
+    throw new Error(`Needs at least Yarn v${version} to run mokr.`);
+  }
+}
+
+export async function assertNodeVersion(version: number) {
+  if (parseInt(process.version.replace("v", ""), 10) < version) {
+    throw new Error(`Needs at least Node v${version} to run mokr.`);
   }
 }

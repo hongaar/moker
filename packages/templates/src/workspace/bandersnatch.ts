@@ -1,26 +1,26 @@
-import { CreateWorkspaceOptions, Plugins, Workspace } from '@mokr/core'
-import { basename } from 'path'
+import { CreateWorkspaceOptions, Plugins, Workspace } from "@mokr/core";
+import { basename } from "path";
 
 export async function bandersnatch(
   workspace: Workspace,
   options: CreateWorkspaceOptions,
   plugins: Plugins
 ) {
-  const binPath = `bin/${basename(workspace.directory)}.js` // workspace.name may be scoped
+  const binPath = `bin/${basename(workspace.directory)}.js`; // workspace.name may be scoped
   await plugins.npmPackage(workspace, {
     name: workspace.name,
-    version: workspace.project.lernaJson.contents.version,
-    license: workspace.project.packageJson.contents.license,
+    version: workspace.monorepo.lernaJson.contents.version,
+    license: workspace.monorepo.packageJson.contents.license,
     bin: binPath,
-    files: ['lib'],
-  })
-  await plugins.typescript(workspace)
-  await plugins.readme(workspace)
-  await plugins.jest(workspace)
+    files: ["lib"],
+  });
+  await plugins.typescript(workspace);
+  await plugins.readme(workspace);
+  await plugins.jest(workspace);
 
   await plugins.file(
     workspace,
-    'src/cli.ts',
+    "src/cli.ts",
     `import { program, command } from 'bandersnatch'
 
 export default program()
@@ -31,7 +31,7 @@ export default program()
       })
   )
 `
-  )
+  );
   await plugins.file(
     workspace,
     binPath,
@@ -41,9 +41,9 @@ require('../lib/cli')
   .default.runOrRepl()
   .catch(console.error)
 `
-  )
+  );
 
-  workspace.addDependency('bandersnatch')
+  workspace.addDependency("bandersnatch");
 
-  await workspace.installQueue()
+  await workspace.installQueue();
 }

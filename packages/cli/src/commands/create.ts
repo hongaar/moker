@@ -1,55 +1,56 @@
 import {
+  createMonorepo,
   DEFAULT_INITIAL_VERSION,
+  DEFAULT_LICENSE,
+  DEFAULT_SCOPED,
   DEFAULT_WORKSPACES_DIRECTORY,
-  Project,
-} from '@mokr/core'
-import { project } from '@mokr/templates'
-import { command } from 'bandersnatch'
-import ora from 'ora'
-import path from 'path'
+} from "@mokr/core";
+import { plugins } from "@mokr/templates";
+import { command } from "bandersnatch";
+import ora from "ora";
+import { basename, resolve } from "path";
 
-export const create = command('create')
-  .description('Create a new project')
-  .argument('name', {
-    description: 'Project name',
-    prompt: 'What is the name of your project?',
+export const create = command("create")
+  .description("Create a new monorepo")
+  .argument("path", {
+    description: "Monorepo path, basename will be used as the monorepo name.",
+    prompt: "What is the name of your monorepo?",
   })
-  .option('template', {
-    description: 'Kick-start with this template',
-    choices: Object.keys(project),
-    default: 'typescript',
+  .option("plugin", {
+    description: "Kick-start with this plugin",
+    choices: Object.keys(plugins),
+    type: "array",
+    default: ["typescript"],
   })
-  .option('scoped', {
-    description: 'Use scoped packages',
+  .option("scoped", {
+    description: "Use scoped packages",
     boolean: true,
-    prompt: 'Do you want to use scoped package names?',
-    default: false,
+    prompt: "Do you want to use scoped package names?",
+    default: DEFAULT_SCOPED,
   })
-  .option('license', {
-    description: 'License',
-    choices: ['MIT', 'GPLv3'],
-    prompt: 'What license do you want to publish your packages with?',
-    default: 'MIT',
+  .option("license", {
+    description: "License",
+    choices: ["MIT", "GPLv3"],
+    prompt: "What license do you want to publish your packages with?",
+    default: DEFAULT_LICENSE,
   })
-  .option('initialVersion', {
-    description: 'Initial version',
-    prompt: 'What version do you want to start with?',
+  .option("initialVersion", {
+    description: "Initial version",
+    prompt: "What version do you want to start with?",
     default: DEFAULT_INITIAL_VERSION,
   })
-  .option('workspacesDirectory', {
-    description: 'Workspaces directory',
-    prompt: 'Which directory should we save workspaces to?',
+  .option("workspacesDirectory", {
+    description: "Workspaces directory",
+    prompt: "Which directory should we save workspaces to?",
     default: DEFAULT_WORKSPACES_DIRECTORY,
   })
-  .action(async ({ name, template, ...rest }) => {
-    const directory = path.join(process.cwd(), name)
+  .action(async ({ path, plugin, ...options }) => {
+    const name = basename(path);
+    const directory = resolve(path);
 
-    const spinner = ora(`Creating project ${name}...`).start()
+    const spinner = ora(`Creating new monorepo in ${directory}...`).start();
 
-    await new Project(directory).create(
-      project[template as keyof typeof project],
-      rest
-    )
+    await createMonorepo({ directory, ...options });
 
-    spinner.succeed(`Created project ${name}`)
-  })
+    spinner.succeed(`Created monorepo ${name}`);
+  });
