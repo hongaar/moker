@@ -29,7 +29,7 @@ While `mokr` is extensible and you can bring your own plugins, the core plugins
 make some assumptions you may not agree with. If that's the case, this tool is
 probably not for you. The defaults used by the various core plugins are
 documented below and marked with a nerd-face emoji 🤓 so you should be able to
-get a clear picture of what to expect when you decide to it.
+get a clear picture of what to expect when you decide to use it.
 
 ## Prepare
 
@@ -37,7 +37,7 @@ You will need Node v16+ and Yarn v3+ in order to use `mokr`.
 
 - Install Node with [nvm](https://github.com/nvm-sh/nvm#install--update-script)
   or using [nodesource](https://github.com/nodesource/distributions#debinstall).
-- Install Yarn v3 using these simple steps:
+- Install Yarn using these simple steps:
   ```bash
   corepack enable
   corepack prepare yarn@stable --activate
@@ -48,10 +48,10 @@ You will need Node v16+ and Yarn v3+ in order to use `mokr`.
 Create a new monorepo:
 
 ```bash
-yarn dlx mokr create my-repo
+yarn dlx @mokr/cli create my-repo
 ```
 
-> ⚠️ Note that we use `yarn dlx mokr` to create a new monorepo. Once we are
+> ⚠️ Note that we use `yarn dlx @mokr/cli` to create a new monorepo. Once we are
 > inside our monorepo, we can simply use `yarn mokr` to execute commands.
 
 > 🤓 The monorepo is initiated with Yarn without Zero-Installs and in legacy
@@ -75,11 +75,11 @@ yarn mokr use prettier husky lint-staged
 > will install a pre-commit hook which formats code if `prettier` and `husky`
 > are installed. The order in which plugins are added does not matter.
 
-See the section [plugins](#plugins) for a list of available options.
+See the section [core plugins](#core-plugins) for a list of available options.
 
 ### Workspaces
 
-Add a new shared library workspace:
+Add a new library workspace:
 
 ```bash
 yarn mokr add my-lib
@@ -88,7 +88,7 @@ yarn mokr add my-lib
 Or use a workspace template (see below):
 
 ```bash
-mokr add my-app --template <name>
+yarn mokr add my-app --template <name>
 ```
 
 ## Core workspace templates
@@ -162,16 +162,16 @@ run `yarn lint-staged`.
 
 ## Roadmap
 
-- Support for `swc`/`esbuild`
-- A compat lib (which builds cjs and mjs targets)
-- Support for BYO plugins/templates
-- Remove plugins
+- [ ] Support for `swc`/`esbuild`
+- [ ] A compat lib (which builds cjs and mjs targets)
+- [x] Support for BYO plugins/templates
+- [ ] Remove plugins
 
 ## Contributing
 
 Contributions are very welcome!
 
-## Development
+### Development
 
 To run the `mokr` CLI from source, run:
 
