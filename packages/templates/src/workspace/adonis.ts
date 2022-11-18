@@ -1,34 +1,34 @@
-import { CreateWorkspaceOptions, exec, Plugins, Workspace } from '@mokr/core'
-import path from 'path'
+import { CreateWorkspaceOptions, exec, Plugins, Workspace } from "@mokr/core";
+import path from "node:path";
 
 export async function adonis(
   workspace: Workspace,
   options: CreateWorkspaceOptions,
   plugins: Plugins
 ) {
-  const name = path.basename(workspace.directory) // workspace.name may be scoped
+  const name = path.basename(workspace.directory); // workspace.name may be scoped
   await exec(
-    'yarn',
+    "yarn",
     [
-      'create',
-      'adonis-ts-app',
+      "create",
+      "adonis-ts-app",
       name,
-      '--boilerplate',
-      'api',
-      '--name',
+      "--boilerplate",
+      "api",
+      "--name",
       name,
-      '--no-eslint',
+      "--no-eslint",
     ],
     {
       cwd: path.dirname(workspace.directory),
     }
-  )
+  );
   await plugins.npmPackage(workspace, {
     name: workspace.name,
-    version: workspace.project.lernaJson.contents.version,
-    license: workspace.project.packageJson.contents.license,
-  })
-  await plugins.readme(workspace)
+    version: workspace.monorepo.lernaJson.contents.version,
+    license: workspace.monorepo.packageJson.contents.license,
+  });
+  await plugins.readme(workspace);
 
   /**
    * @todo

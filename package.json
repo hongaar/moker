@@ -11,14 +11,15 @@
   "packageManager": "yarn@3.2.4",
   "scripts": {
     "publish": "yarn publish",
-    "start": "yarn workspaces foreach --parallel --interlaced run start",
+    "start": "yarn workspace @mokr/cli run start",
     "build": "yarn workspaces foreach run build",
     "test": "yarn workspaces foreach run test",
+    "format": "prettier --write .",
     "watch:build": "yarn workspaces foreach --parallel --interlaced run watch:build",
     "watch:test": "yarn workspaces foreach --parallel --interlaced run watch:test"
   },
   "devDependencies": {
-    "jest": "29.3.1",
-    "ts-jest": "29.0.3"
+    "@types/prettier": "^2.7.1",
+    "prettier": "2.7.1"
   }
 }

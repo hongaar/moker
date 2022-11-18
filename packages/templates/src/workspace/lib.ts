@@ -1,4 +1,4 @@
-import { CreateWorkspaceOptions, Plugins, Workspace } from '@mokr/core'
+import { CreateWorkspaceOptions, Plugins, Workspace } from "@mokr/core";
 
 export async function lib(
   workspace: Workspace,
@@ -7,20 +7,20 @@ export async function lib(
 ) {
   await plugins.npmPackage(workspace, {
     name: workspace.name,
-    version: workspace.project.lernaJson.contents.version,
-    license: workspace.project.packageJson.contents.license,
-    main: 'lib/index.js',
-    files: ['lib'],
-  })
-  await plugins.typescript(workspace)
-  await plugins.readme(workspace)
-  await plugins.jest(workspace)
+    version: workspace.monorepo.lernaJson.contents.version,
+    license: workspace.monorepo.packageJson.contents.license,
+    main: "lib/index.js",
+    files: ["lib"],
+  });
+  await plugins.typescript(workspace);
+  await plugins.readme(workspace);
+  await plugins.jest(workspace);
 
   await plugins.file(
     workspace,
-    'src/index.ts',
+    "src/index.ts",
     "console.log('Hello, world!')\n"
-  )
+  );
 
-  await workspace.installQueue()
+  await workspace.installQueue();
 }

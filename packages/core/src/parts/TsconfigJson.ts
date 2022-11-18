@@ -1,22 +1,22 @@
-import { CompilerOptions } from 'typescript'
-import { JsonFile } from './JsonFile'
+import { CompilerOptions } from "typescript";
+import { JsonFile } from "./JsonFile.js";
 
 class TsconfigJsonSchema {
-  files?: string[]
-  include?: string[]
-  exclude?: string[]
-  extends?: string
+  files?: string[];
+  include?: string[];
+  exclude?: string[];
+  extends?: string;
   // references
   // typeAcquisition
-  compilerOptions?: CompilerOptions
+  compilerOptions?: CompilerOptions;
 
   constructor(object: TsconfigJsonSchema) {
-    Object.assign(this, object)
+    Object.assign(this, object);
   }
 }
 
 export class TsconfigJson extends JsonFile<TsconfigJsonSchema> {
   constructor(public directory: string) {
-    super(directory, 'tsconfig.json', TsconfigJsonSchema)
+    super(directory, "tsconfig.json", TsconfigJsonSchema);
   }
 }

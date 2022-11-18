@@ -1,5 +1,5 @@
-import merge from 'deepmerge'
-import { TextFile } from './TextFile'
+import merge from "deepmerge";
+import { TextFile } from "./TextFile.js";
 
 function schemaProxy<Schema extends object>(
   object: Schema,
@@ -9,11 +9,11 @@ function schemaProxy<Schema extends object>(
   // the onChange callback
   return new Proxy(object, {
     set: function (target, prop, value) {
-      const result = Reflect.set(target, prop, value)
-      onChange(target)
-      return result
+      const result = Reflect.set(target, prop, value);
+      onChange(target);
+      return result;
     },
-  })
+  });
 }
 
 export class JsonFile<Schema extends object> extends TextFile {
@@ -22,20 +22,20 @@ export class JsonFile<Schema extends object> extends TextFile {
     public filename: string,
     public SchemaClass: { new (object: Schema): Schema }
   ) {
-    super(directory, filename)
+    super(directory, filename);
   }
 
   public get contents() {
-    const object = new this.SchemaClass(JSON.parse(this.text || '{}'))
-    return schemaProxy(object, (object) => (this.contents = object))
+    const object = new this.SchemaClass(JSON.parse(this.text || "{}"));
+    return schemaProxy(object, (object) => (this.contents = object));
   }
 
   public set contents(object: Schema) {
-    this.text = JSON.stringify(object, undefined, 2)
+    this.text = JSON.stringify(object, undefined, 2);
   }
 
   public assign(object: Partial<Schema>) {
-    const base = this.contents
-    this.contents = merge(base, object)
+    const base = this.contents;
+    this.contents = merge(base, object);
   }
 }

@@ -1,7 +1,7 @@
-import { Project } from '..'
+import { Monorepo } from "../index.js";
 
-export const DEFAULT_GITIGNORE = ['node_modules/', 'lib/']
+export const DEFAULT_GITIGNORE = ["node_modules/", "lib/"];
 
-export async function gitignore(project: Project, extra: string[] = []) {
-  project.gitignore.contents = [...DEFAULT_GITIGNORE, ...extra]
+export async function gitignore(monorepo: Monorepo, extra: string[] = []) {
+  monorepo.gitignore.contents = [...DEFAULT_GITIGNORE, ...extra];
 }

@@ -1,11 +1,10 @@
-import { Project } from '..'
+import { Monorepo } from "../index.js";
 
-export async function stmux(project: Project) {
-  project.packageJson.assign({
+export async function stmux(monorepo: Monorepo) {
+  monorepo.packageJson.assign({
     scripts: {
-      dev:
-        'stmux -w always -e ERROR -m beep,system -- [ [ "yarn watch:build" .. "yarn watch:test" ] : -s 1/3 -f "yarn start" ]',
+      dev: 'stmux -w always -e ERROR -m beep,system -- [ [ "yarn watch:build" .. "yarn watch:test" ] : -s 1/3 -f "yarn start" ]',
     },
-  })
-  project.addDevDependency('stmux')
+  });
+  monorepo.addDevDependency("stmux");
 }

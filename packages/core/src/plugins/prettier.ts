@@ -1,16 +1,16 @@
-import { plugins, Project } from '..'
+import { Monorepo, plugins } from "../index.js";
 
-export async function prettier(project: Project, lintStaged?: string) {
-  project.prettierRcJson.contents = {
+export async function prettier(monorepo: Monorepo, lintStaged?: string) {
+  monorepo.prettierRcJson.contents = {
     semi: false,
     singleQuote: true,
-  }
+  };
 
   if (lintStaged) {
-    await plugins.lintStaged(project, {
-      [lintStaged]: 'prettier --write',
-    })
+    await plugins.lintStaged(monorepo, {
+      [lintStaged]: "prettier --write",
+    });
   }
 
-  project.addDevDependency('prettier')
+  monorepo.addDevDependency("prettier");
 }
