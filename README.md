@@ -71,9 +71,9 @@ For example:
 yarn mokr use prettier husky lint-staged
 ```
 
-> ⚠️ Note that order can be important! For example, `lint-staged` will install a
-> pre-commit hook which formats code only if `prettier` and `husky` are
-> installed first.
+> 💡 Note that some plugins depend on each other. For example, `lint-staged`
+> will install a pre-commit hook which formats code if `prettier` and `husky`
+> are installed. The order in which plugins are added does not matter.
 
 See the section [plugins](#plugins) for a list of available options.
 
@@ -91,39 +91,7 @@ Or use a workspace template (see below):
 mokr add my-app --template <name>
 ```
 
-## Core plugins
-
-### Prettier
-
-This plugin installs `prettier` at the monorepo level.
-
-> 🤓 Prettier is installed with this configuration:
->
-> ```yaml
-> proseWrap: always
-> ```
->
-> We only set this `proseWrap` override because we think markdown files should
-> always be truncated to match whatever the `printWidth` setting is. Not having
-> to do this manually makes writing markdown files so much easier!
-
-### Jest
-
-_WIP_
-
-### GitHub Actions
-
-_WIP_
-
-### Devcontainer
-
-_WIP_
-
-### Husky
-
-_WIP_
-
-## Out-of-the-box workspace templates
+## Core workspace templates
 
 ### `lib`
 
@@ -145,6 +113,52 @@ to scaffold an Adonis app (API server)
 
 Uses [bandersnatch](https://github.com/hongaar/bandersnatch) to scaffold a CLI
 tool
+
+## Core plugins
+
+### `prettier`
+
+This plugin sets up [Prettier](https://prettier.io) at the monorepo level.
+
+> 🤓 Prettier is installed with this configuration:
+>
+> ```yaml
+> proseWrap: always
+> ```
+>
+> We only set this `proseWrap` override because we think markdown files should
+> always be truncated to match whatever the `printWidth` setting is. Not having
+> to do this manually makes writing markdown files so much easier!
+
+### `jest`
+
+This plugin sets up [Jest](https://jestjs.io) at the workspace level.
+
+### `github-actions`
+
+This plugin sets up [GitHub Actions](https://github.com/features/actions) at the
+monorepo level.
+
+### `devcontainer`
+
+This plugin sets up [devcontainer](https://containers.dev) configuration at the
+monorepo level.
+
+### `husky`
+
+This plugin sets up [Husky](https://typicode.github.io/husky/#/) at the monorepo
+level.
+
+### `lint-staged`
+
+This plugin sets up [lint-staged](https://github.com/okonet/lint-staged) at the
+monorepo level.
+
+If you have the `prettier` plugin installed, this will setup a task to format
+staged files using `prettier --write --ignore-unknown`.
+
+If you have the `husky` plugin installed, this will setup a pre-commit hook to
+run `yarn lint-staged`.
 
 ## Roadmap
 

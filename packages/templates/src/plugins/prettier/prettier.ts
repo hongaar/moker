@@ -1,7 +1,7 @@
 import {
   enqueueDependency,
   PluginArgs,
-  PluginLevel,
+  PluginType,
   writeFile,
 } from "@mokr/core";
 import os from "node:os";
@@ -18,7 +18,7 @@ const PRETTIER_IGNORE = [
   "",
 ];
 
-async function prettier({ directory }: PluginArgs) {
+async function install({ directory }: PluginArgs) {
   await enqueueDependency({ directory, identifier: "prettier", dev: true });
   await writePrettierrc({
     directory,
@@ -32,6 +32,10 @@ async function prettier({ directory }: PluginArgs) {
   });
 }
 
-prettier.level = PluginLevel.Monorepo;
+async function refresh() {}
 
-export { prettier };
+export const prettier = {
+  type: PluginType.Monorepo,
+  install,
+  refresh,
+};

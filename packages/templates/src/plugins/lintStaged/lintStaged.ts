@@ -3,13 +3,15 @@ import {
   exec,
   hasPlugin,
   PluginArgs,
-  PluginLevel,
+  PluginType,
   writePackage,
 } from "@mokr/core";
 
-async function lintStaged({ directory }: PluginArgs) {
+async function install({ directory }: PluginArgs) {
   await enqueueDependency({ directory, identifier: "lint-staged", dev: true });
+}
 
+async function refresh({ directory }: PluginArgs) {
   if (await hasPlugin({ directory, name: "prettier" })) {
     await writePackage({
       directory,
@@ -32,6 +34,8 @@ async function lintStaged({ directory }: PluginArgs) {
   }
 }
 
-lintStaged.level = PluginLevel.Monorepo;
-
-export { lintStaged };
+export const lintStaged = {
+  type: PluginType.Monorepo,
+  install,
+  refresh,
+};

@@ -1,4 +1,8 @@
-import { installEnqueuedDependencies, runPlugin } from "@mokr/core";
+import {
+  installEnqueuedDependencies,
+  installPlugin,
+  refreshPlugins,
+} from "@mokr/core";
 import { command } from "bandersnatch";
 import ora from "ora";
 
@@ -17,9 +21,13 @@ export const use = command("use")
 
     for (const name of plugin) {
       spinner = ora(`Adding plugin ${name}...`).start();
-      await runPlugin({ directory: cwd, name });
+      await installPlugin({ directory: cwd, name });
       spinner.succeed(`Added plugin ${name}`);
     }
+
+    spinner = ora(`Refreshing plugins...`).start();
+    await refreshPlugins({ directory: cwd });
+    spinner.succeed(`Refreshed plugins`);
 
     spinner = ora(`Installing dependencies...`).start();
     await installEnqueuedDependencies({ directory: cwd });

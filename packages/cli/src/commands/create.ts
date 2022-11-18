@@ -5,7 +5,8 @@ import {
   DEFAULT_SCOPED,
   DEFAULT_WORKSPACES_DIRECTORY,
   installEnqueuedDependencies,
-  runPlugin,
+  installPlugin,
+  refreshPlugins,
 } from "@mokr/core";
 import { command } from "bandersnatch";
 import { resolve } from "node:path";
@@ -56,9 +57,13 @@ export const create = command("create")
 
     for (const name of plugin) {
       spinner = ora(`Adding plugin ${name}...`).start();
-      await runPlugin({ directory, name });
+      await installPlugin({ directory, name });
       spinner.succeed(`Added plugin ${name}`);
     }
+
+    spinner = ora(`Refreshing plugins...`).start();
+    await refreshPlugins({ directory });
+    spinner.succeed(`Refreshed plugins`);
 
     spinner = ora(`Installing dependencies...`).start();
     await installEnqueuedDependencies({ directory });

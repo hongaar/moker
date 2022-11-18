@@ -4,34 +4,45 @@ import { toCamelCase } from "./string.js";
 
 export type PluginArgs = { directory: string };
 
-export type Plugin = ((args: PluginArgs) => Promise<void>) & {
-  level: string | PluginLevel;
-};
-
-export enum PluginLevel {
+export enum PluginType {
   Monorepo = "monorepo",
   Workspace = "workspace",
   Any = "any",
 }
 
-const CORE_PLUGINS = ["husky", "prettier", "lint-staged"];
+export type Plugin = {
+  type: string | PluginType;
+  install: (args: PluginArgs) => Promise<void>;
+  refresh: (args: PluginArgs) => Promise<void>;
+};
+
+type PluginOptions = {
+  directory: string;
+  name: string;
+};
+
+const CORE_PLUGINS = [
+  "husky",
+  "prettier",
+  "lint-staged",
+  "devcontainer",
+  "github-actions",
+];
 
 export function isPlugin(plugin: unknown): plugin is Plugin {
   return !!(
     plugin &&
-    typeof plugin === "function" &&
+    typeof plugin === "object" &&
     // @ts-ignore
-    typeof plugin?.level === "string"
+    typeof plugin?.type === "string" &&
+    // @ts-ignore
+    typeof plugin?.install === "function" &&
+    // @ts-ignore
+    typeof plugin?.refresh === "function"
   );
 }
 
-export async function runPlugin({
-  directory,
-  name,
-}: {
-  directory: string;
-  name: string;
-}) {
+export async function getPlugin({ directory, name }: PluginOptions) {
   let plugin: Plugin;
 
   if (CORE_PLUGINS.includes(name)) {
@@ -47,16 +58,26 @@ export async function runPlugin({
 
   // Monorepo level?
   if (await isMonorepo({ directory })) {
-    if (plugin.level === "workspace") {
+    if (plugin.type === "workspace") {
       throw new Error(`Plugin ${name} can only be used at workspace level`);
     }
   } else {
-    if (plugin.level === "monorepo") {
+    if (plugin.type === "monorepo") {
       throw new Error(`Plugin ${name} can only be used at monorepo level`);
     }
   }
 
-  await plugin({ directory });
+  return plugin;
+}
+
+export async function installPlugin({ directory, name }: PluginOptions) {
+  if (await hasPlugin({ directory, name })) {
+    throw new Error(`Plugin ${name} is already installed`);
+  }
+
+  const plugin = await getPlugin({ directory, name });
+
+  await plugin.install({ directory });
   await writePackage({
     directory,
     data: {
@@ -67,6 +88,26 @@ export async function runPlugin({
   });
 }
 
+export async function refreshPlugin({ directory, name }: PluginOptions) {
+  const plugin = await getPlugin({ directory, name });
+
+  await plugin.refresh({ directory });
+}
+
+export async function getPlugins({ directory }: { directory: string }) {
+  const { mokr } = await readPackage({ directory });
+
+  return mokr?.plugins ?? [];
+}
+
+export async function refreshPlugins({ directory }: { directory: string }) {
+  const plugins = await getPlugins({ directory });
+
+  for (const name of plugins) {
+    await refreshPlugin({ directory, name });
+  }
+}
+
 export async function hasPlugin({
   directory,
   name,
@@ -74,7 +115,7 @@ export async function hasPlugin({
   directory: string;
   name: string;
 }) {
-  const { mokr } = await readPackage({ directory });
+  const plugins = await getPlugins({ directory });
 
-  return !!mokr?.plugins?.includes(name);
+  return !!plugins.includes(name);
 }

@@ -3,11 +3,11 @@ import {
   exec,
   installEnqueuedDependencies,
   PluginArgs,
-  PluginLevel,
+  PluginType,
   writePackage,
 } from "@mokr/core";
 
-async function husky({ directory }: PluginArgs) {
+async function install({ directory }: PluginArgs) {
   await enqueueDependency({ directory, identifier: "husky", dev: true });
   await installEnqueuedDependencies({ directory });
   await exec("yarn", ["husky", "install"], { cwd: directory });
@@ -21,6 +21,10 @@ async function husky({ directory }: PluginArgs) {
   });
 }
 
-husky.level = PluginLevel.Monorepo;
+async function refresh() {}
 
-export { husky };
+export const husky = {
+  type: PluginType.Monorepo,
+  install,
+  refresh,
+};
