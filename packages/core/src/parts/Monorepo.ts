@@ -1,22 +1,10 @@
-import { execSync } from "child_process";
-import fs from "fs";
-import path from "path";
+import { execSync } from "node:child_process";
+import fs from "node:fs";
+import path from "node:path";
 import { pkgUpSync as pkgUp } from "pkg-up";
-import { Plugins, plugins } from "../index.js";
 import { LernaJson } from "./LernaJson.js";
 import { Package } from "./Package.js";
 import { PrettierRcJson } from "./PrettierRcJson.js";
-
-export const DEFAULT_LICENSE = "MIT";
-export const DEFAULT_INITIAL_VERSION = "0.0.0";
-export const DEFAULT_WORKSPACES_DIRECTORY = "packages";
-
-const defaultOptions = {
-  scoped: false,
-  license: DEFAULT_LICENSE,
-  initialVersion: DEFAULT_INITIAL_VERSION,
-  workspacesDirectory: DEFAULT_WORKSPACES_DIRECTORY,
-};
 
 export type CreateMonorepoOptions = {
   scoped: boolean;
@@ -24,12 +12,6 @@ export type CreateMonorepoOptions = {
   initialVersion: string;
   workspacesDirectory: string;
 };
-
-type MonorepoTemplate = (
-  monorepo: Monorepo,
-  options: CreateMonorepoOptions,
-  plugins: Plugins
-) => Promise<void>;
 
 export class Monorepo extends Package {
   public static find(directory: string): undefined | Monorepo {
@@ -59,10 +41,7 @@ export class Monorepo extends Package {
     return new PrettierRcJson(this.directory);
   }
 
-  public async create(
-    templateFn: MonorepoTemplate,
-    options: Partial<CreateMonorepoOptions> = {}
-  ) {
+  public async create() {
     if (fs.existsSync(this.directory)) {
       throw new Error(`${this.directory} already exists`);
     }
@@ -70,9 +49,5 @@ export class Monorepo extends Package {
     fs.mkdirSync(this.directory);
 
     execSync("git init", { cwd: this.directory });
-
-    const optionsWithDefaults = Object.assign({}, defaultOptions, options);
-
-    await templateFn(this, optionsWithDefaults, plugins);
   }
 }

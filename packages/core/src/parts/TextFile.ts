@@ -1,6 +1,6 @@
-import { existsSync, readFileSync, writeFileSync } from "fs";
 import mkdirp from "mkdirp";
-import { dirname, join } from "path";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 
 export class TextFile {
   constructor(public directory: string, public filename: string) {

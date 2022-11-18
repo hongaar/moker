@@ -1,5 +1,5 @@
 import { CreateWorkspaceOptions, exec, Plugins, Workspace } from "@mokr/core";
-import path from "path";
+import path from "node:path";
 
 export async function cra(
   workspace: Workspace,

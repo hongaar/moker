@@ -1,6 +1,8 @@
 # mokr
 
-> 👢 Kick-start monorepos (in development)
+> **This project is work in progress**
+
+> 👢 Kick-start monorepos
 
 [![npm (scoped)](https://img.shields.io/npm/v/@mokr/cli?label=%40mokr%2Fcli&logo=npm&style=flat-square)](https://www.npmjs.com/package/@mokr/cli)
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/hongaar/mokr?logo=code%20climate&style=flat-square)](https://codeclimate.com/github/hongaar/mokr)
@@ -11,15 +13,23 @@
 - 🧰 Monorepo plugins to use pre-configured common tooling
 - ➕ Add workspaces on demand
 - 🧬 Workspace templates for a library, React app, API or CLI
-- ⚡ Extensible, bring your own plugins! (WIP)
+- ⚡ Extensible, bring your own plugins
 
 ## Why?
 
 When I start a new project it often takes a couple of days before it becomes a
 monorepo, at which point I find myself duplicating all sorts of configuration
-and build scripts. This project aims to concentrate this struggle in one tool,
-which can then be used to scaffold monorepos and workspaces (a.k.a. monorepo
-packages).
+and build scripts. This project aims to concentrate this struggle in one
+opiniated tool, so you can scaffold monorepos and workspaces (a.k.a. monorepo
+packages) quickly.
+
+## Opiniated
+
+While `mokr` is extensible and you can bring your own plugins, the core plugins
+make some assumptions you may not agree with. If that's the case, this tool is
+probably not for you. The defaults used by the various core plugins are
+documented below and marked with a nerd-face emoji 🤓 so you should be able to
+get a clear picture of what to expect when you decide to it.
 
 ## Prepare
 
@@ -33,7 +43,7 @@ You will need Node v16+ and Yarn v3+ in order to use `mokr`.
   corepack prepare yarn@stable --activate
   ```
 
-## Getting started
+## How to use
 
 Create a new monorepo:
 
@@ -43,6 +53,10 @@ yarn dlx mokr create my-repo
 
 > ⚠️ Note that we use `yarn dlx mokr` to create a new monorepo. Once we are
 > inside our monorepo, we can simply use `yarn mokr` to execute commands.
+
+> 🤓 The monorepo is initiated with Yarn without Zero-Installs and in legacy
+> `nodeLinker: node-modules` mode because a lot of packages are not yet
+> compatible with PnP or require a workaround.
 
 If you want additional tools installed at the monorepo level, add them with:
 
@@ -54,8 +68,12 @@ yarn mokr use <plugins..>
 For example:
 
 ```bash
-yarn mokr use prettier devcontainer
+yarn mokr use prettier husky lint-staged
 ```
+
+> ⚠️ Note that order can be important! For example, `lint-staged` will install a
+> pre-commit hook which formats code only if `prettier` and `husky` are
+> installed first.
 
 See the section [plugins](#plugins) for a list of available options.
 
@@ -73,21 +91,21 @@ Or use a workspace template (see below):
 mokr add my-app --template <name>
 ```
 
-## Plugins
+## Core plugins
 
 ### Prettier
 
-_WIP_
+This plugin installs `prettier` at the monorepo level.
 
-Prettier is installed with this configuration:
-
-```yaml
-proseWrap: always
-```
-
-We only set this `proseWrap` override because we think markdown files should
-always be truncated to match whatever the `printWidth` setting is. Not having to
-do this manually makes writing markdown files so much easier!
+> 🤓 Prettier is installed with this configuration:
+>
+> ```yaml
+> proseWrap: always
+> ```
+>
+> We only set this `proseWrap` override because we think markdown files should
+> always be truncated to match whatever the `printWidth` setting is. Not having
+> to do this manually makes writing markdown files so much easier!
 
 ### Jest
 
@@ -133,6 +151,7 @@ tool
 - Support for `swc`/`esbuild`
 - A compat lib (which builds cjs and mjs targets)
 - Support for BYO plugins/templates
+- Remove plugins
 
 ## Contributing
 

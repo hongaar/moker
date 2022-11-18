@@ -1,16 +1,27 @@
-import { plugins } from "@mokr/templates";
+import { installEnqueuedDependencies, runPlugin } from "@mokr/core";
 import { command } from "bandersnatch";
 import ora from "ora";
 
 export const use = command("use")
   .description("Add plugin to monorepo or workspace")
-  .argument("name", {
-    description: "Plugins name",
-    choices: Object.keys(plugins),
+  .argument("plugin", {
+    description: "Plugin name",
     variadic: true,
   })
-  .action(async ({ name }) => {
-    const spinner = ora(`Adding plugin...`).start();
+  .option("cwd", {
+    description: "Directory to use as the current working directory",
+    default: process.cwd(),
+  })
+  .action(async ({ plugin, cwd }) => {
+    let spinner;
 
-    spinner.succeed(`Created monorepo ${name}`);
+    for (const name of plugin) {
+      spinner = ora(`Adding plugin ${name}...`).start();
+      await runPlugin({ directory: cwd, name });
+      spinner.succeed(`Added plugin ${name}`);
+    }
+
+    spinner = ora(`Installing dependencies...`).start();
+    await installEnqueuedDependencies({ directory: cwd });
+    spinner.succeed(`Installed dependencies`);
   });

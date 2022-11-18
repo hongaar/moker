@@ -1,5 +1,5 @@
 import { CreateWorkspaceOptions, Plugins, Workspace } from "@mokr/core";
-import { basename } from "path";
+import { basename } from "node:path";
 
 export async function bandersnatch(
   workspace: Workspace,

@@ -1,4 +1,4 @@
-import path from "path";
+import path from "node:path";
 import { asyncForEach, exec } from "../utils/index.js";
 import { GitIgnore } from "./GitIgnore.js";
 import { JestConfig } from "./JestConfig.js";
