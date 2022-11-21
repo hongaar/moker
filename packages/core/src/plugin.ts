@@ -1,6 +1,6 @@
-import { isMonorepo } from "../monorepo.js";
-import { readPackage, writePackage } from "../package.js";
-import { toCamelCase } from "./string.js";
+import { isMonorepo } from "./monorepo.js";
+import { readPackage, updatePackage, writePackage } from "./package.js";
+import { toCamelCase } from "./utils/string.js";
 
 export type PluginArgs = { directory: string };
 
@@ -13,7 +13,8 @@ export enum PluginType {
 export type Plugin = {
   type: string | PluginType;
   install: (args: PluginArgs) => Promise<void>;
-  refresh: (args: PluginArgs) => Promise<void>;
+  remove: (args: PluginArgs) => Promise<void>;
+  load: (args: PluginArgs) => Promise<void>;
 };
 
 type PluginOptions = {
@@ -38,15 +39,17 @@ export function isPlugin(plugin: unknown): plugin is Plugin {
     // @ts-ignore
     typeof plugin?.install === "function" &&
     // @ts-ignore
-    typeof plugin?.refresh === "function"
+    typeof plugin?.remove === "function" &&
+    // @ts-ignore
+    typeof plugin?.load === "function"
   );
 }
 
-export async function getPlugin({ directory, name }: PluginOptions) {
+export async function importPlugin({ directory, name }: PluginOptions) {
   let plugin: Plugin;
 
   if (CORE_PLUGINS.includes(name)) {
-    const { plugins } = await import("@mokr/templates");
+    const { default: plugins } = await import("@mokr/plugins");
     plugin = plugins[toCamelCase(name) as keyof typeof plugins];
   } else {
     plugin = await import(name);
@@ -75,7 +78,7 @@ export async function installPlugin({ directory, name }: PluginOptions) {
     throw new Error(`Plugin ${name} is already installed`);
   }
 
-  const plugin = await getPlugin({ directory, name });
+  const plugin = await importPlugin({ directory, name });
 
   await plugin.install({ directory });
   await writePackage({
@@ -88,24 +91,46 @@ export async function installPlugin({ directory, name }: PluginOptions) {
   });
 }
 
-export async function refreshPlugin({ directory, name }: PluginOptions) {
-  const plugin = await getPlugin({ directory, name });
+export async function removePlugin({ directory, name }: PluginOptions) {
+  if (!(await hasPlugin({ directory, name }))) {
+    throw new Error(`Plugin ${name} is not installed`);
+  }
 
-  await plugin.refresh({ directory });
+  const plugin = await importPlugin({ directory, name });
+
+  await plugin.remove({ directory });
+  await updatePackage({
+    directory,
+    merge: (existingData) => ({
+      ...existingData,
+      mokr: {
+        ...existingData.mokr,
+        plugins: (existingData.mokr?.plugins || []).filter(
+          (pluginName) => pluginName !== name
+        ),
+      },
+    }),
+  });
+}
+
+export async function loadPlugin({ directory, name }: PluginOptions) {
+  const plugin = await importPlugin({ directory, name });
+
+  await plugin.load({ directory });
+}
+
+export async function loadAllPlugins({ directory }: { directory: string }) {
+  const plugins = await getPlugins({ directory });
+
+  for (const name of plugins) {
+    await loadPlugin({ directory, name });
+  }
 }
 
 export async function getPlugins({ directory }: { directory: string }) {
   const { mokr } = await readPackage({ directory });
 
   return mokr?.plugins ?? [];
-}
-
-export async function refreshPlugins({ directory }: { directory: string }) {
-  const plugins = await getPlugins({ directory });
-
-  for (const name of plugins) {
-    await refreshPlugin({ directory, name });
-  }
 }
 
 export async function hasPlugin({

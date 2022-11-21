@@ -1,12 +1,14 @@
 import {
-  enqueueDependency,
+  enqueueInstallDependency,
+  enqueueRemoveDependency,
   PluginArgs,
   PluginType,
+  removeFile,
   writeFile,
 } from "@mokr/core";
 import os from "node:os";
 import { join } from "node:path";
-import { writePrettierrc } from "./prettierrc.js";
+import { removePrettierrc, writePrettierrc } from "./prettierrc.js";
 
 const PRETTIER_IGNORE = [
   "# yarn",
@@ -19,7 +21,11 @@ const PRETTIER_IGNORE = [
 ];
 
 async function install({ directory }: PluginArgs) {
-  await enqueueDependency({ directory, identifier: "prettier", dev: true });
+  await enqueueInstallDependency({
+    directory,
+    identifier: "prettier",
+    dev: true,
+  });
   await writePrettierrc({
     directory,
     data: {
@@ -32,10 +38,21 @@ async function install({ directory }: PluginArgs) {
   });
 }
 
-async function refresh() {}
+async function remove({ directory }: PluginArgs) {
+  await enqueueRemoveDependency({ directory, identifier: "prettier" });
+  await removePrettierrc({
+    directory,
+  });
+  await removeFile({
+    path: join(directory, ".prettierignore"),
+  });
+}
+
+async function load() {}
 
 export const prettier = {
   type: PluginType.Monorepo,
   install,
-  refresh,
+  remove,
+  load,
 };

@@ -1,4 +1,4 @@
-import { readYaml, writeYaml } from "@mokr/core";
+import { readYaml, removeFile, writeYaml } from "@mokr/core";
 import path from "node:path";
 
 // http://json.schemastore.org/prettierrc
@@ -72,4 +72,8 @@ export async function writePrettierrc({
   data: Partial<Prettierrc>;
 }) {
   await writeYaml({ path: path.join(directory, FILENAME), data });
+}
+
+export async function removePrettierrc({ directory }: { directory: string }) {
+  await removeFile({ path: path.join(directory, FILENAME) });
 }

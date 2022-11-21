@@ -1,14 +1,14 @@
 import {
-  installPlugin,
   loadAllPlugins,
+  removePlugin,
   runDependencyQueues,
   task,
 } from "@mokr/core";
 import { command } from "bandersnatch";
 
-export const use = command("use")
-  .description("Add plugin to monorepo or workspace")
-  .argument("plugin", {
+export const remove = command("plugin")
+  .description("Remove a plugin from the monorepo or workspace")
+  .argument("name", {
     description: "Plugin name",
     variadic: true,
   })
@@ -16,10 +16,10 @@ export const use = command("use")
     description: "Directory to use as the current working directory",
     default: process.cwd(),
   })
-  .action(async ({ plugin, cwd }) => {
-    for (const name of plugin) {
-      await task(`Add plugin ${name}`, () =>
-        installPlugin({ directory: cwd, name })
+  .action(async ({ name, cwd }) => {
+    for (const pluginName of name) {
+      await task(`Remove plugin ${pluginName}`, () =>
+        removePlugin({ directory: cwd, name: pluginName })
       );
     }
 

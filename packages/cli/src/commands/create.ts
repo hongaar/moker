@@ -4,13 +4,13 @@ import {
   DEFAULT_LICENSE,
   DEFAULT_SCOPED,
   DEFAULT_WORKSPACES_DIRECTORY,
-  installEnqueuedDependencies,
   installPlugin,
-  refreshPlugins,
+  loadAllPlugins,
+  runDependencyQueues,
+  task,
 } from "@mokr/core";
 import { command } from "bandersnatch";
 import { resolve } from "node:path";
-import ora from "ora";
 
 // @todo re-enable prompts
 
@@ -48,24 +48,18 @@ export const create = command("create")
     default: DEFAULT_WORKSPACES_DIRECTORY,
   })
   .action(async ({ path, plugin, ...options }) => {
-    let spinner;
     const directory = resolve(path);
 
-    spinner = ora(`Creating new monorepo in ${directory}...`).start();
-    await createMonorepo({ directory, ...options });
-    spinner.succeed(`Created monorepo ${path}`);
+    await task(`Create new monorepo in ${directory}`, () =>
+      createMonorepo({ directory, ...options })
+    );
 
     for (const name of plugin) {
-      spinner = ora(`Adding plugin ${name}...`).start();
-      await installPlugin({ directory, name });
-      spinner.succeed(`Added plugin ${name}`);
+      await task(`Add plugin ${name}`, () =>
+        installPlugin({ directory, name })
+      );
     }
 
-    spinner = ora(`Refreshing plugins...`).start();
-    await refreshPlugins({ directory });
-    spinner.succeed(`Refreshed plugins`);
-
-    spinner = ora(`Installing dependencies...`).start();
-    await installEnqueuedDependencies({ directory });
-    spinner.succeed(`Installed dependencies`);
+    await task(`Load plugins`, () => loadAllPlugins({ directory }));
+    await task(`Update dependencies`, () => runDependencyQueues({ directory }));
   });

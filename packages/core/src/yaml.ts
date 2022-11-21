@@ -22,7 +22,7 @@ export async function writeYaml<T extends JSONValue>({
   append?: boolean;
 }) {
   if (append && (await isReadableAndWritableFile({ path }))) {
-    let existingData = await readYaml<T>({ path });
+    const existingData = await readYaml<T>({ path });
 
     if (!isPlainObject(existingData)) {
       throw new Error("Can't currently write non-plain objects");

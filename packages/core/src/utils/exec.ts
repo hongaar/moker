@@ -1,11 +1,5 @@
 import childProcess, { ChildProcess } from "node:child_process";
 
-type Options = {
-  cwd: string;
-  env: {};
-  io?: "return" | "passthrough";
-};
-
 function childAwaiter(child: ChildProcess): Promise<number> {
   return new Promise(function (resolve, reject) {
     child.on("error", reject);
@@ -16,7 +10,11 @@ function childAwaiter(child: ChildProcess): Promise<number> {
 export async function exec(
   cmd: string,
   args: string[] = [],
-  { cwd, env, io }: Options = { cwd: process.cwd(), env: process.env }
+  {
+    cwd = process.cwd(),
+    env = process.env,
+    io = "return" as "return" | "passthrough",
+  } = {}
 ) {
   const child = childProcess.spawn(cmd, args, {
     shell: true,

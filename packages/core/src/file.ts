@@ -14,6 +14,10 @@ export async function writeFile({
   return fs.promises.writeFile(path, contents, "utf8");
 }
 
+export async function removeFile({ path }: { path: string }) {
+  return fs.promises.rm(path);
+}
+
 export async function isAccessibleFile({
   path,
   mode,

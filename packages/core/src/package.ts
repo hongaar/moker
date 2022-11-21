@@ -1,5 +1,7 @@
 import { join } from "node:path";
-import { readJson, writeJson } from "./json.js";
+import { isReadableAndWritableFile } from "./file.js";
+import { readJson, updateJson, writeJson } from "./json.js";
+import type { Undefinable } from "./utils/types.js";
 
 // https://gist.github.com/iainreid820/5c1cc527fe6b5b7dba41fec7fe54bf6e
 // @todo: review
@@ -102,8 +104,12 @@ type LintStagedOptions = {
 
 const FILENAME = "package.json";
 
+export async function hasPackage({ directory }: { directory: string }) {
+  return isReadableAndWritableFile({ path: join(directory, FILENAME) });
+}
+
 export async function readPackage({ directory }: { directory: string }) {
-  return readJson<Partial<Package>>({ path: join(directory, FILENAME) });
+  return readJson<Package>({ path: join(directory, FILENAME) });
 }
 
 export async function writePackage({
@@ -112,8 +118,18 @@ export async function writePackage({
   append = true,
 }: {
   directory: string;
-  data: Partial<Package>;
+  data: Undefinable<Package>;
   append?: boolean;
 }) {
   await writeJson({ path: join(directory, FILENAME), data, append });
+}
+
+export async function updatePackage({
+  directory,
+  merge,
+}: {
+  directory: string;
+  merge: (existingData: Package) => Package;
+}) {
+  await updateJson({ path: join(directory, FILENAME), merge });
 }
