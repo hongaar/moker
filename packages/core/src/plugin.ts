@@ -49,6 +49,7 @@ export async function importPlugin({ directory, name }: PluginOptions) {
   let plugin: Plugin;
 
   if (CORE_PLUGINS.includes(name)) {
+    // @ts-ignore
     const { default: plugins } = await import("@mokr/plugins");
     plugin = plugins[toCamelCase(name) as keyof typeof plugins];
   } else {

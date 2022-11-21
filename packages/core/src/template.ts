@@ -42,6 +42,7 @@ export async function importTemplate({ directory, name }: TemplateOptions) {
   let template: Template;
 
   if (CORE_TEMPLATES.includes(name)) {
+    // @ts-ignore
     const { default: templates } = await import("@mokr/templates");
     template = templates[toCamelCase(name) as keyof typeof templates];
   } else {
