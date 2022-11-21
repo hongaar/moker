@@ -12,8 +12,8 @@
   "scripts": {
     "publish": "yarn publish",
     "start": "yarn workspace @mokr/cli run start",
-    "build": "yarn workspaces foreach run build",
-    "test": "yarn workspaces foreach run test",
+    "build": "yarn workspaces foreach --topological --verbose run build",
+    "test": "yarn workspaces foreach --topological --verbose run test",
     "format": "prettier --write .",
     "watch:build": "yarn workspaces foreach --parallel --interlaced run watch:build",
     "watch:test": "yarn workspaces foreach --parallel --interlaced run watch:test"

@@ -4,7 +4,7 @@ import {
   isReadableAndWritableDirectory,
 } from "./directory.js";
 import { hasPackage, Package, readPackage, writePackage } from "./package.js";
-import { initYarn } from "./yarn.js";
+import { enqueueInstallDependency, initYarn } from "./yarn.js";
 
 export const DEFAULT_SCOPED = true;
 export const DEFAULT_LICENSE = "MIT";
@@ -55,6 +55,11 @@ export async function createMonorepo({
         plugins: [],
       },
     },
+  });
+  await enqueueInstallDependency({
+    directory,
+    identifier: "@mokr/cli",
+    dev: true,
   });
 
   // execSync("git init", { cwd: directory });
