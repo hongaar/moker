@@ -1,11 +1,24 @@
 # moker
 
-[![npm](https://img.shields.io/npm/v/moker?label=moker&logo=npm&style=flat-square)](https://www.npmjs.com/package/moker)
-
----
+[![npm](https://img.shields.io/npm/v/moker)](https://www.npmjs.com/package/moker)
 
 **No more struggles setting up monorepo tooling. Kick-start monorepos and
-workspaces (packages) fast with a simple opiniated tool.**
+workspaces fast:**
+
+```bash
+# initialize a monorepo
+yarn dlx moker create my-monorepo
+cd my-monorepo
+
+# install common tools
+yarn moker use prettier husky lint-staged github-actions devcontainer
+
+# create workspaces
+yarn moker add --template express server
+yarn moker add --template cra client
+```
+
+## Features
 
 - 👢 Kick-start a monorepo with ease
 - 🧰 Monorepo plugins to use pre-configured common tooling
@@ -18,7 +31,7 @@ workspaces (packages) fast with a simple opiniated tool.**
 > below and marked with a nerd-face emoji so you should be able to get a clear
 > picture of what to expect.
 
-# Table of contents
+## Table of contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -49,7 +62,7 @@ workspaces (packages) fast with a simple opiniated tool.**
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# Quickstart
+## Getting started
 
 ## Prerequisites
 
@@ -119,7 +132,7 @@ You can also use a workspace template, e.g.:
 ```bash
 yarn moker add --template lib shared
 yarn moker add --template express server
-yarn moker add --template cra server
+yarn moker add --template cra client
 yarn moker add --template bandersnatch cli
 ```
 
@@ -216,7 +229,11 @@ Scaffolds a simple [express](https://expressjs.com) HTTP app with the
 A plain shared library template with the [typescript](#typescript-workspace) and
 [jest](#jest-workspace) plugins.
 
-# Roadmap
+# Contributing
+
+Contributions are very welcome!
+
+## Roadmap
 
 - [ ] Port templates
 - [ ] Add more plugins
@@ -228,9 +245,7 @@ A plain shared library template with the [typescript](#typescript-workspace) and
 - [x] Support for BYO plugins/templates
 - [x] Remove plugins
 
-# Contributing
-
-Contributions are very welcome!
+Also see [TODO.md](TODO.md).
 
 ## Development
 
@@ -247,6 +262,13 @@ working directory with:
 yarn start create /path/to/my-repo
 ```
 
-## What's with the name?
+## Devcontainer
 
-moker = monorepo kickstarter
+A devcontainer configuration is included in this repo to
+[get started quickly](https://code.visualstudio.com/docs/remote/containers#_quick-start-open-an-existing-folder-in-a-container).
+
+## Credits
+
+©️ Copyright 2022 [Joram van den Boezem](https://joram.dev)  
+♻️ Licensed under the [MIT license](LICENSE)  
+🤔 Moker? **MOnorepo KickstartER**
