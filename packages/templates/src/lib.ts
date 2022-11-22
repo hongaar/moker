@@ -21,6 +21,7 @@ export function sum(a: number, b: number) {
 }
 `,
   });
+
   await writeFile({
     path: join(directory, "src/index.ts"),
     contents: `export * from "./sum.js";`,

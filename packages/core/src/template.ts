@@ -19,7 +19,7 @@ type TemplateOptions = {
   name: string;
 };
 
-const CORE_TEMPLATES = ["lib", "common"];
+const CORE_TEMPLATES = ["common", "lib", "cra", "bandersnatch"];
 
 export function isTemplate(template: unknown): template is Template {
   return !!(

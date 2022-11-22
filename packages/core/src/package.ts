@@ -1,5 +1,5 @@
 import { join } from "node:path";
-import { isReadableAndWritableFile } from "./file.js";
+import { isReadableAndWritableFile, removeFile } from "./file.js";
 import { readJson, updateJson, writeJson } from "./json.js";
 import type { Undefinable } from "./utils/types.js";
 
@@ -122,6 +122,10 @@ export async function hasPackage({ directory }: { directory: string }) {
 
 export async function readPackage({ directory }: { directory: string }) {
   return readJson<Package>({ path: join(directory, FILENAME) });
+}
+
+export async function removePackage({ directory }: { directory: string }) {
+  return removeFile({ path: join(directory, FILENAME) });
 }
 
 export async function writePackage({
