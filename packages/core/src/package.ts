@@ -3,94 +3,106 @@ import { isReadableAndWritableFile } from "./file.js";
 import { readJson, updateJson, writeJson } from "./json.js";
 import type { Undefinable } from "./utils/types.js";
 
-// https://gist.github.com/iainreid820/5c1cc527fe6b5b7dba41fec7fe54bf6e
-// @todo: review
+// https://github.com/ffflorian/schemastore-updater/blob/main/schemas/package/index.d.ts
 export type Package = {
   name?: string;
   version?: string;
   description?: string;
   keywords?: string[];
-  homepage?: string;
-  bugs?: string | Bugs;
+  homepage?:
+    | {
+        [k: string]: any;
+      }
+    | ".";
+  bugs?:
+    | {
+        [k: string]: any;
+      }
+    | string;
   license?: string;
-  author?: string | Author;
-  contributors?: string[] | Author[];
+  licenses?: {
+    type?: string;
+    url?: string;
+    [k: string]: any;
+  }[];
+  author?: Person;
+  contributors?: Person[];
+  maintainers?: Person[];
+  type?: "module" | "commonjs";
   files?: string[];
   main?: string;
-  bin?: string | BinMap;
-  man?: string | string[];
-  directories?: Directories;
-  repository?: string | Repository;
-  scripts?: ScriptsMap;
-  config?: Config;
-  dependencies?: DependencyMap;
-  devDependencies?: DependencyMap;
-  peerDependencies?: DependencyMap;
-  optionalDependencies?: DependencyMap;
-  bundledDependencies?: string[];
-  engines?: Engines;
+  bin?:
+    | string
+    | {
+        [k: string]: any;
+      };
+  types?: string;
+  typings?: string;
+  man?: string[];
+  directories?: {
+    bin?: string;
+    doc?: string;
+    example?: string;
+    lib?: string;
+    man?: string;
+    test?: string;
+    [k: string]: any;
+  };
+  repository?:
+    | {
+        [k: string]: any;
+      }
+    | string;
+  scripts?: {
+    [k: string]: string | undefined;
+  };
+  config?: {
+    [k: string]: any;
+  };
+  dependencies?: Dependency;
+  devDependencies?: Dependency;
+  optionalDependencies?: Dependency;
+  peerDependencies?: Dependency;
+  resolutions?: Dependency;
+  engines?: {
+    [k: string]: string;
+  };
+  engineStrict?: boolean;
   os?: string[];
   cpu?: string[];
   preferGlobal?: boolean;
   private?: boolean;
-  publishConfig?: PublishConfig;
-
+  publishConfig?: {
+    [k: string]: any;
+  };
+  dist?: {
+    shasum?: string;
+    tarball?: string;
+    [k: string]: any;
+  };
+  readme?: string;
+  module?: string;
+  esnext?:
+    | string
+    | {
+        [k: string]: any;
+      };
   workspaces?: string[];
 
   mokr?: MokrOptions;
-
   "lint-staged"?: LintStagedOptions;
+
+  [k: string]: any;
 };
 
-type Author = {
-  name: string;
-  email?: string;
-  homepage?: string;
-};
+type Person =
+  | {
+      [k: string]: any;
+    }
+  | string;
 
-type BinMap = {
-  [commandName: string]: string;
-};
-
-type Bugs = {
-  email: string;
-  url: string;
-};
-
-type Config = {
-  name?: string;
-  config?: {};
-};
-
-type DependencyMap = {
-  [dependencyName: string]: string;
-};
-
-type Directories = {
-  lib?: string;
-  bin?: string;
-  man?: string;
-  doc?: string;
-  example?: string;
-};
-
-type Engines = {
-  node?: string;
-  npm?: string;
-};
-
-type PublishConfig = {
-  access?: string;
-  registry?: string;
-};
-
-type Repository = {
-  type: string;
-  url: string;
-};
-
-type ScriptsMap = {
-  [scriptName: string]: string;
+type Dependency = {
+  [k: string]: string;
 };
 
 type MokrOptions = {

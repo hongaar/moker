@@ -19,13 +19,7 @@ type TemplateOptions = {
   name: string;
 };
 
-const CORE_TEMPLATES = [
-  "husky",
-  "prettier",
-  "lint-staged",
-  "devcontainer",
-  "github-actions",
-];
+const CORE_TEMPLATES = ["lib", "full"];
 
 export function isTemplate(template: unknown): template is Template {
   return !!(
@@ -43,7 +37,7 @@ export async function importTemplate({ directory, name }: TemplateOptions) {
 
   if (CORE_TEMPLATES.includes(name)) {
     // @ts-ignore
-    const { default: templates } = await import("@mokr/templates");
+    const templates: any = await import("@mokr/templates");
     template = templates[toCamelCase(name) as keyof typeof templates];
   } else {
     template = await import(name);

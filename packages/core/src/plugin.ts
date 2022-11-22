@@ -28,6 +28,8 @@ const CORE_PLUGINS = [
   "lint-staged",
   "devcontainer",
   "github-actions",
+  "typescript",
+  "jest",
 ];
 
 export function isPlugin(plugin: unknown): plugin is Plugin {
@@ -50,7 +52,7 @@ export async function importPlugin({ directory, name }: PluginOptions) {
 
   if (CORE_PLUGINS.includes(name)) {
     // @ts-ignore
-    const { default: plugins } = await import("@mokr/plugins");
+    const plugins: any = await import("@mokr/plugins");
     plugin = plugins[toCamelCase(name) as keyof typeof plugins];
   } else {
     plugin = await import(name);

@@ -54,6 +54,9 @@ export async function createMonorepo({
         scoped,
         plugins: [],
       },
+      scripts: {
+        publish: "yarn publish",
+      },
     },
   });
   await enqueueInstallDependency({

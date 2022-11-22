@@ -35,8 +35,6 @@ export async function initYarn({ directory }: DirOption) {
   await writeGitignore({ directory, lines: GITIGNORE_LINES, append: false });
   await addYarnPlugin({ directory, name: "interactive-tools" });
   await addYarnPlugin({ directory, name: "workspace-tools" });
-
-  // yarn plugin import typescript
 }
 
 export async function addYarnPlugin({
@@ -47,6 +45,16 @@ export async function addYarnPlugin({
   name: string;
 }) {
   await exec("yarn", ["plugin", "import", name], { cwd: directory });
+}
+
+export async function removeYarnPlugin({
+  directory,
+  name,
+}: {
+  directory: string;
+  name: string;
+}) {
+  await exec("yarn", ["plugin", "remove", name], { cwd: directory });
 }
 
 export async function installDependency({

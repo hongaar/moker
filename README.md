@@ -17,23 +17,20 @@
 
 ## Why?
 
-When I start a new project it often takes a couple of days before it becomes a
-monorepo, at which point I find myself duplicating all sorts of configuration
-and build scripts. This project aims to concentrate this struggle in one
-opiniated tool, so you can scaffold monorepos and workspaces (a.k.a. monorepo
-packages) quickly.
+This project aims to concentrate the struggle of setting up monorepo tooling in
+one opiniated tool, so you can scaffold monorepos and workspaces (a.k.a.
+monorepo packages) fast.
 
 ## Opiniated
 
-While `mokr` is extensible and you can bring your own plugins, the core plugins
-make some assumptions you may not agree with. If that's the case, this tool is
-probably not for you. The defaults used by the various core plugins are
-documented below and marked with a nerd-face emoji 🤓 so you should be able to
-get a clear picture of what to expect when you decide to use it.
+The core plugins make some assumptions you may not agree with. If that's the
+case, this tool is probably not for you. The defaults used are documented below
+and marked with a nerd-face emoji 🤓 so you should be able to get a clear
+picture of what to expect.
 
-## Prepare
+## Prerequisites
 
-You will need Node v16+ and Yarn v3+ in order to use `mokr`.
+You will need Node v14+ and Yarn v3+ in order to use `mokr`.
 
 - Install Node with [nvm](https://github.com/nvm-sh/nvm#install--update-script)
   or using [nodesource](https://github.com/nodesource/distributions#debinstall).
@@ -62,7 +59,7 @@ If you want additional tools installed at the monorepo level, add them with:
 
 ```bash
 cd my-repo
-yarn mokr use <plugins..>
+yarn mokr use <plugin..>
 ```
 
 For example:
@@ -79,16 +76,16 @@ See the section [core plugins](#core-plugins) for a list of available options.
 
 ### Workspaces
 
-Add a new library workspace:
+Add a new workspace:
 
 ```bash
-yarn mokr add my-lib
+yarn mokr add my-workspace
 ```
 
-Or use a workspace template (see below):
+Or use a workspace template (see below for more options):
 
 ```bash
-yarn mokr add my-app --template <name>
+yarn mokr add my-lib --template lib
 ```
 
 ## Core workspace templates
@@ -162,10 +159,14 @@ run `yarn lint-staged`.
 
 ## Roadmap
 
+- [ ] Port templates
+- [ ] Add more plugins
 - [ ] Support for `swc`/`esbuild`
 - [ ] A compat lib (which builds cjs and mjs targets)
+- [ ] Blog post / tutorial
+- [ ] Docs for writing custom plugins / templates
 - [x] Support for BYO plugins/templates
-- [ ] Remove plugins
+- [x] Remove plugins
 
 ## Contributing
 

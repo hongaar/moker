@@ -1,4 +1,5 @@
 import {
+  applyTemplate,
   createMonorepo,
   DEFAULT_INITIAL_VERSION,
   DEFAULT_LICENSE,
@@ -19,6 +20,10 @@ export const create = command("create")
   .argument("path", {
     description: "Monorepo path, basename will be used as the monorepo name.",
     // prompt: "What is the name of your monorepo?",
+  })
+  .option("template", {
+    description: "Use monorepo template",
+    type: "string",
   })
   .option("plugin", {
     description: "Kick-start with this plugin",
@@ -47,12 +52,18 @@ export const create = command("create")
     // prompt: "Which directory should we save workspaces to?",
     default: DEFAULT_WORKSPACES_DIRECTORY,
   })
-  .action(async ({ path, plugin, ...options }) => {
+  .action(async ({ path, template, plugin, ...options }) => {
     const directory = resolve(path);
 
     await task(`Create new monorepo in ${directory}`, () =>
       createMonorepo({ directory, ...options })
     );
+
+    if (template) {
+      await task(`Apply template ${template}`, () =>
+        applyTemplate({ directory, name: template })
+      );
+    }
 
     for (const name of plugin) {
       await task(`Add plugin ${name}`, () =>

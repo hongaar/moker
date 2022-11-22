@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import os from "node:os";
 
 export async function readFile({ path }: { path: string }) {
   return fs.promises.readFile(path, "utf8");
@@ -11,7 +12,7 @@ export async function writeFile({
   path: string;
   contents: string;
 }) {
-  return fs.promises.writeFile(path, contents, "utf8");
+  return fs.promises.writeFile(path, `${contents.trim()}${os.EOL}`, "utf8");
 }
 
 export async function removeFile({ path }: { path: string }) {

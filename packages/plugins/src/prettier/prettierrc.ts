@@ -59,7 +59,7 @@ export type Prettierrc = {
 const FILENAME = ".prettierrc.yml";
 
 export async function readPrettierrc({ directory }: { directory: string }) {
-  return readYaml<Partial<Prettierrc>>({
+  return readYaml<Prettierrc>({
     path: path.join(directory, FILENAME),
   });
 }
@@ -69,7 +69,7 @@ export async function writePrettierrc({
   data,
 }: {
   directory: string;
-  data: Partial<Prettierrc>;
+  data: Prettierrc;
 }) {
   await writeYaml({ path: path.join(directory, FILENAME), data });
 }

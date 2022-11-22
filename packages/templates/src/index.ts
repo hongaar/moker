@@ -1,1 +1,2 @@
-export * from "./lib";
+export * from "./full.js";
+export * from "./lib.js";

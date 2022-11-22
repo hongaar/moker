@@ -16,7 +16,7 @@
     "types"
   ],
   "scripts": {
-    "start": "ts-node mokr.js",
+    "start": "node mokr.js",
     "prepublishOnly": "yarn clean && yarn build",
     "clean": "rm -rf dist && rm -rf types",
     "build": "yarn clean && tsc",
@@ -26,13 +26,12 @@
   },
   "dependencies": {
     "@mokr/core": "0.0.1-alpha.5",
+    "@mokr/plugins": "0.0.1-alpha.5",
     "@mokr/templates": "0.0.1-alpha.5",
     "bandersnatch": "1.11.1"
   },
   "devDependencies": {
     "@types/node": "18.11.9",
-    "rimraf": "3.0.2",
-    "ts-node": "10.9.1",
     "typescript": "4.9.3"
   }
 }
