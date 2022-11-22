@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 import { writeError } from "@mokr/core";
-import mokr from "./dist/program.js";
+import cli from "./dist/cli.js";
 
-mokr.runOrRepl().catch((err) => {
+cli.runOrRepl().catch((err) => {
   if (process.env["DEBUG"]) {
     console.debug(err);
   } else {

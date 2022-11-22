@@ -52,7 +52,7 @@ export async function createMonorepo({
       license,
       version: initialVersion,
       workspaces: [`${workspacesDirectory}/*`],
-      mokr: {
+      moker: {
         scoped,
         plugins: [],
       },
@@ -67,34 +67,6 @@ export async function createMonorepo({
     identifier: "@mokr/cli",
     dev: true,
   });
-
-  // execSync("git init", { cwd: directory });
-
-  // yarn
-  // yarn init -2
-  // run steps in migration guide: https://yarnpkg.com/getting-started/migration
-  // yarn plugin import interactive-tools
-  // yarn plugin import typescript
-  // yarn plugin import workspace-tools
-  // await plugins.npmPackage(monorepo, {
-  //   name: monorepo.name,
-  //   license,
-  //   workspaces,
-  //   mokr: {
-  //     scoped,
-  //   },
-  // });
-  // await plugins.lerna(monorepo, {
-  //   version,
-  //   workspaces,
-  // });
-  // await plugins.typescript(monorepo);
-  // await plugins.readme(monorepo);
-  // await plugins.gitignore(monorepo);
-  // await plugins.jest(monorepo);
-  // await plugins.prettier(monorepo, "*.{ts,tsx}");
-
-  // await monorepo.installQueue();
 }
 
 export async function isMonorepo({ directory }: DirOption) {
@@ -112,11 +84,11 @@ function checkMonorepo(
 ): options is { pkg: MonorepoPackage } {
   const { pkg } = options;
 
-  if (typeof pkg.mokr === "undefined") {
+  if (typeof pkg.moker === "undefined") {
     return false;
   }
 
-  return "scoped" in pkg.mokr;
+  return "scoped" in pkg.moker;
 }
 
 export function getWorkspacesDirectory({
@@ -133,5 +105,5 @@ export function getWorkspacesDirectory({
 }
 
 export function getScoped({ pkg }: PkgOption) {
-  return pkg.mokr?.scoped;
+  return pkg.moker?.scoped;
 }

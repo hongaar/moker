@@ -89,12 +89,17 @@ export type Package = {
       };
   workspaces?: string[];
 
-  mokr?: MokrOptions;
+  moker?: MokerOptions;
   "lint-staged"?: LintStagedOptions;
 
   [k: string]: any;
 };
 
+// fhewo jfjewio fjiewo jfiewo fjiewo fjjiowe jfiowe jfiowe jfi owejfio wejifo jweifo jiweo
+
+/**
+ * fjiewof jfiewo jfioew jfiowe jfiowejfi owejifo wjeiof jewiof jiwoef jiwoe fjiowe jfiowe jfio
+ */
 type Person =
   | {
       [k: string]: any;
@@ -105,7 +110,7 @@ type Dependency = {
   [k: string]: string;
 };
 
-type MokrOptions = {
+type MokerOptions = {
   scoped?: boolean;
   plugins?: string[];
 };

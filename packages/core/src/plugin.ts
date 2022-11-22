@@ -87,7 +87,7 @@ export async function installPlugin({ directory, name }: PluginOptions) {
   await writePackage({
     directory,
     data: {
-      mokr: {
+      moker: {
         plugins: [name],
       },
     },
@@ -106,9 +106,9 @@ export async function removePlugin({ directory, name }: PluginOptions) {
     directory,
     merge: (existingData) => ({
       ...existingData,
-      mokr: {
-        ...existingData.mokr,
-        plugins: (existingData.mokr?.plugins || []).filter(
+      moker: {
+        ...existingData.moker,
+        plugins: (existingData.moker?.plugins || []).filter(
           (pluginName) => pluginName !== name
         ),
       },
@@ -131,9 +131,9 @@ export async function loadAllPlugins({ directory }: { directory: string }) {
 }
 
 export async function getPlugins({ directory }: { directory: string }) {
-  const { mokr } = await readPackage({ directory });
+  const { moker } = await readPackage({ directory });
 
-  return mokr?.plugins ?? [];
+  return moker?.plugins ?? [];
 }
 
 export async function hasPlugin({

@@ -10,12 +10,12 @@ export async function assertYarnVersion(version: number) {
   }
 
   if (parseInt(execResult.stdout, 10) < version) {
-    throw new Error(`Needs at least Yarn v${version} to run mokr.`);
+    throw new Error(`Needs at least Yarn v${version} to run moker.`);
   }
 }
 
 export async function assertNodeVersion(version: number) {
   if (parseInt(process.version.replace("v", ""), 10) < version) {
-    throw new Error(`Needs at least Node v${version} to run mokr.`);
+    throw new Error(`Needs at least Node v${version} to run moker.`);
   }
 }

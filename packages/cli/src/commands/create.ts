@@ -13,7 +13,7 @@ import {
 import { command } from "bandersnatch";
 import { resolve } from "node:path";
 
-// @todo re-enable prompts
+// @todo: re-enable prompts
 
 export const create = command("create")
   .description("Create a new monorepo")

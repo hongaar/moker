@@ -1,1 +1,1 @@
-# @mokr/cli
+# moker

@@ -1,5 +1,6 @@
 import {
   exec,
+  getMonorepoDirectory,
   readPackage,
   removeFile,
   removePackage,
@@ -10,6 +11,12 @@ import {
 import { basename, dirname, join } from "node:path";
 
 async function apply({ directory }: TemplateArgs) {
+  const monorepoDirectory = await getMonorepoDirectory({ directory });
+
+  if (!monorepoDirectory) {
+    throw new Error("Could not find monorepo directory");
+  }
+
   const oldPackage = await readPackage({ directory });
 
   await removePackage({ directory });
@@ -18,11 +25,20 @@ async function apply({ directory }: TemplateArgs) {
 
   await exec(
     "yarn",
-    ["create", "react-app", basename(directory), "--template", "typescript"],
+    [
+      "dlx",
+      "create-react-app",
+      basename(directory),
+      "--template",
+      "typescript",
+    ],
     {
       cwd: dirname(directory),
     }
   );
+
+  // Weird problem where we are left with a package-lock.json file after installation
+  await removeFile({ path: join(monorepoDirectory, "package-lock.json") });
 
   await writePackage({ directory, data: oldPackage });
 }

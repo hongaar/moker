@@ -1,36 +1,59 @@
-# mokr
+# moker
 
-> **This project is work in progress**
+[![npm](https://img.shields.io/npm/v/moker?label=moker&logo=npm&style=flat-square)](https://www.npmjs.com/package/moker)
 
-> 👢 Kick-start monorepos
+---
 
-[![npm (scoped)](https://img.shields.io/npm/v/@mokr/cli?label=%40mokr%2Fcli&logo=npm&style=flat-square)](https://www.npmjs.com/package/@mokr/cli)
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/hongaar/mokr?logo=code%20climate&style=flat-square)](https://codeclimate.com/github/hongaar/mokr)
+**No more struggles setting up monorepo tooling. Kick-start monorepos and
+workspaces (packages) fast with a simple opiniated tool.**
 
-## Features
-
-- ✨ Scaffold a monorepo with ease
+- 👢 Kick-start a monorepo with ease
 - 🧰 Monorepo plugins to use pre-configured common tooling
 - ➕ Add workspaces on demand
 - 🧬 Workspace templates for a library, React app, API or CLI
 - ⚡ Extensible, bring your own plugins
 
-## Why?
+> 🤓 The core plugins make some assumptions you may not agree with. If that's
+> the case, this tool is probably not for you. The defaults used are documented
+> below and marked with a nerd-face emoji so you should be able to get a clear
+> picture of what to expect.
 
-This project aims to concentrate the struggle of setting up monorepo tooling in
-one opiniated tool, so you can scaffold monorepos and workspaces (a.k.a.
-monorepo packages) fast.
+# Table of contents
 
-## Opiniated
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-The core plugins make some assumptions you may not agree with. If that's the
-case, this tool is probably not for you. The defaults used are documented below
-and marked with a nerd-face emoji 🤓 so you should be able to get a clear
-picture of what to expect.
+- [Quickstart](#quickstart)
+  - [Prerequisites](#prerequisites)
+  - [Create monorepo](#create-monorepo)
+  - [Use plugins](#use-plugins)
+  - [Add workspace](#add-workspace)
+- [Available plugins](#available-plugins)
+  - [`devcontainer` _monorepo_](#devcontainer-_monorepo_)
+  - [`github-actions` _monorepo_](#github-actions-_monorepo_)
+  - [`husky` _monorepo_](#husky-_monorepo_)
+  - [`lint-staged` _monorepo_](#lint-staged-_monorepo_)
+  - [`prettier` _monorepo_](#prettier-_monorepo_)
+  - [`jest` _workspace_](#jest-_workspace_)
+  - [`typescript` _workspace_](#typescript-_workspace_)
+- [Available templates](#available-templates)
+  - [`common` _monorepo_](#common-_monorepo_)
+  - [`bandersnatch` _workspace_](#bandersnatch-_workspace_)
+  - [`cra` _workspace_](#cra-_workspace_)
+  - [`express` _workspace_](#express-_workspace_)
+  - [`lib` _workspace_](#lib-_workspace_)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+  - [Development](#development)
+  - [What's with the name?](#whats-with-the-name)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# Quickstart
 
 ## Prerequisites
 
-You will need Node v14+ and Yarn v3+ in order to use `mokr`.
+You will need Node v14+ and Yarn v3+ in order to use `moker`.
 
 - Install Node with [nvm](https://github.com/nvm-sh/nvm#install--update-script)
   or using [nodesource](https://github.com/nodesource/distributions#debinstall).
@@ -40,142 +63,91 @@ You will need Node v14+ and Yarn v3+ in order to use `mokr`.
   corepack prepare yarn@stable --activate
   ```
 
-# Quickstart
+## Create monorepo
 
 Create a new monorepo:
 
 ```bash
-yarn dlx @mokr/cli create my-repo
+yarn dlx moker create my-repo
 ```
 
-> ⚠️ Note that we use `yarn dlx @mokr/cli` to create a new monorepo. Once we are
-> inside our monorepo, we can simply use `yarn mokr` to execute commands.
+This will initialize a new monorepo in the `my-repo` directory.
+
+> ⚠️ Note that we use `yarn dlx moker` to create a new monorepo. Once we are
+> inside our monorepo, we can simply use `yarn moker` to execute commands.
 
 > 🤓 The monorepo is initiated with Yarn without Zero-Installs and in legacy
 > `nodeLinker: node-modules` mode because a lot of packages are not yet
 > compatible with PnP or require a workaround.
+
+## Use plugins
 
 Of course you want additional tools installed at the monorepo level, add them
 with:
 
 ```bash
 cd my-repo
-yarn mokr use prettier husky lint-staged
+yarn moker use prettier husky lint-staged
 ```
 
 Plugins may work together. For example, `lint-staged` will install a pre-commit
 hook which formats code if `prettier` and `husky` are installed. The order in
 which plugins are added does not matter.
 
-See the section [core plugins](#core-plugins) for a list of available options.
+See the section [available plugins](#available-plugins) for a list of options.
 
 > 💡 To quickly get started with the most common plugins, use a monorepo
 > template like so:
 >
 > ```bash
-> yarn dlx @mokr/cli create --template common my-repo
+> yarn dlx moker create --template common my-repo
 > ```
 
-````
+## Add workspace
 
-### Templates
-
-### Workspaces
-
-Add a new workspace:
+To add a new workspace (a.k.a. monorepo package) to your monorepo, use:
 
 ```bash
-yarn mokr add my-workspace
-````
-
-Or use a workspace template (see below for more options):
-
-```bash
-yarn mokr add my-lib --template lib
+yarn moker add my-workspace
 ```
 
-## Templates
+Workspaces are added in a customizable subdirectory of the monorepo (the default
+is `packages`).
 
-### `lib`
+You can also use a workspace template, e.g.:
 
-This is the default template (i.e. used when no template is specified). Your
-package will be scaffolded with `typescript`.
+```bash
+yarn moker add --template lib shared
+yarn moker add --template express server
+yarn moker add --template cra server
+yarn moker add --template bandersnatch cli
+```
 
-### `cra`
+See the section [available templates](#available-templates) for a list of
+options.
 
-Uses [create-react-app](https://create-react-app.dev/) to scaffold a React.js
-app (web client)
+# Available plugins
 
-### `adonis`
+## `devcontainer` _monorepo_
 
-Uses
-[create-adonis-ts-app](https://github.com/AdonisCommunity/create-adonis-ts-app)
-to scaffold an Adonis app (API server)
-
-### `bandersnatch`
-
-Uses [bandersnatch](https://github.com/hongaar/bandersnatch) to scaffold a CLI
-tool
-
-## Core workspace templates
-
-### `lib`
-
-This is the default template (i.e. used when no template is specified). Your
-package will be scaffolded with `typescript`.
-
-### `cra`
-
-Uses [create-react-app](https://create-react-app.dev/) to scaffold a React.js
-app (web client)
-
-### `adonis`
-
-Uses
-[create-adonis-ts-app](https://github.com/AdonisCommunity/create-adonis-ts-app)
-to scaffold an Adonis app (API server)
-
-### `bandersnatch`
-
-Uses [bandersnatch](https://github.com/hongaar/bandersnatch) to scaffold a CLI
-tool
-
-## Core plugins
-
-### `prettier`
-
-This plugin sets up [Prettier](https://prettier.io) at the monorepo level.
-
-> 🤓 Prettier is installed with this configuration:
->
-> ```yaml
-> proseWrap: always
-> ```
->
-> We only set this `proseWrap` override because we think markdown files should
-> always be truncated to match whatever the `printWidth` setting is. Not having
-> to do this manually makes writing markdown files so much easier!
-
-### `jest`
-
-This plugin sets up [Jest](https://jestjs.io) at the workspace level.
-
-### `github-actions`
-
-This plugin sets up [GitHub Actions](https://github.com/features/actions) at the
-monorepo level.
-
-### `devcontainer`
+**🚧 This plugin is a work in progress**
 
 This plugin sets up [devcontainer](https://containers.dev) configuration at the
 monorepo level.
 
-### `husky`
+## `github-actions` _monorepo_
+
+**🚧 This plugin is a work in progress**
+
+This plugin sets up [GitHub Actions](https://github.com/features/actions) at the
+monorepo level.
+
+## `husky` _monorepo_
 
 This plugin sets up [Husky](https://typicode.github.io/husky/#/) at the monorepo
 level.
 
-### `lint-staged`
+## `lint-staged` _monorepo_
 
 This plugin sets up [lint-staged](https://github.com/okonet/lint-staged) at the
 monorepo level.
@@ -186,10 +158,69 @@ staged files using `prettier --write --ignore-unknown`.
 If you have the `husky` plugin installed, this will setup a pre-commit hook to
 run `yarn lint-staged`.
 
-## Roadmap
+## `prettier` _monorepo_
+
+This plugin sets up [Prettier](https://prettier.io).
+
+> 🤓 Prettier is installed with this configuration:
+>
+> ```yaml
+> proseWrap: always
+> ```
+>
+> We only set this `proseWrap` override because we think markdown files should
+> always be truncated to match whatever the `printWidth` setting is. This makes
+> it so much easier to read and write markdown files!
+
+## `jest` _workspace_
+
+This plugin sets up [Jest](https://jestjs.io) and adds a `test` and `watch:test`
+script to both the workspace and the monorepo.
+
+## `typescript` _workspace_
+
+This plugin sets up [TypeScript](https://www.typescriptlang.org) and adds a
+`build` and `watch:build` script to both the workspace and the monorepo.
+
+# Available templates
+
+## `common` _monorepo_
+
+This is the only monorepo template at this point. It simply installs these
+plugins in the monorepo:
+
+- `prettier`
+- `husky`
+- `lint-staged`
+- `github-actions`
+- `devcontainer`
+
+## `bandersnatch` _workspace_
+
+Scaffolds a simple [bandersnatch](https://github.com/hongaar/bandersnatch) CLI
+app tool with the [typescript](#typescript-workspace) and
+[jest](#jest-workspace) plugins.
+
+## `cra` _workspace_
+
+Uses [create-react-app](https://create-react-app.dev/) to scaffold a React.js
+app (web client).
+
+## `express` _workspace_
+
+Scaffolds a simple [express](https://expressjs.com) HTTP app with the
+[typescript](#typescript-workspace) and [jest](#jest-workspace) plugins.
+
+## `lib` _workspace_
+
+A plain shared library template with the [typescript](#typescript-workspace) and
+[jest](#jest-workspace) plugins.
+
+# Roadmap
 
 - [ ] Port templates
 - [ ] Add more plugins
+- [ ] Add LICENSE file to monorepo
 - [ ] Support for `swc`/`esbuild`
 - [ ] A compat lib (which builds cjs and mjs targets)
 - [ ] Blog post / tutorial
@@ -197,13 +228,13 @@ run `yarn lint-staged`.
 - [x] Support for BYO plugins/templates
 - [x] Remove plugins
 
-## Contributing
+# Contributing
 
 Contributions are very welcome!
 
-### Development
+## Development
 
-To run the `mokr` CLI from source, run:
+To run the `moker` CLI from source, run:
 
 ```bash
 yarn start
@@ -218,4 +249,4 @@ yarn start create /path/to/my-repo
 
 ## What's with the name?
 
-MonorepO KickstarteR
+moker = monorepo kickstarter

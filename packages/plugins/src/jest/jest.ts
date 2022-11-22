@@ -13,7 +13,6 @@ import {
 import { join } from "path";
 
 const JEST_CONFIG_FILENAME = "jest.config.js";
-const JEST_CONFIG = ``;
 const TS_JEST_CONFIG = `
 /** @type {import("ts-jest").JestConfigWithTsJest} */
 
@@ -33,8 +32,8 @@ async function install({ directory }: PluginArgs) {
   }
 
   if (!hasPlugin({ directory, name: "typescript" })) {
-    // Install jest without ts-jest
-    // @todo
+    // @todo: install jest without ts-jest
+    //
   } else {
     // Install jest with ts-jest
 
