@@ -23,7 +23,7 @@ const PRETTIER_IGNORE = [
 ];
 
 async function install({ directory }: PluginArgs) {
-  await enqueueInstallDependency({
+  enqueueInstallDependency({
     directory,
     identifier: "prettier",
     dev: true,
@@ -52,7 +52,7 @@ async function install({ directory }: PluginArgs) {
 }
 
 async function remove({ directory }: PluginArgs) {
-  await enqueueRemoveDependency({ directory, identifier: "prettier" });
+  enqueueRemoveDependency({ directory, identifier: "prettier" });
 
   await updatePackage({
     directory,

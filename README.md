@@ -40,7 +40,7 @@ You will need Node v14+ and Yarn v3+ in order to use `mokr`.
   corepack prepare yarn@stable --activate
   ```
 
-## How to use
+# Quickstart
 
 Create a new monorepo:
 
@@ -55,24 +55,30 @@ yarn dlx @mokr/cli create my-repo
 > `nodeLinker: node-modules` mode because a lot of packages are not yet
 > compatible with PnP or require a workaround.
 
-If you want additional tools installed at the monorepo level, add them with:
+Of course you want additional tools installed at the monorepo level, add them
+with:
 
 ```bash
 cd my-repo
-yarn mokr use <plugin..>
-```
-
-For example:
-
-```bash
 yarn mokr use prettier husky lint-staged
 ```
 
-> 💡 Note that some plugins depend on each other. For example, `lint-staged`
-> will install a pre-commit hook which formats code if `prettier` and `husky`
-> are installed. The order in which plugins are added does not matter.
+Plugins may work together. For example, `lint-staged` will install a pre-commit
+hook which formats code if `prettier` and `husky` are installed. The order in
+which plugins are added does not matter.
 
 See the section [core plugins](#core-plugins) for a list of available options.
+
+> 💡 To quickly get started with the most common plugins, use a monorepo
+> template like so:
+>
+> ```bash
+> yarn dlx @mokr/cli create --template common my-repo
+> ```
+
+````
+
+### Templates
 
 ### Workspaces
 
@@ -80,13 +86,36 @@ Add a new workspace:
 
 ```bash
 yarn mokr add my-workspace
-```
+````
 
 Or use a workspace template (see below for more options):
 
 ```bash
 yarn mokr add my-lib --template lib
 ```
+
+## Templates
+
+### `lib`
+
+This is the default template (i.e. used when no template is specified). Your
+package will be scaffolded with `typescript`.
+
+### `cra`
+
+Uses [create-react-app](https://create-react-app.dev/) to scaffold a React.js
+app (web client)
+
+### `adonis`
+
+Uses
+[create-adonis-ts-app](https://github.com/AdonisCommunity/create-adonis-ts-app)
+to scaffold an Adonis app (API server)
+
+### `bandersnatch`
+
+Uses [bandersnatch](https://github.com/hongaar/bandersnatch) to scaffold a CLI
+tool
 
 ## Core workspace templates
 

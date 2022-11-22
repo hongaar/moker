@@ -19,15 +19,9 @@ async function install({ directory }: PluginArgs) {
     throw new Error("Could not find monorepo directory");
   }
 
-  await enqueueInstallDependency({
+  enqueueInstallDependency({
     directory,
-    identifier: "typescript",
-    dev: true,
-  });
-
-  await enqueueInstallDependency({
-    directory,
-    identifier: "@types/node",
+    identifier: ["typescript", "@types/node"],
     dev: true,
   });
 
@@ -42,6 +36,7 @@ async function install({ directory }: PluginArgs) {
         outDir: "dist",
         declarationDir: "types",
       },
+      include: ["src/**/*"],
     },
   });
 
@@ -118,8 +113,10 @@ async function remove({ directory }: PluginArgs) {
     throw new Error("Could not find monorepo directory");
   }
 
-  await enqueueRemoveDependency({ directory, identifier: "typescript" });
-  await enqueueRemoveDependency({ directory, identifier: "@types/node" });
+  enqueueRemoveDependency({
+    directory,
+    identifier: ["typescript", "@types/node"],
+  });
 
   await removeYarnPlugin({ directory, name: "typescript" });
 

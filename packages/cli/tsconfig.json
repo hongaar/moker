@@ -5,5 +5,5 @@
     "outDir": "dist",
     "declarationDir": "types"
   },
-  "exclude": ["node_modules", "dist", "types"]
+  "include": ["src/**/*"]
 }

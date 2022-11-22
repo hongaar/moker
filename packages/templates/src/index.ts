@@ -1,2 +1,2 @@
-export * from "./full.js";
+export * from "./common.js";
 export * from "./lib.js";

@@ -16,15 +16,16 @@
   "packageManager": "yarn@3.2.4",
   "scripts": {
     "publish": "yarn publish",
-    "start": "yarn workspace @mokr/cli run start",
+    "start": "node packages/cli/mokr.js",
     "build": "yarn workspaces foreach --topological --verbose run build",
     "test": "yarn workspaces foreach --topological --verbose run test",
-    "format": "prettier --write --ignore-unknown .",
     "watch:build": "yarn workspaces foreach --parallel --interlaced run watch:build",
     "watch:test": "yarn workspaces foreach --parallel --interlaced run watch:test",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "format": "prettier --write --ignore-unknown ."
   },
   "devDependencies": {
+    "@types/prettier": "^2",
     "husky": "8.0.2",
     "lint-staged": "13.0.3",
     "prettier": "2.7.1"

@@ -14,7 +14,9 @@ import { join } from "node:path";
 async function install({ directory }: PluginArgs) {
   // Don't enqueue because we need it immediately
   await installDependency({ directory, identifier: "husky", dev: true });
+
   await exec("yarn", ["husky", "install"], { cwd: directory });
+
   await writePackage({
     directory,
     data: {
@@ -26,7 +28,8 @@ async function install({ directory }: PluginArgs) {
 }
 
 async function remove({ directory }: PluginArgs) {
-  await enqueueRemoveDependency({ directory, identifier: "husky" });
+  enqueueRemoveDependency({ directory, identifier: "husky" });
+
   await updatePackage({
     directory,
     merge: (existingData) => {
@@ -40,7 +43,9 @@ async function remove({ directory }: PluginArgs) {
       return existingData;
     },
   });
+
   await removeDirectory({ directory: join(directory, ".husky") });
+
   await exec("git", ["config", "--unset", "core.hooksPath"], {
     cwd: directory,
   });

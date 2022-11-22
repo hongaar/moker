@@ -19,7 +19,7 @@ const PRE_COMMIT_HOOK_COMMAND = "yarn lint-staged";
 const PRE_COMMIT_HOOK_FILE = ".husky/pre-commit";
 
 async function install({ directory }: PluginArgs) {
-  await enqueueInstallDependency({
+  enqueueInstallDependency({
     directory,
     identifier: "lint-staged",
     dev: true,
@@ -27,7 +27,7 @@ async function install({ directory }: PluginArgs) {
 }
 
 async function remove({ directory }: PluginArgs) {
-  await enqueueRemoveDependency({ directory, identifier: "lint-staged" });
+  enqueueRemoveDependency({ directory, identifier: "lint-staged" });
 
   // Remove prettier integration
   await updatePackage({

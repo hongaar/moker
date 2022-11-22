@@ -17,20 +17,15 @@ const GITIGNORE_LINES = [
   "!.yarn/versions",
 ];
 
-const DEFAULT_DEPENDENCY_QUEUE = {
-  dependencies: new Set<string>(),
-  devDependencies: new Set<string>(),
+const queues = {
+  install: new Map<string, Set<string>>(),
+  installDev: new Map<string, Set<string>>(),
+  remove: new Map<string, Set<string>>(),
 };
-
-let dependencyInstallQueue = new Map<string, typeof DEFAULT_DEPENDENCY_QUEUE>();
-let dependencyRemoveQueue = new Map<
-  string,
-  typeof DEFAULT_DEPENDENCY_QUEUE["dependencies"]
->();
 
 export async function initYarn({ directory }: DirOption) {
   await createDirectory({ directory });
-  await exec("yarn", ["init"], { cwd: directory });
+  await exec("yarn", ["init", "-2"], { cwd: directory });
   await writeYarnrc({ directory, data: { nodeLinker: "node-modules" } });
   await writeGitignore({ directory, lines: GITIGNORE_LINES, append: false });
   await addYarnPlugin({ directory, name: "interactive-tools" });
@@ -63,80 +58,98 @@ export async function installDependency({
   dev = false,
 }: {
   directory: string;
-  identifier: string;
+  identifier: string | string[];
   dev?: boolean;
 }) {
-  const installArgs = ["add", "--exact", ...(dev ? ["--dev"] : []), identifier];
+  identifier = Array.isArray(identifier) ? identifier : [identifier];
+
+  const installArgs = [
+    "add",
+    "--exact",
+    ...identifier.map((id) => (dev ? `--dev ${id}` : id)),
+  ];
 
   await exec("yarn", installArgs, { cwd: directory });
 }
 
-export async function enqueueInstallDependency({
+export function enqueueInstallDependency({
   directory,
   identifier,
   dev = false,
 }: {
   directory: string;
-  identifier: string;
+  identifier: string | string[];
   dev?: boolean;
 }) {
-  if (!dependencyInstallQueue.has(directory)) {
-    dependencyInstallQueue.set(directory, DEFAULT_DEPENDENCY_QUEUE);
-  }
-  dependencyInstallQueue
-    .get(directory)!
-    [dev ? "devDependencies" : "dependencies"].add(identifier);
+  enqueue({
+    queue: dev ? queues.installDev : queues.install,
+    directory,
+    identifier,
+  });
 }
 
-export async function enqueueRemoveDependency({
+export function enqueueRemoveDependency({
   directory,
   identifier,
 }: {
   directory: string;
-  identifier: string;
+  identifier: string | string[];
 }) {
-  if (!dependencyRemoveQueue.has(directory)) {
-    dependencyRemoveQueue.set(
-      directory,
-      DEFAULT_DEPENDENCY_QUEUE["dependencies"]
-    );
+  enqueue({
+    queue: queues.remove,
+    directory,
+    identifier,
+  });
+}
+
+type EnqueueOptions = {
+  queue: typeof queues[keyof typeof queues];
+  directory: string;
+  identifier: string | string[];
+};
+
+function enqueue({ queue, directory, identifier }: EnqueueOptions) {
+  if (!queue.has(directory)) {
+    queue.set(directory, new Set());
   }
-  dependencyRemoveQueue.get(directory)!.add(identifier);
+
+  identifier = Array.isArray(identifier) ? identifier : [identifier];
+
+  for (const id of identifier) {
+    queue.get(directory)!.add(id);
+  }
 }
 
 export async function runDependencyQueues({ directory }: DirOption) {
-  const { dependencies, devDependencies } =
-    dependencyInstallQueue.get(directory) || DEFAULT_DEPENDENCY_QUEUE;
-  const removeDependencies =
-    dependencyRemoveQueue.get(directory) ||
-    DEFAULT_DEPENDENCY_QUEUE["dependencies"];
-  const installArgs = [
-    "add",
-    "--exact",
-    ...Array.from(dependencies),
-    ...Array.from(devDependencies).map((dependency) => `--dev ${dependency}`),
-  ];
-  const removeArgs = ["remove", ...Array.from(removeDependencies)];
+  const dependencies = queues.install.get(directory) || new Set();
+  const devDependencies = queues.installDev.get(directory) || new Set();
+  const removeDependencies = queues.remove.get(directory) || new Set();
 
-  if (installArgs.length === 1 && removeArgs.length === 1) {
+  if (!dependencies.size && !devDependencies.size && !removeDependencies.size) {
     // Nothing to install or remove
     await exec("yarn", [], { cwd: directory });
+    return;
   }
 
-  // Reset queues for directory
-  dependencyInstallQueue.set(directory, DEFAULT_DEPENDENCY_QUEUE);
-  dependencyRemoveQueue.set(
-    directory,
-    DEFAULT_DEPENDENCY_QUEUE["dependencies"]
-  );
+  if (dependencies.size || devDependencies.size) {
+    const installArgs = [
+      "add",
+      "--exact",
+      ...Array.from(dependencies),
+      ...Array.from(devDependencies).map((dependency) => `--dev ${dependency}`),
+    ];
 
-  // Install packages
-  if (installArgs.length > 1) {
     await exec("yarn", installArgs, { cwd: directory });
+
+    queues.install.set(directory, new Set());
+    queues.installDev.set(directory, new Set());
   }
 
-  // Remove packages
-  if (removeArgs.length > 1) {
+  if (removeDependencies.size) {
+    const removeArgs = ["remove", ...Array.from(removeDependencies)];
+
     await exec("yarn", removeArgs, { cwd: directory });
+
+    queues.remove.set(directory, new Set());
   }
 }

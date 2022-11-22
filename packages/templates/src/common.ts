@@ -8,7 +8,7 @@ async function apply({ directory }: TemplateArgs) {
   // await installPlugin({ directory, name: "github-actions" });
 }
 
-export const full = {
+export const common = {
   type: TemplateType.Monorepo,
   apply,
 };

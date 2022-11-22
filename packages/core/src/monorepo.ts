@@ -42,7 +42,9 @@ export async function createMonorepo({
   }
 
   await createDirectory({ directory });
+
   await initYarn({ directory });
+
   await writePackage({
     directory,
     data: {
@@ -59,7 +61,8 @@ export async function createMonorepo({
       },
     },
   });
-  await enqueueInstallDependency({
+
+  enqueueInstallDependency({
     directory,
     identifier: "@mokr/cli",
     dev: true,
