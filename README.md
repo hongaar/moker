@@ -36,11 +36,11 @@ yarn moker add --template cra client
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Quickstart](#quickstart)
-  - [Prerequisites](#prerequisites)
-  - [Create monorepo](#create-monorepo)
-  - [Use plugins](#use-plugins)
-  - [Add workspace](#add-workspace)
+- [Getting started](#getting-started)
+- [Prerequisites](#prerequisites)
+- [Create monorepo](#create-monorepo)
+- [Use plugins](#use-plugins)
+- [Add workspace](#add-workspace)
 - [Available plugins](#available-plugins)
   - [`devcontainer` _monorepo_](#devcontainer-_monorepo_)
   - [`github-actions` _monorepo_](#github-actions-_monorepo_)
@@ -55,10 +55,11 @@ yarn moker add --template cra client
   - [`cra` _workspace_](#cra-_workspace_)
   - [`express` _workspace_](#express-_workspace_)
   - [`lib` _workspace_](#lib-_workspace_)
-- [Roadmap](#roadmap)
 - [Contributing](#contributing)
+  - [Roadmap](#roadmap)
   - [Development](#development)
-  - [What's with the name?](#whats-with-the-name)
+  - [Devcontainer](#devcontainer)
+  - [Credits](#credits)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

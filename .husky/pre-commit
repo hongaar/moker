@@ -4,3 +4,4 @@
 yarn doctoc
 yarn leasot
 yarn lint-staged
+git add .
