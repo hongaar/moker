@@ -95,7 +95,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mokr/core@workspace:*, @mokr/core@workspace:packages/core":
+"@mokr/core@^0, @mokr/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@mokr/core@workspace:packages/core"
   dependencies:
@@ -109,11 +109,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@mokr/plugins@workspace:*, @mokr/plugins@workspace:packages/plugins":
+"@mokr/plugins@^0, @mokr/plugins@workspace:packages/plugins":
   version: 0.0.0-use.local
   resolution: "@mokr/plugins@workspace:packages/plugins"
   dependencies:
-    "@mokr/core": "workspace:*"
+    "@mokr/core": ^0
     "@types/node": 18.11.9
     typescript: 4.9.3
   languageName: unknown
@@ -135,11 +135,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@mokr/templates@workspace:*, @mokr/templates@workspace:packages/templates":
+"@mokr/templates@^0, @mokr/templates@workspace:packages/templates":
   version: 0.0.0-use.local
   resolution: "@mokr/templates@workspace:packages/templates"
   dependencies:
-    "@mokr/core": "workspace:*"
+    "@mokr/core": ^0
     "@types/node": 18.11.9
     typescript: 4.9.3
   languageName: unknown
@@ -3763,9 +3763,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "moker@workspace:packages/cli"
   dependencies:
-    "@mokr/core": "workspace:*"
-    "@mokr/plugins": "workspace:*"
-    "@mokr/templates": "workspace:*"
+    "@mokr/core": ^0
+    "@mokr/plugins": ^0
+    "@mokr/templates": ^0
     "@types/node": 18.11.9
     bandersnatch: 1.11.1
     typescript: 4.9.3
