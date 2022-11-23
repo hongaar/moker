@@ -1,6 +1,6 @@
 {
   "name": "moker",
-  "version": "0.0.1-alpha.6",
+  "version": "0.0.1",
   "description": "The moker CLI",
   "repository": "https://github.com/hongaar/moker",
   "author": "joram@vandenboezem.nl",
@@ -23,9 +23,9 @@
     "watch:test": "jest --watch"
   },
   "dependencies": {
-    "@mokr/core": "workspace:*",
-    "@mokr/plugins": "workspace:*",
-    "@mokr/templates": "workspace:*",
+    "@mokr/core": "^0",
+    "@mokr/plugins": "^0",
+    "@mokr/templates": "^0",
     "bandersnatch": "1.11.1"
   },
   "devDependencies": {
