@@ -1,6 +1,12 @@
 {
   "name": "@mokr/templates",
   "version": "0.0.1-alpha.5",
+  "description": "Moker templates",
+  "repository": "https://github.com/hongaar/moker",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "joram@vandenboezem.nl",
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",
@@ -18,7 +24,7 @@
     "watch:test": "jest --watch"
   },
   "dependencies": {
-    "@mokr/core": "^0.0.1-alpha.5"
+    "@mokr/core": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "18.11.9",

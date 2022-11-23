@@ -36,11 +36,11 @@ yarn moker add --template cra client
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Getting started](#getting-started)
-- [Prerequisites](#prerequisites)
-- [Create monorepo](#create-monorepo)
-- [Use plugins](#use-plugins)
-- [Add workspace](#add-workspace)
+  - [Getting started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Create monorepo](#create-monorepo)
+  - [Use plugins](#use-plugins)
+  - [Add workspace](#add-workspace)
 - [Available plugins](#available-plugins)
   - [`devcontainer` _monorepo_](#devcontainer-_monorepo_)
   - [`github-actions` _monorepo_](#github-actions-_monorepo_)
@@ -236,13 +236,15 @@ Contributions are very welcome!
 
 ## Roadmap
 
-- [ ] Port templates
-- [ ] Add more plugins
+- [ ] github-actions plugin
+- [ ] devcontainer plugin
 - [ ] Add LICENSE file to monorepo
 - [ ] Support for `swc`/`esbuild`
 - [ ] A compat lib (which builds cjs and mjs targets)
+- [ ] Adapt for non-monorepo use-cases (?)
 - [ ] Blog post / tutorial
 - [ ] Docs for writing custom plugins / templates
+- [x] Port templates
 - [x] Support for BYO plugins/templates
 - [x] Remove plugins
 

@@ -28,7 +28,8 @@ export async function addWorkspace({
     throw new Error(`${workspaceDirectory} already exists`);
   }
 
-  const packageName = getScoped({ pkg }) ? `@${pkg.name}/${name}` : name;
+  const isScoped = getScoped({ pkg });
+  const packageName = isScoped ? `@${pkg.name}/${name}` : name;
 
   await createDirectory({ directory: workspaceDirectory });
 
@@ -40,6 +41,13 @@ export async function addWorkspace({
       version: pkg.version,
       license: pkg.license,
       author: pkg.author,
+      ...(isScoped
+        ? {
+            publishConfig: {
+              access: "public",
+            },
+          }
+        : {}),
     },
   });
 

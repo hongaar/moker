@@ -23,9 +23,9 @@
     "watch:test": "jest --watch"
   },
   "dependencies": {
-    "@mokr/core": "0.0.1-alpha.5",
-    "@mokr/plugins": "0.0.1-alpha.5",
-    "@mokr/templates": "0.0.1-alpha.5",
+    "@mokr/core": "workspace:*",
+    "@mokr/plugins": "workspace:*",
+    "@mokr/templates": "workspace:*",
     "bandersnatch": "1.11.1"
   },
   "devDependencies": {

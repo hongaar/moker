@@ -3,6 +3,9 @@
   "version": "0.0.1-alpha.5",
   "description": "Core moker functions",
   "repository": "https://github.com/hongaar/moker",
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "joram@vandenboezem.nl",
   "license": "MIT",
   "type": "module",
