@@ -4,16 +4,11 @@
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
-    [
-      "@semantic-release/npm",
-      {
-        "npmPublish": false
-      }
-    ],
+    "@semantic-release/npm",
     [
       "@semantic-release/exec",
       {
-        "publishCmd": "yarn workspaces foreach npm publish"
+        "publishCmd": "yarn workspaces foreach --topological --verbose --no-private npm publish 1>&2 && echo '{\"name\": \"npm package\", \"url\": \"https://www.npmjs.com/package/moker/v/${nextRelease.version}\"}'"
       }
     ],
     "@semantic-release/github",
