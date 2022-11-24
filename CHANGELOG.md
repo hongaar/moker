@@ -1,3 +1,10 @@
+# [0.1.0](https://github.com/hongaar/moker/compare/v0.0.9...v0.1.0) (2022-11-24)
+
+### Features
+
+- semantic-release plugin
+  ([b61c4b4](https://github.com/hongaar/moker/commit/b61c4b4d9a3b6f25a8ad06c5b499578a076fbb88))
+
 ## [0.0.9](https://github.com/hongaar/moker/compare/v0.0.8...v0.0.9) (2022-11-24)
 
 ### Bug Fixes
