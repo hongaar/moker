@@ -20,7 +20,8 @@
     "build": "yarn clean && tsc",
     "test": "jest",
     "watch:build": "tsc --watch",
-    "watch:test": "jest --watch"
+    "watch:test": "jest --watch",
+    "postversion": "cp ../../README.md ."
   },
   "dependencies": {
     "@mokr/core": "workspace:*",
