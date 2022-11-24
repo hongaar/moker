@@ -1,7 +1,12 @@
 {
   "name": "@mokr/root",
   "version": "0.0.2",
-  "private": true,
+  "description": "Moker root package (dummy)",
+  "repository": "https://github.com/hongaar/moker",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "joram@vandenboezem.nl",
   "license": "MIT",
   "workspaces": [
     "packages/*"
