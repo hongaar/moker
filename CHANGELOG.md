@@ -1,3 +1,10 @@
+## [0.0.7](https://github.com/hongaar/moker/compare/v0.0.6...v0.0.7) (2022-11-24)
+
+### Bug Fixes
+
+- cp readme to moker package
+  ([18efc54](https://github.com/hongaar/moker/commit/18efc5407b8500f1ad4fbf462372b898af01c58a))
+
 ## [0.0.6](https://github.com/hongaar/moker/compare/v0.0.5...v0.0.6) (2022-11-24)
 
 ### Bug Fixes
