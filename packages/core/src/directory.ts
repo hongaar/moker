@@ -7,6 +7,9 @@ export async function removeDirectory({ directory }: DirOption) {
   return fs.promises.rm(directory, { recursive: true });
 }
 
+/**
+ * Recursively create directory.
+ */
 export async function createDirectory({ directory }: DirOption) {
   return fs.promises.mkdir(directory, { recursive: true });
 }

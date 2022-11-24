@@ -1,3 +1,4 @@
+export * from "./devcontainer/devcontainer.js";
 export * from "./githubActions/githubActions.js";
 export * from "./husky/husky.js";
 export * from "./jest/jest.js";

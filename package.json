@@ -15,7 +15,8 @@
       "lint-staged",
       "prettier",
       "semantic-release",
-      "github-actions"
+      "github-actions",
+      "devcontainer"
     ]
   },
   "packageManager": "yarn@3.2.4",

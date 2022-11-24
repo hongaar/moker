@@ -1,6 +1,4 @@
-# moker
-
-[![npm](https://img.shields.io/npm/v/moker)](https://www.npmjs.com/package/moker)
+# moker [![npm](https://img.shields.io/npm/v/moker)](https://www.npmjs.com/package/moker)
 
 **No more struggles setting up monorepo tooling. Kick-start monorepos and
 workspaces fast:**
@@ -263,6 +261,7 @@ plugins in the monorepo:
 - `prettier`
 - `husky`
 - `lint-staged`
+- `semantic-release`
 - `github-actions`
 - `devcontainer`
 
@@ -293,8 +292,8 @@ Contributions are very welcome!
 
 ## Roadmap
 
-- [ ] github-actions plugin
-- [ ] devcontainer plugin
+- [x] github-actions plugin
+- [x] devcontainer plugin
 - [ ] leasot (todos) plugin
 - [ ] doctoc plugin
 - [ ] Add LICENSE file to monorepo

@@ -25,11 +25,17 @@ const queues = {
 
 export async function initYarn({ directory }: DirOption) {
   await createDirectory({ directory });
+
   await exec("yarn", ["init", "-2"], { cwd: directory });
+
   await writeYarnrc({ directory, data: { nodeLinker: "node-modules" } });
+
   await writeGitignore({ directory, lines: GITIGNORE_LINES, append: false });
+
   await addYarnPlugin({ directory, name: "interactive-tools" });
+
   await addYarnPlugin({ directory, name: "workspace-tools" });
+
   await addYarnPlugin({ directory, name: "version" });
 }
 

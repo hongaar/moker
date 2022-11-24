@@ -1,8 +1,5 @@
 import { join } from "node:path";
-import {
-  createDirectory,
-  isReadableAndWritableDirectory,
-} from "./directory.js";
+import { isReadableAndWritableDirectory } from "./directory.js";
 import { hasPackage, Package, readPackage, writePackage } from "./package.js";
 import { enqueueInstallDependency, initYarn } from "./yarn.js";
 
@@ -40,8 +37,6 @@ export async function createMonorepo({
   if (await isReadableAndWritableDirectory({ directory })) {
     throw new Error(`${directory} already exists`);
   }
-
-  await createDirectory({ directory });
 
   await initYarn({ directory });
 
