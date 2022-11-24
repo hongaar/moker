@@ -30,6 +30,7 @@ const CORE_PLUGINS = [
   "github-actions",
   "typescript",
   "jest",
+  "semantic-release",
 ];
 
 export function isPlugin(plugin: unknown): plugin is Plugin {
