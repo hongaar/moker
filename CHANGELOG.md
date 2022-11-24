@@ -1,3 +1,10 @@
+## [0.0.5](https://github.com/hongaar/moker/compare/v0.0.4...v0.0.5) (2022-11-24)
+
+### Bug Fixes
+
+- patch semantic-release/npm
+  ([3479aa5](https://github.com/hongaar/moker/commit/3479aa55670c941255e8a644ad28582d0c935fca))
+
 ## [0.0.4](https://github.com/hongaar/moker/compare/v0.0.3...v0.0.4) (2022-11-24)
 
 ### Bug Fixes
