@@ -7,6 +7,8 @@ async function apply({ directory }: TemplateArgs) {
   await installPlugin({ directory, name: "github-actions" });
   await installPlugin({ directory, name: "semantic-release" });
   await installPlugin({ directory, name: "devcontainer" });
+  await installPlugin({ directory, name: "doctoc" });
+  await installPlugin({ directory, name: "todos" });
 }
 
 export const common = {
