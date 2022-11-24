@@ -42,12 +42,14 @@ yarn moker add --template cra client
   - [Use plugins](#use-plugins)
   - [Add workspace](#add-workspace)
 - [Available plugins](#available-plugins)
+  - [`dependabot` _monorepo_](#dependabot-_monorepo_)
   - [`devcontainer` _monorepo_](#devcontainer-_monorepo_)
   - [`github-actions` _monorepo_](#github-actions-_monorepo_)
   - [`husky` _monorepo_](#husky-_monorepo_)
   - [`lint-staged` _monorepo_](#lint-staged-_monorepo_)
   - [`prettier` _monorepo_](#prettier-_monorepo_)
   - [`jest` _workspace_](#jest-_workspace_)
+  - [`semantic-release` _workspace_](#semantic-release-_workspace_)
   - [`typescript` _workspace_](#typescript-_workspace_)
 - [Available templates](#available-templates)
   - [`common` _monorepo_](#common-_monorepo_)
@@ -142,6 +144,14 @@ options.
 
 # Available plugins
 
+## `dependabot` _monorepo_
+
+**🚧 This plugin is a work in progress**
+
+This plugin adds a
+[Dependabot](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates)
+configuration to your monorepo.
+
 ## `devcontainer` _monorepo_
 
 **🚧 This plugin is a work in progress**
@@ -191,6 +201,15 @@ This plugin sets up [Prettier](https://prettier.io).
 This plugin sets up [Jest](https://jestjs.io) and adds a `test` and `watch:test`
 script to both the workspace and the monorepo.
 
+## `semantic-release` _workspace_
+
+This plugin sets up
+[semantic-release](https://semantic-release.gitbook.io/semantic-release/).
+
+> ⚠️ The semantic-release plugin in our monorepo configuration is currently
+> broken due to
+> [this issue with their npm plugin](https://github.com/semantic-release/npm/pull/529)
+
 ## `typescript` _workspace_
 
 This plugin sets up [TypeScript](https://www.typescriptlang.org) and adds a
@@ -238,6 +257,9 @@ Contributions are very welcome!
 
 - [ ] github-actions plugin
 - [ ] devcontainer plugin
+- [ ] semantic-release plugin
+- [ ] leasot (todos) plugin
+- [ ] doctoc plugin
 - [ ] Add LICENSE file to monorepo
 - [ ] Support for `swc`/`esbuild`
 - [ ] A compat lib (which builds cjs and mjs targets)

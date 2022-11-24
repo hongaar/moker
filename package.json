@@ -26,8 +26,7 @@
     "postinstall": "husky install && node scripts/postinstall.js",
     "format": "prettier --write --ignore-unknown .",
     "doctoc": "doctoc README.md",
-    "leasot": "leasot --exit-nicely --reporter markdown --ignore \"**/node_modules\" \"**/*.ts\" > TODO.md",
-    "publish-all": "yarn workspaces foreach --topological --verbose npm publish"
+    "leasot": "leasot --exit-nicely --reporter markdown --ignore \"**/node_modules\" \"**/*.ts\" > TODO.md"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.1",
