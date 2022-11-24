@@ -24,7 +24,7 @@
     "watch:test": "jest --watch"
   },
   "dependencies": {
-    "@mokr/core": "^0"
+    "@mokr/core": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "18.11.9",
