@@ -30,6 +30,7 @@ export async function initYarn({ directory }: DirOption) {
   await writeGitignore({ directory, lines: GITIGNORE_LINES, append: false });
   await addYarnPlugin({ directory, name: "interactive-tools" });
   await addYarnPlugin({ directory, name: "workspace-tools" });
+  await addYarnPlugin({ directory, name: "version" });
 }
 
 export async function addYarnPlugin({

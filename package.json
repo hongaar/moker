@@ -1,6 +1,6 @@
 {
   "name": "@mokr/root",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "license": "MIT",
   "workspaces": [
@@ -25,7 +25,7 @@
     "format": "prettier --write --ignore-unknown .",
     "doctoc": "doctoc README.md",
     "leasot": "leasot --exit-nicely --reporter markdown --ignore \"**/node_modules\" \"**/*.ts\" > TODO.md",
-    "publish": "yarn workspaces foreach --topological --verbose npm publish"
+    "publish-all": "yarn workspaces foreach --topological --verbose npm publish"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.1",
