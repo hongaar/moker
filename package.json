@@ -1,8 +1,8 @@
 {
   "name": "@mokr/root",
   "description": "Moker root package (dummy)",
-  "repository": "https://github.com/hongaar/moker",
   "author": "joram@vandenboezem.nl",
+  "repository": "https://github.com/hongaar/moker",
   "license": "MIT",
   "type": "module",
   "workspaces": [
