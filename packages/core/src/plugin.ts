@@ -31,6 +31,7 @@ const CORE_PLUGINS = [
   "typescript",
   "jest",
   "semantic-release",
+  "dependabot",
 ];
 
 export function isPlugin(plugin: unknown): plugin is Plugin {

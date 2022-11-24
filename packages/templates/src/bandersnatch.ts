@@ -1,5 +1,4 @@
 import {
-  createDirectory,
   enqueueInstallDependency,
   installPlugin,
   TemplateArgs,
@@ -27,8 +26,6 @@ async function apply({ directory }: TemplateArgs) {
       },
     },
   });
-
-  await createDirectory({ directory: join(directory, "src") });
 
   await writeFile({
     path: join(directory, "src/cli.ts"),

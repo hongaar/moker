@@ -1,6 +1,5 @@
 import {
   copyFile,
-  createDirectory,
   hasPlugin,
   PluginArgs,
   PluginType,
@@ -13,8 +12,6 @@ const WORKFLOWS_DIRECTORY = ".github/workflows";
 
 async function install({ directory }: PluginArgs) {
   const workflowDirectory = join(directory, WORKFLOWS_DIRECTORY);
-
-  await createDirectory({ directory: workflowDirectory });
 
   // Workspaces
 
@@ -39,8 +36,6 @@ async function remove({ directory }: PluginArgs) {
 
 async function load({ directory }: PluginArgs) {
   const workflowDirectory = join(directory, WORKFLOWS_DIRECTORY);
-
-  await createDirectory({ directory: workflowDirectory });
 
   // Monorepo plugins
 

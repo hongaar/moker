@@ -1,9 +1,6 @@
 import { dirname, join } from "node:path";
 import { pkgUp } from "pkg-up";
-import {
-  createDirectory,
-  isReadableAndWritableDirectory,
-} from "./directory.js";
+import { isReadableAndWritableDirectory } from "./directory.js";
 import { writeFile } from "./file.js";
 import { getScoped, getWorkspacesDirectory } from "./monorepo.js";
 import { readPackage, writePackage } from "./package.js";
@@ -30,8 +27,6 @@ export async function addWorkspace({
 
   const isScoped = getScoped({ pkg });
   const packageName = isScoped ? `@${pkg.name}/${name}` : name;
-
-  await createDirectory({ directory: workspaceDirectory });
 
   await writePackage({
     directory: workspaceDirectory,

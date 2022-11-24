@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  release:
+  format-check:
     name: release
     runs-on: ubuntu-latest
     steps:

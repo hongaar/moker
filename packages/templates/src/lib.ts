@@ -1,5 +1,4 @@
 import {
-  createDirectory,
   installPlugin,
   TemplateArgs,
   TemplateType,
@@ -10,8 +9,6 @@ import { join } from "path";
 async function apply({ directory }: TemplateArgs) {
   await installPlugin({ directory, name: "typescript" });
   await installPlugin({ directory, name: "jest" });
-
-  await createDirectory({ directory: join(directory, "src") });
 
   await writeFile({
     path: join(directory, "src/sum.ts"),
@@ -26,8 +23,6 @@ export function sum(a: number, b: number) {
     path: join(directory, "src/index.ts"),
     contents: `export * from "./sum.js";`,
   });
-
-  await createDirectory({ directory: join(directory, "tests") });
 
   await writeFile({
     path: join(directory, "tests/sum.test.ts"),
