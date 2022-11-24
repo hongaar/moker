@@ -12,6 +12,6 @@ export const list = command("list")
 
     console.log(`Plugins: ${plugins.join(", ")}`);
 
-    // @todo: list workspaces
+    // @todo: list workspaces using https://yarnpkg.com/cli/workspaces/list
     console.log(`Workspaces: ...`);
   });

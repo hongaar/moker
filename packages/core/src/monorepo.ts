@@ -5,7 +5,6 @@ import { enqueueInstallDependency, initYarn } from "./yarn.js";
 
 export const DEFAULT_SCOPED = true;
 export const DEFAULT_LICENSE = "MIT";
-export const DEFAULT_INITIAL_VERSION = "0.0.0";
 export const DEFAULT_WORKSPACES_DIRECTORY = "packages";
 
 export type MonorepoPackage = Package & {
@@ -31,7 +30,6 @@ export async function createMonorepo({
   directory,
   scoped = DEFAULT_SCOPED,
   license = DEFAULT_LICENSE,
-  initialVersion = DEFAULT_INITIAL_VERSION,
   workspacesDirectory = DEFAULT_WORKSPACES_DIRECTORY,
 }: CreateMonorepoOptions) {
   if (await isReadableAndWritableDirectory({ directory })) {
@@ -43,9 +41,7 @@ export async function createMonorepo({
   await writePackage({
     directory,
     data: {
-      private: true,
       license,
-      version: initialVersion,
       workspaces: [`${workspacesDirectory}/*`],
       moker: {
         scoped,
@@ -60,7 +56,7 @@ export async function createMonorepo({
 
   enqueueInstallDependency({
     directory,
-    identifier: "@mokr/cli",
+    identifier: "moker",
     dev: true,
   });
 }

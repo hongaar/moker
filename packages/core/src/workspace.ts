@@ -9,6 +9,8 @@ type DirOption = {
   directory: string;
 };
 
+const DEFAULT_INITIAL_VERSION = "0.0.0";
+
 export async function addWorkspace({
   directory,
   name,
@@ -33,9 +35,10 @@ export async function addWorkspace({
     append: false,
     data: {
       name: packageName,
-      version: pkg.version,
+      version: DEFAULT_INITIAL_VERSION,
       license: pkg.license,
       author: pkg.author,
+      repository: pkg.repository,
       ...(isScoped
         ? {
             publishConfig: {
