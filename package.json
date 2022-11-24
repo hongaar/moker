@@ -4,6 +4,7 @@
   "repository": "https://github.com/hongaar/moker",
   "author": "joram@vandenboezem.nl",
   "license": "MIT",
+  "type": "module",
   "workspaces": [
     "packages/*"
   ],
@@ -22,7 +23,7 @@
     "test": "yarn workspaces foreach --topological --verbose run test",
     "watch:build": "yarn workspaces foreach --parallel --interlaced run watch:build",
     "watch:test": "yarn workspaces foreach --parallel --interlaced run watch:test",
-    "postinstall": "husky install",
+    "postinstall": "husky install && node scripts/postinstall.js",
     "format": "prettier --write --ignore-unknown .",
     "doctoc": "doctoc README.md",
     "leasot": "leasot --exit-nicely --reporter markdown --ignore \"**/node_modules\" \"**/*.ts\" > TODO.md",
