@@ -2,6 +2,7 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 yarn doctoc
-yarn leasot
-git add .
+yarn prettier --write README.md
+yarn todos
+yarn prettier --write TODO.md
 yarn lint-staged

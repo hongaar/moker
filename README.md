@@ -42,12 +42,14 @@ yarn moker add --template cra client
 - [Available plugins](#available-plugins)
   - [`dependabot` _monorepo_](#dependabot-_monorepo_)
   - [`devcontainer` _monorepo_](#devcontainer-_monorepo_)
+  - [`doctoc` _monorepo_](#doctoc-_monorepo_)
   - [`github-actions` _monorepo_](#github-actions-_monorepo_)
   - [`husky` _monorepo_](#husky-_monorepo_)
+  - [`jest` _workspace_](#jest-_workspace_)
   - [`lint-staged` _monorepo_](#lint-staged-_monorepo_)
   - [`prettier` _monorepo_](#prettier-_monorepo_)
-  - [`jest` _workspace_](#jest-_workspace_)
   - [`semantic-release` _monorepo_](#semantic-release-_monorepo_)
+  - [`todos` _workspace_](#todos-_workspace_)
   - [`typescript` _workspace_](#typescript-_workspace_)
 - [Available templates](#available-templates)
   - [`common` _monorepo_](#common-_monorepo_)
@@ -163,6 +165,13 @@ image.
 If you have the `prettier` plugin installed, it will add the
 [Prettier VS Code extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
 
+## `doctoc` _monorepo_
+
+This plugin adds a script to generate a table of contents for the README using
+[doctoc](https://github.com/thlorenz/doctoc).
+
+If you have the `husky` plugin installed, it will also add a pre-commit hook.
+
 ## `github-actions` _monorepo_
 
 This plugin creates a simple `ci.yml`
@@ -185,6 +194,11 @@ repository:
 
 This plugin sets up [Husky](https://typicode.github.io/husky/#/) at the monorepo
 level.
+
+## `jest` _workspace_
+
+This plugin sets up [Jest](https://jestjs.io) and adds a `test` and `watch:test`
+script to both the workspace and the monorepo.
 
 ## `lint-staged` _monorepo_
 
@@ -210,11 +224,6 @@ This plugin sets up [Prettier](https://prettier.io).
 > We only set this `proseWrap` override because we think markdown files should
 > always be truncated to match whatever the `printWidth` setting is. This makes
 > it so much easier to read and write markdown files!
-
-## `jest` _workspace_
-
-This plugin sets up [Jest](https://jestjs.io) and adds a `test` and `watch:test`
-script to both the workspace and the monorepo.
 
 ## `semantic-release` _monorepo_
 
@@ -252,6 +261,13 @@ Otherwise, the `semantic-release` process will skip the `publish` step.
 [patch-semantic-commit.js]:
   https://github.com/hongaar/moker/blob/main/scripts/patch-semantic-commit.js
 
+## `todos` _workspace_
+
+This plugin adds a script to generate a TODO markdown file from all code
+annotations using [leasot](https://github.com/pgilad/leasot).
+
+If you have the `husky` plugin installed, it will also add a pre-commit hook.
+
 ## `typescript` _workspace_
 
 This plugin sets up [TypeScript](https://www.typescriptlang.org) and adds a
@@ -261,15 +277,8 @@ This plugin sets up [TypeScript](https://www.typescriptlang.org) and adds a
 
 ## `common` _monorepo_
 
-This is the only monorepo template at this point. It simply installs these
-plugins in the monorepo:
-
-- `prettier`
-- `husky`
-- `lint-staged`
-- `semantic-release`
-- `github-actions`
-- `devcontainer`
+This is the only monorepo template at this point. It simply installs all
+available monorepo plugins.
 
 ## `bandersnatch` _workspace_
 
@@ -298,16 +307,16 @@ Contributions are very welcome!
 
 ## Roadmap
 
-- [x] github-actions plugin
-- [x] devcontainer plugin
-- [ ] leasot (todos) plugin
-- [ ] doctoc plugin
 - [ ] Add LICENSE file to monorepo
 - [ ] Support for `swc`/`esbuild`
 - [ ] A compat lib (which builds cjs and mjs targets)
 - [ ] Adapt for non-monorepo use-cases (?)
 - [ ] Blog post / tutorial
 - [ ] Docs for writing custom plugins / templates
+- [x] github-actions plugin
+- [x] devcontainer plugin
+- [x] leasot (todos) plugin
+- [x] doctoc plugin
 - [x] semantic-release plugin
 - [x] Port templates
 - [x] Support for BYO plugins/templates

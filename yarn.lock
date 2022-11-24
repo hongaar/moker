@@ -84,9 +84,9 @@ __metadata:
     "@semantic-release/changelog": 6.0.1
     "@semantic-release/git": 10.0.1
     "@types/prettier": ^2
-    doctoc: ^2.2.1
+    doctoc: 2.2.1
     husky: 8.0.2
-    leasot: ^13.2.0
+    leasot: 13.2.0
     lint-staged: 13.0.3
     prettier: 2.7.1
     semantic-release: 19.0.5
@@ -1610,7 +1610,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"doctoc@npm:^2.2.1":
+"doctoc@npm:2.2.1":
   version: 2.2.1
   resolution: "doctoc@npm:2.2.1"
   dependencies:
@@ -2751,7 +2751,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"leasot@npm:^13.2.0":
+"leasot@npm:13.2.0":
   version: 13.2.0
   resolution: "leasot@npm:13.2.0"
   dependencies:

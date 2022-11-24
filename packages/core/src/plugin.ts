@@ -32,6 +32,8 @@ const CORE_PLUGINS = [
   "jest",
   "semantic-release",
   "dependabot",
+  "todos",
+  "doctoc",
 ];
 
 export function isPlugin(plugin: unknown): plugin is Plugin {
