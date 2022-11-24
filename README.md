@@ -227,6 +227,19 @@ This plugin sets up [Prettier](https://prettier.io).
 
 ## `semantic-release` _monorepo_
 
+⚠️ **This is work in progress**
+
+_Current plan:_
+
+- Set `"private": true` in root package
+- This will cause semantic-release/npm to skip publish step
+- We add exec plugin and use yarn workspaces foreach npm publish
+- We can remove .npmrc file
+- We need to modify .yarnrc.yml / .releaserc.json
+- We can get rid of `"publishConfig"` in workspaces pkg
+
+_This may be outdated:_
+
 This plugin sets up
 [semantic-release](https://semantic-release.gitbook.io/semantic-release/). It
 uses a workaround so that it can be used in a monorepo, which is to set up a
