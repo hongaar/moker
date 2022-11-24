@@ -1,3 +1,10 @@
+## [0.0.9](https://github.com/hongaar/moker/compare/v0.0.8...v0.0.9) (2022-11-24)
+
+### Bug Fixes
+
+- reset README
+  ([e02aaf5](https://github.com/hongaar/moker/commit/e02aaf56872c0ec62ac789c3a00ebc7fd642f270))
+
 ## [0.0.8](https://github.com/hongaar/moker/compare/v0.0.7...v0.0.8) (2022-11-24)
 
 ### Bug Fixes
