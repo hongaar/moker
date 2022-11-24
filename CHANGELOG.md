@@ -1,3 +1,10 @@
+# [0.4.0](https://github.com/hongaar/moker/compare/v0.3.0...v0.4.0) (2022-11-24)
+
+### Features
+
+- doctoc and todo plugins
+  ([e6b8371](https://github.com/hongaar/moker/commit/e6b8371479c24b72873a5ee683b1067802dad6df))
+
 # [0.3.0](https://github.com/hongaar/moker/compare/v0.2.0...v0.3.0) (2022-11-24)
 
 ### Features
