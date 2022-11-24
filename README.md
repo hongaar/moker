@@ -231,12 +231,15 @@ This plugin sets up [Prettier](https://prettier.io).
 
 _Current plan:_
 
+- Move to `yarn npm publish`
 - Set `"private": true` in root package
 - This will cause semantic-release/npm to skip publish step
 - We add exec plugin and use yarn workspaces foreach npm publish
 - We can remove .npmrc file
 - We need to modify .yarnrc.yml / .releaserc.json
 - We can get rid of `"publishConfig"` in workspaces pkg
+- We need to change `prepublishOnly` to `prepublish`
+- Document weird command (esp. JSON string echo)
 
 _This may be outdated:_
 
