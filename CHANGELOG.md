@@ -1,3 +1,10 @@
+# [0.2.0](https://github.com/hongaar/moker/compare/v0.1.0...v0.2.0) (2022-11-24)
+
+### Features
+
+- github-actions plugin
+  ([f3b165b](https://github.com/hongaar/moker/commit/f3b165b2a7c47c63e3ee879a096a1099d21b51e1))
+
 # [0.1.0](https://github.com/hongaar/moker/compare/v0.0.9...v0.1.0) (2022-11-24)
 
 ### Features
