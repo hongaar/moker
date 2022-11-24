@@ -1,3 +1,10 @@
+## [0.0.4](https://github.com/hongaar/moker/compare/v0.0.3...v0.0.4) (2022-11-24)
+
+### Bug Fixes
+
+- release attempt with no root publish
+  ([b9c6ad9](https://github.com/hongaar/moker/commit/b9c6ad96a29485f29c482b37ba77ac049a889262))
+
 ## [0.0.3](https://github.com/hongaar/moker/compare/v0.0.2...v0.0.3) (2022-11-24)
 
 ### Bug Fixes
