@@ -1,7 +1,7 @@
 # moker [![npm](https://img.shields.io/npm/v/moker)](https://www.npmjs.com/package/moker)
 
-**No more struggles setting up monorepo tooling. Kick-start monorepos and
-workspaces fast:**
+**No more struggles setting up monorepos. Kick-start monorepos, workspaces and
+tooling:**
 
 ```bash
 # initialize a monorepo
@@ -9,7 +9,7 @@ yarn dlx moker create my-monorepo
 cd my-monorepo
 
 # install common tools
-yarn moker use prettier husky lint-staged github-actions devcontainer
+yarn moker use prettier husky lint-staged doctoc semantic-release
 
 # create workspaces
 yarn moker add --template express server
@@ -52,8 +52,8 @@ yarn moker add --template cra client
   - [`todos` _workspace_](#todos-_workspace_)
   - [`typescript` _workspace_](#typescript-_workspace_)
 - [Available templates](#available-templates)
-  - [`common` _monorepo_](#common-_monorepo_)
   - [`bandersnatch` _workspace_](#bandersnatch-_workspace_)
+  - [`common` _monorepo_](#common-_monorepo_)
   - [`cra` _workspace_](#cra-_workspace_)
   - [`express` _workspace_](#express-_workspace_)
   - [`lib` _workspace_](#lib-_workspace_)
@@ -275,16 +275,16 @@ This plugin sets up [TypeScript](https://www.typescriptlang.org) and adds a
 
 # Available templates
 
-## `common` _monorepo_
-
-This is the only monorepo template at this point. It simply installs all
-available monorepo plugins.
-
 ## `bandersnatch` _workspace_
 
 Scaffolds a simple [bandersnatch](https://github.com/hongaar/bandersnatch) CLI
 app tool with the [typescript](#typescript-workspace) and
 [jest](#jest-workspace) plugins.
+
+## `common` _monorepo_
+
+This is the only monorepo template at this point. It simply installs all
+available monorepo plugins.
 
 ## `cra` _workspace_
 

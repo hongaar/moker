@@ -12,8 +12,9 @@ import {
   removePreCommitHookCommand,
 } from "../husky/husky.js";
 
-const PRE_COMMIT_HOOK_COMMAND = "yarn todos";
-const PRE_COMMIT_HOOK_COMMAND_FORMAT = "yarn prettier --write TODO.md";
+const PRE_COMMIT_HOOK_COMMAND = "yarn todos && git add TODO.md";
+const PRE_COMMIT_HOOK_COMMAND_FORMAT =
+  "yarn prettier --write TODO.md && git add TODO.md";
 
 async function install({ directory }: PluginArgs) {
   enqueueInstallDependency({ directory, identifier: "leasot", dev: true });

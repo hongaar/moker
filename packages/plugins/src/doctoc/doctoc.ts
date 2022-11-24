@@ -12,8 +12,9 @@ import {
   removePreCommitHookCommand,
 } from "../husky/husky.js";
 
-const PRE_COMMIT_HOOK_COMMAND = "yarn doctoc";
-const PRE_COMMIT_HOOK_COMMAND_FORMAT = "yarn prettier --write README.md";
+const PRE_COMMIT_HOOK_COMMAND = "yarn doctoc && git add README.md";
+const PRE_COMMIT_HOOK_COMMAND_FORMAT =
+  "yarn prettier --write README.md && git add README.md";
 
 async function install({ directory }: PluginArgs) {
   enqueueInstallDependency({ directory, identifier: "doctoc", dev: true });
