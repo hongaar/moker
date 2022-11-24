@@ -57,7 +57,8 @@ export async function createMonorepo({
         plugins: [],
       },
       scripts: {
-        publish: "yarn publish",
+        build: "echo 'not implemented'",
+        test: "echo 'not implemented'",
       },
     },
   });

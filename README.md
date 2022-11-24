@@ -36,7 +36,7 @@ yarn moker add --template cra client
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-  - [Getting started](#getting-started)
+- [Getting started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Create monorepo](#create-monorepo)
   - [Use plugins](#use-plugins)
@@ -49,7 +49,7 @@ yarn moker add --template cra client
   - [`lint-staged` _monorepo_](#lint-staged-_monorepo_)
   - [`prettier` _monorepo_](#prettier-_monorepo_)
   - [`jest` _workspace_](#jest-_workspace_)
-  - [`semantic-release` _workspace_](#semantic-release-_workspace_)
+  - [`semantic-release` _monorepo_](#semantic-release-_monorepo_)
   - [`typescript` _workspace_](#typescript-_workspace_)
 - [Available templates](#available-templates)
   - [`common` _monorepo_](#common-_monorepo_)
@@ -65,7 +65,7 @@ yarn moker add --template cra client
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Getting started
+# Getting started
 
 ## Prerequisites
 
@@ -161,10 +161,21 @@ monorepo level.
 
 ## `github-actions` _monorepo_
 
-**🚧 This plugin is a work in progress**
+This plugin creates a simple `ci.yml`
+[GitHub Actions](https://github.com/features/actions) workflow.
 
-This plugin sets up [GitHub Actions](https://github.com/features/actions) at the
-monorepo level.
+If you have the `prettier` plugin installed, this will also setup a `lint.yml`
+workflow.
+
+If you have the `semantic-release` plugin installed, this will also setup a
+`release.yml` workflow. This workflow needs these secrets to be added to your
+repository:
+
+- `GH_TOKEN`: a GitHub token with read/write access to your repository
+- `NPM_TOKEN`: an NPM token with publish access to your packages
+
+> 🤓 The workflows will use the `main` branch by default, but it is trivial to
+> change this.
 
 ## `husky` _monorepo_
 
@@ -201,14 +212,41 @@ This plugin sets up [Prettier](https://prettier.io).
 This plugin sets up [Jest](https://jestjs.io) and adds a `test` and `watch:test`
 script to both the workspace and the monorepo.
 
-## `semantic-release` _workspace_
+## `semantic-release` _monorepo_
 
 This plugin sets up
-[semantic-release](https://semantic-release.gitbook.io/semantic-release/).
+[semantic-release](https://semantic-release.gitbook.io/semantic-release/). It
+uses a workaround so that it can be used in a monorepo, which is to set up a
+`.npmrc` file containing:
+
+```ini
+workspaces = true
+workspaces-update = false
+```
+
+This causes both `npm version` and `npm publish` to be run for each monorepo in
+the `semantic-release` context.
+
+Please note that the root repository is not published. Furthermore, make sure
+that the root `package.json` doesn't contain:
+
+```json
+"private": true
+```
+
+Otherwise, the `semantic-release` process will skip the `publish` step.
+
+> 🤓 The release configuration will use the `main` branch by default, but it is
+> trivial to change this.
 
 > ⚠️ The semantic-release plugin in our monorepo configuration is currently
-> broken due to
-> [this issue with their npm plugin](https://github.com/semantic-release/npm/pull/529)
+> broken due to an issue with their npm plugin (see [semantic-release/npm#529])
+> [this issue with their npm plugin]. Take a look at [patch-semantic-commit.js]
+> in this repository for a workaround.
+
+[semantic-release/npm#529]: https://github.com/semantic-release/npm/pull/529
+[patch-semantic-commit.js]:
+  https://github.com/hongaar/moker/blob/main/scripts/patch-semantic-commit.js
 
 ## `typescript` _workspace_
 
@@ -257,7 +295,6 @@ Contributions are very welcome!
 
 - [ ] github-actions plugin
 - [ ] devcontainer plugin
-- [ ] semantic-release plugin
 - [ ] leasot (todos) plugin
 - [ ] doctoc plugin
 - [ ] Add LICENSE file to monorepo
@@ -266,6 +303,7 @@ Contributions are very welcome!
 - [ ] Adapt for non-monorepo use-cases (?)
 - [ ] Blog post / tutorial
 - [ ] Docs for writing custom plugins / templates
+- [x] semantic-release plugin
 - [x] Port templates
 - [x] Support for BYO plugins/templates
 - [x] Remove plugins

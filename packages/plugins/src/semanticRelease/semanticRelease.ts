@@ -7,6 +7,7 @@ import {
   removeFile,
   writeFile,
   writeJson,
+  writePackage,
 } from "@mokr/core";
 import { join } from "node:path";
 
@@ -55,6 +56,15 @@ async function install({ directory }: PluginArgs) {
   await writeFile({
     path: join(directory, NPMRC_FILENAME),
     contents: NPMRC,
+  });
+
+  await writePackage({
+    directory,
+    data: {
+      scripts: {
+        release: "semantic-release",
+      },
+    },
   });
 
   logInfo(

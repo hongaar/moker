@@ -48,6 +48,9 @@ export async function addWorkspace({
             },
           }
         : {}),
+      moker: {
+        plugins: [],
+      },
     },
   });
 

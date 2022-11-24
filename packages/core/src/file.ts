@@ -15,6 +15,10 @@ export async function writeFile({
   return fs.promises.writeFile(path, `${contents.trim()}${os.EOL}`, "utf8");
 }
 
+export async function copyFile({ from, to }: { from: string; to: string }) {
+  return fs.promises.copyFile(from, to);
+}
+
 export async function removeFile({ path }: { path: string }) {
   return fs.promises.rm(path);
 }
