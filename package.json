@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.1",
+    "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "10.0.1",
     "@types/prettier": "^2",
     "doctoc": "2.2.1",

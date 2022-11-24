@@ -1,3 +1,10 @@
+## [0.4.1](https://github.com/hongaar/moker/compare/v0.4.0...v0.4.1) (2022-11-24)
+
+### Bug Fixes
+
+- try resolving workspace: links
+  ([b1d5023](https://github.com/hongaar/moker/commit/b1d5023df63b166576628cdaf13e3d757ac861ac))
+
 # [0.4.0](https://github.com/hongaar/moker/compare/v0.3.0...v0.4.0) (2022-11-24)
 
 ### Features

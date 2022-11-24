@@ -1,6 +1,6 @@
 {
   "name": "@mokr/templates",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Moker templates",
   "repository": "https://github.com/hongaar/moker",
   "publishConfig": {
