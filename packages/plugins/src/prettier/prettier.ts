@@ -17,7 +17,7 @@ const PRETTIER_IGNORE = [
   ".yarn",
   "",
   "# artifacts",
-  "lib/",
+  "dist/",
   "types/",
   "",
 ];
@@ -41,6 +41,7 @@ async function install({ directory }: PluginArgs) {
     data: {
       scripts: {
         format: "prettier --write --ignore-unknown .",
+        "format-check": "prettier --check --ignore-unknown .",
       },
     },
   });

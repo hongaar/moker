@@ -13,7 +13,9 @@
     "plugins": [
       "husky",
       "lint-staged",
-      "prettier"
+      "prettier",
+      "semantic-release",
+      "github-actions"
     ]
   },
   "packageManager": "yarn@3.2.4",
@@ -25,19 +27,21 @@
     "watch:test": "yarn workspaces foreach --parallel --interlaced run watch:test",
     "postinstall": "husky install && node scripts/postinstall.js",
     "format": "prettier --write --ignore-unknown .",
+    "format-check": "prettier --check --ignore-unknown .",
     "doctoc": "doctoc README.md",
-    "leasot": "leasot --exit-nicely --reporter markdown --ignore \"**/node_modules\" \"**/*.ts\" > TODO.md"
+    "leasot": "leasot --exit-nicely --reporter markdown --ignore \"**/node_modules\" \"**/*.ts\" > TODO.md",
+    "release": "semantic-release"
   },
   "devDependencies": {
-    "@semantic-release/changelog": "^6.0.1",
-    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/changelog": "6.0.1",
+    "@semantic-release/git": "10.0.1",
     "@types/prettier": "^2",
     "doctoc": "^2.2.1",
     "husky": "8.0.2",
     "leasot": "^13.2.0",
     "lint-staged": "13.0.3",
     "prettier": "2.7.1",
-    "semantic-release": "^19.0.5"
+    "semantic-release": "19.0.5"
   },
   "lint-staged": {
     "*": "prettier --write --ignore-unknown"

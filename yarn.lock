@@ -81,15 +81,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@mokr/root@workspace:."
   dependencies:
-    "@semantic-release/changelog": ^6.0.1
-    "@semantic-release/git": ^10.0.1
+    "@semantic-release/changelog": 6.0.1
+    "@semantic-release/git": 10.0.1
     "@types/prettier": ^2
     doctoc: ^2.2.1
     husky: 8.0.2
     leasot: ^13.2.0
     lint-staged: 13.0.3
     prettier: 2.7.1
-    semantic-release: ^19.0.5
+    semantic-release: 19.0.5
   languageName: unknown
   linkType: soft
 
@@ -469,7 +469,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@semantic-release/changelog@npm:^6.0.1":
+"@semantic-release/changelog@npm:6.0.1":
   version: 6.0.1
   resolution: "@semantic-release/changelog@npm:6.0.1"
   dependencies:
@@ -507,7 +507,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@semantic-release/git@npm:^10.0.1":
+"@semantic-release/git@npm:10.0.1":
   version: 10.0.1
   resolution: "@semantic-release/git@npm:10.0.1"
   dependencies:
@@ -4788,7 +4788,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semantic-release@npm:^19.0.5":
+"semantic-release@npm:19.0.5":
   version: 19.0.5
   resolution: "semantic-release@npm:19.0.5"
   dependencies:
