@@ -1,5 +1,6 @@
 import { hasPlugin, PluginArgs, PluginType } from "@mokr/core";
 import {
+  readDevcontainerJson,
   removeDevcontainerJson,
   writeDevcontainerJson,
 } from "./devcontainerJson.js";
@@ -24,16 +25,21 @@ async function remove({ directory }: PluginArgs) {
 
 async function load({ directory }: PluginArgs) {
   if (await hasPlugin({ directory, name: "prettier" })) {
-    await writeDevcontainerJson({
-      directory,
-      data: {
-        customizations: {
-          vscode: {
-            extensions: ["esbenp.prettier-vscode"],
+    const id = "esbenp.prettier-vscode";
+    const existingData = await readDevcontainerJson({ directory });
+
+    if (!existingData.customizations?.vscode?.extensions?.includes(id)) {
+      await writeDevcontainerJson({
+        directory,
+        data: {
+          customizations: {
+            vscode: {
+              extensions: [id],
+            },
           },
         },
-      },
-    });
+      });
+    }
   }
 }
 

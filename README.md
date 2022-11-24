@@ -144,18 +144,24 @@ options.
 
 ## `dependabot` _monorepo_
 
-**🚧 This plugin is a work in progress**
+This plugin adds a [Dependabot] configuration to your monorepo with an updater
+for NPM packages.
 
-This plugin adds a
-[Dependabot](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates)
-configuration to your monorepo.
+If you have the `github-actions` plugin installed, it will add an updater for
+GitHub Actions workflows.
+
+[dependabot]:
+  https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates
 
 ## `devcontainer` _monorepo_
 
-**🚧 This plugin is a work in progress**
+This plugin creates a [Development Containers](https://containers.dev)
+configuration using the
+[`typescript-node`](https://hub.docker.com/_/microsoft-vscode-devcontainers)
+image.
 
-This plugin sets up [devcontainer](https://containers.dev) configuration at the
-monorepo level.
+If you have the `prettier` plugin installed, it will add the
+[Prettier VS Code extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
 
 ## `github-actions` _monorepo_
 

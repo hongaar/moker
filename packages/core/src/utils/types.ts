@@ -2,14 +2,14 @@ export type JSONValue =
   | string
   | number
   | boolean
-  | { [x: string]: JSONValue }
+  | { [key: string]: JSONValue }
   | Array<JSONValue>;
 
 export type StringableJSONValue =
   | string
   | number
   | boolean
-  | { [x: string]: StringableJSONValue }
+  | { [key: string]: StringableJSONValue }
   | Array<StringableJSONValue>
   | undefined;
 

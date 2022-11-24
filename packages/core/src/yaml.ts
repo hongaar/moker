@@ -18,7 +18,7 @@ export async function writeYaml<T extends JSONValue>({
   append = true,
 }: {
   path: string;
-  data: T;
+  data: Partial<T>;
   append?: boolean;
 }) {
   if (append && (await isReadableAndWritableFile({ path }))) {
