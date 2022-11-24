@@ -1,6 +1,6 @@
 {
   "name": "moker",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "The moker CLI",
   "repository": "https://github.com/hongaar/moker",
   "author": "joram@vandenboezem.nl",

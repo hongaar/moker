@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/hongaar/moker/compare/v0.2.0...v0.3.0) (2022-11-24)
+
+### Features
+
+- dependabot plugin
+  ([130df2d](https://github.com/hongaar/moker/commit/130df2d345549919274d2ba6ab8b1c1dac8b3703))
+- devcontainer plugin
+  ([33f46c0](https://github.com/hongaar/moker/commit/33f46c0c3a7b1e8a5f037f5cb0752afd740f3d1e))
+
 # [0.2.0](https://github.com/hongaar/moker/compare/v0.1.0...v0.2.0) (2022-11-24)
 
 ### Features
