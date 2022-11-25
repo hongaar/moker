@@ -240,6 +240,7 @@ _Current plan:_
 - We can get rid of `"publishConfig"` in workspaces pkg
 - We need to change `prepublishOnly` to `prepublish`
 - Document weird command (esp. JSON string echo)
+- npm whoami fix not needed!
 
 _This may be outdated:_
 
@@ -270,8 +271,8 @@ Otherwise, the `semantic-release` process will skip the `publish` step.
 
 > ⚠️ The semantic-release plugin in our monorepo configuration is currently
 > broken due to an issue with their npm plugin (see [semantic-release/npm#529])
-> [this issue with their npm plugin]. Take a look at [patch-semantic-commit.js]
-> in this repository for a workaround.
+> [this issue with their npm a]. Take a look at [patch-semantic-commit.js] in
+> this repository for a workaround.
 
 [semantic-release/npm#529]: https://github.com/semantic-release/npm/pull/529
 [patch-semantic-commit.js]:
