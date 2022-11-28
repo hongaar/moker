@@ -1,3 +1,11 @@
+# [0.5.0](https://github.com/hongaar/moker/compare/v0.4.4...v0.5.0) (2022-11-28)
+
+### Features
+
+- support single-purpose repos
+  ([#84](https://github.com/hongaar/moker/issues/84))
+  ([a9c6532](https://github.com/hongaar/moker/commit/a9c6532848993716efe67dca2276e1930dcd0301))
+
 ## [0.4.4](https://github.com/hongaar/moker/compare/v0.4.3...v0.4.4) (2022-11-24)
 
 ### Bug Fixes
