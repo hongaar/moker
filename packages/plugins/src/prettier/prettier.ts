@@ -41,7 +41,7 @@ async function install({ directory }: PluginArgs) {
     data: {
       scripts: {
         format: "prettier --write --ignore-unknown .",
-        "format-check": "prettier --check --ignore-unknown .",
+        "format:check": "prettier --check --ignore-unknown .",
       },
     },
   });
@@ -75,7 +75,7 @@ async function remove({ directory }: PluginArgs) {
 async function load() {}
 
 export const prettier = {
-  type: PluginType.Monorepo,
+  type: PluginType.Repo,
   install,
   remove,
   load,

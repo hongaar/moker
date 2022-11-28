@@ -1,10 +1,14 @@
 import { join } from "node:path";
-import { isReadableAndWritableDirectory } from "./directory.js";
-import { hasPackage, Package, readPackage, writePackage } from "./package.js";
-import { enqueueInstallDependency, initYarn } from "./yarn.js";
+import { Package, readPackage } from "./package.js";
+import {
+  createRepo,
+  CreateRepoOptions,
+  DEFAULT_LICENSE,
+  isRepo,
+} from "./repo.js";
+import { addYarnPlugin } from "./yarn.js";
 
 export const DEFAULT_SCOPED = true;
-export const DEFAULT_LICENSE = "MIT";
 export const DEFAULT_WORKSPACES_DIRECTORY = "packages";
 
 export type MonorepoPackage = Package & {
@@ -19,12 +23,11 @@ type PkgOption = {
   pkg: Package;
 };
 
-type CreateMonorepoOptions = DirOption & {
-  scoped?: boolean;
-  license?: string;
-  initialVersion?: string;
-  workspacesDirectory?: string;
-};
+export type CreateMonorepoOptions = DirOption &
+  CreateRepoOptions & {
+    scoped?: boolean;
+    workspacesDirectory?: string;
+  };
 
 export async function createMonorepo({
   directory,
@@ -32,37 +35,23 @@ export async function createMonorepo({
   license = DEFAULT_LICENSE,
   workspacesDirectory = DEFAULT_WORKSPACES_DIRECTORY,
 }: CreateMonorepoOptions) {
-  if (await isReadableAndWritableDirectory({ directory })) {
-    throw new Error(`${directory} already exists`);
-  }
-
-  await initYarn({ directory });
-
-  await writePackage({
+  await createRepo({
     directory,
-    data: {
-      license,
+    license,
+    additionalPackageOptions: {
+      private: true,
       workspaces: [`${workspacesDirectory}/*`],
       moker: {
         scoped,
-        plugins: [],
-      },
-      scripts: {
-        build: "echo 'not implemented'",
-        test: "echo 'not implemented'",
       },
     },
   });
 
-  enqueueInstallDependency({
-    directory,
-    identifier: "moker",
-    dev: true,
-  });
+  await addYarnPlugin({ directory, name: "workspace-tools" });
 }
 
 export async function isMonorepo({ directory }: DirOption) {
-  if (!(await hasPackage({ directory }))) {
+  if (!(await isRepo({ directory }))) {
     return false;
   }
 

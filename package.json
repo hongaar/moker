@@ -27,12 +27,12 @@
   "scripts": {
     "start": "node packages/cli/moker.js",
     "build": "yarn workspaces foreach --topological --verbose run build",
+    "build:watch": "yarn workspaces foreach --parallel --interlaced run build:watch",
     "test": "yarn workspaces foreach --topological --verbose run test",
-    "watch:build": "yarn workspaces foreach --parallel --interlaced run watch:build",
-    "watch:test": "yarn workspaces foreach --parallel --interlaced run watch:test",
+    "test:watch": "yarn workspaces foreach --parallel --interlaced run test:watch",
     "postinstall": "husky install && node scripts/postinstall.js",
     "format": "prettier --write --ignore-unknown .",
-    "format-check": "prettier --check --ignore-unknown .",
+    "format:check": "prettier --check --ignore-unknown .",
     "doctoc": "doctoc README.md",
     "todos": "leasot --exit-nicely --reporter markdown --ignore \"**/node_modules\" \"**/*.ts\" > TODO.md",
     "release": "semantic-release"

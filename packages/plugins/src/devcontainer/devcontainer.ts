@@ -44,7 +44,7 @@ async function load({ directory }: PluginArgs) {
 }
 
 export const devcontainer = {
-  type: PluginType.Monorepo,
+  type: PluginType.Repo,
   install,
   remove,
   load,

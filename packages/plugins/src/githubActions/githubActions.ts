@@ -39,7 +39,7 @@ async function load({ directory }: PluginArgs) {
 
   // Monorepo plugins
 
-  if (await hasPlugin({ directory, name: "semanticRelease" })) {
+  if (await hasPlugin({ directory, name: "semantic-release" })) {
     await copyFile({
       from: new URL("../../static/release.yml", import.meta.url).pathname,
       to: join(workflowDirectory, "release.yml"),
@@ -55,7 +55,7 @@ async function load({ directory }: PluginArgs) {
 }
 
 export const githubActions = {
-  type: PluginType.Monorepo,
+  type: PluginType.Repo,
   install,
   remove,
   load,

@@ -1,9 +1,9 @@
-import { dirname, join } from "node:path";
+import { basename, dirname, join } from "node:path";
 import { pkgUp } from "pkg-up";
 import { isReadableAndWritableDirectory } from "./directory.js";
 import { writeFile } from "./file.js";
-import { getScoped, getWorkspacesDirectory } from "./monorepo.js";
-import { readPackage, writePackage } from "./package.js";
+import { getScoped, getWorkspacesDirectory, isMonorepo } from "./monorepo.js";
+import { hasPackage, readPackage, writePackage } from "./package.js";
 
 type DirOption = {
   directory: string;
@@ -52,20 +52,43 @@ export async function addWorkspace({
     },
   });
 
-  await writeFile({
-    path: join(workspaceDirectory, "README.md"),
-    contents: `# ${packageName}`,
-  });
+  await writeReadme({ directory, name: packageName });
 
   return workspaceDirectory;
+}
+
+export async function writeReadme({
+  directory,
+  name,
+}: DirOption & { name?: string }) {
+  await writeFile({
+    path: join(directory, "README.md"),
+    contents: `# ${name ?? basename(directory)}`,
+  });
+}
+
+export async function isWorkspace({ directory }: DirOption) {
+  if (!(await hasPackage({ directory }))) {
+    return false;
+  }
+
+  if (await getMonorepoDirectory({ directory })) {
+    return true;
+  }
+
+  return false;
 }
 
 export async function getMonorepoDirectory({ directory }: DirOption) {
   const path = await pkgUp({ cwd: dirname(directory) });
 
-  if (path) {
-    return dirname(path);
+  if (!path) {
+    return;
   }
 
-  return;
+  const parentPackageDirectory = dirname(path);
+
+  return (await isMonorepo({ directory: parentPackageDirectory }))
+    ? parentPackageDirectory
+    : undefined;
 }
