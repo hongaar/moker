@@ -94,7 +94,7 @@ async function remove({ directory }: PluginArgs) {
 async function load() {}
 
 export const semanticRelease = {
-  type: PluginType.Monorepo,
+  type: PluginType.RepoOrWorkspace,
   install,
   remove,
   load,

@@ -1,16 +1,10 @@
-import { isMonorepo } from "./monorepo.js";
+import { PluginType, validateType } from "./plugin.js";
 import { toCamelCase } from "./utils/string.js";
 
 export type TemplateArgs = { directory: string };
 
-export enum TemplateType {
-  Monorepo = "monorepo",
-  Workspace = "workspace",
-  Any = "any",
-}
-
 export type Template = {
-  type: string | TemplateType;
+  type: PluginType;
   apply: (args: TemplateArgs) => Promise<void>;
 };
 
@@ -47,16 +41,7 @@ export async function importTemplate({ directory, name }: TemplateOptions) {
     throw new Error(`Template ${name} does not exist or is not valid`);
   }
 
-  // Monorepo level?
-  if (await isMonorepo({ directory })) {
-    if (template.type === "workspace") {
-      throw new Error(`Template ${name} can only be used at workspace level`);
-    }
-  } else {
-    if (template.type === "monorepo") {
-      throw new Error(`Template ${name} can only be used at monorepo level`);
-    }
-  }
+  await validateType({ directory, type: template.type });
 
   return template;
 }

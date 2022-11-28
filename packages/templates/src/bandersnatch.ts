@@ -1,8 +1,8 @@
 import {
   enqueueInstallDependency,
   installPlugin,
+  PluginType,
   TemplateArgs,
-  TemplateType,
   writeFile,
   writePackage,
 } from "@mokr/core";
@@ -53,6 +53,6 @@ cli.run().catch(console.error);
 }
 
 export const bandersnatch = {
-  type: TemplateType.Workspace,
+  type: PluginType.Workspace,
   apply,
 };

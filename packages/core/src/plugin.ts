@@ -1,24 +1,30 @@
 import { isMonorepo } from "./monorepo.js";
 import { readPackage, updatePackage, writePackage } from "./package.js";
+import { isRepo } from "./repo.js";
 import { toCamelCase } from "./utils/string.js";
+import { isWorkspace } from "./workspace.js";
 
 export type PluginArgs = { directory: string };
 
 export enum PluginType {
+  Repo = "repo",
+  RepoOrWorkspace = "repoOrWorkspace",
   Monorepo = "monorepo",
   Workspace = "workspace",
-  Any = "any",
 }
 
 export type Plugin = {
-  type: string | PluginType;
+  type: PluginType;
   install: (args: PluginArgs) => Promise<void>;
   remove: (args: PluginArgs) => Promise<void>;
   load: (args: PluginArgs) => Promise<void>;
 };
 
-type PluginOptions = {
+type DirOption = {
   directory: string;
+};
+
+type PluginOptions = DirOption & {
   name: string;
 };
 
@@ -66,18 +72,44 @@ export async function importPlugin({ directory, name }: PluginOptions) {
     throw new Error(`Plugin ${name} does not exist or is not valid`);
   }
 
-  // Monorepo level?
-  if (await isMonorepo({ directory })) {
-    if (plugin.type === "workspace") {
-      throw new Error(`Plugin ${name} can only be used at workspace level`);
-    }
-  } else {
-    if (plugin.type === "monorepo") {
-      throw new Error(`Plugin ${name} can only be used at monorepo level`);
-    }
-  }
+  await validateType({ directory, type: plugin.type });
 
   return plugin;
+}
+
+export async function validateType({
+  directory,
+  type,
+}: DirOption & { type: PluginType }) {
+  const repo = await isRepo({ directory });
+  const monorepo = await isMonorepo({ directory });
+  const workspace = await isWorkspace({ directory });
+
+  switch (type) {
+    case PluginType.Repo:
+      if (!repo) {
+        throw new Error(`Plugin can only be used at repo level`);
+      }
+      break;
+
+    case PluginType.RepoOrWorkspace:
+      if (!repo && !workspace) {
+        throw new Error(`Plugin can only be used at repo or workspace level`);
+      }
+      break;
+
+    case PluginType.Monorepo:
+      if (!monorepo) {
+        throw new Error(`Plugin can only be used at monorepo level`);
+      }
+      break;
+
+    case PluginType.Workspace:
+      if (!workspace) {
+        throw new Error(`Plugin can only be used at workspace level`);
+      }
+      break;
+  }
 }
 
 export async function installPlugin({ directory, name }: PluginOptions) {

@@ -1,22 +1,17 @@
 import {
   exec,
   getMonorepoDirectory,
+  PluginType,
   readPackage,
   removeFile,
   removePackage,
   TemplateArgs,
-  TemplateType,
   writePackage,
 } from "@mokr/core";
 import { basename, dirname, join } from "node:path";
 
 async function apply({ directory }: TemplateArgs) {
   const monorepoDirectory = await getMonorepoDirectory({ directory });
-
-  if (!monorepoDirectory) {
-    throw new Error("Could not find monorepo directory");
-  }
-
   const oldPackage = await readPackage({ directory });
 
   await removePackage({ directory });
@@ -38,12 +33,14 @@ async function apply({ directory }: TemplateArgs) {
   );
 
   // Weird problem where we are left with a package-lock.json file after installation
-  await removeFile({ path: join(monorepoDirectory, "package-lock.json") });
+  await removeFile({
+    path: join(monorepoDirectory ?? directory, "package-lock.json"),
+  });
 
   await writePackage({ directory, data: oldPackage });
 }
 
 export const cra = {
-  type: TemplateType.Workspace,
+  type: PluginType.Workspace,
   apply,
 };

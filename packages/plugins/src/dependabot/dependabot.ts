@@ -169,7 +169,7 @@ async function load({ directory }: PluginArgs) {
 }
 
 export const dependabot = {
-  type: PluginType.Monorepo,
+  type: PluginType.Repo,
   install,
   remove,
   load,

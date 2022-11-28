@@ -6,6 +6,7 @@ export * from "./json.js";
 export * from "./monorepo.js";
 export * from "./package.js";
 export * from "./plugin.js";
+export * from "./repo.js";
 export * from "./template.js";
 export * from "./utils/index.js";
 export * from "./workspace.js";

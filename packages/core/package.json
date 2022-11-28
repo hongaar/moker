@@ -16,12 +16,12 @@
     "types"
   ],
   "scripts": {
-    "prepublishOnly": "yarn build",
+    "prepublish": "yarn build",
     "clean": "rm -rf dist && rm -rf types",
     "build": "yarn clean && tsc",
+    "build:watch": "yarn build && tsc --watch",
     "test": "jest",
-    "watch:build": "tsc --watch",
-    "watch:test": "jest --watch"
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "chalk": "5.1.2",

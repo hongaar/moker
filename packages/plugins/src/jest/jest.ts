@@ -27,16 +27,10 @@ export default {
 async function install({ directory }: PluginArgs) {
   const monorepoDirectory = await getMonorepoDirectory({ directory });
 
-  if (!monorepoDirectory) {
-    throw new Error("Could not find monorepo directory");
-  }
-
   if (!hasPlugin({ directory, name: "typescript" })) {
     // @todo: install jest without ts-jest
-    //
   } else {
     // Install jest with ts-jest
-
     enqueueInstallDependency({
       directory,
       identifier: ["jest", "ts-jest", "@types/jest"],
@@ -54,45 +48,40 @@ async function install({ directory }: PluginArgs) {
     data: {
       scripts: {
         test: "jest",
-        "watch:test": "jest --watch",
+        "test:watch": "jest --watch",
       },
     },
   });
 
-  // At monorepo level
-
-  await writePackage({
-    directory: monorepoDirectory,
-    data: {
-      scripts: {
-        test: "yarn workspaces foreach --topological --verbose run test",
-        "watch:test":
-          "yarn workspaces foreach --parallel --interlaced run watch:test",
+  if (monorepoDirectory) {
+    // At monorepo level
+    await writePackage({
+      directory: monorepoDirectory,
+      data: {
+        scripts: {
+          test: "yarn workspaces foreach --topological --verbose run test",
+          "test:watch":
+            "yarn workspaces foreach --parallel --interlaced run test:watch",
+        },
       },
-    },
-  });
+    });
+  }
 }
 
 async function remove({ directory }: PluginArgs) {
-  const monorepoDirectory = await getMonorepoDirectory({ directory });
-
-  if (!monorepoDirectory) {
-    throw new Error("Could not find monorepo directory");
-  }
-
   enqueueRemoveDependency({ directory, identifier: ["jest", "ts-jest"] });
 
   try {
     await removeFile({ path: join(directory, JEST_CONFIG_FILENAME) });
   } catch {}
 
-  logWarning("Please review your workspace and root package.json manually");
+  logWarning("Please review package.json manually");
 }
 
 async function load() {}
 
 export const jest = {
-  type: PluginType.Workspace,
+  type: PluginType.RepoOrWorkspace,
   install,
   remove,
   load,

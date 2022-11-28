@@ -59,7 +59,7 @@ async function load({ directory }: PluginArgs) {
 }
 
 export const lintStaged = {
-  type: PluginType.Monorepo,
+  type: PluginType.Repo,
   install,
   remove,
   load,

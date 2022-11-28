@@ -1,12 +1,12 @@
 # moker [![npm](https://img.shields.io/npm/v/moker)](https://www.npmjs.com/package/moker)
 
-**No more struggles setting up monorepos. Kick-start monorepos, workspaces and
-tooling:**
+**No more struggles setting up new JavaScript repository. Kick-start
+single-purpose repos, monorepos, monorepo workspaces and common tooling:**
 
 ```bash
 # initialize a monorepo
-yarn dlx moker create my-monorepo
-cd my-monorepo
+yarn dlx moker create --monorepo my-repo
+cd my-repo
 
 # install common tools
 yarn moker use prettier husky lint-staged doctoc semantic-release
@@ -18,10 +18,10 @@ yarn moker add --template cra client
 
 ## Features
 
-- 👢 Kick-start a monorepo with ease
-- 🧰 Monorepo plugins to use pre-configured common tooling
-- ➕ Add workspaces on demand
-- 🧬 Workspace templates for a library, React app, API or CLI
+- 👢 Kick-start a new repo or monorepo using Yarn
+- 🧰 Plugins to use pre-configured common tooling
+- ➕ Quickly add workspaces to a monorepo
+- 🧬 Workspace templates for a shared library, React app, API or CLI
 - ⚡ Extensible, bring your own plugins
 
 > 🤓 The core plugins make some assumptions you may not agree with. If that's
@@ -69,7 +69,7 @@ yarn moker add --template cra client
 
 ## Prerequisites
 
-You will need Node v14+ and Yarn v3+ in order to use `moker`.
+You will need Node v14+ and Yarn v2+ in order to use `moker`.
 
 - Install Node with [nvm](https://github.com/nvm-sh/nvm#install--update-script)
   or using [nodesource](https://github.com/nodesource/distributions#debinstall).
@@ -84,7 +84,7 @@ You will need Node v14+ and Yarn v3+ in order to use `moker`.
 Create a new monorepo:
 
 ```bash
-yarn dlx moker create my-repo
+yarn dlx moker create --monorepo my-repo
 ```
 
 This will initialize a new monorepo in the `my-repo` directory.
@@ -197,7 +197,7 @@ level.
 
 ## `jest` _workspace_
 
-This plugin sets up [Jest](https://jestjs.io) and adds a `test` and `watch:test`
+This plugin sets up [Jest](https://jestjs.io) and adds a `test` and `test:watch`
 script to both the workspace and the monorepo.
 
 ## `lint-staged` _monorepo_
@@ -238,7 +238,7 @@ _Current plan:_
 - We can remove .npmrc file
 - We need to modify .yarnrc.yml / .releaserc.json
 - We can get rid of `"publishConfig"` in workspaces pkg
-- We need to change `prepublishOnly` to `prepublish`
+- [x] We need to change `prepublishOnly` to `prepublish`
 - Document weird command (esp. JSON string echo)
 - npm whoami fix not needed!
 
@@ -288,7 +288,7 @@ If you have the `husky` plugin installed, it will also add a pre-commit hook.
 ## `typescript` _workspace_
 
 This plugin sets up [TypeScript](https://www.typescriptlang.org) and adds a
-`build` and `watch:build` script to both the workspace and the monorepo.
+`build` and `build:watch` script to both the workspace and the monorepo.
 
 # Available templates
 
@@ -324,10 +324,10 @@ Contributions are very welcome!
 
 ## Roadmap
 
+- [ ] Adapt for non-monorepo use-cases (WIP)
 - [ ] Add LICENSE file to monorepo
 - [ ] Support for `swc`/`esbuild`
 - [ ] A compat lib (which builds cjs and mjs targets)
-- [ ] Adapt for non-monorepo use-cases (?)
 - [ ] Blog post / tutorial
 - [ ] Docs for writing custom plugins / templates
 - [x] github-actions plugin
