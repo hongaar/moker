@@ -8,6 +8,10 @@ type DirOption = {
 };
 
 const GITIGNORE_LINES = [
+  "# node",
+  "node_modules",
+  "",
+  "# yarn",
   ".pnp.*",
   ".yarn/*",
   "!.yarn/patches",
@@ -23,18 +27,26 @@ const queues = {
   remove: new Map<string, Set<string>>(),
 };
 
-export async function initYarn({ directory }: DirOption) {
+export async function initYarnExistingRepo({ directory }: DirOption) {
+  await exec("yarn", ["set", "version", "latest"], { cwd: directory });
+
+  await initYarn({ directory });
+}
+
+export async function initYarnNewRepo({ directory }: DirOption) {
   await createDirectory({ directory });
 
   await exec("yarn", ["init", "-2"], { cwd: directory });
 
+  await initYarn({ directory });
+}
+
+async function initYarn({ directory }: DirOption) {
   await writeYarnrc({ directory, data: { nodeLinker: "node-modules" } });
 
   await writeGitignore({ directory, lines: GITIGNORE_LINES, append: false });
 
   await addYarnPlugin({ directory, name: "interactive-tools" });
-
-  await addYarnPlugin({ directory, name: "workspace-tools" });
 }
 
 export async function addYarnPlugin({

@@ -1,4 +1,4 @@
-import { installPlugin, TemplateArgs, TemplateType } from "@mokr/core";
+import { installPlugin, PluginType, TemplateArgs } from "@mokr/core";
 
 async function apply({ directory }: TemplateArgs) {
   await installPlugin({ directory, name: "prettier" });
@@ -12,6 +12,6 @@ async function apply({ directory }: TemplateArgs) {
 }
 
 export const common = {
-  type: TemplateType.Monorepo,
+  type: PluginType.Monorepo,
   apply,
 };

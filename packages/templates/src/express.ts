@@ -1,8 +1,8 @@
 import {
   enqueueInstallDependency,
   installPlugin,
+  PluginType,
   TemplateArgs,
-  TemplateType,
   writeFile,
   writePackage,
 } from "@mokr/core";
@@ -54,6 +54,6 @@ app.listen(process.env.PORT || 3000);
 }
 
 export const express = {
-  type: TemplateType.Workspace,
+  type: PluginType.Workspace,
   apply,
 };

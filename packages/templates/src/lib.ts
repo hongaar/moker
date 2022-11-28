@@ -1,9 +1,4 @@
-import {
-  installPlugin,
-  TemplateArgs,
-  TemplateType,
-  writeFile,
-} from "@mokr/core";
+import { installPlugin, PluginType, TemplateArgs, writeFile } from "@mokr/core";
 import { join } from "path";
 
 async function apply({ directory }: TemplateArgs) {
@@ -37,6 +32,6 @@ test("adds 1 + 2 to equal 3", () => {
 }
 
 export const lib = {
-  type: TemplateType.Workspace,
+  type: PluginType.Workspace,
   apply,
 };

@@ -15,12 +15,12 @@
   ],
   "scripts": {
     "start": "node moker.js",
-    "prepublishOnly": "yarn clean && yarn build && cp ../../README.md .",
+    "prepublish": "yarn clean && yarn build && cp ../../README.md .",
     "clean": "rm -rf dist && rm -rf types",
     "build": "yarn clean && tsc",
+    "build:watch": "yarn build && tsc --watch",
     "test": "jest",
-    "watch:build": "tsc --watch",
-    "watch:test": "jest --watch"
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@mokr/core": "workspace:*",

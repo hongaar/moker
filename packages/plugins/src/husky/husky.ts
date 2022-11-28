@@ -61,7 +61,7 @@ async function remove({ directory }: PluginArgs) {
 async function load() {}
 
 export const husky = {
-  type: PluginType.Monorepo,
+  type: PluginType.Repo,
   install,
   remove,
   load,

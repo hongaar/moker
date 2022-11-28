@@ -1,10 +1,12 @@
 import {
   applyTemplate,
   createMonorepo,
+  createRepo,
   DEFAULT_LICENSE,
   DEFAULT_SCOPED,
   DEFAULT_WORKSPACES_DIRECTORY,
   installPlugin,
+  isReadableAndWritableDirectory,
   loadAllPlugins,
   runDependencyQueues,
   task,
@@ -13,25 +15,23 @@ import { command } from "bandersnatch";
 import { resolve } from "node:path";
 
 export const create = command("create")
-  .description("Create a new monorepo")
+  .description("Create a new repo")
   .argument("path", {
-    description: "Monorepo path, basename will be used as the monorepo name.",
-    prompt: "What is the name of your monorepo?",
+    description: "Repo path, basename will be used as the name.",
+    prompt: "What is the name of your repo?",
+  })
+  .option("monorepo", {
+    description: "Create a monorepo instead of a single-purpose repo",
+    type: "boolean",
   })
   .option("template", {
-    description: "Use monorepo template",
+    description: "Use repo template",
     type: "string",
   })
   .option("plugin", {
     description: "Kick-start with this plugin",
     type: "array",
     default: [] as string[],
-  })
-  .option("scoped", {
-    description: "Use scoped packages",
-    boolean: true,
-    prompt: "Do you want to use scoped package names?",
-    default: DEFAULT_SCOPED,
   })
   .option("license", {
     description: "License",
@@ -40,15 +40,30 @@ export const create = command("create")
     default: DEFAULT_LICENSE,
   })
   .option("workspacesDirectory", {
-    description: "Workspaces directory",
-    prompt: "Which directory should we save workspaces to?",
+    description: "Workspaces directory (only used with --monorepo)",
     default: DEFAULT_WORKSPACES_DIRECTORY,
   })
-  .action(async ({ path, template, plugin, ...options }) => {
+  .option("scoped", {
+    description: "Use scoped packages (only used with --monorepo)",
+    boolean: true,
+    default: DEFAULT_SCOPED,
+  })
+  .option("force", {
+    description:
+      "Initialize repo even if path already exists. WARNING: some files may be overwritten!",
+    type: "boolean",
+  })
+  .action(async ({ path, monorepo, template, plugin, force, ...options }) => {
     const directory = resolve(path);
+    const type = monorepo ? "monorepo" : "repo";
+    const initializer = monorepo ? createMonorepo : createRepo;
 
-    await task(`Create new monorepo in ${directory}`, () =>
-      createMonorepo({ directory, ...options })
+    if ((await isReadableAndWritableDirectory({ directory })) && !force) {
+      throw new Error(`${directory} already exists`);
+    }
+
+    await task(`Create new ${type} in ${directory}`, () =>
+      initializer({ directory, ...options })
     );
 
     if (template) {

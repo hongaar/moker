@@ -66,7 +66,7 @@ async function load({ directory }: PluginArgs) {
 }
 
 export const todos = {
-  type: PluginType.Monorepo,
+  type: PluginType.Repo,
   install,
   remove,
   load,
