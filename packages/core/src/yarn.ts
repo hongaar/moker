@@ -28,6 +28,8 @@ const queues = {
 };
 
 export async function initYarnExistingRepo({ directory }: DirOption) {
+  await exec("git", ["init", "--initial-branch", "main"], { cwd: directory });
+
   await exec("yarn", ["set", "version", "latest"], { cwd: directory });
 
   await initYarn({ directory });
