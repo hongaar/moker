@@ -1,3 +1,10 @@
+## [0.5.1](https://github.com/hongaar/moker/compare/v0.5.0...v0.5.1) (2022-11-29)
+
+### Bug Fixes
+
+- init git in existing directory
+  ([4b3ea2b](https://github.com/hongaar/moker/commit/4b3ea2b22784e98393ae782c403f9f6a6e7062f2))
+
 # [0.5.0](https://github.com/hongaar/moker/compare/v0.4.4...v0.5.0) (2022-11-28)
 
 ### Features
