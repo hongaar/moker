@@ -1,4 +1,4 @@
-import { join } from "node:path";
+import { basename, join } from "node:path";
 import { isDirectory, isReadableAndWritableDirectory } from "./directory.js";
 import { hasPackage, Package, writePackage } from "./package.js";
 import { writeReadme } from "./workspace.js";
@@ -35,6 +35,8 @@ export async function createRepo({
   await writePackage({
     directory,
     data: {
+      name: basename(directory),
+      version: "0.0.0",
       license,
       moker: {
         plugins: [],
