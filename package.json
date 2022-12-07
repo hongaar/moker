@@ -47,7 +47,8 @@
     "leasot": "13.2.0",
     "lint-staged": "13.1.0",
     "prettier": "2.8.0",
-    "semantic-release": "19.0.5"
+    "semantic-release": "19.0.5",
+    "semantic-release-yarn": "0.2.1"
   },
   "lint-staged": {
     "*": "prettier --write --ignore-unknown"
