@@ -1,3 +1,10 @@
+## [0.5.2](https://github.com/hongaar/moker/compare/v0.5.1...v0.5.2) (2022-12-07)
+
+### Bug Fixes
+
+- use semantic-release-yarn
+  ([7b542bd](https://github.com/hongaar/moker/commit/7b542bd25d67db88c298cbf09cee00cdc4941757))
+
 ## [0.5.1](https://github.com/hongaar/moker/compare/v0.5.0...v0.5.1) (2022-11-29)
 
 ### Bug Fixes
