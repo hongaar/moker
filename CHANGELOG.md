@@ -1,3 +1,10 @@
+## [0.6.1](https://github.com/hongaar/moker/compare/v0.6.0...v0.6.1) (2022-12-09)
+
+### Bug Fixes
+
+- set moker as main workspace
+  ([ba45502](https://github.com/hongaar/moker/commit/ba455022058b5404db774eeb8a23334513fc1182))
+
 # [0.6.0](https://github.com/hongaar/moker/compare/v0.5.2...v0.6.0) (2022-12-09)
 
 ### Features
