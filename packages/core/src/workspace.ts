@@ -39,13 +39,6 @@ export async function addWorkspace({
       license: pkg.license,
       author: pkg.author,
       repository: pkg.repository,
-      ...(isScoped
-        ? {
-            publishConfig: {
-              access: "public",
-            },
-          }
-        : {}),
       moker: {
         plugins: [],
       },

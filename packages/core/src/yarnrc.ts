@@ -23,6 +23,7 @@ type Yarnrc = {
   // @todo: etc, fix later
 
   nodeLinker: "node-modules" | "pnp" | "pnpm";
+  npmPublishAccess: "public" | "restricted";
 };
 
 const FILENAME = ".yarnrc.yml";
