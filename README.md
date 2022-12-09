@@ -40,23 +40,23 @@ yarn moker add --template cra client
   - [Use plugins](#use-plugins)
   - [Add workspace](#add-workspace)
 - [Available plugins](#available-plugins)
-  - [`dependabot` _monorepo_](#dependabot-_monorepo_)
-  - [`devcontainer` _monorepo_](#devcontainer-_monorepo_)
-  - [`doctoc` _monorepo_](#doctoc-_monorepo_)
-  - [`github-actions` _monorepo_](#github-actions-_monorepo_)
-  - [`husky` _monorepo_](#husky-_monorepo_)
-  - [`jest` _workspace_](#jest-_workspace_)
-  - [`lint-staged` _monorepo_](#lint-staged-_monorepo_)
-  - [`prettier` _monorepo_](#prettier-_monorepo_)
-  - [`semantic-release` _monorepo_](#semantic-release-_monorepo_)
-  - [`todos` _workspace_](#todos-_workspace_)
-  - [`typescript` _workspace_](#typescript-_workspace_)
+  - [`dependabot` _repo_](#dependabot-_repo_)
+  - [`devcontainer` _repo_](#devcontainer-_repo_)
+  - [`doctoc` _repo_](#doctoc-_repo_)
+  - [`github-actions` _repo_](#github-actions-_repo_)
+  - [`husky` _repo_](#husky-_repo_)
+  - [`jest` _repo or workspace_](#jest-_repo-or-workspace_)
+  - [`lint-staged` _repo_](#lint-staged-_repo_)
+  - [`prettier` _repo_](#prettier-_repo_)
+  - [`semantic-release` _repo_](#semantic-release-_repo_)
+  - [`todos` _repo or workspace_](#todos-_repo-or-workspace_)
+  - [`typescript` _repo or workspace_](#typescript-_repo-or-workspace_)
 - [Available templates](#available-templates)
-  - [`bandersnatch` _workspace_](#bandersnatch-_workspace_)
-  - [`common` _monorepo_](#common-_monorepo_)
-  - [`cra` _workspace_](#cra-_workspace_)
-  - [`express` _workspace_](#express-_workspace_)
-  - [`lib` _workspace_](#lib-_workspace_)
+  - [`bandersnatch` _repo or workspace_](#bandersnatch-_repo-or-workspace_)
+  - [`common` _repo_](#common-_repo_)
+  - [`cra` _repo or workspace_](#cra-_repo-or-workspace_)
+  - [`express` _repo or workspace_](#express-_repo-or-workspace_)
+  - [`lib` _repo or workspace_](#lib-_repo-or-workspace_)
 - [Contributing](#contributing)
   - [Roadmap](#roadmap)
   - [Development](#development)
@@ -144,7 +144,7 @@ options.
 
 # Available plugins
 
-## `dependabot` _monorepo_
+## `dependabot` _repo_
 
 This plugin adds a [Dependabot] configuration to your monorepo with an updater
 for NPM packages.
@@ -155,7 +155,7 @@ GitHub Actions workflows.
 [dependabot]:
   https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates
 
-## `devcontainer` _monorepo_
+## `devcontainer` _repo_
 
 This plugin creates a [Development Containers](https://containers.dev)
 configuration using the
@@ -165,14 +165,14 @@ image.
 If you have the `prettier` plugin installed, it will add the
 [Prettier VS Code extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
 
-## `doctoc` _monorepo_
+## `doctoc` _repo_
 
 This plugin adds a script to generate a table of contents for the README using
 [doctoc](https://github.com/thlorenz/doctoc).
 
 If you have the `husky` plugin installed, it will also add a pre-commit hook.
 
-## `github-actions` _monorepo_
+## `github-actions` _repo_
 
 This plugin creates a simple `ci.yml`
 [GitHub Actions](https://github.com/features/actions) workflow.
@@ -190,17 +190,24 @@ repository:
 > 🤓 The workflows will use the `main` branch by default, but it is trivial to
 > change this.
 
-## `husky` _monorepo_
+## `husky` _repo_
 
-This plugin sets up [Husky](https://typicode.github.io/husky/#/) at the monorepo
+This plugin sets up [Husky](https://typicode.github.io/husky/#/) at the repo
 level.
 
-## `jest` _workspace_
+> **Warning**: The `postinstall` script to install Husky automatically is only
+> installed on (private) monorepos. Otherwise, `postinstall` will run when
+> someone installs your package and result in an error.
+>
+> See
+> [Husky docs on installing with Yarn 2](https://typicode.github.io/husky/#/?id=yarn-2)
+
+## `jest` _repo or workspace_
 
 This plugin sets up [Jest](https://jestjs.io) and adds a `test` and `test:watch`
-script to both the workspace and the monorepo.
+script to the repo or both the workspace and the monorepo.
 
-## `lint-staged` _monorepo_
+## `lint-staged` _repo_
 
 This plugin sets up [lint-staged](https://github.com/okonet/lint-staged) at the
 monorepo level.
@@ -211,7 +218,7 @@ staged files using `prettier --write --ignore-unknown`.
 If you have the `husky` plugin installed, this will setup a pre-commit hook to
 run `yarn lint-staged`.
 
-## `prettier` _monorepo_
+## `prettier` _repo_
 
 This plugin sets up [Prettier](https://prettier.io).
 
@@ -225,95 +232,57 @@ This plugin sets up [Prettier](https://prettier.io).
 > always be truncated to match whatever the `printWidth` setting is. This makes
 > it so much easier to read and write markdown files!
 
-## `semantic-release` _monorepo_
-
-⚠️ **This is work in progress**
-
-_Current plan:_
-
-- Move to `yarn npm publish`
-- Set `"private": true` in root package
-- This will cause semantic-release/npm to skip publish step
-- We add exec plugin and use yarn workspaces foreach npm publish
-- We can remove .npmrc file
-- We need to modify .yarnrc.yml / .releaserc.json
-- We can get rid of `"publishConfig"` in workspaces pkg
-- [x] We need to change `prepublishOnly` to `prepublish`
-- Document weird command (esp. JSON string echo)
-- npm whoami fix not needed!
-
-_This may be outdated:_
+## `semantic-release` _repo_
 
 This plugin sets up
 [semantic-release](https://semantic-release.gitbook.io/semantic-release/). It
-uses a workaround so that it can be used in a monorepo, which is to set up a
-`.npmrc` file containing:
+uses the
+[semantic-release-yarn](https://github.com/hongaar/semantic-release-yarn) plugin
+which has support for releasing monorepos.
 
-```ini
-workspaces = true
-workspaces-update = false
-```
-
-This causes both `npm version` and `npm publish` to be run for each monorepo in
-the `semantic-release` context.
-
-Please note that the root repository is not published. Furthermore, make sure
-that the root `package.json` doesn't contain:
-
-```json
-"private": true
-```
-
-Otherwise, the `semantic-release` process will skip the `publish` step.
+Please note that by default the root repository is not published. You can change
+this by setting the `private` property in `package.json` to `false`.
 
 > 🤓 The release configuration will use the `main` branch by default, but it is
 > trivial to change this.
 
-> ⚠️ The semantic-release plugin in our monorepo configuration is currently
-> broken due to an issue with their npm plugin (see [semantic-release/npm#529])
-> [this issue with their npm a]. Take a look at [patch-semantic-commit.js] in
-> this repository for a workaround.
-
-[semantic-release/npm#529]: https://github.com/semantic-release/npm/pull/529
-[patch-semantic-commit.js]:
-  https://github.com/hongaar/moker/blob/main/scripts/patch-semantic-commit.js
-
-## `todos` _workspace_
+## `todos` _repo or workspace_
 
 This plugin adds a script to generate a TODO markdown file from all code
 annotations using [leasot](https://github.com/pgilad/leasot).
 
 If you have the `husky` plugin installed, it will also add a pre-commit hook.
 
-## `typescript` _workspace_
+## `typescript` _repo or workspace_
 
 This plugin sets up [TypeScript](https://www.typescriptlang.org) and adds a
-`build` and `build:watch` script to both the workspace and the monorepo.
+`build` and `build:watch` script to the repo or both the workspace and the
+monorepo.
 
 # Available templates
 
-## `bandersnatch` _workspace_
+## `bandersnatch` _repo or workspace_
 
 Scaffolds a simple [bandersnatch](https://github.com/hongaar/bandersnatch) CLI
 app tool with the [typescript](#typescript-workspace) and
 [jest](#jest-workspace) plugins.
 
-## `common` _monorepo_
+## `common` _repo_
 
 This is the only monorepo template at this point. It simply installs all
 available monorepo plugins.
 
-## `cra` _workspace_
+## `cra` _repo or workspace_
 
 Uses [create-react-app](https://create-react-app.dev/) to scaffold a React.js
 app (web client).
 
-## `express` _workspace_
+## `express` _repo or workspace_
 
 Scaffolds a simple [express](https://expressjs.com) HTTP app with the
 [typescript](#typescript-workspace) and [jest](#jest-workspace) plugins.
 
-## `lib` _workspace_
+## `lib` _repo or workspace_
 
 A plain shared library template with the [typescript](#typescript-workspace) and
 [jest](#jest-workspace) plugins.
@@ -324,12 +293,12 @@ Contributions are very welcome!
 
 ## Roadmap
 
-- [ ] Adapt for non-monorepo use-cases (WIP)
-- [ ] Add LICENSE file to monorepo
+- [ ] Add LICENSE file to repo
 - [ ] Support for `swc`/`esbuild`
 - [ ] A compat lib (which builds cjs and mjs targets)
 - [ ] Blog post / tutorial
 - [ ] Docs for writing custom plugins / templates
+- [x] Adapt for non-monorepo use-cases
 - [x] github-actions plugin
 - [x] devcontainer plugin
 - [x] leasot (todos) plugin

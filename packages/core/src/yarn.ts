@@ -32,7 +32,7 @@ export async function initYarnExistingRepo({ directory }: DirOption) {
 
   await exec("yarn", ["set", "version", "latest"], { cwd: directory });
 
-  await initYarn({ directory });
+  await setupYarn({ directory });
 }
 
 export async function initYarnNewRepo({ directory }: DirOption) {
@@ -40,11 +40,14 @@ export async function initYarnNewRepo({ directory }: DirOption) {
 
   await exec("yarn", ["init", "-2"], { cwd: directory });
 
-  await initYarn({ directory });
+  await setupYarn({ directory });
 }
 
-async function initYarn({ directory }: DirOption) {
-  await writeYarnrc({ directory, data: { nodeLinker: "node-modules" } });
+async function setupYarn({ directory }: DirOption) {
+  await writeYarnrc({
+    directory,
+    data: { nodeLinker: "node-modules", npmPublishAccess: "public" },
+  });
 
   await writeGitignore({ directory, lines: GITIGNORE_LINES, append: false });
 

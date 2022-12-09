@@ -23,14 +23,14 @@
       "doctoc"
     ]
   },
-  "packageManager": "yarn@3.2.4",
+  "packageManager": "yarn@3.3.0",
   "scripts": {
     "start": "node packages/cli/moker.js",
     "build": "yarn workspaces foreach --topological --verbose run build",
     "build:watch": "yarn workspaces foreach --parallel --interlaced run build:watch",
     "test": "yarn workspaces foreach --topological --verbose run test",
     "test:watch": "yarn workspaces foreach --parallel --interlaced run test:watch",
-    "postinstall": "husky install && node scripts/postinstall.js",
+    "postinstall": "husky install",
     "format": "prettier --write --ignore-unknown .",
     "format:check": "prettier --check --ignore-unknown .",
     "doctoc": "doctoc README.md",
@@ -41,14 +41,14 @@
     "@semantic-release/changelog": "6.0.2",
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
-    "@types/prettier": "^2",
+    "@types/prettier": "^2.7.1",
     "doctoc": "2.2.1",
     "husky": "8.0.2",
     "leasot": "13.2.0",
     "lint-staged": "13.1.0",
-    "prettier": "2.8.0",
+    "prettier": "2.8.1",
     "semantic-release": "19.0.5",
-    "semantic-release-yarn": "0.2.1"
+    "semantic-release-yarn": "0.3.0"
   },
   "lint-staged": {
     "*": "prettier --write --ignore-unknown"

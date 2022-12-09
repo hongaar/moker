@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v3
         with:
           node-version: lts/*
@@ -19,5 +21,5 @@ jobs:
       - run: yarn build
       - run: yarn release
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          YARN_NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

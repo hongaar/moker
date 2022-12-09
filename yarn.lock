@@ -736,14 +736,14 @@ __metadata:
   resolution: "@mokr/core@workspace:packages/core"
   dependencies:
     "@types/jest": 29.2.4
-    "@types/node": 18.11.11
-    chalk: 5.1.2
+    "@types/node": 18.11.12
+    chalk: 5.2.0
     deepmerge: 4.2.2
     jest: 29.3.1
     ora: 6.1.2
     pkg-up: ^4.0.0
     ts-jest: 29.0.3
-    typescript: 4.9.3
+    typescript: 4.9.4
     yaml: 2.1.3
   languageName: unknown
   linkType: soft
@@ -753,8 +753,8 @@ __metadata:
   resolution: "@mokr/plugins@workspace:packages/plugins"
   dependencies:
     "@mokr/core": "workspace:*"
-    "@types/node": 18.11.11
-    typescript: 4.9.3
+    "@types/node": 18.11.12
+    typescript: 4.9.4
   languageName: unknown
   linkType: soft
 
@@ -765,14 +765,14 @@ __metadata:
     "@semantic-release/changelog": 6.0.2
     "@semantic-release/exec": 6.0.3
     "@semantic-release/git": 10.0.1
-    "@types/prettier": ^2
+    "@types/prettier": ^2.7.1
     doctoc: 2.2.1
     husky: 8.0.2
     leasot: 13.2.0
     lint-staged: 13.1.0
-    prettier: 2.8.0
+    prettier: 2.8.1
     semantic-release: 19.0.5
-    semantic-release-yarn: 0.2.1
+    semantic-release-yarn: 0.3.0
   languageName: unknown
   linkType: soft
 
@@ -781,8 +781,8 @@ __metadata:
   resolution: "@mokr/templates@workspace:packages/templates"
   dependencies:
     "@mokr/core": "workspace:*"
-    "@types/node": 18.11.11
-    typescript: 4.9.3
+    "@types/node": 18.11.12
+    typescript: 4.9.4
   languageName: unknown
   linkType: soft
 
@@ -1645,10 +1645,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:18.11.11":
+"@types/node@npm:*":
   version: 18.11.11
   resolution: "@types/node@npm:18.11.11"
   checksum: c4b1176a8f1714a3ee3fc2a5e1d568b0cd50209000282db5c68154b3c975952928dbb834ef3a0ce55bd7b345ae29f2cbf4a34635a070294d135a24254231386a
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:18.11.12":
+  version: 18.11.12
+  resolution: "@types/node@npm:18.11.12"
+  checksum: 6c67f0998a9ad8ef0f357fcc0d72841c579576c746cfbac67c9d0229e1cd219d3b96297c2caaeaa4084ba7e9ad112b412e64af4066e522faa0be4ef9ad0a613a
   languageName: node
   linkType: hard
 
@@ -1666,7 +1673,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prettier@npm:^2, @types/prettier@npm:^2.1.5":
+"@types/prettier@npm:^2.1.5, @types/prettier@npm:^2.7.1":
   version: 2.7.1
   resolution: "@types/prettier@npm:2.7.1"
   checksum: 5e3f58e229d6c73b5f5cae2e8f96c1c4a5b5805f83459e17a045ba8e96152b1d38e86b63e3172fb159dac923388699660862b75b2d37e54220805f0e691e26f1
@@ -2349,10 +2356,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:5.1.2, chalk@npm:^5.0.0, chalk@npm:^5.0.1":
-  version: 5.1.2
-  resolution: "chalk@npm:5.1.2"
-  checksum: 804d7485e33531abe45b14e91026ceb5615974a8c04259ab0806f214a7666f6ea03e39ab124f7d5a0c78a83fda89005f236db3c5f10c2abe9ae875f7aa56bcb5
+"chalk@npm:5.2.0":
+  version: 5.2.0
+  resolution: "chalk@npm:5.2.0"
+  checksum: 03d8060277de6cf2fd567dc25fcf770593eb5bb85f460ce443e49255a30ff1242edd0c90a06a03803b0466ff0687a939b41db1757bec987113e83de89a003caa
   languageName: node
   linkType: hard
 
@@ -2374,6 +2381,13 @@ __metadata:
     ansi-styles: ^4.1.0
     supports-color: ^7.1.0
   checksum: fe75c9d5c76a7a98d45495b91b2172fa3b7a09e0cc9370e5c8feb1c567b85c4288e2b3fded7cfdd7359ac28d6b3844feb8b82b8686842e93d23c827c417e83fc
+  languageName: node
+  linkType: hard
+
+"chalk@npm:^5.0.0, chalk@npm:^5.0.1":
+  version: 5.1.2
+  resolution: "chalk@npm:5.1.2"
+  checksum: 804d7485e33531abe45b14e91026ceb5615974a8c04259ab0806f214a7666f6ea03e39ab124f7d5a0c78a83fda89005f236db3c5f10c2abe9ae875f7aa56bcb5
   languageName: node
   linkType: hard
 
@@ -3462,7 +3476,7 @@ __metadata:
 
 "fsevents@patch:fsevents@^2.3.2#~builtin<compat/fsevents>":
   version: 2.3.2
-  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=18f3a7"
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
   dependencies:
     node-gyp: latest
   conditions: os=darwin
@@ -5907,9 +5921,9 @@ __metadata:
     "@mokr/core": "workspace:*"
     "@mokr/plugins": "workspace:*"
     "@mokr/templates": "workspace:*"
-    "@types/node": 18.11.11
+    "@types/node": 18.11.12
     bandersnatch: 1.11.1
-    typescript: 4.9.3
+    typescript: 4.9.4
   bin:
     moker: moker.js
   languageName: unknown
@@ -6971,12 +6985,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.8.0":
-  version: 2.8.0
-  resolution: "prettier@npm:2.8.0"
+"prettier@npm:2.8.1":
+  version: 2.8.1
+  resolution: "prettier@npm:2.8.1"
   bin:
     prettier: bin-prettier.js
-  checksum: 72004ce0cc9bb097daf3e3833f62495768724392c1d5b178dd47372337616e9e50ecbb0804f236596223f7b5eb1bbe69cefc8957dca21112c5777e77ef73a564
+  checksum: 4f21a0f1269f76fb36f54e9a8a1ea4c11e27478958bf860661fb4b6d7ac69aac1581f8724fa98ea3585e56d42a2ea317a17ff6e3324f40cb11ff9e20b73785cc
   languageName: node
   linkType: hard
 
@@ -7414,7 +7428,7 @@ __metadata:
 
 "resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>":
   version: 1.22.1
-  resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=07638b"
+  resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=c3c19d"
   dependencies:
     is-core-module: ^2.9.0
     path-parse: ^1.0.7
@@ -7523,9 +7537,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semantic-release-yarn@npm:0.2.1":
-  version: 0.2.1
-  resolution: "semantic-release-yarn@npm:0.2.1"
+"semantic-release-yarn@npm:0.3.0":
+  version: 0.3.0
+  resolution: "semantic-release-yarn@npm:0.3.0"
   dependencies:
     "@semantic-release/error": ^3.0.0
     aggregate-error: ^4.0.1
@@ -7541,7 +7555,7 @@ __metadata:
     semver: ^7.3.8
   peerDependencies:
     semantic-release: ">=19.0.0"
-  checksum: 9d1a753054b26d92f0fcc08fdecedb571209ab00394207ad52604406d33c7965b081ed1602c7ec2c838d7bc369cae2fd5b45736a429cebecfd38340ebb8c7bca
+  checksum: 551628d1e616389cc79bbd6ff0ee6cbef7c036677df536e84bc52bd2bba26407baa91024be0feb8154cd4fa5f25e5bbad5ca463861b695c5aa11e22caf9c79d5
   languageName: node
   linkType: hard
 
@@ -8314,23 +8328,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:4.9.3":
-  version: 4.9.3
-  resolution: "typescript@npm:4.9.3"
+"typescript@npm:4.9.4":
+  version: 4.9.4
+  resolution: "typescript@npm:4.9.4"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 17b8f816050b412403e38d48eef0e893deb6be522d6dc7caf105e54a72e34daf6835c447735fd2b28b66784e72bfbf87f627abb4818a8e43d1fa8106396128dc
+  checksum: e782fb9e0031cb258a80000f6c13530288c6d63f1177ed43f770533fdc15740d271554cdae86701c1dd2c83b082cea808b07e97fd68b38a172a83dbf9e0d0ef9
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.9.3#~builtin<compat/typescript>":
-  version: 4.9.3
-  resolution: "typescript@patch:typescript@npm%3A4.9.3#~builtin<compat/typescript>::version=4.9.3&hash=701156"
+"typescript@patch:typescript@4.9.4#~builtin<compat/typescript>":
+  version: 4.9.4
+  resolution: "typescript@patch:typescript@npm%3A4.9.4#~builtin<compat/typescript>::version=4.9.4&hash=d73830"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: ef65c22622d864497d0a0c5db693523329b3284c15fe632e93ad9aa059e8dc38ef3bd767d6f26b1e5ecf9446f49bd0f6c4e5714a2eeaf352805dc002479843d1
+  checksum: 37f6e2c3c5e2aa5934b85b0fddbf32eeac8b1bacf3a5b51d01946936d03f5377fe86255d4e5a4ae628fd0cd553386355ad362c57f13b4635064400f3e8e05b9d
   languageName: node
   linkType: hard
 

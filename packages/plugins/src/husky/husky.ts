@@ -2,6 +2,7 @@ import {
   enqueueRemoveDependency,
   exec,
   installDependency,
+  isMonorepo,
   isReadableAndWritableFile,
   logWarning,
   PluginArgs,
@@ -24,14 +25,16 @@ async function install({ directory }: PluginArgs) {
 
   await exec("yarn", ["husky", "install"], { cwd: directory });
 
-  await writePackage({
-    directory,
-    data: {
-      scripts: {
-        postinstall: "husky install",
+  if (await isMonorepo({ directory })) {
+    await writePackage({
+      directory,
+      data: {
+        scripts: {
+          postinstall: "husky install",
+        },
       },
-    },
-  });
+    });
+  }
 }
 
 async function remove({ directory }: PluginArgs) {

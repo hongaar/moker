@@ -76,7 +76,7 @@ async function install({ directory }: PluginArgs) {
         prepublish: "yarn build",
         clean: "rm -rf dist && rm -rf types",
         build: "yarn clean && tsc",
-        "build:watch": "yarn build && tsc --watch",
+        "build:watch": "tsc --watch",
       },
     },
   });

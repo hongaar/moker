@@ -1,11 +1,9 @@
 import {
   enqueueInstallDependency,
   enqueueRemoveDependency,
-  logInfo,
   PluginArgs,
   PluginType,
   removeFile,
-  writeFile,
   writeJson,
   writePackage,
 } from "@mokr/core";
@@ -18,7 +16,7 @@ const CONFIG = {
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
-    "@semantic-release/npm",
+    "semantic-release-yarn",
     "@semantic-release/github",
     [
       "@semantic-release/git",
@@ -31,12 +29,6 @@ const CONFIG = {
   ],
 };
 
-const NPMRC_FILENAME = ".npmrc";
-const NPMRC = `
-workspaces = true
-workspaces-update = false
-`;
-
 async function install({ directory }: PluginArgs) {
   enqueueInstallDependency({
     directory,
@@ -44,6 +36,7 @@ async function install({ directory }: PluginArgs) {
       "@semantic-release/changelog",
       "@semantic-release/git",
       "semantic-release",
+      "semantic-release-yarn",
     ],
     dev: true,
   });
@@ -51,11 +44,6 @@ async function install({ directory }: PluginArgs) {
   await writeJson({
     path: join(directory, CONFIG_FILENAME),
     data: CONFIG,
-  });
-
-  await writeFile({
-    path: join(directory, NPMRC_FILENAME),
-    contents: NPMRC,
   });
 
   await writePackage({
@@ -66,10 +54,6 @@ async function install({ directory }: PluginArgs) {
       },
     },
   });
-
-  logInfo(
-    `semantic-release in our monorepo configuration is currently broken due to https://github.com/semantic-release/npm/pull/529`
-  );
 }
 
 async function remove({ directory }: PluginArgs) {
@@ -79,15 +63,12 @@ async function remove({ directory }: PluginArgs) {
       "@semantic-release/changelog",
       "@semantic-release/git",
       "semantic-release",
+      "semantic-release-yarn",
     ],
   });
 
   await removeFile({
     path: join(directory, CONFIG_FILENAME),
-  });
-
-  await removeFile({
-    path: join(directory, NPMRC_FILENAME),
   });
 }
 
