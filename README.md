@@ -1,6 +1,6 @@
 # moker [![npm](https://img.shields.io/npm/v/moker)](https://www.npmjs.com/package/moker)
 
-**No more struggles setting up new JavaScript repository. Kick-start
+**No more struggles setting up a new JavaScript repository. Kick-start
 single-purpose repos, monorepos, monorepo workspaces and common tooling:**
 
 ```bash
@@ -24,10 +24,10 @@ yarn moker add --template cra client
 - 🧬 Workspace templates for a shared library, React app, API or CLI
 - ⚡ Extensible, bring your own plugins
 
-> 🤓 The core plugins make some assumptions you may not agree with. If that's
-> the case, this tool is probably not for you. The defaults used are documented
-> below and marked with a nerd-face emoji so you should be able to get a clear
-> picture of what to expect.
+> 🤓 _Default_: The core plugins make some assumptions you may not agree with.
+> If that's the case, this tool is probably not for you. The defaults used are
+> documented below and marked with a nerd-face emoji so you should be able to
+> get a clear picture of what to expect.
 
 ## Table of contents
 
@@ -89,11 +89,11 @@ yarn dlx moker create --monorepo my-repo
 
 This will initialize a new monorepo in the `my-repo` directory.
 
-> ⚠️ Note that we use `yarn dlx moker` to create a new monorepo. Once we are
-> inside our monorepo, we can simply use `yarn moker` to execute commands.
+> **Note**: Note that we use `yarn dlx moker` to create a new monorepo. Once we
+> are inside our monorepo, we can simply use `yarn moker` to execute commands.
 
-> 🤓 The monorepo is initiated with Yarn without Zero-Installs and in legacy
-> `nodeLinker: node-modules` mode because a lot of packages are not yet
+> 🤓 _Default_: The monorepo is initiated with Yarn without Zero-Installs and in
+> legacy `nodeLinker: node-modules` mode because a lot of packages are not yet
 > compatible with PnP or require a workaround.
 
 ## Use plugins
@@ -112,7 +112,7 @@ which plugins are added does not matter.
 
 See the section [available plugins](#available-plugins) for a list of options.
 
-> 💡 To quickly get started with the most common plugins, use a monorepo
+> **Note**: To quickly get started with the most common plugins, use a monorepo
 > template like so:
 >
 > ```bash
@@ -187,8 +187,8 @@ repository:
 - `GH_TOKEN`: a GitHub token with read/write access to your repository
 - `NPM_TOKEN`: an NPM token with publish access to your packages
 
-> 🤓 The workflows will use the `main` branch by default, but it is trivial to
-> change this.
+> 🤓 _Default_: The workflows will use the `main` branch by default, but it is
+> trivial to change this.
 
 ## `husky` _repo_
 
@@ -222,7 +222,7 @@ run `yarn lint-staged`.
 
 This plugin sets up [Prettier](https://prettier.io).
 
-> 🤓 Prettier is installed with this configuration:
+> 🤓 _Default_: Prettier is installed with this configuration:
 >
 > ```yaml
 > proseWrap: always
@@ -243,8 +243,8 @@ which has support for releasing monorepos.
 Please note that by default the root repository is not published. You can change
 this by setting the `private` property in `package.json` to `false`.
 
-> 🤓 The release configuration will use the `main` branch by default, but it is
-> trivial to change this.
+> 🤓 _Default_: The release configuration will use the `main` branch by default,
+> but it is trivial to change this.
 
 ## `todos` _repo or workspace_
 
