@@ -1,6 +1,6 @@
 {
   "name": "@mokr/plugins",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "description": "Moker plugins",
   "repository": "https://github.com/hongaar/moker",
   "publishConfig": {

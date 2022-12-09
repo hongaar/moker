@@ -1,3 +1,11 @@
+# [0.6.0](https://github.com/hongaar/moker/compare/v0.5.2...v0.6.0) (2022-12-09)
+
+### Features
+
+- semantic-release use yarn plugin
+  ([#91](https://github.com/hongaar/moker/issues/91))
+  ([a246dd0](https://github.com/hongaar/moker/commit/a246dd01b3cc7eb026b4e0bea02fcbbb17d13a99))
+
 ## [0.5.2](https://github.com/hongaar/moker/compare/v0.5.1...v0.5.2) (2022-12-07)
 
 ### Bug Fixes
