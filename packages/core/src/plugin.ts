@@ -113,13 +113,10 @@ export async function validateType({
 }
 
 export async function installPlugin({ directory, name }: PluginOptions) {
-  if (await hasPlugin({ directory, name })) {
-    throw new Error(`Plugin ${name} is already installed`);
-  }
-
   const plugin = await importPlugin({ directory, name });
 
   await plugin.install({ directory });
+
   await writePackage({
     directory,
     data: {
@@ -138,6 +135,7 @@ export async function removePlugin({ directory, name }: PluginOptions) {
   const plugin = await importPlugin({ directory, name });
 
   await plugin.remove({ directory });
+
   await updatePackage({
     directory,
     merge: (existingData) => ({

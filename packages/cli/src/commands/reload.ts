@@ -3,7 +3,7 @@ import { command } from "bandersnatch";
 
 export const reload = command("reload")
   .hidden()
-  .description("Reload plugins in monorepo or workspace")
+  .description("Reload plugins in repo or workspace")
   .option("cwd", {
     description: "Directory to use as the current working directory",
     default: process.cwd(),

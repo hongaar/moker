@@ -175,3 +175,16 @@ export async function runDependencyQueues({ directory }: DirOption) {
     queues.remove.set(directory, new Set());
   }
 }
+
+export async function listWorkspaces({ directory }: DirOption) {
+  const { stdout } = await exec("yarn", ["workspaces", "list", "--json"], {
+    cwd: directory,
+  });
+  const workspaces: { location: string; name: string }[] = [];
+
+  for (const line of stdout.split("\n").filter((item) => item)) {
+    workspaces.push(JSON.parse(line.trim()));
+  }
+
+  return workspaces;
+}

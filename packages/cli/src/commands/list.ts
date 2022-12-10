@@ -1,4 +1,4 @@
-import { getPlugins } from "@mokr/core";
+import { getPlugins, listWorkspaces } from "@mokr/core";
 import { command } from "bandersnatch";
 
 export const list = command("list")
@@ -9,9 +9,16 @@ export const list = command("list")
   })
   .action(async ({ cwd }) => {
     const plugins = await getPlugins({ directory: cwd });
+    const workspaces = await listWorkspaces({ directory: cwd });
 
-    console.log(`Plugins: ${plugins.join(", ")}`);
+    console.log(
+      `Plugins:
+${plugins.map((plugin) => `- ${plugin}\n`).join("")}`
+    );
 
     // @todo: list workspaces using https://yarnpkg.com/cli/workspaces/list
-    console.log(`Workspaces: ...`);
+    console.log(
+      `Workspaces:
+${workspaces.map(({ location, name }) => `- ${name} (${location})\n`).join("")}`
+    );
   });

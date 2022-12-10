@@ -1,11 +1,10 @@
-import deepmerge from "deepmerge";
-
 import { isReadableAndWritableFile, readFile, writeFile } from "./file.js";
 import {
+  deepmerge,
   isPlainObject,
   JSONValue,
   StringableJSONValue,
-} from "./utils/types.js";
+} from "./utils/index.js";
 
 export async function readJson<T extends JSONValue>({
   path,

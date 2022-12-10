@@ -10,7 +10,7 @@ import {
 import { command } from "bandersnatch";
 
 export const add = command("add")
-  .description("Add a workspace to the monorepo")
+  .description("Add a workspace to a monorepo")
   .argument("name", {
     description: "Name of the workspace",
     prompt: true,
