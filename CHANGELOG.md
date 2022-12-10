@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/hongaar/moker/compare/v0.6.1...v0.7.0) (2022-12-10)
+
+### Features
+
+- reload option for use command
+  ([fd7bfa3](https://github.com/hongaar/moker/commit/fd7bfa396ad1b435226cd21c2b9262c8bffcd347))
+
 ## [0.6.1](https://github.com/hongaar/moker/compare/v0.6.0...v0.6.1) (2022-12-09)
 
 ### Bug Fixes
