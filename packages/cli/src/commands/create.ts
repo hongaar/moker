@@ -79,5 +79,6 @@ export const create = command("create")
     }
 
     await task(`Load plugins`, () => loadAllPlugins({ directory }));
+
     await task(`Update dependencies`, () => runDependencyQueues({ directory }));
   });

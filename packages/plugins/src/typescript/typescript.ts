@@ -73,10 +73,10 @@ async function install({ directory }: PluginArgs) {
       types: "types/index.d.ts",
       files: ["dist", "types"],
       scripts: {
-        prepublish: "yarn build",
         clean: "rm -rf dist && rm -rf types",
         build: "yarn clean && tsc",
         "build:watch": "tsc --watch",
+        prepublish: "yarn build",
       },
     },
   });

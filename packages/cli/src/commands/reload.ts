@@ -1,5 +1,6 @@
 import { loadAllPlugins, runDependencyQueues, task } from "@mokr/core";
 import { command } from "bandersnatch";
+import { resolve } from "node:path";
 
 export const reload = command("reload")
   .hidden()
@@ -9,7 +10,10 @@ export const reload = command("reload")
     default: process.cwd(),
   })
   .action(async ({ cwd }) => {
-    await task(`Load plugins`, () => loadAllPlugins({ directory: cwd }));
+    const directory = resolve(cwd);
+
+    await task(`Load plugins`, () => loadAllPlugins({ directory }));
+
     await task(`Update dependencies`, () =>
       runDependencyQueues({ directory: cwd })
     );

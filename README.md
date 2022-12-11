@@ -57,6 +57,10 @@ yarn moker add --template cra client
   - [`cra` _repo or workspace_](#cra-_repo-or-workspace_)
   - [`express` _repo or workspace_](#express-_repo-or-workspace_)
   - [`lib` _repo or workspace_](#lib-_repo-or-workspace_)
+- [Commands](#commands)
+  - [`create`](#create)
+  - [`use`](#use)
+  - [`add`](#add)
 - [Contributing](#contributing)
   - [Roadmap](#roadmap)
   - [Development](#development)
@@ -286,6 +290,14 @@ Scaffolds a simple [express](https://expressjs.com) HTTP app with the
 
 A plain shared library template with the [typescript](#typescript-workspace) and
 [jest](#jest-workspace) plugins.
+
+# Commands
+
+## `create`
+
+## `use`
+
+## `add`
 
 # Contributing
 

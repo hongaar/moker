@@ -5,6 +5,7 @@ import {
   task,
 } from "@mokr/core";
 import { command } from "bandersnatch";
+import { resolve } from "node:path";
 
 export const remove = command("plugin")
   .description("Remove a plugin from the monorepo or workspace")
@@ -17,14 +18,14 @@ export const remove = command("plugin")
     default: process.cwd(),
   })
   .action(async ({ name, cwd }) => {
+    const directory = resolve(cwd);
+
     for (const pluginName of name) {
       await task(`Remove plugin ${pluginName}`, () =>
-        removePlugin({ directory: cwd, name: pluginName })
+        removePlugin({ directory, name: pluginName })
       );
     }
 
-    await task(`Load plugins`, () => loadAllPlugins({ directory: cwd }));
-    await task(`Update dependencies`, () =>
-      runDependencyQueues({ directory: cwd })
-    );
+    await task(`Load plugins`, () => loadAllPlugins({ directory }));
+    await task(`Update dependencies`, () => runDependencyQueues({ directory }));
   });

@@ -8,6 +8,7 @@ import {
   task,
 } from "@mokr/core";
 import { command } from "bandersnatch";
+import { resolve } from "node:path";
 
 export const add = command("add")
   .description("Add a workspace to a monorepo")
@@ -30,14 +31,16 @@ export const add = command("add")
     default: process.cwd(),
   })
   .action(async ({ name, template, plugin, cwd }) => {
-    if (!(await isMonorepo({ directory: cwd }))) {
+    const directory = resolve(cwd);
+
+    if (!(await isMonorepo({ directory }))) {
       throw new Error("Execute this command from within a monorepo");
     }
 
     for (const workspaceName of name) {
       const workspaceDirectory = await task(
         `Add workspace ${workspaceName}`,
-        () => addWorkspace({ directory: cwd, name: workspaceName })
+        () => addWorkspace({ directory, name: workspaceName })
       );
 
       if (template) {
@@ -55,17 +58,9 @@ export const add = command("add")
       await task(`Load plugins`, () =>
         loadAllPlugins({ directory: workspaceDirectory })
       );
+
       await task(`Update dependencies`, () =>
         runDependencyQueues({ directory: workspaceDirectory })
       );
     }
-
-    // await asyncForEach(name, async (name) => {
-    //   const directory = path.join(monorepo.directory, "packages", name);
-    //   const spinner = ora(`Creating workspace ${name}...`).start();
-    //   await new Workspace(monorepo, directory).create(
-    //     workspace[template as keyof typeof workspace]
-    //   );
-    //   spinner.succeed(`Created workspace ${name}`);
-    // });
   });
