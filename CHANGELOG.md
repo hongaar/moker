@@ -1,3 +1,10 @@
+# [0.8.0](https://github.com/hongaar/moker/compare/v0.7.0...v0.8.0) (2022-12-11)
+
+### Features
+
+- reinstall ([#92](https://github.com/hongaar/moker/issues/92))
+  ([dc38447](https://github.com/hongaar/moker/commit/dc3844752824e94fca25f3dda0f98803582de4da))
+
 # [0.7.0](https://github.com/hongaar/moker/compare/v0.6.1...v0.7.0) (2022-12-10)
 
 ### Features
