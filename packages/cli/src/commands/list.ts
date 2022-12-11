@@ -1,5 +1,6 @@
-import { getPlugins, listWorkspaces } from "@mokr/core";
+import { getPlugins, getWorkspaces } from "@mokr/core";
 import { command } from "bandersnatch";
+import { resolve } from "node:path";
 
 export const list = command("list")
   .description("List plugins and workspaces in a monorepo")
@@ -8,15 +9,16 @@ export const list = command("list")
     default: process.cwd(),
   })
   .action(async ({ cwd }) => {
-    const plugins = await getPlugins({ directory: cwd });
-    const workspaces = await listWorkspaces({ directory: cwd });
+    const directory = resolve(cwd);
+
+    const plugins = await getPlugins({ directory });
+    const workspaces = await getWorkspaces({ directory });
 
     console.log(
       `Plugins:
 ${plugins.map((plugin) => `- ${plugin}\n`).join("")}`
     );
 
-    // @todo: list workspaces using https://yarnpkg.com/cli/workspaces/list
     console.log(
       `Workspaces:
 ${workspaces.map(({ location, name }) => `- ${name} (${location})\n`).join("")}`

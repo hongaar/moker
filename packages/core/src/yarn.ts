@@ -176,7 +176,7 @@ export async function runDependencyQueues({ directory }: DirOption) {
   }
 }
 
-export async function listWorkspaces({ directory }: DirOption) {
+export async function getWorkspaces({ directory }: DirOption) {
   const { stdout } = await exec("yarn", ["workspaces", "list", "--json"], {
     cwd: directory,
   });

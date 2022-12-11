@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "start": "node moker.js",
-    "prepublish": "yarn clean && yarn build && cp ../../README.md .",
+    "prepublish": "yarn build && cp ../../README.md .",
     "clean": "rm -rf dist && rm -rf types",
     "build": "yarn clean && tsc",
     "build:watch": "tsc --watch"
@@ -27,7 +27,12 @@
     "bandersnatch": "1.11.1"
   },
   "devDependencies": {
-    "@types/node": "18.11.12",
+    "@types/node": "18.11.13",
     "typescript": "4.9.4"
+  },
+  "moker": {
+    "plugins": [
+      "typescript"
+    ]
   }
 }

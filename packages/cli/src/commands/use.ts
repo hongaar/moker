@@ -1,14 +1,11 @@
-import {
-  hasPlugin,
-  installPlugin,
-  loadAllPlugins,
-  runDependencyQueues,
-  task,
-} from "@mokr/core";
+import { hasPlugin, installPlugin, logWarning, task } from "@mokr/core";
 import { command } from "bandersnatch";
+import { resolve } from "node:path";
+import { REINSTALL_WARNING } from "../constants.js";
+import { format, loadPlugins, updateDependencies } from "../tasks.js";
 
 export const use = command("use")
-  .description("Add plugin to monorepo or workspace")
+  .description("Install plugin in repo or workspace")
   .argument("plugin", {
     description: "Plugin name",
     variadic: true,
@@ -22,18 +19,25 @@ export const use = command("use")
     default: process.cwd(),
   })
   .action(async ({ plugin, reinstall, cwd }) => {
+    const directory = resolve(cwd);
+
     for (const name of plugin) {
       await task(`Add plugin ${name}`, async () => {
-        if (!reinstall && (await hasPlugin({ directory: cwd, name }))) {
+        if (!reinstall && (await hasPlugin({ directory, name }))) {
           throw new Error(`Plugin ${name} is already installed`);
         }
 
-        await installPlugin({ directory: cwd, name });
+        await installPlugin({ directory, name });
       });
     }
 
-    await task(`Load plugins`, () => loadAllPlugins({ directory: cwd }));
-    await task(`Update dependencies`, () =>
-      runDependencyQueues({ directory: cwd })
-    );
+    await loadPlugins({ directory });
+
+    await updateDependencies({ directory });
+
+    await format({ directory });
+
+    if (reinstall) {
+      logWarning(REINSTALL_WARNING);
+    }
   });

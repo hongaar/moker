@@ -1,5 +1,6 @@
-import { loadAllPlugins, runDependencyQueues, task } from "@mokr/core";
 import { command } from "bandersnatch";
+import { resolve } from "node:path";
+import { format, loadPlugins, updateDependencies } from "../tasks.js";
 
 export const reload = command("reload")
   .hidden()
@@ -9,8 +10,11 @@ export const reload = command("reload")
     default: process.cwd(),
   })
   .action(async ({ cwd }) => {
-    await task(`Load plugins`, () => loadAllPlugins({ directory: cwd }));
-    await task(`Update dependencies`, () =>
-      runDependencyQueues({ directory: cwd })
-    );
+    const directory = resolve(cwd);
+
+    await loadPlugins({ directory });
+
+    await updateDependencies({ directory });
+
+    await format({ directory });
   });
