@@ -1,14 +1,12 @@
-import {
-  addWorkspace,
-  applyTemplate,
-  installPlugin,
-  isMonorepo,
-  loadAllPlugins,
-  runDependencyQueues,
-  task,
-} from "@mokr/core";
+import { addWorkspace, applyTemplate, isMonorepo, task } from "@mokr/core";
 import { command } from "bandersnatch";
 import { resolve } from "node:path";
+import {
+  addPlugin,
+  format,
+  loadPlugins,
+  updateDependencies,
+} from "../tasks.js";
 
 export const add = command("add")
   .description("Add a workspace to a monorepo")
@@ -50,17 +48,13 @@ export const add = command("add")
       }
 
       for (const name of plugin) {
-        await task(`Add plugin ${name}`, () =>
-          installPlugin({ directory: workspaceDirectory, name })
-        );
+        await addPlugin({ directory: workspaceDirectory, name });
       }
 
-      await task(`Load plugins`, () =>
-        loadAllPlugins({ directory: workspaceDirectory })
-      );
+      await loadPlugins({ directory: workspaceDirectory });
 
-      await task(`Update dependencies`, () =>
-        runDependencyQueues({ directory: workspaceDirectory })
-      );
+      await updateDependencies({ directory: workspaceDirectory });
     }
+
+    await format({ directory });
   });

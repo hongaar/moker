@@ -1,14 +1,8 @@
-import {
-  hasPlugin,
-  installPlugin,
-  loadAllPlugins,
-  logWarning,
-  runDependencyQueues,
-  task,
-} from "@mokr/core";
+import { hasPlugin, installPlugin, logWarning, task } from "@mokr/core";
 import { command } from "bandersnatch";
 import { resolve } from "node:path";
 import { REINSTALL_WARNING } from "../constants.js";
+import { format, loadPlugins, updateDependencies } from "../tasks.js";
 
 export const use = command("use")
   .description("Install plugin in repo or workspace")
@@ -37,9 +31,11 @@ export const use = command("use")
       });
     }
 
-    await task(`Load plugins`, () => loadAllPlugins({ directory }));
+    await loadPlugins({ directory });
 
-    await task(`Update dependencies`, () => runDependencyQueues({ directory }));
+    await updateDependencies({ directory });
+
+    await format({ directory });
 
     if (reinstall) {
       logWarning(REINSTALL_WARNING);

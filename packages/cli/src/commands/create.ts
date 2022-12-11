@@ -5,14 +5,17 @@ import {
   DEFAULT_LICENSE,
   DEFAULT_SCOPED,
   DEFAULT_WORKSPACES_DIRECTORY,
-  installPlugin,
   isReadableAndWritableDirectory,
-  loadAllPlugins,
-  runDependencyQueues,
   task,
 } from "@mokr/core";
 import { command } from "bandersnatch";
 import { resolve } from "node:path";
+import {
+  addPlugin,
+  format,
+  loadPlugins,
+  updateDependencies,
+} from "../tasks.js";
 
 export const create = command("create")
   .description("Create a new repo")
@@ -73,12 +76,12 @@ export const create = command("create")
     }
 
     for (const name of plugin) {
-      await task(`Add plugin ${name}`, () =>
-        installPlugin({ directory, name })
-      );
+      await addPlugin({ directory, name });
     }
 
-    await task(`Load plugins`, () => loadAllPlugins({ directory }));
+    await loadPlugins({ directory });
 
-    await task(`Update dependencies`, () => runDependencyQueues({ directory }));
+    await updateDependencies({ directory });
+
+    await format({ directory });
   });

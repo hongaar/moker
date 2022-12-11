@@ -58,9 +58,6 @@ yarn moker add --template cra client
   - [`express` _repo or workspace_](#express-_repo-or-workspace_)
   - [`lib` _repo or workspace_](#lib-_repo-or-workspace_)
 - [Commands](#commands)
-  - [`create`](#create)
-  - [`use`](#use)
-  - [`add`](#add)
 - [Contributing](#contributing)
   - [Roadmap](#roadmap)
   - [Development](#development)
@@ -293,11 +290,7 @@ A plain shared library template with the [typescript](#typescript-workspace) and
 
 # Commands
 
-## `create`
-
-## `use`
-
-## `add`
+See `moker --help` for a list of available commands.
 
 # Contributing
 

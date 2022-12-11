@@ -5,12 +5,12 @@ import {
   isMonorepo,
   loadAllPlugins,
   logWarning,
-  runDependencyQueues,
   task,
 } from "@mokr/core";
 import { command } from "bandersnatch";
 import { resolve } from "node:path";
 import { REINSTALL_WARNING } from "../constants.js";
+import { format, updateDependencies } from "../tasks.js";
 
 export const reinstall = command("reinstall")
   .hidden()
@@ -42,6 +42,11 @@ export const reinstall = command("reinstall")
         const workspaceDirectory = resolve(directory, workspace.location);
         const plugins = await getPlugins({ directory: workspaceDirectory });
 
+        // Skip root
+        if (workspaceDirectory === directory) {
+          continue;
+        }
+
         for (const name of plugins) {
           await task(
             `Reinstall plugin ${name} of ${workspace.name}`,
@@ -57,7 +62,9 @@ export const reinstall = command("reinstall")
       }
     }
 
-    await task(`Update dependencies`, () => runDependencyQueues({ directory }));
+    await updateDependencies({ directory });
+
+    await format({ directory });
 
     logWarning(REINSTALL_WARNING);
   });

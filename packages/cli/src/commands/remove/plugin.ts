@@ -1,11 +1,7 @@
-import {
-  loadAllPlugins,
-  removePlugin,
-  runDependencyQueues,
-  task,
-} from "@mokr/core";
+import { removePlugin, task } from "@mokr/core";
 import { command } from "bandersnatch";
 import { resolve } from "node:path";
+import { format, loadPlugins, updateDependencies } from "../../tasks.js";
 
 export const remove = command("plugin")
   .description("Remove a plugin from the monorepo or workspace")
@@ -26,6 +22,9 @@ export const remove = command("plugin")
       );
     }
 
-    await task(`Load plugins`, () => loadAllPlugins({ directory }));
-    await task(`Update dependencies`, () => runDependencyQueues({ directory }));
+    await loadPlugins({ directory });
+
+    await updateDependencies({ directory });
+
+    await format({ directory });
   });
