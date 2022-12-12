@@ -2,40 +2,28 @@
   "name": "@mokr/root",
   "private": true,
   "description": "Moker root package (dummy)",
-  "author": "joram@vandenboezem.nl",
   "repository": "https://github.com/hongaar/moker",
   "license": "MIT",
+  "author": "joram@vandenboezem.nl",
   "type": "module",
   "workspaces": [
     "packages/*"
   ],
-  "moker": {
-    "scoped": true,
-    "plugins": [
-      "husky",
-      "lint-staged",
-      "prettier",
-      "semantic-release",
-      "github-actions",
-      "devcontainer",
-      "dependabot",
-      "todos",
-      "doctoc"
-    ]
-  },
-  "packageManager": "yarn@3.3.0",
   "scripts": {
-    "start": "node packages/cli/moker.js",
     "build": "yarn workspaces foreach --topological --verbose run build",
     "build:watch": "yarn workspaces foreach --parallel --interlaced run build:watch",
-    "test": "yarn workspaces foreach --topological --verbose run test",
-    "test:watch": "yarn workspaces foreach --parallel --interlaced run test:watch",
-    "postinstall": "husky install",
+    "doctoc": "doctoc README.md",
     "format": "prettier --write --ignore-unknown .",
     "format:check": "prettier --check --ignore-unknown .",
-    "doctoc": "doctoc README.md",
-    "todos": "leasot --exit-nicely --reporter markdown --ignore \"**/node_modules\" \"**/*.ts\" > TODO.md",
-    "release": "semantic-release"
+    "postinstall": "husky install",
+    "release": "semantic-release",
+    "start": "node packages/cli/moker.js",
+    "test": "yarn workspaces foreach --topological --verbose run test",
+    "test:watch": "yarn workspaces foreach --parallel --interlaced run test:watch",
+    "todos": "leasot --exit-nicely --reporter markdown --ignore \"**/node_modules\" \"**/*.ts\" > TODO.md"
+  },
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown"
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.2",
@@ -50,7 +38,19 @@
     "semantic-release": "19.0.5",
     "semantic-release-yarn": "0.3.0"
   },
-  "lint-staged": {
-    "*": "prettier --write --ignore-unknown"
+  "packageManager": "yarn@3.3.0",
+  "moker": {
+    "scoped": true,
+    "plugins": [
+      "husky",
+      "lint-staged",
+      "prettier",
+      "semantic-release",
+      "github-actions",
+      "devcontainer",
+      "dependabot",
+      "todos",
+      "doctoc"
+    ]
   }
 }
