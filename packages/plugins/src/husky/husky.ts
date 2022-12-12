@@ -4,13 +4,13 @@ import {
   installDependency,
   isMonorepo,
   isReadableAndWritableFile,
-  logWarning,
   PluginArgs,
   PluginType,
   readFile,
   removeDirectory,
   removeFile,
   updatePackage,
+  warning,
   writeFile,
   writePackage,
 } from "@mokr/core";
@@ -44,7 +44,7 @@ async function remove({ directory }: PluginArgs) {
     directory,
     merge: (existingData) => {
       if (existingData.scripts?.["postinstall"] !== "husky install") {
-        logWarning(
+        warning(
           "Can't automatically remove 'husky install' from package.json, please manually review the 'postinstall' script."
         );
         return existingData;

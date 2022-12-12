@@ -3,7 +3,7 @@ import ora from "ora";
 
 type Log = {
   message: string;
-  type: "info" | "warning";
+  type: "debug" | "info" | "warning";
 };
 
 let messages: Log[];
@@ -14,20 +14,30 @@ function resetLog() {
 
 resetLog();
 
-export function log(message: string, type: "info" | "warning" = "info") {
+export function log(message: string, type: Log["type"] = "info") {
   messages.push({ message, type });
 }
 
-export function logInfo(message: string) {
+export function debug(message: string) {
+  if (process.env["DEBUG"]) {
+    log(message, "debug");
+  }
+}
+
+export function info(message: string) {
   log(message, "info");
 }
 
-export function logWarning(message: string) {
+export function warning(message: string) {
   log(message, "warning");
 }
 
 export function writeInfo(message: string) {
   return console.log(chalk.blue(message));
+}
+
+export function writeDebug(message: string) {
+  return console.debug(chalk.gray(message));
 }
 
 export function writeWarning(message: string) {
@@ -38,6 +48,17 @@ export function writeError(message: string) {
   return console.error(chalk.bgRed.white(message));
 }
 
+export async function flushLogs() {
+  for (const { message, type } of messages) {
+    type === "warning"
+      ? writeWarning(message)
+      : type === "debug"
+      ? writeDebug(message)
+      : writeInfo(message);
+  }
+  resetLog();
+}
+
 export async function task<T>(title: string, callback: () => Promise<T>) {
   const spinner = ora(title).start();
   let result: T;
@@ -46,7 +67,7 @@ export async function task<T>(title: string, callback: () => Promise<T>) {
     result = await callback();
   } catch (error) {
     spinner.fail();
-    resetLog();
+    flushLogs();
     throw error;
   }
 
@@ -56,10 +77,7 @@ export async function task<T>(title: string, callback: () => Promise<T>) {
     spinner.succeed(title);
   }
 
-  for (const { message, type } of messages) {
-    type === "warning" ? writeWarning(message) : writeInfo(message);
-  }
-  resetLog();
+  flushLogs();
 
   return result;
 }

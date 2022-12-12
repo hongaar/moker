@@ -22,7 +22,8 @@
     "build:watch": "tsc --watch"
   },
   "dependencies": {
-    "@mokr/core": "workspace:*"
+    "@mokr/core": "workspace:*",
+    "@mokr/plugins": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "18.11.12",

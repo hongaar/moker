@@ -9,6 +9,6 @@ Object.values(commands).forEach((command) => cli.add(command));
 
 // Some assertions we always need
 assertYarnVersion(3);
-assertNodeVersion(16);
+assertNodeVersion(14);
 
 export default cli;

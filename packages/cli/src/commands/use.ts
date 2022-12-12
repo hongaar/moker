@@ -1,4 +1,4 @@
-import { hasPlugin, installPlugin, logWarning, task } from "@mokr/core";
+import { hasPlugin, installPlugin, task, warning } from "@mokr/core";
 import { command } from "bandersnatch";
 import { resolve } from "node:path";
 import { REINSTALL_WARNING } from "../constants.js";
@@ -38,6 +38,6 @@ export const use = command("use")
     await format({ directory });
 
     if (reinstall) {
-      logWarning(REINSTALL_WARNING);
+      warning(REINSTALL_WARNING);
     }
   });

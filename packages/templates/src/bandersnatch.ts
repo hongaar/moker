@@ -53,6 +53,6 @@ cli.run().catch(console.error);
 }
 
 export const bandersnatch = {
-  type: PluginType.Workspace,
+  type: PluginType.RepoOrWorkspace,
   apply,
 };

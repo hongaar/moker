@@ -10,7 +10,6 @@ import { basename, join } from "node:path";
 
 async function apply({ directory }: TemplateArgs) {
   await installPlugin({ directory, name: "typescript" });
-  await installPlugin({ directory, name: "jest" });
 
   enqueueInstallDependency({ directory, identifier: "express" });
 
@@ -54,6 +53,6 @@ app.listen(process.env.PORT || 3000);
 }
 
 export const express = {
-  type: PluginType.Workspace,
+  type: PluginType.RepoOrWorkspace,
   apply,
 };

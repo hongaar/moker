@@ -17,7 +17,8 @@ export const add = command("add")
   })
   .option("template", {
     description: "Use workspace template",
-    type: "string",
+    type: "array",
+    default: [] as string[],
   })
   .option("plugin", {
     description: "Kick-start with this plugin",
@@ -41,9 +42,9 @@ export const add = command("add")
         () => addWorkspace({ directory, name: workspaceName })
       );
 
-      if (template) {
-        await task(`Apply template ${template}`, () =>
-          applyTemplate({ directory: workspaceDirectory, name: template })
+      for (const name of template) {
+        await task(`Apply template ${name}`, () =>
+          applyTemplate({ directory: workspaceDirectory, name })
         );
       }
 

@@ -1,4 +1,5 @@
-import { join } from "node:path";
+import { resolve } from "node:path";
+import sortPackageJson from "sort-package-json";
 import { isReadableAndWritableFile, removeFile } from "./file.js";
 import { readJson, updateJson, writeJson } from "./json.js";
 import type { Undefinable } from "./utils/types.js";
@@ -95,11 +96,6 @@ export type Package = {
   [k: string]: any;
 };
 
-// fhewo jfjewio fjiewo jfiewo fjiewo fjjiowe jfiowe jfiowe jfi owejfio wejifo jweifo jiweo
-
-/**
- * fjiewof jfiewo jfioew jfiowe jfiowejfi owejifo wjeiof jewiof jiwoef jiwoe fjiowe jfiowe jfio
- */
 type Person =
   | {
       [k: string]: any;
@@ -122,15 +118,15 @@ type LintStagedOptions = {
 const FILENAME = "package.json";
 
 export async function hasPackage({ directory }: { directory: string }) {
-  return isReadableAndWritableFile({ path: join(directory, FILENAME) });
+  return isReadableAndWritableFile({ path: resolve(directory, FILENAME) });
 }
 
 export async function readPackage({ directory }: { directory: string }) {
-  return readJson<Package>({ path: join(directory, FILENAME) });
+  return readJson<Package>({ path: resolve(directory, FILENAME) });
 }
 
 export async function removePackage({ directory }: { directory: string }) {
-  return removeFile({ path: join(directory, FILENAME) });
+  return removeFile({ path: resolve(directory, FILENAME) });
 }
 
 export async function writePackage({
@@ -142,7 +138,8 @@ export async function writePackage({
   data: Undefinable<Package>;
   append?: boolean;
 }) {
-  await writeJson({ path: join(directory, FILENAME), data, append });
+  await writeJson({ path: resolve(directory, FILENAME), data, append });
+  await sortPackage({ directory });
 }
 
 export async function updatePackage({
@@ -152,5 +149,13 @@ export async function updatePackage({
   directory: string;
   merge: (existingData: Package) => Package;
 }) {
-  await updateJson({ path: join(directory, FILENAME), merge });
+  await updateJson({ path: resolve(directory, FILENAME), merge });
+  await sortPackage({ directory });
+}
+
+export async function sortPackage({ directory }: { directory: string }) {
+  await updateJson({
+    path: resolve(directory, FILENAME),
+    merge: sortPackageJson,
+  });
 }

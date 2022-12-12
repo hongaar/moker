@@ -13,7 +13,14 @@ type TemplateOptions = {
   name: string;
 };
 
-const CORE_TEMPLATES = ["common", "lib", "cra", "bandersnatch", "express"];
+const CORE_TEMPLATES = [
+  "common",
+  "lib",
+  "cra",
+  "bandersnatch",
+  "express",
+  "github-action",
+];
 
 export function isTemplate(template: unknown): template is Template {
   return !!(
@@ -41,7 +48,7 @@ export async function importTemplate({ directory, name }: TemplateOptions) {
     throw new Error(`Template ${name} does not exist or is not valid`);
   }
 
-  await validateType({ directory, type: template.type });
+  await validateType({ directory, name, type: template.type });
 
   return template;
 }

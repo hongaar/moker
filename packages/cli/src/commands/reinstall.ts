@@ -4,8 +4,8 @@ import {
   installPlugin,
   isMonorepo,
   loadAllPlugins,
-  logWarning,
   task,
+  warning,
 } from "@mokr/core";
 import { command } from "bandersnatch";
 import { resolve } from "node:path";
@@ -66,5 +66,5 @@ export const reinstall = command("reinstall")
 
     await format({ directory });
 
-    logWarning(REINSTALL_WARNING);
+    warning(REINSTALL_WARNING);
   });
