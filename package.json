@@ -19,7 +19,6 @@
     "release": "semantic-release",
     "start": "node packages/cli/moker.js",
     "test": "yarn workspaces foreach --topological --verbose run test",
-    "test:watch": "yarn workspaces foreach --parallel --interlaced run test:watch",
     "todos": "leasot --exit-nicely --reporter markdown --ignore \"**/node_modules\" \"**/*.ts\" > TODO.md"
   },
   "lint-staged": {

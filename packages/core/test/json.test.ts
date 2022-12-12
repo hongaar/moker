@@ -1,9 +1,11 @@
+import assert from "node:assert";
+import { writeFileSync } from "node:fs";
+import { temporaryFile } from "tempy";
 import { readJson } from "../src/json.js";
 
-jest.mock("../src/file.js", () => ({
-  readFile: jest.fn(() => Promise.resolve('{ "foo": "bar" }')),
-}));
+export async function testReadJson() {
+  const path = temporaryFile();
+  writeFileSync(path, '{ "foo": "bar" }');
 
-test("readJson", async () => {
-  await expect(readJson({ path: "test" })).resolves.toEqual({ foo: "bar" });
-});
+  assert.deepEqual(await readJson({ path }), { foo: "bar" });
+}
