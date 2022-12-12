@@ -180,7 +180,7 @@ yarn moker add --template lib shared
 You can install multiple templates at once:
 
 ```bash
-yarn dlx moker create --template common github-action my-action
+yarn dlx moker create --template common --template github-action my-action
 ```
 
 For a complete list of out-of-the-box templates, see the section
