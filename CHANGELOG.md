@@ -1,3 +1,10 @@
+# [0.10.0](https://github.com/hongaar/moker/compare/v0.9.0...v0.10.0) (2022-12-12)
+
+### Features
+
+- xv ([#95](https://github.com/hongaar/moker/issues/95))
+  ([b8a615a](https://github.com/hongaar/moker/commit/b8a615a0b8a902a349acf460fb57f75fa3a9d3b1))
+
 # [0.9.0](https://github.com/hongaar/moker/compare/v0.8.0...v0.9.0) (2022-12-12)
 
 ### Features
