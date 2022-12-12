@@ -1,3 +1,10 @@
+# [0.9.0](https://github.com/hongaar/moker/compare/v0.8.0...v0.9.0) (2022-12-12)
+
+### Features
+
+- github action template ([#93](https://github.com/hongaar/moker/issues/93))
+  ([67345da](https://github.com/hongaar/moker/commit/67345dad3b8c945be30b9f288e61c4c98a20a272))
+
 # [0.8.0](https://github.com/hongaar/moker/compare/v0.7.0...v0.8.0) (2022-12-11)
 
 ### Features
