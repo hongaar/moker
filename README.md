@@ -58,6 +58,7 @@ yarn moker add --template bandersnatch cli
   - [`semantic-release` _repo_](#semantic-release-_repo_)
   - [`todos` _repo or workspace_](#todos-_repo-or-workspace_)
   - [`typescript` _repo or workspace_](#typescript-_repo-or-workspace_)
+  - [`xv` _repo or workspace_](#xv-_repo-or-workspace_)
 - [Available templates](#available-templates)
   - [`bandersnatch` _repo or workspace_](#bandersnatch-_repo-or-workspace_)
   - [`common` _repo_](#common-_repo_)
@@ -261,6 +262,9 @@ level.
 
 ## `jest` _repo or workspace_
 
+> 🧪 _Experimental_ Currently only works with the `typescript` plugin. Currently
+> doesn't work when you have ESM dependencies in `node_modules`.
+
 This plugin sets up [Jest](https://jestjs.io) and adds a `test` and `test:watch`
 script to the repo or both the workspace and the monorepo.
 
@@ -316,6 +320,13 @@ This plugin sets up [TypeScript](https://www.typescriptlang.org) and adds a
 `build` and `build:watch` script to the repo or both the workspace and the
 monorepo.
 
+## `xv` _repo or workspace_
+
+> 🧪 _Experimental_ Currently only works with the `typescript` plugin.
+
+This plugin sets up [xv](https://github.com/typicode/xv) and adds a `test` and
+`test:watch` script to the repo or both the workspace and the monorepo.
+
 # Available templates
 
 ## `bandersnatch` _repo or workspace_
@@ -340,6 +351,8 @@ Scaffolds a simple [express](https://expressjs.com) HTTP app with the
 [typescript](#typescript-workspace) and [jest](#jest-workspace) plugins.
 
 ## `github-actions` _repo_
+
+> 🧪 _Experimental_
 
 Scaffolds a
 [custom GitHub Action](https://docs.github.com/en/actions/creating-actions/about-custom-actions)

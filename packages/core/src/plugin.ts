@@ -41,6 +41,7 @@ const CORE_PLUGINS = [
   "todos",
   "doctoc",
   "esbuild",
+  "xv",
 ];
 
 export function isPlugin(plugin: unknown): plugin is Plugin {

@@ -3,11 +3,8 @@
   "version": "0.9.0",
   "description": "Moker templates",
   "repository": "https://github.com/hongaar/moker",
-  "publishConfig": {
-    "access": "public"
-  },
-  "author": "joram@vandenboezem.nl",
   "license": "MIT",
+  "author": "joram@vandenboezem.nl",
   "type": "module",
   "main": "dist/index.js",
   "types": "types/index.d.ts",
@@ -16,17 +13,25 @@
     "types"
   ],
   "scripts": {
-    "prepublish": "yarn build",
-    "clean": "rm -rf dist && rm -rf types",
     "build": "yarn clean && tsc",
-    "build:watch": "tsc --watch"
+    "build:watch": "tsc --watch",
+    "clean": "rm -rf dist && rm -rf types",
+    "prepublish": "yarn build"
   },
   "dependencies": {
     "@mokr/core": "workspace:*",
     "@mokr/plugins": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "18.11.12",
+    "@types/node": "18.11.13",
     "typescript": "4.9.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "moker": {
+    "plugins": [
+      "typescript"
+    ]
   }
 }
