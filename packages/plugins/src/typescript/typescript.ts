@@ -3,10 +3,10 @@ import {
   enqueueInstallDependency,
   enqueueRemoveDependency,
   getMonorepoDirectory,
-  logWarning,
   PluginArgs,
   PluginType,
   removeYarnPlugin,
+  warning,
   writeGitignore,
   writePackage,
 } from "@mokr/core";
@@ -21,18 +21,20 @@ const TSCONFIG_WORKSPACE: Tsconfig = {
   },
   include: ["src/**/*"],
 };
+
+// https://github.com/tsconfig/bases/blob/main/bases/node18-strictest-esm.combined.json
 const TSCONFIG_BASE: Tsconfig = {
   $schema: "https://json.schemastore.org/tsconfig",
-  display: "Node 16 + ESM + Strictest",
+  display: "Node 18 + ESM + Strictest",
   compilerOptions: {
-    lib: ["es2021"],
+    lib: ["es2022"],
     module: "es2022",
-    target: "es2021",
-    moduleResolution: "node",
+    target: "es2022",
     strict: true,
     esModuleInterop: true,
     skipLibCheck: true,
     forceConsistentCasingInFileNames: true,
+    moduleResolution: "node",
     allowUnusedLabels: false,
     allowUnreachableCode: false,
     exactOptionalPropertyTypes: true,
@@ -44,6 +46,8 @@ const TSCONFIG_BASE: Tsconfig = {
     noUnusedLocals: true,
     noUnusedParameters: true,
     importsNotUsedAsValues: "error",
+
+    // Custom
     declaration: true,
     declarationMap: true,
   },
@@ -62,7 +66,7 @@ async function install({ directory }: PluginArgs) {
 
   await writeGitignore({
     directory,
-    lines: ["# artifacts", "/dist", "/types"],
+    lines: ["", "# artifacts", "/dist", "/types"],
   });
 
   await writePackage({
@@ -133,7 +137,7 @@ async function remove({ directory }: PluginArgs) {
     await removeTsconfig({ directory: monorepoDirectory });
   }
 
-  logWarning("Please review your package.json manually");
+  warning("Please review your package.json manually");
 }
 
 async function load() {}

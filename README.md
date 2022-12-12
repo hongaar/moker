@@ -5,15 +5,17 @@ single-purpose repos, monorepos, monorepo workspaces and common tooling:**
 
 ```bash
 # initialize a monorepo
-yarn dlx moker create --monorepo my-repo
-cd my-repo
+yarn dlx moker create --monorepo my-monorepo
+cd my-monorepo
 
 # install common tools
-yarn moker use prettier husky lint-staged doctoc semantic-release
+yarn moker use prettier doctoc semantic-release
 
 # create workspaces
 yarn moker add --template express server
 yarn moker add --template cra client
+yarn moker add --template lib shared
+yarn moker add --template bandersnatch cli
 ```
 
 ## Features
@@ -36,13 +38,18 @@ yarn moker add --template cra client
 
 - [Getting started](#getting-started)
   - [Prerequisites](#prerequisites)
-  - [Create monorepo](#create-monorepo)
-  - [Use plugins](#use-plugins)
-  - [Add workspace](#add-workspace)
+  - [Usage](#usage)
+  - [Creating a single-purpose repo](#creating-a-single-purpose-repo)
+  - [Creating a monorepo](#creating-a-monorepo)
+  - [Creating a monorepo workspace](#creating-a-monorepo-workspace)
+  - [Using plugins](#using-plugins)
+  - [Using templates](#using-templates)
+  - [Using plugins and templates together](#using-plugins-and-templates-together)
 - [Available plugins](#available-plugins)
   - [`dependabot` _repo_](#dependabot-_repo_)
   - [`devcontainer` _repo_](#devcontainer-_repo_)
   - [`doctoc` _repo_](#doctoc-_repo_)
+  - [`esbuild` _repo or workspace_](#esbuild-_repo-or-workspace_)
   - [`github-actions` _repo_](#github-actions-_repo_)
   - [`husky` _repo_](#husky-_repo_)
   - [`jest` _repo or workspace_](#jest-_repo-or-workspace_)
@@ -56,6 +63,7 @@ yarn moker add --template cra client
   - [`common` _repo_](#common-_repo_)
   - [`cra` _repo or workspace_](#cra-_repo-or-workspace_)
   - [`express` _repo or workspace_](#express-_repo-or-workspace_)
+  - [`github-actions` _repo_](#github-actions-_repo_-1)
   - [`lib` _repo or workspace_](#lib-_repo-or-workspace_)
 - [Commands](#commands)
 - [Contributing](#contributing)
@@ -80,49 +88,46 @@ You will need Node v14+ and Yarn v2+ in order to use `moker`.
   corepack prepare yarn@stable --activate
   ```
 
-## Create monorepo
+## Usage
+
+`moker` is distributed as a NPM package, and can be run with `yarn dlx`:
+
+```bash
+yarn dlx moker <command>
+```
+
+> **Note**: Note that when we use `yarn dlx moker` to create a new repo, `moker`
+> is added as a dependency to your new repo, so we can simply use `yarn moker`
+> to execute commands from within the repo directory.
+
+## Creating a single-purpose repo
+
+Create a new repo:
+
+```bash
+yarn dlx moker create my-repo
+```
+
+This will initialize a new repo in the `my-repo` directory.
+
+## Creating a monorepo
 
 Create a new monorepo:
 
 ```bash
-yarn dlx moker create --monorepo my-repo
+yarn dlx moker create --monorepo my-monorepo
 ```
 
-This will initialize a new monorepo in the `my-repo` directory.
-
-> **Note**: Note that we use `yarn dlx moker` to create a new monorepo. Once we
-> are inside our monorepo, we can simply use `yarn moker` to execute commands.
+This will initialize a new monorepo in the `my-monorepo` directory.
 
 > 🤓 _Default_: The monorepo is initiated with Yarn without Zero-Installs and in
 > legacy `nodeLinker: node-modules` mode because a lot of packages are not yet
 > compatible with PnP or require a workaround.
 
-## Use plugins
+## Creating a monorepo workspace
 
-Of course you want additional tools installed at the monorepo level, add them
-with:
-
-```bash
-cd my-repo
-yarn moker use prettier husky lint-staged
-```
-
-Plugins may work together. For example, `lint-staged` will install a pre-commit
-hook which formats code if `prettier` and `husky` are installed. The order in
-which plugins are added does not matter.
-
-See the section [available plugins](#available-plugins) for a list of options.
-
-> **Note**: To quickly get started with the most common plugins, use a monorepo
-> template like so:
->
-> ```bash
-> yarn dlx moker create --template common my-repo
-> ```
-
-## Add workspace
-
-To add a new workspace (a.k.a. monorepo package) to your monorepo, use:
+To add a new workspace (a.k.a. monorepo package) to your monorepo, run this from
+within the monorepo directory:
 
 ```bash
 yarn moker add my-workspace
@@ -131,17 +136,59 @@ yarn moker add my-workspace
 Workspaces are added in a customizable subdirectory of the monorepo (the default
 is `packages`).
 
-You can also use a workspace template, e.g.:
+## Using plugins
+
+Of course you want additional tools installed. You can add plugins with:
+
+```bash
+yarn moker use prettier
+```
+
+You can install multiple plugins at once:
+
+```bash
+yarn moker use prettier lint-staged husky
+```
+
+Plugins may work together. For example, `lint-staged` will install a pre-commit
+hook which formats code if `prettier` and `husky` are installed. The order in
+which plugins are added does not matter.
+
+> **Note**: Some plugins only work at the repo or workspace level, `moker` will
+> warn you if you try to add a plugin at the wrong level.
+
+See the section [available plugins](#available-plugins) for a list of options.
+
+## Using templates
+
+You can templates when creating repos:
+
+```bash
+yarn dlx moker create --template common my-repo
+```
+
+You can also use templates when creating workspaces:
 
 ```bash
 yarn moker add --template lib shared
-yarn moker add --template express server
-yarn moker add --template cra client
-yarn moker add --template bandersnatch cli
+```
+
+You can install multiple templates at once:
+
+```bash
+yarn dlx moker create --template common github-action my-action
 ```
 
 See the section [available templates](#available-templates) for a list of
 options.
+
+## Using plugins and templates together
+
+Plugins and templates can be used together, for example:
+
+```bash
+yarn dlx moker create --template express --use prettier my-repo
+```
 
 # Available plugins
 
@@ -172,6 +219,15 @@ This plugin adds a script to generate a table of contents for the README using
 [doctoc](https://github.com/thlorenz/doctoc).
 
 If you have the `husky` plugin installed, it will also add a pre-commit hook.
+
+## `esbuild` _repo or workspace_
+
+This plugin sets up [esbuild](https://esbuild.github.io) and adds a `build` and
+`build:watch` script to the repo or both the workspace and the monorepo.
+
+> 🤓 _Default_: If you have the `typescript` plugin installed as well, we'll
+> assume that you want to build to a bundle instead of transpiled TypeScript. We
+> will still use `tsc` for type checking.
 
 ## `github-actions` _repo_
 
@@ -283,6 +339,12 @@ app (web client).
 Scaffolds a simple [express](https://expressjs.com) HTTP app with the
 [typescript](#typescript-workspace) and [jest](#jest-workspace) plugins.
 
+## `github-actions` _repo_
+
+Scaffolds a
+[custom GitHub Action](https://docs.github.com/en/actions/creating-actions/about-custom-actions)
+template.
+
 ## `lib` _repo or workspace_
 
 A plain shared library template with the [typescript](#typescript-workspace) and
@@ -298,11 +360,11 @@ Contributions are very welcome!
 
 ## Roadmap
 
-- [ ] Add LICENSE file to repo
 - [ ] Support for `swc`/`esbuild`
 - [ ] A compat lib (which builds cjs and mjs targets)
 - [ ] Blog post / tutorial
 - [ ] Docs for writing custom plugins / templates
+- [x] Add LICENSE file to repo
 - [x] Adapt for non-monorepo use-cases
 - [x] github-actions plugin
 - [x] devcontainer plugin

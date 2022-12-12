@@ -40,6 +40,7 @@ const CORE_PLUGINS = [
   "dependabot",
   "todos",
   "doctoc",
+  "esbuild",
 ];
 
 export function isPlugin(plugin: unknown): plugin is Plugin {
@@ -72,15 +73,16 @@ export async function importPlugin({ directory, name }: PluginOptions) {
     throw new Error(`Plugin ${name} does not exist or is not valid`);
   }
 
-  await validateType({ directory, type: plugin.type });
+  await validateType({ directory, name, type: plugin.type });
 
   return plugin;
 }
 
 export async function validateType({
   directory,
+  name,
   type,
-}: DirOption & { type: PluginType }) {
+}: DirOption & { name: string; type: PluginType }) {
   const repo = await isRepo({ directory });
   const monorepo = await isMonorepo({ directory });
   const workspace = await isWorkspace({ directory });
@@ -88,25 +90,33 @@ export async function validateType({
   switch (type) {
     case PluginType.Repo:
       if (!repo) {
-        throw new Error(`Plugin can only be used at repo level`);
+        throw new Error(
+          `Plugin or template ${name} can only be used at repo level`
+        );
       }
       break;
 
     case PluginType.RepoOrWorkspace:
       if (!repo && !workspace) {
-        throw new Error(`Plugin can only be used at repo or workspace level`);
+        throw new Error(
+          `Plugin or template ${name} can only be used at repo or workspace level`
+        );
       }
       break;
 
     case PluginType.Monorepo:
       if (!monorepo) {
-        throw new Error(`Plugin can only be used at monorepo level`);
+        throw new Error(
+          `Plugin or template ${name} can only be used at monorepo level`
+        );
       }
       break;
 
     case PluginType.Workspace:
       if (!workspace) {
-        throw new Error(`Plugin can only be used at workspace level`);
+        throw new Error(
+          `Plugin or template ${name} can only be used at workspace level`
+        );
       }
       break;
   }

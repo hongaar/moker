@@ -32,6 +32,6 @@ test("adds 1 + 2 to equal 3", () => {
 }
 
 export const lib = {
-  type: PluginType.Workspace,
+  type: PluginType.RepoOrWorkspace,
   apply,
 };

@@ -33,11 +33,13 @@ export async function createMonorepo({
   directory,
   scoped = DEFAULT_SCOPED,
   license = DEFAULT_LICENSE,
+  upstream,
   workspacesDirectory = DEFAULT_WORKSPACES_DIRECTORY,
 }: CreateMonorepoOptions) {
   await createRepo({
     directory,
     license,
+    upstream,
     additionalPackageOptions: {
       private: true,
       workspaces: [`${workspacesDirectory}/*`],

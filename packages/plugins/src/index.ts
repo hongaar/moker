@@ -1,6 +1,7 @@
 export * from "./dependabot/dependabot.js";
 export * from "./devcontainer/devcontainer.js";
 export * from "./doctoc/doctoc.js";
+export * from "./esbuild/esbuild.js";
 export * from "./githubActions/githubActions.js";
 export * from "./husky/husky.js";
 export * from "./jest/jest.js";

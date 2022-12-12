@@ -1,10 +1,12 @@
 import {
   applyTemplate,
+  AVAILABLE_LICENSES,
   createMonorepo,
   createRepo,
   DEFAULT_LICENSE,
   DEFAULT_SCOPED,
   DEFAULT_WORKSPACES_DIRECTORY,
+  getUsername,
   isReadableAndWritableDirectory,
   task,
 } from "@mokr/core";
@@ -29,7 +31,8 @@ export const create = command("create")
   })
   .option("template", {
     description: "Use repo template",
-    type: "string",
+    type: "array",
+    default: [] as string[],
   })
   .option("plugin", {
     description: "Kick-start with this plugin",
@@ -38,9 +41,14 @@ export const create = command("create")
   })
   .option("license", {
     description: "License",
-    choices: ["MIT", "GPLv3"],
+    choices: AVAILABLE_LICENSES,
     prompt: "What license do you want to publish your packages with?",
     default: DEFAULT_LICENSE,
+  })
+  .option("upstream", {
+    description: "Upstream repository provider and user",
+    prompt: "Optional upstream repository provider and user (e.g. github:user)",
+    default: `github:${getUsername()}`,
   })
   .option("workspacesDirectory", {
     description: "Workspaces directory (only used with --monorepo)",
@@ -56,32 +64,42 @@ export const create = command("create")
       "Initialize repo even if path already exists. WARNING: some files may be overwritten!",
     type: "boolean",
   })
-  .action(async ({ path, monorepo, template, plugin, force, ...options }) => {
-    const directory = resolve(path);
-    const type = monorepo ? "monorepo" : "repo";
-    const initializer = monorepo ? createMonorepo : createRepo;
+  .action(
+    async ({
+      path,
+      upstream,
+      monorepo,
+      template,
+      plugin,
+      force,
+      ...options
+    }) => {
+      const directory = resolve(path);
+      const type = monorepo ? "monorepo" : "repo";
+      const initializer = monorepo ? createMonorepo : createRepo;
 
-    if ((await isReadableAndWritableDirectory({ directory })) && !force) {
-      throw new Error(`${directory} already exists`);
-    }
+      if ((await isReadableAndWritableDirectory({ directory })) && !force) {
+        throw new Error(`${directory} already exists`);
+      }
 
-    await task(`Create new ${type} in ${directory}`, () =>
-      initializer({ directory, ...options })
-    );
-
-    if (template) {
-      await task(`Apply template ${template}`, () =>
-        applyTemplate({ directory, name: template })
+      await task(`Create new ${type} in ${directory}`, () =>
+        initializer({ directory, upstream, ...options })
       );
+
+      for (const name of template) {
+        await task(`Apply template ${name}`, () =>
+          applyTemplate({ directory, name })
+        );
+      }
+
+      for (const name of plugin) {
+        await addPlugin({ directory, name });
+      }
+
+      await loadPlugins({ directory });
+
+      await updateDependencies({ directory });
+
+      await format({ directory });
     }
-
-    for (const name of plugin) {
-      await addPlugin({ directory, name });
-    }
-
-    await loadPlugins({ directory });
-
-    await updateDependencies({ directory });
-
-    await format({ directory });
-  });
+  );

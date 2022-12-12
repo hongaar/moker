@@ -3,10 +3,10 @@ import {
   enqueueRemoveDependency,
   getMonorepoDirectory,
   hasPlugin,
-  logWarning,
   PluginArgs,
   PluginType,
   removeFile,
+  warning,
   writeFile,
   writePackage,
 } from "@mokr/core";
@@ -75,7 +75,7 @@ async function remove({ directory }: PluginArgs) {
     await removeFile({ path: join(directory, JEST_CONFIG_FILENAME) });
   } catch {}
 
-  logWarning("Please review package.json manually");
+  warning("Please review package.json manually");
 }
 
 async function load() {}

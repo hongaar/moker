@@ -1,4 +1,5 @@
 import childProcess, { ChildProcess } from "node:child_process";
+import { debug } from "../io.js";
 
 function childAwaiter(child: ChildProcess): Promise<number> {
   return new Promise(function (resolve, reject) {
@@ -16,6 +17,8 @@ export async function exec(
     io = "return" as "return" | "passthrough",
   } = {}
 ) {
+  debug(`spawning "${cmd} ${args.join(" ")}" in "${cwd}"`);
+
   const child = childProcess.spawn(cmd, args, {
     shell: true,
     stdio: io === "passthrough" ? "inherit" : "pipe",

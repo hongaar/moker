@@ -2,6 +2,7 @@ import { readJson, removeFile, writeJson } from "@mokr/core";
 import path from "node:path";
 
 // https://github.com/ffflorian/schemastore-updater/blob/main/schemas/tsconfig/index.d.ts
+// https://github.com/microsoft/TypeScript/tree/main/lib
 export type Tsconfig = CompilerOptionsDefinition &
   CompileOnSaveDefinition &
   TypeAcquisitionDefinition &
@@ -152,6 +153,14 @@ type CompilerOptionsDefinition = {
       | "es2021.promise"
       | "es2021.string"
       | "es2021.weakref"
+      | "es2022"
+      | "es2022.array"
+      | "es2022.error"
+      | "es2022.full"
+      | "es2022.intl"
+      | "es2022.object"
+      | "es2022.sharedmemory"
+      | "es2022.string"
       | "esnext"
       | "esnext.array"
       | "esnext.asynciterable"

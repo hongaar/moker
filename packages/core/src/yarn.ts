@@ -1,5 +1,6 @@
 import { createDirectory } from "./directory.js";
 import { writeGitignore } from "./gitignore.js";
+import { sortPackage } from "./package.js";
 import { exec } from "./utils/exec.js";
 import { writeYarnrc } from "./yarnrc.js";
 
@@ -153,17 +154,24 @@ export async function runDependencyQueues({ directory }: DirOption) {
     return;
   }
 
-  if (dependencies.size || devDependencies.size) {
-    const installArgs = [
-      "add",
-      "--exact",
-      ...Array.from(dependencies),
-      ...Array.from(devDependencies).map((dependency) => `--dev ${dependency}`),
-    ];
+  if (dependencies.size) {
+    const installArgs = ["add", "--exact", ...Array.from(dependencies)];
 
     await exec("yarn", installArgs, { cwd: directory });
 
     queues.install.set(directory, new Set());
+  }
+
+  if (devDependencies.size) {
+    const installArgs = [
+      "add",
+      "--exact",
+      "--dev",
+      ...Array.from(devDependencies),
+    ];
+
+    await exec("yarn", installArgs, { cwd: directory });
+
     queues.installDev.set(directory, new Set());
   }
 
@@ -174,6 +182,8 @@ export async function runDependencyQueues({ directory }: DirOption) {
 
     queues.remove.set(directory, new Set());
   }
+
+  await sortPackage({ directory });
 }
 
 export async function getWorkspaces({ directory }: DirOption) {
