@@ -103,23 +103,19 @@ yarn dlx moker <command>
 
 ## Creating a single-purpose repo
 
-Create a new repo:
+To create a new repo in the `my-repo` directory:
 
 ```bash
 yarn dlx moker create my-repo
 ```
 
-This will initialize a new repo in the `my-repo` directory.
-
 ## Creating a monorepo
 
-Create a new monorepo:
+To create a new monorepo in the `my-monorepo` directory: :
 
 ```bash
 yarn dlx moker create --monorepo my-monorepo
 ```
-
-This will initialize a new monorepo in the `my-monorepo` directory.
 
 > 🤓 _Default_: The monorepo is initiated with Yarn without Zero-Installs and in
 > legacy `nodeLinker: node-modules` mode because a lot of packages are not yet
@@ -127,48 +123,55 @@ This will initialize a new monorepo in the `my-monorepo` directory.
 
 ## Creating a monorepo workspace
 
-To add a new workspace (a.k.a. monorepo package) to your monorepo, run this from
-within the monorepo directory:
+Workspaces (a.k.a. monorepo packages) are added in a customizable subdirectory
+of the monorepo (the default is `packages`). To add a new workspace called
+`my-workspace` to your monorepo, run this from within the monorepo directory:
 
 ```bash
 yarn moker add my-workspace
 ```
 
-Workspaces are added in a customizable subdirectory of the monorepo (the default
-is `packages`).
-
 ## Using plugins
 
-Of course you want additional tools installed. You can add plugins with:
+Plugins are used to add additional tools to your repo or workspace. Add the
+`prettier` plugin with:
 
 ```bash
 yarn moker use prettier
 ```
 
-You can install multiple plugins at once:
+Plugins may work together. For example, `lint-staged` will install a pre-commit
+hook which formats code if `prettier` and `husky` are installed. The order in
+which plugins are added does not matter. You can install multiple plugins at
+once:
 
 ```bash
 yarn moker use prettier lint-staged husky
 ```
 
-Plugins may work together. For example, `lint-staged` will install a pre-commit
-hook which formats code if `prettier` and `husky` are installed. The order in
-which plugins are added does not matter.
-
 > **Note**: Some plugins only work at the repo or workspace level, `moker` will
 > warn you if you try to add a plugin at the wrong level.
 
-See the section [available plugins](#available-plugins) for a list of options.
+For a complete list of out-of-the-box plugins, see the section
+[available plugins](#available-plugins). Using 3rd party plugins is also
+supported:
+
+```bash
+yarn add --dev --exact moker-plugin-name
+yarn moker use moker-plugin-name
+```
 
 ## Using templates
 
-You can templates when creating repos:
+Templates are pre-defined collections of plugins and scaffolding to quickly
+create focussed new repos or workspaces. To create a new repo `my-repo` with the
+`common` template:
 
 ```bash
 yarn dlx moker create --template common my-repo
 ```
 
-You can also use templates when creating workspaces:
+To add a workspace called `shared` to a monorepo using the `lib` template:
 
 ```bash
 yarn moker add --template lib shared
@@ -180,8 +183,15 @@ You can install multiple templates at once:
 yarn dlx moker create --template common github-action my-action
 ```
 
-See the section [available templates](#available-templates) for a list of
-options.
+For a complete list of out-of-the-box templates, see the section
+[available templates](#available-templates). Using 3rd party templates is also
+supported:
+
+```bash
+yarn dlx --package moker-template-name \
+  moker create --template moker-template-name my-repo
+
+```
 
 ## Using plugins and templates together
 
@@ -324,8 +334,8 @@ monorepo.
 
 > 🧪 _Experimental_ Currently only works with the `typescript` plugin.
 
-This plugin sets up [xv](https://github.com/typicode/xv) and adds a `test` and
-`test:watch` script to the repo or both the workspace and the monorepo.
+This plugin sets up [xv](https://github.com/typicode/xv) and adds a `test`
+script to the repo or both the workspace and the monorepo.
 
 # Available templates
 
