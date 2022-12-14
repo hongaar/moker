@@ -54,7 +54,7 @@ async function load({ directory }: PluginArgs) {
           build: "yarn clean && yarn build:typecheck && yarn build:bundle",
           "build:typecheck": "tsc --noEmit",
           "build:bundle":
-            "esbuild --bundle --platform=node --target=es2022 --outdir=dist src/index.ts",
+            "esbuild --bundle --platform=node --format=esm --target=es2022 --outdir=dist src/index.ts",
         },
       },
     });
@@ -68,7 +68,7 @@ async function load({ directory }: PluginArgs) {
         scripts: {
           clean: "rm -rf dist",
           build:
-            "yarn clean && esbuild --bundle --platform=node --target=es2022 --outdir=dist src/index.ts",
+            "yarn clean && esbuild --bundle --platform=node --format=esm --target=es2022 --outdir=dist src/index.ts",
           prepublish: "yarn build",
         },
       },

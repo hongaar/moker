@@ -3,14 +3,12 @@ import {
   hasPlugin,
   installPlugin,
   PluginType,
-  readGitignore,
   TemplateArgs,
   warning,
   writeFile,
-  writeGitignore,
+  writePackage,
   writeYaml,
 } from "@mokr/core";
-import { addPreCommitHookCommand } from "@mokr/plugins";
 import { basename, join, resolve } from "node:path";
 
 async function apply({ directory }: TemplateArgs) {
@@ -21,27 +19,22 @@ async function apply({ directory }: TemplateArgs) {
 
   await installPlugin({ directory, name: "esbuild" });
 
-  // Dist directory with generated bundle should be checked in
-  await writeGitignore({
+  // We need to bundle to cjs due to some dependencies not supporting esm
+  // See https://github.com/evanw/esbuild/issues/1921
+  await writePackage({
     directory,
-    lines: (
-      await readGitignore({ directory })
-    ).filter((line) => line !== "/dist"),
-    append: false,
+    data: {
+      scripts: {
+        "build:bundle":
+          "esbuild --bundle --platform=node --format=cjs --target=es2022 --outfile=dist/index.cjs src/index.ts",
+      },
+    },
   });
 
   // But Git should ignore generated files
   await writeFile({
     path: resolve(directory, ".gitattributes"),
     contents: `*.js linguist-generated=true`,
-  });
-
-  // Use Husky to build before commit
-  await installPlugin({ directory, name: "husky" });
-
-  await addPreCommitHookCommand({
-    directory,
-    command: "yarn build && git add dist",
   });
 
   // Required action.yml
@@ -64,7 +57,7 @@ async function apply({ directory }: TemplateArgs) {
       },
       runs: {
         using: "node16",
-        main: "dist/index.js",
+        main: "dist/index.cjs",
       },
     },
   });
@@ -88,6 +81,7 @@ async function run() {
     throw new Error("The GitHub token is missing");
   }
 
+  // Example logic
   const octokit = getOctokit(ghToken);
   const { owner, repo } = context.repo;
 
@@ -145,7 +139,9 @@ ${description}
 
   if (await hasPlugin({ directory, name: "semantic-release" })) {
     warning(
-      'Please modify your ".releaserc.json" file to set "semantic-release-yarn.npmPublish" to "false" to prevent uploading this package to NPM. See [semantic-release-yarn plugin options](https://github.com/hongaar/semantic-release-yarn#plugin-options) for more information.'
+      `Please modify your ".releaserc.json" file:
+- Set "semantic-release-yarn.npmPublish" to "false" to prevent uploading this package to NPM. See [semantic-release-yarn plugin options](https://github.com/hongaar/semantic-release-yarn#plugin-options) for more information.
+- Add "dist/index.cjs" to the "@semantic-release/git.assets" configuration to include the generated files in the release commit.`
     );
   }
 }
