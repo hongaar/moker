@@ -56,6 +56,7 @@ yarn moker add --template bandersnatch cli
   - [`lint-staged` _repo_](#lint-staged-_repo_)
   - [`prettier` _repo_](#prettier-_repo_)
   - [`semantic-release` _repo_](#semantic-release-_repo_)
+  - [`test` _repo or workspace_](#test-_repo-or-workspace_)
   - [`todos` _repo or workspace_](#todos-_repo-or-workspace_)
   - [`typescript` _repo or workspace_](#typescript-_repo-or-workspace_)
   - [`xv` _repo or workspace_](#xv-_repo-or-workspace_)
@@ -316,6 +317,16 @@ this by setting the `private` property in `package.json` to `false`.
 
 > 🤓 _Default_: The release configuration will use the `main` branch by default,
 > but it is trivial to change this.
+
+## `test` _repo or workspace_
+
+This plugin enables testing with the [test](https://www.npmjs.com/package/test)
+package, which is a port of the native
+[node:test](https://nodejs.org/api/test.html) which is only available in Node
+≥ 18. It uses [tap](https://node-tap.org) for formatting the TAP output.
+
+When the `typescript` plugin is also installed, it will use
+[ts-node](https://typestrong.org/ts-node/) to load TypeScript test files.
 
 ## `todos` _repo or workspace_
 
