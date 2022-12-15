@@ -1,6 +1,6 @@
 {
   "name": "@mokr/core",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Core moker functions",
   "repository": "https://github.com/hongaar/moker",
   "license": "MIT",
