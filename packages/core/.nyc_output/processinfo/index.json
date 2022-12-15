@@ -1,0 +1,32 @@
+{
+  "processes": {
+    "4f1e7034-ddce-495f-b447-e58daf3c0760": {
+      "parent": "9d05f215-841d-4c98-ab0b-63a8d0c938cf",
+      "externalId": "test/json.test.ts",
+      "children": []
+    },
+    "837d69e9-01b2-4a68-8ecf-0699afb3bddb": {
+      "parent": "9d05f215-841d-4c98-ab0b-63a8d0c938cf",
+      "externalId": "test/io.test.ts",
+      "children": []
+    },
+    "9d05f215-841d-4c98-ab0b-63a8d0c938cf": {
+      "parent": null,
+      "children": [
+        "4f1e7034-ddce-495f-b447-e58daf3c0760",
+        "837d69e9-01b2-4a68-8ecf-0699afb3bddb"
+      ]
+    }
+  },
+  "files": {},
+  "externalIds": {
+    "test/json.test.ts": {
+      "root": "4f1e7034-ddce-495f-b447-e58daf3c0760",
+      "children": []
+    },
+    "test/io.test.ts": {
+      "root": "837d69e9-01b2-4a68-8ecf-0699afb3bddb",
+      "children": []
+    }
+  }
+}

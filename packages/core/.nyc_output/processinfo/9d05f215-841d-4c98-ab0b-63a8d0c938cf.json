@@ -1,0 +1,16 @@
+{
+  "parent": null,
+  "pid": 15725,
+  "argv": [
+    "/home/hongaar/.nvm/versions/node/v18.12.1/bin/node",
+    "/home/hongaar/Code/hongaar/moker/node_modules/tap/bin/run.js"
+  ],
+  "execArgv": [],
+  "cwd": "/home/hongaar/Code/hongaar/moker/packages/core",
+  "time": 1671097031352,
+  "ppid": 15681,
+  "coverageFilename": "/home/hongaar/Code/hongaar/moker/packages/core/.nyc_output/9d05f215-841d-4c98-ab0b-63a8d0c938cf.json",
+  "externalId": "",
+  "uuid": "9d05f215-841d-4c98-ab0b-63a8d0c938cf",
+  "files": []
+}

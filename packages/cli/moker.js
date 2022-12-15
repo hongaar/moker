@@ -1,19 +1,20 @@
 #!/usr/bin/env node
 
-import { writeError } from "@mokr/core";
+import { hasEncounteredErrors, writeError } from "@mokr/core";
 import cli from "./dist/cli.js";
 
 function errorHandler(err) {
-  if (process.env["DEBUG"]) {
-    console.debug(err);
-  } else {
-    writeError(`\n${String(err)}`);
-  }
-
+  writeError(err);
   process.exit(1);
 }
 
-cli.runOrRepl().catch(errorHandler);
-
 // Compat layer for Node < 16
 process.on("unhandledRejection", errorHandler);
+
+// Run application
+await cli.runOrRepl().catch(errorHandler);
+
+// If tasks had errors, exit with non-zero code
+if (hasEncounteredErrors()) {
+  process.exit(1);
+}

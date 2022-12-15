@@ -2,8 +2,8 @@ import { addWorkspace, applyTemplate, isMonorepo, task } from "@mokr/core";
 import { command } from "bandersnatch";
 import { resolve } from "node:path";
 import {
-  addPlugin,
   format,
+  installPlugin,
   loadPlugins,
   updateDependencies,
 } from "../tasks.js";
@@ -37,10 +37,14 @@ export const add = command("add")
     }
 
     for (const workspaceName of name) {
-      const workspaceDirectory = await task(
+      const [workspaceDirectory, error] = await task(
         `Add workspace ${workspaceName}`,
         () => addWorkspace({ directory, name: workspaceName })
       );
+
+      if (error) {
+        throw error;
+      }
 
       for (const name of template) {
         await task(`Apply template ${name}`, () =>
@@ -49,7 +53,7 @@ export const add = command("add")
       }
 
       for (const name of plugin) {
-        await addPlugin({ directory: workspaceDirectory, name });
+        await installPlugin({ directory: workspaceDirectory, name });
       }
 
       await loadPlugins({ directory: workspaceDirectory });
