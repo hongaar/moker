@@ -1,21 +1,31 @@
 import chalk from "chalk";
 import ora from "ora";
 
-type Log = {
-  message: string;
-  type: "debug" | "info" | "warning";
-};
+type Log =
+  | {
+      message: string;
+      type: "debug" | "info" | "warning";
+    }
+  | {
+      message: string | Error;
+      type: "error";
+    };
 
 let messages: Log[];
+let encounteredErrors: boolean;
 
-function resetLog() {
-  messages = [];
+resetState();
+
+export function log(
+  message: string,
+  type: "debug" | "info" | "warning" = "info"
+) {
+  messages.push({ message, type });
 }
 
-resetLog();
-
-export function log(message: string, type: Log["type"] = "info") {
-  messages.push({ message, type });
+export function logError(error: string | Error) {
+  messages.push({ message: error, type: "error" });
+  encounteredErrors = true;
 }
 
 export function debug(message: string) {
@@ -44,8 +54,25 @@ export function writeWarning(message: string) {
   return console.warn(chalk.bgYellow.black(message));
 }
 
-export function writeError(message: string) {
-  return console.error(chalk.bgRed.white(message));
+export function writeError(err: string | Error) {
+  if (process.env["DEBUG"]) {
+    console.debug(err);
+  } else {
+    console.error(chalk.bgRed.white(String(err)));
+  }
+}
+
+export function resetMessages() {
+  messages = [];
+}
+
+export function resetEncounteredErrors() {
+  encounteredErrors = false;
+}
+
+export function resetState() {
+  resetMessages();
+  resetEncounteredErrors();
 }
 
 export async function flushLogs() {
@@ -54,9 +81,11 @@ export async function flushLogs() {
       ? writeWarning(message)
       : type === "debug"
       ? writeDebug(message)
+      : type === "error"
+      ? writeError(message)
       : writeInfo(message);
   }
-  resetLog();
+  resetMessages();
 }
 
 export async function task<T>(title: string, callback: () => Promise<T>) {
@@ -65,10 +94,11 @@ export async function task<T>(title: string, callback: () => Promise<T>) {
 
   try {
     result = await callback();
-  } catch (error) {
+  } catch (error: any) {
     spinner.fail();
+    logError(error);
     flushLogs();
-    throw error;
+    return [null, error as Error] as const;
   }
 
   if (messages.filter(({ type }) => type === "warning").length > 0) {
@@ -79,5 +109,9 @@ export async function task<T>(title: string, callback: () => Promise<T>) {
 
   flushLogs();
 
-  return result;
+  return [result, null] as const;
+}
+
+export function hasEncounteredErrors() {
+  return encounteredErrors;
 }

@@ -8,7 +8,7 @@ const cli = program().prompt("moker > ");
 Object.values(commands).forEach((command) => cli.add(command));
 
 // Some assertions we always need
-assertYarnVersion(3);
-assertNodeVersion(14);
+await assertYarnVersion(2);
+await assertNodeVersion(14);
 
 export default cli;

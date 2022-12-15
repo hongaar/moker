@@ -1,7 +1,7 @@
 import {
   exec,
   hasPlugin,
-  installPlugin,
+  installPlugin as coreInstallPlugin,
   loadAllPlugins,
   runDependencyQueues,
   task,
@@ -19,11 +19,13 @@ export async function format({ directory }: DirOption) {
   }
 }
 
-export async function addPlugin({
+export async function installPlugin({
   directory,
   name,
 }: DirOption & { name: string }) {
-  await task(`Add plugin ${name}`, () => installPlugin({ directory, name }));
+  await task(`Install plugin ${name}`, () =>
+    coreInstallPlugin({ directory, name })
+  );
 }
 
 export async function loadPlugins({ directory }: DirOption) {

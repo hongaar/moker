@@ -13,8 +13,8 @@ import {
 import { command } from "bandersnatch";
 import { resolve } from "node:path";
 import {
-  addPlugin,
   format,
+  installPlugin,
   loadPlugins,
   updateDependencies,
 } from "../tasks.js";
@@ -93,7 +93,7 @@ export const create = command("create")
       }
 
       for (const name of plugin) {
-        await addPlugin({ directory, name });
+        await installPlugin({ directory, name });
       }
 
       await loadPlugins({ directory });
