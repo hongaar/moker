@@ -394,6 +394,8 @@ Contributions are very welcome!
 
 ## Roadmap
 
+- [ ] Use TS project references for better (incremental) compilation
+      [example](https://www.npmjs.com/package/@isomorphic-typescript/ts-monorepo)
 - [ ] Support for `swc`/`esbuild`
 - [ ] A compat lib (which builds cjs and mjs targets)
 - [ ] Blog post / tutorial

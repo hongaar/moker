@@ -15,7 +15,7 @@ export async function assertYarnVersion(version: number) {
 }
 
 export async function assertNodeVersion(version: number) {
-  if (parseInt(process.version.replace("v", ""), 10) < version) {
+  if (parseInt(process.versions.node, 10) < version) {
     throw new Error(`Needs at least Node v${version} to run moker.`);
   }
 }
