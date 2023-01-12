@@ -1,3 +1,11 @@
+## [0.10.2](https://github.com/hongaar/moker/compare/v0.10.1...v0.10.2) (2023-01-12)
+
+### Bug Fixes
+
+- **plugin-dependabot:** add commit message prefix
+  ([#104](https://github.com/hongaar/moker/issues/104))
+  ([a7e7363](https://github.com/hongaar/moker/commit/a7e736302ddb434b69e9aad87508d3fc5d53e291))
+
 ## [0.10.1](https://github.com/hongaar/moker/compare/v0.10.0...v0.10.1) (2022-12-15)
 
 ### Bug Fixes
