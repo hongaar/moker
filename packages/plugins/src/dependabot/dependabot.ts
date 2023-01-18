@@ -131,8 +131,8 @@ async function install({ directory }: PluginArgs) {
             interval: "weekly",
           },
           "commit-message": {
-            prefix: "fix(deps)",
-            "prefix-development": "chore(deps-dev)",
+            prefix: "fix",
+            "prefix-development": "chore",
             include: "scope",
           },
         },
