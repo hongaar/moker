@@ -1,3 +1,10 @@
+## [0.10.3](https://github.com/hongaar/moker/compare/v0.10.2...v0.10.3) (2023-01-18)
+
+### Bug Fixes
+
+- dependabot prefix ([#111](https://github.com/hongaar/moker/issues/111))
+  ([91197a7](https://github.com/hongaar/moker/commit/91197a73389a3b7dbb86658933385247fe49ef69))
+
 ## [0.10.2](https://github.com/hongaar/moker/compare/v0.10.1...v0.10.2) (2023-01-12)
 
 ### Bug Fixes
