@@ -5,8 +5,8 @@ updates:
     schedule:
       interval: weekly
     commit-message:
-      prefix: fix(deps)
-      prefix-development: chore(deps-dev)
+      prefix: fix
+      prefix-development: chore
       include: scope
   - package-ecosystem: github-actions
     directory: /
