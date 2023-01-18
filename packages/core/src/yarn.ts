@@ -126,7 +126,7 @@ export function enqueueRemoveDependency({
 }
 
 type EnqueueOptions = {
-  queue: typeof queues[keyof typeof queues];
+  queue: (typeof queues)[keyof typeof queues];
   directory: string;
   identifier: string | string[];
 };

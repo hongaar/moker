@@ -12,7 +12,7 @@ import {
 } from "./yarn.js";
 
 export const AVAILABLE_LICENSES = ["MIT", "GPL-3.0"] as const;
-export const DEFAULT_LICENSE: typeof AVAILABLE_LICENSES[number] = "MIT";
+export const DEFAULT_LICENSE: (typeof AVAILABLE_LICENSES)[number] = "MIT";
 
 export type RepoPackage = Package;
 
@@ -21,7 +21,7 @@ type DirOption = {
 };
 
 export type CreateRepoOptions<T = Package> = DirOption & {
-  license?: typeof AVAILABLE_LICENSES[number];
+  license?: (typeof AVAILABLE_LICENSES)[number];
   upstream: string | undefined;
   additionalPackageOptions?: T;
 };

@@ -30,7 +30,7 @@ export async function generateLicense({
   author,
 }: {
   directory: string;
-  license: typeof AVAILABLE_LICENSES[number];
+  license: (typeof AVAILABLE_LICENSES)[number];
   author: string;
 }) {
   const path = resolve(directory, FILENAME);
