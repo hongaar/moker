@@ -504,7 +504,7 @@ __metadata:
     leasot: 13.3.0
     lint-staged: 13.1.0
     prettier: 2.8.3
-    semantic-release: 20.0.2
+    semantic-release: 20.0.4
     semantic-release-yarn: 0.3.1
   languageName: unknown
   linkType: soft
@@ -6645,9 +6645,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semantic-release@npm:20.0.2":
-  version: 20.0.2
-  resolution: "semantic-release@npm:20.0.2"
+"semantic-release@npm:20.0.4":
+  version: 20.0.4
+  resolution: "semantic-release@npm:20.0.4"
   dependencies:
     "@semantic-release/commit-analyzer": ^9.0.2
     "@semantic-release/error": ^3.0.0
@@ -6679,7 +6679,7 @@ __metadata:
     yargs: ^17.5.1
   bin:
     semantic-release: bin/semantic-release.js
-  checksum: f9cbd15af1b0df682141be3f1a1410e3ef4fbe80a45bf07a048962e952e9e6d28cce8d28a83bea6e6cc6b936a9aaef150d4c8aee55b746b2a463e00da1afaf23
+  checksum: b8cdfae4dfad1dcdcec84452b2736c7419b34950c46e9c8bb4872829d70c044c8ddccf30a449d1ba030f48c66f82559675a6d9bb1681b2e167ecd75e858025b7
   languageName: node
   linkType: hard
 
