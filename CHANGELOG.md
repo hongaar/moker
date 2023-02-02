@@ -1,3 +1,11 @@
+## [0.10.5](https://github.com/hongaar/moker/compare/v0.10.4...v0.10.5) (2023-02-02)
+
+### Bug Fixes
+
+- **deps:** bump http-cache-semantics from 4.1.0 to 4.1.1
+  ([#119](https://github.com/hongaar/moker/issues/119))
+  ([b19c832](https://github.com/hongaar/moker/commit/b19c83204a7dc537dc22f94a6530496cb5d1cc48))
+
 ## [0.10.4](https://github.com/hongaar/moker/compare/v0.10.3...v0.10.4) (2023-02-02)
 
 ### Bug Fixes
