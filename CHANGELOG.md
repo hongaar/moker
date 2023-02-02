@@ -1,3 +1,11 @@
+## [0.10.4](https://github.com/hongaar/moker/compare/v0.10.3...v0.10.4) (2023-02-02)
+
+### Bug Fixes
+
+- **deps:** bump deepmerge from 4.2.2 to 4.3.0
+  ([#116](https://github.com/hongaar/moker/issues/116))
+  ([1e6d276](https://github.com/hongaar/moker/commit/1e6d27652f8477c0a8533a4dd30f99774bc64c3c))
+
 ## [0.10.3](https://github.com/hongaar/moker/compare/v0.10.2...v0.10.3) (2023-01-18)
 
 ### Bug Fixes
