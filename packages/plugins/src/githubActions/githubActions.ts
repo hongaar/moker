@@ -52,6 +52,14 @@ async function load({ directory }: PluginArgs) {
       to: join(workflowDirectory, "format-check.yml"),
     });
   }
+
+  if (await hasPlugin({ directory, name: "dependabot" })) {
+    await copyFile({
+      from: new URL("../../static/dependabot-automerge.yml", import.meta.url)
+        .pathname,
+      to: join(workflowDirectory, "dependabot-automerge.yml"),
+    });
+  }
 }
 
 export const githubActions = {
