@@ -276,12 +276,15 @@ apply _Branch protection rules_ for the main branch.
 
 > **Note**: If you enabled _Require approvals_ in the branch protection rules,
 > this won't automatically approve the PR. You will need to add an additional
-> step to the workflow manually, like:
+> command to the workflow, like:
 >
 > ```diff
 >  steps:
-> +  - uses: hmarr/auto-approve-action@v3
->    - run: gh pr merge --auto "${{ github.event.pull_request.html_url }}"
+> -  - run: gh pr merge --auto --squash "$PR_URL"
+> +  - run: |
+> +      gh pr review --approve "$PR_URL"
+> +      gh pr merge --auto --squash "$PR_URL"
+>      env:
 > ```
 
 > 🤓 _Default_: The workflows will use the `main` branch by default, but it is
