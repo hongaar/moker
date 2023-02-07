@@ -212,7 +212,7 @@ for NPM packages.
 If you have the `github-actions` plugin installed, it will add an updater for
 GitHub Actions workflows.
 
-[dependabot]:
+[Dependabot]:
   https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates
 
 ## `devcontainer` _repo_
@@ -222,8 +222,11 @@ configuration using the
 [`typescript-node`](https://hub.docker.com/_/microsoft-vscode-devcontainers)
 image.
 
-If you have the `prettier` plugin installed, it will add the
-[Prettier VS Code extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
+If you have the `prettier` plugin installed, it will add the [Prettier VS Code
+extension].
+
+[Prettier VS Code extension]:
+  https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 
 ## `doctoc` _repo_
 
@@ -255,6 +258,21 @@ repository:
 
 - `GH_TOKEN`: a GitHub token with read/write access to your repository
 - `NPM_TOKEN`: an NPM token with publish access to your packages
+
+If you have the `dependabot` plugin installed, this will also setup a
+`dependabot-automerge` workflow which enables auto-merge on dependabot PRs. You
+need to enable _Allow auto-merge_ in the GitHub repository settings and apply
+_Branch protection ruler_ for the main branch.
+
+> **Note**: If you enabled _Require approvals_ in the branch protection rules,
+> this won't automatically approve the PR. You will need to add an additional
+> step to the workflow manually, like:
+>
+> ```diff
+>  steps:
+> +  - uses: hmarr/auto-approve-action@v3
+>    - run: gh pr merge --auto "${{ github.event.pull_request.html_url }}"
+> ```
 
 > 🤓 _Default_: The workflows will use the `main` branch by default, but it is
 > trivial to change this.
@@ -375,9 +393,10 @@ Scaffolds a simple [express](https://expressjs.com) HTTP app with the
 
 > 🧪 _Experimental_
 
-Scaffolds a
-[custom GitHub Action](https://docs.github.com/en/actions/creating-actions/about-custom-actions)
-template.
+Scaffolds a [custom GitHub Action] template.
+
+[custom GitHub Action]:
+  https://docs.github.com/en/actions/creating-actions/about-custom-actions
 
 ## `lib` _repo or workspace_
 

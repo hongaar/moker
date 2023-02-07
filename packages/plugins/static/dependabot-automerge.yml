@@ -1,0 +1,13 @@
+name: dependabot-automerge
+
+on:
+  pull_request:
+
+jobs:
+  dependabot-automerge:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - run: gh pr merge --auto "${{ github.event.pull_request.html_url }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
