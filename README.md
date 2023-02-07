@@ -46,27 +46,27 @@ yarn moker add --template bandersnatch cli
   - [Using templates](#using-templates)
   - [Using plugins and templates together](#using-plugins-and-templates-together)
 - [Available plugins](#available-plugins)
-  - [`dependabot` _repo_](#dependabot-_repo_)
-  - [`devcontainer` _repo_](#devcontainer-_repo_)
-  - [`doctoc` _repo_](#doctoc-_repo_)
-  - [`esbuild` _repo or workspace_](#esbuild-_repo-or-workspace_)
-  - [`github-actions` _repo_](#github-actions-_repo_)
-  - [`husky` _repo_](#husky-_repo_)
-  - [`jest` _repo or workspace_](#jest-_repo-or-workspace_)
-  - [`lint-staged` _repo_](#lint-staged-_repo_)
-  - [`prettier` _repo_](#prettier-_repo_)
-  - [`semantic-release` _repo_](#semantic-release-_repo_)
-  - [`test` _repo or workspace_](#test-_repo-or-workspace_)
-  - [`todos` _repo or workspace_](#todos-_repo-or-workspace_)
-  - [`typescript` _repo or workspace_](#typescript-_repo-or-workspace_)
-  - [`xv` _repo or workspace_](#xv-_repo-or-workspace_)
+  - [`dependabot`](#dependabot)
+  - [`devcontainer`](#devcontainer)
+  - [`doctoc`](#doctoc)
+  - [`esbuild`](#esbuild)
+  - [`github-actions`](#github-actions)
+  - [`husky`](#husky)
+  - [`jest`](#jest)
+  - [`lint-staged`](#lint-staged)
+  - [`prettier`](#prettier)
+  - [`semantic-release`](#semantic-release)
+  - [`test`](#test)
+  - [`todos`](#todos)
+  - [`typescript`](#typescript)
+  - [`xv`](#xv)
 - [Available templates](#available-templates)
-  - [`bandersnatch` _repo or workspace_](#bandersnatch-_repo-or-workspace_)
-  - [`common` _repo_](#common-_repo_)
-  - [`cra` _repo or workspace_](#cra-_repo-or-workspace_)
-  - [`express` _repo or workspace_](#express-_repo-or-workspace_)
-  - [`github-actions` _repo_](#github-actions-_repo_-1)
-  - [`lib` _repo or workspace_](#lib-_repo-or-workspace_)
+  - [`bandersnatch`](#bandersnatch)
+  - [`common`](#common)
+  - [`cra`](#cra)
+  - [`express`](#express)
+  - [`github-actions`](#github-actions-1)
+  - [`lib`](#lib)
 - [Commands](#commands)
 - [Contributing](#contributing)
   - [Roadmap](#roadmap)
@@ -204,7 +204,9 @@ yarn dlx moker create --template express --use prettier my-repo
 
 # Available plugins
 
-## `dependabot` _repo_
+## `dependabot`
+
+_Scope: repo_
 
 This plugin adds a [Dependabot] configuration to your monorepo with an updater
 for NPM packages.
@@ -215,7 +217,9 @@ GitHub Actions workflows.
 [Dependabot]:
   https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates
 
-## `devcontainer` _repo_
+## `devcontainer`
+
+_Scope: repo_
 
 This plugin creates a [Development Containers](https://containers.dev)
 configuration using the
@@ -228,14 +232,18 @@ extension].
 [Prettier VS Code extension]:
   https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 
-## `doctoc` _repo_
+## `doctoc`
+
+_Scope: repo_
 
 This plugin adds a script to generate a table of contents for the README using
 [doctoc](https://github.com/thlorenz/doctoc).
 
 If you have the `husky` plugin installed, it will also add a pre-commit hook.
 
-## `esbuild` _repo or workspace_
+## `esbuild`
+
+_Scope: repo or workspace_
 
 This plugin sets up [esbuild](https://esbuild.github.io) and adds a `build` and
 `build:watch` script to the repo or both the workspace and the monorepo.
@@ -244,7 +252,9 @@ This plugin sets up [esbuild](https://esbuild.github.io) and adds a `build` and
 > assume that you want to build to a bundle instead of transpiled TypeScript. We
 > will still use `tsc` for type checking.
 
-## `github-actions` _repo_
+## `github-actions`
+
+_Scope: repo_
 
 This plugin creates a simple `ci.yml`
 [GitHub Actions](https://github.com/features/actions) workflow.
@@ -277,7 +287,9 @@ _Branch protection ruler_ for the main branch.
 > 🤓 _Default_: The workflows will use the `main` branch by default, but it is
 > trivial to change this.
 
-## `husky` _repo_
+## `husky`
+
+_Scope: repo_
 
 This plugin sets up [Husky](https://typicode.github.io/husky/#/) at the repo
 level.
@@ -289,7 +301,9 @@ level.
 > See
 > [Husky docs on installing with Yarn 2](https://typicode.github.io/husky/#/?id=yarn-2)
 
-## `jest` _repo or workspace_
+## `jest`
+
+_Scope: repo or workspace_
 
 > 🧪 _Experimental_ Currently only works with the `typescript` plugin. Currently
 > doesn't work when you have ESM dependencies in `node_modules`.
@@ -297,7 +311,9 @@ level.
 This plugin sets up [Jest](https://jestjs.io) and adds a `test` and `test:watch`
 script to the repo or both the workspace and the monorepo.
 
-## `lint-staged` _repo_
+## `lint-staged`
+
+_Scope: repo_
 
 This plugin sets up [lint-staged](https://github.com/okonet/lint-staged) at the
 monorepo level.
@@ -308,7 +324,9 @@ staged files using `prettier --write --ignore-unknown`.
 If you have the `husky` plugin installed, this will setup a pre-commit hook to
 run `yarn lint-staged`.
 
-## `prettier` _repo_
+## `prettier`
+
+_Scope: repo_
 
 This plugin sets up [Prettier](https://prettier.io).
 
@@ -322,7 +340,9 @@ This plugin sets up [Prettier](https://prettier.io).
 > always be truncated to match whatever the `printWidth` setting is. This makes
 > it so much easier to read and write markdown files!
 
-## `semantic-release` _repo_
+## `semantic-release`
+
+_Scope: repo_
 
 This plugin sets up
 [semantic-release](https://semantic-release.gitbook.io/semantic-release/). It
@@ -336,7 +356,9 @@ this by setting the `private` property in `package.json` to `false`.
 > 🤓 _Default_: The release configuration will use the `main` branch by default,
 > but it is trivial to change this.
 
-## `test` _repo or workspace_
+## `test`
+
+_Scope: repo or workspace_
 
 This plugin enables testing with the [test](https://www.npmjs.com/package/test)
 package, which is a port of the native
@@ -346,20 +368,26 @@ package, which is a port of the native
 When the `typescript` plugin is also installed, it will use
 [ts-node](https://typestrong.org/ts-node/) to load TypeScript test files.
 
-## `todos` _repo or workspace_
+## `todos`
+
+_Scope: repo or workspace_
 
 This plugin adds a script to generate a TODO markdown file from all code
 annotations using [leasot](https://github.com/pgilad/leasot).
 
 If you have the `husky` plugin installed, it will also add a pre-commit hook.
 
-## `typescript` _repo or workspace_
+## `typescript`
+
+_Scope: repo or workspace_
 
 This plugin sets up [TypeScript](https://www.typescriptlang.org) and adds a
 `build` and `build:watch` script to the repo or both the workspace and the
 monorepo.
 
-## `xv` _repo or workspace_
+## `xv`
+
+_Scope: repo or workspace_
 
 > 🧪 _Experimental_ Currently only works with the `typescript` plugin.
 
@@ -368,28 +396,38 @@ script to the repo or both the workspace and the monorepo.
 
 # Available templates
 
-## `bandersnatch` _repo or workspace_
+## `bandersnatch`
+
+_Scope: repo or workspace_
 
 Scaffolds a simple [bandersnatch](https://github.com/hongaar/bandersnatch) CLI
 app tool with the [typescript](#typescript-workspace) and
 [jest](#jest-workspace) plugins.
 
-## `common` _repo_
+## `common`
+
+_Scope: repo_
 
 This is the only monorepo template at this point. It simply installs all
 available monorepo plugins.
 
-## `cra` _repo or workspace_
+## `cra`
+
+_Scope: repo or workspace_
 
 Uses [create-react-app](https://create-react-app.dev/) to scaffold a React.js
 app (web client).
 
-## `express` _repo or workspace_
+## `express`
+
+_Scope: repo or workspace_
 
 Scaffolds a simple [express](https://expressjs.com) HTTP app with the
 [typescript](#typescript-workspace) and [jest](#jest-workspace) plugins.
 
-## `github-actions` _repo_
+## `github-actions`
+
+_Scope: repo_
 
 > 🧪 _Experimental_
 
@@ -398,7 +436,9 @@ Scaffolds a [custom GitHub Action] template.
 [custom GitHub Action]:
   https://docs.github.com/en/actions/creating-actions/about-custom-actions
 
-## `lib` _repo or workspace_
+## `lib`
+
+_Scope: repo or workspace_
 
 A plain shared library template with the [typescript](#typescript-workspace) and
 [jest](#jest-workspace) plugins.
