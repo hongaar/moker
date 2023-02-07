@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@types/node": "18.13.0",
-    "typescript": "4.9.4"
+    "typescript": "4.9.5"
   },
   "moker": {
     "plugins": [
