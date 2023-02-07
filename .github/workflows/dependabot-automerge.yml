@@ -3,6 +3,10 @@ name: dependabot-automerge
 on:
   pull_request:
 
+permissions:
+  pull-requests: write
+  contents: write
+
 jobs:
   dependabot-automerge:
     runs-on: ubuntu-latest
