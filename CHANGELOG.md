@@ -1,3 +1,11 @@
+## [0.11.1](https://github.com/hongaar/moker/compare/v0.11.0...v0.11.1) (2023-02-07)
+
+### Bug Fixes
+
+- dependabot automerge workflow
+  ([#125](https://github.com/hongaar/moker/issues/125))
+  ([d23c88a](https://github.com/hongaar/moker/commit/d23c88a60d6f3c603cd2e0d7c04f5aed37ce98de))
+
 # [0.11.0](https://github.com/hongaar/moker/compare/v0.10.5...v0.11.0) (2023-02-07)
 
 ### Features
