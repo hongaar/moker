@@ -1,3 +1,10 @@
+## [0.11.2](https://github.com/hongaar/moker/compare/v0.11.1...v0.11.2) (2023-02-07)
+
+### Bug Fixes
+
+- dependabot permissions
+  ([de57af6](https://github.com/hongaar/moker/commit/de57af6ddae9faac679417de2caef3dd33ab2f18))
+
 ## [0.11.1](https://github.com/hongaar/moker/compare/v0.11.0...v0.11.1) (2023-02-07)
 
 ### Bug Fixes
