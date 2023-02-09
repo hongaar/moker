@@ -65,7 +65,7 @@ yarn moker add --template bandersnatch cli
   - [`common`](#common)
   - [`cra`](#cra)
   - [`express`](#express)
-  - [`github-actions`](#github-actions-1)
+  - [`github-action`](#github-action)
   - [`lib`](#lib)
 - [Commands](#commands)
 - [Contributing](#contributing)
@@ -428,7 +428,7 @@ _Scope: repo or workspace_
 Scaffolds a simple [express](https://expressjs.com) HTTP app with the
 [typescript](#typescript-workspace) and [jest](#jest-workspace) plugins.
 
-## `github-actions`
+## `github-action`
 
 _Scope: repo_
 
