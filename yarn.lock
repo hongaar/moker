@@ -505,7 +505,7 @@ __metadata:
     lint-staged: 13.1.2
     prettier: 2.8.4
     semantic-release: 20.1.1
-    semantic-release-yarn: 0.3.1
+    semantic-release-yarn: 0.3.2
   languageName: unknown
   linkType: soft
 
@@ -2214,6 +2214,18 @@ __metadata:
     parse-json: ^5.0.0
     path-type: ^4.0.0
   checksum: ff4cdf89ac1ae52e7520816622c21a9e04380d04b82d653f5139ec581aa4f7f29e096d46770bc76c4a63c225367e88a1dfa233ea791669a35101f5f9b972c7d1
+  languageName: node
+  linkType: hard
+
+"cosmiconfig@npm:^8.1.0":
+  version: 8.1.0
+  resolution: "cosmiconfig@npm:8.1.0"
+  dependencies:
+    import-fresh: ^3.2.1
+    js-yaml: ^4.1.0
+    parse-json: ^5.0.0
+    path-type: ^4.0.0
+  checksum: 78a1846acc4935ab4d928e3f768ee2ad2fddbec96377935462749206568423ff4757140ac7f2ccd1f547f86309b8448c04b26588848b5a1520f2e9741cdeecf0
   languageName: node
   linkType: hard
 
@@ -6649,14 +6661,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semantic-release-yarn@npm:0.3.1":
-  version: 0.3.1
-  resolution: "semantic-release-yarn@npm:0.3.1"
+"semantic-release-yarn@npm:0.3.2":
+  version: 0.3.2
+  resolution: "semantic-release-yarn@npm:0.3.2"
   dependencies:
     "@semantic-release/error": ^3.0.0
     aggregate-error: ^4.0.1
-    cosmiconfig: ^8.0.0
-    execa: ^6.1.0
+    cosmiconfig: ^8.1.0
+    execa: ^7.0.0
     fs-extra: ^11.1.0
     js-yaml: ^4.1.0
     lodash: ^4.17.21
@@ -6665,7 +6677,7 @@ __metadata:
     semver: ^7.3.8
   peerDependencies:
     semantic-release: ">=19.0.0"
-  checksum: dcda490a56b214ffbd854dbadc7f80e3a9e454cff7b54084d58744645b49bbbeaecf271b91b763b969cde759b91852fa51a484f1b1679429927cb489789c8aa4
+  checksum: 1de40a4c0d8d77652defbad2c45ea9a4571ddde9bd392250ea9c4f36edc967a71c87f2a9958cbae77dc718e1efd7113881694903642e28e98534bdb0ec9738cb
   languageName: node
   linkType: hard
 
