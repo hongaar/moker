@@ -12,10 +12,10 @@ cd my-monorepo
 yarn moker use prettier doctoc semantic-release
 
 # create workspaces
-yarn moker add --template express server
-yarn moker add --template cra client
-yarn moker add --template lib shared
-yarn moker add --template bandersnatch cli
+yarn moker add server --template express
+yarn moker add client --template cra
+yarn moker add shared --template lib
+yarn moker add cli --template bandersnatch
 ```
 
 ## Features
