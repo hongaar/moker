@@ -28,10 +28,24 @@ const queues = {
   remove: new Map<string, Set<string>>(),
 };
 
+export async function runYarnCmd(
+  args: string[],
+  { directory }: { directory: string }
+) {
+  return exec("yarn", args, {
+    cwd: directory,
+    env: {
+      ...process.env,
+      // Reset NODE_OPTIONS='--loader=ts-node/esm' when running from tests
+      NODE_OPTIONS: undefined,
+    },
+  });
+}
+
 export async function initYarnExistingRepo({ directory }: DirOption) {
   await exec("git", ["init", "--initial-branch", "main"], { cwd: directory });
 
-  await exec("yarn", ["set", "version", "latest"], { cwd: directory });
+  await runYarnCmd(["set", "version", "latest"], { directory });
 
   await setupYarn({ directory });
 }
@@ -39,7 +53,7 @@ export async function initYarnExistingRepo({ directory }: DirOption) {
 export async function initYarnNewRepo({ directory }: DirOption) {
   await createDirectory({ directory });
 
-  await exec("yarn", ["init", "-2"], { cwd: directory });
+  await runYarnCmd(["init", "-2"], { directory });
 
   await setupYarn({ directory });
 }
@@ -62,7 +76,7 @@ export async function addYarnPlugin({
   directory: string;
   name: string;
 }) {
-  await exec("yarn", ["plugin", "import", name], { cwd: directory });
+  await runYarnCmd(["plugin", "import", name], { directory });
 }
 
 export async function removeYarnPlugin({
@@ -72,7 +86,7 @@ export async function removeYarnPlugin({
   directory: string;
   name: string;
 }) {
-  await exec("yarn", ["plugin", "remove", name], { cwd: directory });
+  await runYarnCmd(["plugin", "remove", name], { directory });
 }
 
 export async function installDependency({
@@ -92,7 +106,7 @@ export async function installDependency({
     ...identifier.map((id) => (dev ? `--dev ${id}` : id)),
   ];
 
-  await exec("yarn", installArgs, { cwd: directory });
+  await runYarnCmd(installArgs, { directory });
 }
 
 export function enqueueInstallDependency({
@@ -150,14 +164,14 @@ export async function runDependencyQueues({ directory }: DirOption) {
 
   if (!dependencies.size && !devDependencies.size && !removeDependencies.size) {
     // Nothing to install or remove
-    await exec("yarn", [], { cwd: directory });
+    await runYarnCmd([], { directory });
     return;
   }
 
   if (dependencies.size) {
     const installArgs = ["add", "--exact", ...Array.from(dependencies)];
 
-    await exec("yarn", installArgs, { cwd: directory });
+    await runYarnCmd(installArgs, { directory });
 
     queues.install.set(directory, new Set());
   }
@@ -170,7 +184,7 @@ export async function runDependencyQueues({ directory }: DirOption) {
       ...Array.from(devDependencies),
     ];
 
-    await exec("yarn", installArgs, { cwd: directory });
+    await runYarnCmd(installArgs, { directory });
 
     queues.installDev.set(directory, new Set());
   }
@@ -178,7 +192,7 @@ export async function runDependencyQueues({ directory }: DirOption) {
   if (removeDependencies.size) {
     const removeArgs = ["remove", ...Array.from(removeDependencies)];
 
-    await exec("yarn", removeArgs, { cwd: directory });
+    await runYarnCmd(removeArgs, { directory });
 
     queues.remove.set(directory, new Set());
   }
@@ -187,8 +201,8 @@ export async function runDependencyQueues({ directory }: DirOption) {
 }
 
 export async function getWorkspaces({ directory }: DirOption) {
-  const { stdout } = await exec("yarn", ["workspaces", "list", "--json"], {
-    cwd: directory,
+  const { stdout } = await runYarnCmd(["workspaces", "list", "--json"], {
+    directory,
   });
   const workspaces: { location: string; name: string }[] = [];
 
