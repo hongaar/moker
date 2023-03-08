@@ -1,3 +1,10 @@
+## [0.11.3](https://github.com/hongaar/moker/compare/v0.11.2...v0.11.3) (2023-03-08)
+
+### Bug Fixes
+
+- disable greedy arrays ([#134](https://github.com/hongaar/moker/issues/134))
+  ([5f400f2](https://github.com/hongaar/moker/commit/5f400f22615cc5db4f92b8fd7ad5396c177b0982))
+
 ## [0.11.2](https://github.com/hongaar/moker/compare/v0.11.1...v0.11.2) (2023-02-07)
 
 ### Bug Fixes
