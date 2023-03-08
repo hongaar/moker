@@ -11,6 +11,7 @@ type Log =
       type: "error";
     };
 
+let fastFail = false;
 let messages: Log[];
 let encounteredErrors: boolean;
 
@@ -75,6 +76,10 @@ export function resetState() {
   resetEncounteredErrors();
 }
 
+export function setFastFail(value: boolean) {
+  fastFail = value;
+}
+
 export async function flushLogs() {
   for (const { message, type } of messages) {
     type === "warning"
@@ -98,6 +103,11 @@ export async function task<T>(title: string, callback: () => Promise<T>) {
     spinner.fail();
     logError(error);
     flushLogs();
+
+    if (fastFail) {
+      throw error;
+    }
+
     return [null, error as Error] as const;
   }
 
