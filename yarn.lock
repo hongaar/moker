@@ -469,7 +469,7 @@ __metadata:
     deepmerge: 4.3.0
     hosted-git-info: 6.1.1
     license: 1.0.3
-    ora: 6.1.2
+    ora: 6.2.0
     pkg-up: ^4.0.0
     sort-package-json: 2.4.1
     tap: 16.3.4
@@ -5717,20 +5717,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ora@npm:6.1.2":
-  version: 6.1.2
-  resolution: "ora@npm:6.1.2"
+"ora@npm:6.2.0":
+  version: 6.2.0
+  resolution: "ora@npm:6.2.0"
   dependencies:
-    bl: ^5.0.0
     chalk: ^5.0.0
     cli-cursor: ^4.0.0
     cli-spinners: ^2.6.1
     is-interactive: ^2.0.0
     is-unicode-supported: ^1.1.0
     log-symbols: ^5.1.0
+    stdin-discarder: ^0.1.0
     strip-ansi: ^7.0.1
     wcwidth: ^1.0.1
-  checksum: d5af3d67ad7affcf3029ffe3ef547f3335fb72abdc382040ae8bd75ad5c629f5d165ed9e398fd4fb08100701eafbec34bb9dc3f29e919f6f75c443290faa1db2
+  checksum: 9ce270c15b5ea5f6b40fee3c1eb9b96392e2312609d800fa311226d4b0682986269bf5887e2bbf9af5f73344dad7549fcd702a0567c6344565e01ddd0413da49
   languageName: node
   linkType: hard
 
@@ -7116,6 +7116,15 @@ __metadata:
   dependencies:
     escape-string-regexp: ^2.0.0
   checksum: 052bf4d25bbf5f78e06c1d5e67de2e088b06871fa04107ca8d3f0e9d9263326e2942c8bedee3545795fc77d787d443a538345eef74db2f8e35db3558c6f91ff7
+  languageName: node
+  linkType: hard
+
+"stdin-discarder@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "stdin-discarder@npm:0.1.0"
+  dependencies:
+    bl: ^5.0.0
+  checksum: 85131f70ae2830144133b7a6211d56f9ac2603573f4af3d0b66e828af5e13fcdea351f9192f86bb7fed2c64604c8097bf36d50cb77d54e898ce4604c3b7b6b8f
   languageName: node
   linkType: hard
 
