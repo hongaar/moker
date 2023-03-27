@@ -469,7 +469,7 @@ __metadata:
     deepmerge: 4.3.1
     hosted-git-info: 6.1.1
     license: 1.0.3
-    ora: 6.2.0
+    ora: 6.3.0
     pkg-up: ^4.0.0
     sort-package-json: 2.4.1
     tap: 16.3.4
@@ -5717,9 +5717,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ora@npm:6.2.0":
-  version: 6.2.0
-  resolution: "ora@npm:6.2.0"
+"ora@npm:6.3.0":
+  version: 6.3.0
+  resolution: "ora@npm:6.3.0"
   dependencies:
     chalk: ^5.0.0
     cli-cursor: ^4.0.0
@@ -5730,7 +5730,7 @@ __metadata:
     stdin-discarder: ^0.1.0
     strip-ansi: ^7.0.1
     wcwidth: ^1.0.1
-  checksum: 9ce270c15b5ea5f6b40fee3c1eb9b96392e2312609d800fa311226d4b0682986269bf5887e2bbf9af5f73344dad7549fcd702a0567c6344565e01ddd0413da49
+  checksum: e19fb18acd66cfaefb71351f6d50242abdf549161a5e57bf389bd467a0bb0e26f282423faa3038c411b16b7f9fc316c2c4abe6ce7c041c3c2ac993a0f228fc5b
   languageName: node
   linkType: hard
 
