@@ -88,12 +88,12 @@ export const create = command("create")
 
       for (const name of template) {
         await task(`Apply template ${name}`, () =>
-          applyTemplate({ directory, name })
+          applyTemplate({ directory, name: name as string })
         );
       }
 
       for (const name of plugin) {
-        await installPlugin({ directory, name });
+        await installPlugin({ directory, name: name as string });
       }
 
       await loadPlugins({ directory });
