@@ -18,12 +18,12 @@ export const add = command("add")
   .option("template", {
     description: "Use workspace template",
     type: "array",
-    default: [] as string[],
+    default: [],
   })
   .option("plugin", {
     description: "Kick-start with this plugin",
     type: "array",
-    default: [] as string[],
+    default: [],
   })
   .option("cwd", {
     description: "Directory to use as the current working directory",
@@ -48,12 +48,15 @@ export const add = command("add")
 
       for (const name of template) {
         await task(`Apply template ${name}`, () =>
-          applyTemplate({ directory: workspaceDirectory, name })
+          applyTemplate({ directory: workspaceDirectory, name: name as string })
         );
       }
 
       for (const name of plugin) {
-        await installPlugin({ directory: workspaceDirectory, name });
+        await installPlugin({
+          directory: workspaceDirectory,
+          name: name as string,
+        });
       }
 
       await loadPlugins({ directory: workspaceDirectory });
