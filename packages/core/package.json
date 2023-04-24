@@ -26,7 +26,7 @@
     "license": "1.0.3",
     "ora": "6.3.0",
     "pkg-up": "^4.0.0",
-    "yaml": "2.2.1"
+    "yaml": "2.2.2"
   },
   "devDependencies": {
     "@types/hosted-git-info": "3.0.2",
