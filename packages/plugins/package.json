@@ -1,6 +1,6 @@
 {
   "name": "@mokr/plugins",
-  "version": "0.11.3",
+  "version": "0.11.4",
   "description": "Moker plugins",
   "repository": "https://github.com/hongaar/moker",
   "license": "MIT",

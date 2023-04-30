@@ -1,3 +1,23 @@
+## [0.11.4](https://github.com/hongaar/moker/compare/v0.11.3...v0.11.4) (2023-04-30)
+
+### Bug Fixes
+
+- **deps:** bump bandersnatch from 1.11.1 to 1.12.1
+  ([#153](https://github.com/hongaar/moker/issues/153))
+  ([98ca47a](https://github.com/hongaar/moker/commit/98ca47a6ae59d69c17f91aa950c53495a6dd8409))
+- **deps:** bump deepmerge from 4.3.0 to 4.3.1
+  ([#138](https://github.com/hongaar/moker/issues/138))
+  ([19a1e0e](https://github.com/hongaar/moker/commit/19a1e0e62366b18e274cb04e53e60e579cde269b))
+- **deps:** bump ora from 6.1.2 to 6.2.0
+  ([#143](https://github.com/hongaar/moker/issues/143))
+  ([f7b6e3e](https://github.com/hongaar/moker/commit/f7b6e3e33a4fd20f7ecc92be9ac9978223f27a00))
+- **deps:** bump ora from 6.2.0 to 6.3.0
+  ([#145](https://github.com/hongaar/moker/issues/145))
+  ([803bce3](https://github.com/hongaar/moker/commit/803bce3a98f5d695a2c445a1eaeca468b1b50993))
+- **deps:** bump yaml from 2.2.1 to 2.2.2
+  ([#158](https://github.com/hongaar/moker/issues/158))
+  ([0b00bd2](https://github.com/hongaar/moker/commit/0b00bd23e81b574e5cb3ab456accc3ae322403c6))
+
 ## [0.11.3](https://github.com/hongaar/moker/compare/v0.11.2...v0.11.3) (2023-03-08)
 
 ### Bug Fixes
