@@ -266,7 +266,7 @@ If you have the `semantic-release` plugin installed, this will also setup a
 `release.yml` workflow. This workflow needs these secrets to be added to your
 repository:
 
-- `GH_TOKEN`: a GitHub token with read/write access to your repository
+- `GH_PAT`: a GitHub token with read/write access to your repository
 - `NPM_TOKEN`: an NPM token with publish access to your packages
 
 If you have the `dependabot` plugin installed, this will also setup a
