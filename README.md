@@ -257,7 +257,9 @@ This plugin sets up [esbuild](https://esbuild.github.io) and adds a `build` and
 _Scope: repo_
 
 This plugin creates a simple `ci.yml`
-[GitHub Actions](https://github.com/features/actions) workflow.
+[GitHub Actions](https://github.com/features/actions) workflow and a workflow to
+[update the Node](https://github.com/hongaar/update-node-versions) versions
+periodically.
 
 If you have the `prettier` plugin installed, this will also setup a `lint.yml`
 workflow.
