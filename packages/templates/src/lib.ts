@@ -1,4 +1,9 @@
-import { installPlugin, PluginType, TemplateArgs, writeFile } from "@mokr/core";
+import {
+  PluginType,
+  installPlugin,
+  writeFile,
+  type TemplateArgs,
+} from "@mokr/core";
 import { join } from "path";
 
 async function apply({ directory }: TemplateArgs) {

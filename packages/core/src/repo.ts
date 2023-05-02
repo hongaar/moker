@@ -2,7 +2,7 @@ import hostedGitInfo from "hosted-git-info";
 import { basename, join } from "node:path";
 import { isDirectory, isReadableAndWritableDirectory } from "./directory.js";
 import { generateLicense } from "./license.js";
-import { hasPackage, Package, writePackage } from "./package.js";
+import { hasPackage, writePackage, type Package } from "./package.js";
 import { exec, getAuthor } from "./utils/index.js";
 import { writeReadme } from "./workspace.js";
 import {

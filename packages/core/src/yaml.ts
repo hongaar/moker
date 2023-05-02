@@ -2,7 +2,7 @@ import deepmerge from "deepmerge";
 import yaml from "yaml";
 
 import { isReadableAndWritableFile, readFile, writeFile } from "./file.js";
-import { isPlainObject, JSONValue } from "./utils/types.js";
+import { isPlainObject, type JSONValue } from "./utils/types.js";
 
 export async function readYaml<T extends JSONValue>({
   path,

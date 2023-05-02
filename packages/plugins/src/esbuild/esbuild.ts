@@ -1,14 +1,14 @@
 import {
+  PluginType,
   enqueueInstallDependency,
   enqueueRemoveDependency,
   getMonorepoDirectory,
   hasPlugin,
-  PluginArgs,
-  PluginType,
   updatePackage,
   warning,
   writeGitignore,
   writePackage,
+  type PluginArgs,
 } from "@mokr/core";
 
 async function install({ directory }: PluginArgs) {

@@ -1,15 +1,16 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Node 18 + ESM + Strictest",
+  "display": "Node 20 + ESM + Strictest",
   "compilerOptions": {
-    "lib": ["es2021", "es2022"],
+    "lib": ["es2023"],
     "module": "es2022",
     "target": "es2022",
-    "moduleResolution": "node",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "verbatimModuleSyntax": true,
     "allowUnusedLabels": false,
     "allowUnreachableCode": false,
     "exactOptionalPropertyTypes": true,
@@ -20,7 +21,6 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "importsNotUsedAsValues": "error",
     "declaration": true,
     "declarationMap": true
   }

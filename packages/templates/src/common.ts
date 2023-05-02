@@ -1,4 +1,4 @@
-import { installPlugin, PluginType, TemplateArgs } from "@mokr/core";
+import { installPlugin, PluginType, type TemplateArgs } from "@mokr/core";
 
 async function apply({ directory }: TemplateArgs) {
   await installPlugin({ directory, name: "prettier" });

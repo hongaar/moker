@@ -1,4 +1,4 @@
-import { hasPlugin, PluginArgs, PluginType } from "@mokr/core";
+import { PluginType, hasPlugin, type PluginArgs } from "@mokr/core";
 import {
   readDevcontainerJson,
   removeDevcontainerJson,

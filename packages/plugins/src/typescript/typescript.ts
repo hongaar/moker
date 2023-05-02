@@ -1,17 +1,17 @@
 import {
+  PluginType,
   addYarnPlugin,
   enqueueInstallDependency,
   enqueueRemoveDependency,
   getMonorepoDirectory,
-  PluginArgs,
-  PluginType,
   removeYarnPlugin,
   warning,
   writeGitignore,
   writePackage,
+  type PluginArgs,
 } from "@mokr/core";
 import deepmerge from "deepmerge";
-import { removeTsconfig, Tsconfig, writeTsconfig } from "./tsconfig.js";
+import { removeTsconfig, writeTsconfig, type Tsconfig } from "./tsconfig.js";
 
 const TSCONFIG_WORKSPACE: Tsconfig = {
   compilerOptions: {
@@ -22,12 +22,12 @@ const TSCONFIG_WORKSPACE: Tsconfig = {
   include: ["src/**/*"],
 };
 
-// https://github.com/tsconfig/bases/blob/main/bases/node18-strictest-esm.combined.json
+// https://github.com/tsconfig/bases/tree/main/bases
 const TSCONFIG_BASE: Tsconfig = {
   $schema: "https://json.schemastore.org/tsconfig",
-  display: "Node 18 + ESM + Strictest",
+  display: "Node 20 + ESM + Strictest",
   compilerOptions: {
-    lib: ["es2022"],
+    lib: ["es2023"],
     module: "es2022",
     target: "es2022",
     strict: true,
@@ -35,6 +35,7 @@ const TSCONFIG_BASE: Tsconfig = {
     skipLibCheck: true,
     forceConsistentCasingInFileNames: true,
     moduleResolution: "node",
+    verbatimModuleSyntax: true,
     allowUnusedLabels: false,
     allowUnreachableCode: false,
     exactOptionalPropertyTypes: true,
@@ -45,7 +46,6 @@ const TSCONFIG_BASE: Tsconfig = {
     noUncheckedIndexedAccess: true,
     noUnusedLocals: true,
     noUnusedParameters: true,
-    importsNotUsedAsValues: "error",
 
     // Custom
     declaration: true,
