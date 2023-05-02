@@ -1,12 +1,12 @@
 import {
+  PluginType,
   enqueueInstallDependency,
   enqueueRemoveDependency,
-  PluginArgs,
-  PluginType,
   removeFile,
   updatePackage,
   writeFile,
   writePackage,
+  type PluginArgs,
 } from "@mokr/core";
 import os from "node:os";
 import { join } from "node:path";

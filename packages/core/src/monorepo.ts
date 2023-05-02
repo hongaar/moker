@@ -1,10 +1,10 @@
 import { join } from "node:path";
-import { Package, readPackage } from "./package.js";
+import { readPackage, type Package } from "./package.js";
 import {
-  createRepo,
-  CreateRepoOptions,
   DEFAULT_LICENSE,
+  createRepo,
   isRepo,
+  type CreateRepoOptions,
 } from "./repo.js";
 import { addYarnPlugin } from "./yarn.js";
 

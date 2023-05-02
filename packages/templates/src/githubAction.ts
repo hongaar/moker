@@ -1,13 +1,13 @@
 import {
+  PluginType,
   enqueueInstallDependency,
   hasPlugin,
   installPlugin,
-  PluginType,
-  TemplateArgs,
   warning,
   writeFile,
   writePackage,
   writeYaml,
+  type TemplateArgs,
 } from "@mokr/core";
 import { basename, join, resolve } from "node:path";
 

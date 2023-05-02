@@ -1,12 +1,12 @@
 import {
+  PluginType,
   exec,
   getMonorepoDirectory,
-  PluginType,
   readPackage,
   removeDirectory,
   removeFile,
-  TemplateArgs,
   writePackage,
+  type TemplateArgs,
 } from "@mokr/core";
 import { basename, dirname, join } from "node:path";
 

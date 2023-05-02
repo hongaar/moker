@@ -1,9 +1,9 @@
 import {
+  PluginType,
   copyFile,
   hasPlugin,
-  PluginArgs,
-  PluginType,
   removeDirectory,
+  type PluginArgs,
 } from "@mokr/core";
 import { join } from "node:path";
 import { URL } from "node:url";

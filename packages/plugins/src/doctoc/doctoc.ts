@@ -1,11 +1,11 @@
 import {
+  PluginType,
   enqueueInstallDependency,
   enqueueRemoveDependency,
   hasPlugin,
-  PluginArgs,
-  PluginType,
   updatePackage,
   writePackage,
+  type PluginArgs,
 } from "@mokr/core";
 import {
   addPreCommitHookCommand,

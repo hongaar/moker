@@ -1,10 +1,10 @@
 import {
-  hasPlugin,
-  PluginArgs,
   PluginType,
+  hasPlugin,
   readYaml,
   removeFile,
   writeYaml,
+  type PluginArgs,
 } from "@mokr/core";
 import { join } from "node:path";
 

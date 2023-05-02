@@ -1,11 +1,10 @@
 import {
+  PluginType,
   enqueueRemoveDependency,
   exec,
   installDependency,
   isMonorepo,
   isReadableAndWritableFile,
-  PluginArgs,
-  PluginType,
   readFile,
   removeDirectory,
   removeFile,
@@ -13,6 +12,7 @@ import {
   warning,
   writeFile,
   writePackage,
+  type PluginArgs,
 } from "@mokr/core";
 import os from "node:os";
 import { join } from "node:path";

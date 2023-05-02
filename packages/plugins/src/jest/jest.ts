@@ -1,14 +1,14 @@
 import {
+  PluginType,
   enqueueInstallDependency,
   enqueueRemoveDependency,
   getMonorepoDirectory,
   hasPlugin,
-  PluginArgs,
-  PluginType,
   removeFile,
   warning,
   writeFile,
   writePackage,
+  type PluginArgs,
 } from "@mokr/core";
 import { join } from "path";
 
