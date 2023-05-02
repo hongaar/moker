@@ -1,3 +1,11 @@
+# [0.12.0](https://github.com/hongaar/moker/compare/v0.11.5...v0.12.0) (2023-05-02)
+
+### Features
+
+- add update-node-versions workflow
+  ([#165](https://github.com/hongaar/moker/issues/165))
+  ([b5ea2bf](https://github.com/hongaar/moker/commit/b5ea2bfd05a2b19311ba2b040e71e52cf985c5c5))
+
 ## [0.11.5](https://github.com/hongaar/moker/compare/v0.11.4...v0.11.5) (2023-05-02)
 
 ### Bug Fixes
