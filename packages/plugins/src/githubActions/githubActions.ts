@@ -16,7 +16,7 @@ async function install({ directory }: PluginArgs) {
   // Workspaces
 
   // Since there's currently no way to detect plugins in workspaces, we always
-  // install the build and test workflows.
+  // install the ci workflows.
 
   // We could build plugin detection in workspaces, but then we would need to
   // load all plugins at the monorepo level when we modify plugins at the
@@ -25,6 +25,12 @@ async function install({ directory }: PluginArgs) {
   await copyFile({
     from: new URL("../../static/ci.yml", import.meta.url).pathname,
     to: join(workflowDirectory, "ci.yml"),
+  });
+
+  await copyFile({
+    from: new URL("../../static/update-node-versions.yml", import.meta.url)
+      .pathname,
+    to: join(workflowDirectory, "update-node-versions.yml"),
   });
 }
 
