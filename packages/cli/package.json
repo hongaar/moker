@@ -25,7 +25,7 @@
     "@mokr/core": "workspace:*",
     "@mokr/plugins": "workspace:*",
     "@mokr/templates": "workspace:*",
-    "bandersnatch": "1.12.2"
+    "bandersnatch": "1.12.4"
   },
   "devDependencies": {
     "@types/node": "18.16.3",
