@@ -1,3 +1,11 @@
+## [0.12.1](https://github.com/hongaar/moker/compare/v0.12.0...v0.12.1) (2023-05-08)
+
+### Bug Fixes
+
+- **deps:** bump bandersnatch from 1.12.2 to 1.12.4
+  ([#167](https://github.com/hongaar/moker/issues/167))
+  ([2f34bfa](https://github.com/hongaar/moker/commit/2f34bfa61c147ff8e089752d3cba48d7d2106e03))
+
 # [0.12.0](https://github.com/hongaar/moker/compare/v0.11.5...v0.12.0) (2023-05-02)
 
 ### Features
