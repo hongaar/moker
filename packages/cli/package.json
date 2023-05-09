@@ -1,6 +1,6 @@
 {
   "name": "moker",
-  "version": "0.12.0",
+  "version": "0.12.2",
   "description": "The moker CLI",
   "repository": "https://github.com/hongaar/moker",
   "license": "MIT",
@@ -25,10 +25,10 @@
     "@mokr/core": "workspace:*",
     "@mokr/plugins": "workspace:*",
     "@mokr/templates": "workspace:*",
-    "bandersnatch": "1.12.2"
+    "bandersnatch": "1.12.4"
   },
   "devDependencies": {
-    "@types/node": "18.16.3",
+    "@types/node": "20.1.1",
     "tap": "16.3.4",
     "test": "3.3.0",
     "ts-node": "10.9.1",

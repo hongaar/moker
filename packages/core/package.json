@@ -1,6 +1,6 @@
 {
   "name": "@mokr/core",
-  "version": "0.12.0",
+  "version": "0.12.2",
   "description": "Core moker functions",
   "repository": "https://github.com/hongaar/moker",
   "license": "MIT",
@@ -26,12 +26,12 @@
     "license": "1.0.3",
     "ora": "6.3.0",
     "pkg-up": "^4.0.0",
+    "sort-package-json": "2.4.1",
     "yaml": "2.2.2"
   },
   "devDependencies": {
     "@types/hosted-git-info": "3.0.2",
-    "@types/node": "18.16.3",
-    "sort-package-json": "2.4.1",
+    "@types/node": "20.1.1",
     "tap": "16.3.4",
     "tempy": "3.0.0",
     "test": "3.3.0",
