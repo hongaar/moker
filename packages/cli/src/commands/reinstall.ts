@@ -15,7 +15,7 @@ import { format, updateDependencies } from "../tasks.js";
 export const reinstall = command("reinstall")
   .hidden()
   .description("Reinstalls all plugins in the current directory")
-  .option("all", {
+  .option("recursive", {
     type: "boolean",
     description: "Also reinstalls plugins of all workspaces in a monorepo",
   })
@@ -23,7 +23,7 @@ export const reinstall = command("reinstall")
     description: "Directory to use as the current working directory",
     default: process.cwd(),
   })
-  .action(async ({ all, cwd }) => {
+  .action(async ({ recursive, cwd }) => {
     const directory = resolve(cwd);
     const plugins = await getPlugins({ directory });
 
@@ -35,7 +35,7 @@ export const reinstall = command("reinstall")
 
     await task(`Load plugins`, () => loadAllPlugins({ directory }));
 
-    if (all && (await isMonorepo({ directory }))) {
+    if (recursive && (await isMonorepo({ directory }))) {
       const workspaces = await getWorkspaces({ directory });
 
       for (const workspace of workspaces) {
