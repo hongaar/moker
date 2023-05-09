@@ -1,3 +1,10 @@
+## [0.12.2](https://github.com/hongaar/moker/compare/v0.12.1...v0.12.2) (2023-05-09)
+
+### Bug Fixes
+
+- dep ([#169](https://github.com/hongaar/moker/issues/169))
+  ([19233f7](https://github.com/hongaar/moker/commit/19233f71c6fea6808acdaffe06e440639e042646))
+
 ## [0.12.1](https://github.com/hongaar/moker/compare/v0.12.0...v0.12.1) (2023-05-08)
 
 ### Bug Fixes
