@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/hongaar/moker/compare/v1.0.0...v1.1.0) (2023-05-09)
+
+### Features
+
+- add concurrency to release workflow
+  ([#170](https://github.com/hongaar/moker/issues/170))
+  ([f8f4145](https://github.com/hongaar/moker/commit/f8f4145bd97cf7c0f39959660d9d58978095f68d))
+
 # [1.0.0](https://github.com/hongaar/moker/compare/v0.12.2...v1.0.0) (2023-05-09)
 
 ### Features
