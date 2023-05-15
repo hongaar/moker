@@ -1,3 +1,11 @@
+## [1.1.1](https://github.com/hongaar/moker/compare/v1.1.0...v1.1.1) (2023-05-15)
+
+### Bug Fixes
+
+- **deps:** bump ora from 6.3.0 to 6.3.1
+  ([#174](https://github.com/hongaar/moker/issues/174))
+  ([10f786d](https://github.com/hongaar/moker/commit/10f786d30d5feff142f1a524cdb0ea914f67bd4b))
+
 # [1.1.0](https://github.com/hongaar/moker/compare/v1.0.0...v1.1.0) (2023-05-09)
 
 ### Features
