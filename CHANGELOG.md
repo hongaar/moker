@@ -1,3 +1,11 @@
+## [1.1.2](https://github.com/hongaar/moker/compare/v1.1.1...v1.1.2) (2023-05-29)
+
+### Bug Fixes
+
+- **deps:** bump yaml from 2.2.2 to 2.3.1
+  ([#176](https://github.com/hongaar/moker/issues/176))
+  ([869a218](https://github.com/hongaar/moker/commit/869a2183c4306a35452483f2d28075d3fd77bf54))
+
 ## [1.1.1](https://github.com/hongaar/moker/compare/v1.1.0...v1.1.1) (2023-05-15)
 
 ### Bug Fixes
