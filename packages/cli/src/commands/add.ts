@@ -43,7 +43,7 @@ export const add = command("add")
       );
 
       if (error) {
-        throw error;
+        continue;
       }
 
       for (const name of template) {

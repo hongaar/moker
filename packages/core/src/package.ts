@@ -1,6 +1,7 @@
 import { resolve } from "node:path";
 import sortPackageJson from "sort-package-json";
 import { isReadableAndWritableFile, removeFile } from "./file.js";
+import { debug } from "./io.js";
 import { readJson, updateJson, writeJson } from "./json.js";
 import type { Undefinable } from "./utils/types.js";
 
@@ -154,6 +155,8 @@ export async function updatePackage({
 }
 
 export async function sortPackage({ directory }: { directory: string }) {
+  debug(`sorting "package.json" in "${directory}"`);
+
   await updateJson({
     path: resolve(directory, FILENAME),
     merge: sortPackageJson,

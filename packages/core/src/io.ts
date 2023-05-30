@@ -114,7 +114,7 @@ export async function task<T>(title: string, callback: () => Promise<T>) {
   if (messages.filter(({ type }) => type === "warning").length > 0) {
     spinner.warn();
   } else {
-    spinner.succeed(title);
+    spinner.succeed();
   }
 
   flushLogs();
