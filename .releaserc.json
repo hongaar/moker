@@ -19,7 +19,7 @@
           "package.json",
           "packages/*/package.json",
           "!packages/*/README.md",
-          "packages/action/dist/index.cjs"
+          "packages/action/dist/index.js"
         ],
         "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}\n\n[skip ci]"
       }
