@@ -1,0 +1,11 @@
+name: update-major-tag
+
+on:
+  release:
+    types: [published, edited]
+
+jobs:
+  update-major-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: hongaar/update-major-version-tag@v1

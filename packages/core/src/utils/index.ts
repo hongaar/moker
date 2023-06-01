@@ -3,4 +3,5 @@ export * from "./author.js";
 export * from "./exec.js";
 export * from "./merge.js";
 export * from "./string.js";
+export * from "./tasks.js";
 export * from "./types.js";

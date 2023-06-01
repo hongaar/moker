@@ -11,7 +11,6 @@ type Log =
       type: "error";
     };
 
-let fastFail = false;
 let messages: Log[];
 let encounteredErrors: boolean;
 
@@ -76,8 +75,8 @@ export function resetState() {
   resetEncounteredErrors();
 }
 
-export function setFastFail(value: boolean) {
-  fastFail = value;
+export function isInTest() {
+  return !!process.env["TAP"];
 }
 
 export async function flushLogs() {
@@ -104,7 +103,7 @@ export async function task<T>(title: string, callback: () => Promise<T>) {
     logError(error);
     flushLogs();
 
-    if (fastFail) {
+    if (isInTest()) {
       throw error;
     }
 

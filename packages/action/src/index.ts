@@ -1,26 +1,23 @@
-import { getInput, info, setFailed, setOutput } from "@actions/core";
-import { context, getOctokit } from "@actions/github";
+import { info, setFailed, setOutput } from "@actions/core";
+import {
+  formatTask,
+  loadPluginsTask,
+  updateDependenciesTask,
+} from "@mokr/core";
 
 async function run() {
-  const ghToken = getInput("gh-token");
+  const directory = process.cwd();
 
-  if (!ghToken) {
-    throw new Error("The GitHub token is missing");
-  }
+  await loadPluginsTask({ directory });
 
-  // Example logic
-  const octokit = getOctokit(ghToken);
-  const { owner, repo } = context.repo;
+  await updateDependenciesTask({ directory });
 
-  const response = await octokit.rest.repos.getReadme({
-    owner,
-    repo,
-  });
+  await formatTask({ directory });
 
   info("Action complete");
 
   return {
-    result: response.data.content,
+    result: "ok",
   };
 }
 

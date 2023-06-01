@@ -1,8 +1,15 @@
-import { hasPlugin, installPlugin, task, warning } from "@mokr/core";
+import {
+  formatTask,
+  hasPlugin,
+  installPluginTask,
+  loadPluginsTask,
+  task,
+  updateDependenciesTask,
+  warning,
+} from "@mokr/core";
 import { command } from "bandersnatch";
 import { resolve } from "node:path";
 import { REINSTALL_WARNING } from "../constants.js";
-import { format, loadPlugins, updateDependencies } from "../tasks.js";
 
 export const use = command("use")
   .description("Install plugin in repo or workspace")
@@ -27,15 +34,15 @@ export const use = command("use")
           throw new Error(`Plugin ${name} is already installed`);
         }
 
-        await installPlugin({ directory, name });
+        await installPluginTask({ directory, name });
       });
     }
 
-    await loadPlugins({ directory });
+    await loadPluginsTask({ directory });
 
-    await updateDependencies({ directory });
+    await updateDependenciesTask({ directory });
 
-    await format({ directory });
+    await formatTask({ directory });
 
     if (reinstall) {
       warning(REINSTALL_WARNING);

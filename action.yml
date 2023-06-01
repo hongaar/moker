@@ -5,5 +5,5 @@ runs:
   using: node16
   main: packages/action/dist/index.cjs
 branding:
-  icon: arrow-up
+  icon: refresh-cw
   color: green
