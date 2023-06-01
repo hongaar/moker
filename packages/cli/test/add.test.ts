@@ -66,7 +66,7 @@ describe("add", () => {
         },
       });
 
-      await cli.run(`add --cwd ${tempDir} --template lib foo`);
+      await cli.run(`add --cwd ${tempDir} --template bar foo`);
       assert(await isDirectory({ directory: `${tempDir}/packages/foo` }));
     }
   });

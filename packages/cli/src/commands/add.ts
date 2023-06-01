@@ -4,6 +4,7 @@ import {
   formatTask,
   installPluginTask,
   isMonorepo,
+  isWorkspacesDirectorySet,
   loadPluginsTask,
   task,
   updateDependenciesTask,
@@ -37,6 +38,10 @@ export const add = command("add")
 
     if (!(await isMonorepo({ directory }))) {
       throw new Error("Execute this command from within a monorepo");
+    }
+
+    if (!(await isWorkspacesDirectorySet({ directory }))) {
+      throw new Error("No workspace configuration found in package.json");
     }
 
     for (const workspaceName of name) {

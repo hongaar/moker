@@ -74,6 +74,17 @@ function checkMonorepo(
   return "scoped" in pkg.moker;
 }
 
+export async function isWorkspacesDirectorySet({ directory }: DirOption) {
+  const pkg = await readPackage({ directory });
+
+  try {
+    getWorkspacesDirectory({ pkg, directory });
+    return true;
+  } catch (_e: any) {}
+
+  return false;
+}
+
 export function getWorkspacesDirectory({
   pkg,
   directory,

@@ -75,10 +75,6 @@ export function resetState() {
   resetEncounteredErrors();
 }
 
-export function isInTest() {
-  return !!process.env["TAP"];
-}
-
 export async function flushLogs() {
   for (const { message, type } of messages) {
     type === "warning"
@@ -103,10 +99,6 @@ export async function task<T>(title: string, callback: () => Promise<T>) {
     logError(error);
     flushLogs();
 
-    if (isInTest()) {
-      throw error;
-    }
-
     return [null, error as Error] as const;
   }
 
@@ -119,6 +111,14 @@ export async function task<T>(title: string, callback: () => Promise<T>) {
   flushLogs();
 
   return [result, null] as const;
+}
+
+export function getMessages() {
+  return messages;
+}
+
+export function containsMessage(search: string) {
+  return messages.some(({ message }) => String(message) === search);
 }
 
 export function hasEncounteredErrors() {
