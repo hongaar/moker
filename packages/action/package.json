@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "build": "yarn clean && yarn build:typecheck && yarn build:bundle",
-    "build:bundle": "esbuild --bundle --platform=node --format=esm --target=es2022 --outdir=dist src/index.ts",
+    "build:bundle": "esbuild --bundle --platform=node --format=cjs --target=es2022 --outfile=dist/index.cjs src/index.ts",
     "build:typecheck": "tsc --noEmit",
     "build:watch": "tsc --watch",
     "clean": "rm -rf dist",
