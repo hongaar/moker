@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/hongaar/moker/compare/v1.2.0...v1.2.1) (2023-06-01)
+
+### Bug Fixes
+
+- do not cancel in progress releases
+  ([fe77d33](https://github.com/hongaar/moker/commit/fe77d3371278d985ad4fd9fac51c2b52d76e95e3))
+
 # [1.2.0](https://github.com/hongaar/moker/compare/v1.1.2...v1.2.0) (2023-06-01)
 
 ### Features
