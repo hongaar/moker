@@ -1,6 +1,6 @@
 {
   "name": "@mokr/action",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Moker Github Action",
   "repository": "https://github.com/hongaar/moker",
   "license": "MIT",

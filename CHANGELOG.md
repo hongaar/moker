@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/hongaar/moker/compare/v1.2.2...v1.2.3) (2023-06-01)
+
+### Bug Fixes
+
+- include entry in release
+  ([9f9c5a8](https://github.com/hongaar/moker/commit/9f9c5a8aafdfb481a826d50b56cb9fd39049463f))
+
 ## [1.2.2](https://github.com/hongaar/moker/compare/v1.2.1...v1.2.2) (2023-06-01)
 
 ### Bug Fixes
