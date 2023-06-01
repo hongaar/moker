@@ -1,0 +1,40 @@
+{
+  "name": "@mokr/action",
+  "version": "1.1.2",
+  "description": "Moker Github Action",
+  "repository": "https://github.com/hongaar/moker",
+  "license": "MIT",
+  "author": "joram@vandenboezem.nl",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "build": "yarn clean && yarn build:typecheck && yarn build:bundle",
+    "build:bundle": "esbuild --bundle --platform=node --format=esm --target=es2022 --outdir=dist src/index.ts",
+    "build:typecheck": "tsc --noEmit",
+    "build:watch": "tsc --watch",
+    "clean": "rm -rf dist",
+    "prepublish": "yarn build"
+  },
+  "devDependencies": {
+    "@types/node": "20.2.5",
+    "esbuild": "0.17.19",
+    "typescript": "5.0.4"
+  },
+  "moker": {
+    "plugins": [
+      "typescript",
+      "esbuild"
+    ]
+  },
+  "dependencies": {
+    "@actions/core": "1.10.0",
+    "@mokr/core": "workspace:*",
+    "@mokr/plugins": "workspace:*",
+    "@mokr/templates": "workspace:*"
+  }
+}

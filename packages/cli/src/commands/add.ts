@@ -1,12 +1,16 @@
-import { addWorkspace, applyTemplate, isMonorepo, task } from "@mokr/core";
+import {
+  addWorkspace,
+  applyTemplate,
+  formatTask,
+  installPluginTask,
+  isMonorepo,
+  isWorkspacesDirectorySet,
+  loadPluginsTask,
+  task,
+  updateDependenciesTask,
+} from "@mokr/core";
 import { command } from "bandersnatch";
 import { resolve } from "node:path";
-import {
-  format,
-  installPlugin,
-  loadPlugins,
-  updateDependencies,
-} from "../tasks.js";
 
 export const add = command("add")
   .description("Add a workspace to a monorepo")
@@ -36,6 +40,10 @@ export const add = command("add")
       throw new Error("Execute this command from within a monorepo");
     }
 
+    if (!(await isWorkspacesDirectorySet({ directory }))) {
+      throw new Error("No workspace configuration found in package.json");
+    }
+
     for (const workspaceName of name) {
       const [workspaceDirectory, error] = await task(
         `Add workspace ${workspaceName}`,
@@ -43,7 +51,7 @@ export const add = command("add")
       );
 
       if (error) {
-        throw error;
+        continue;
       }
 
       for (const name of template) {
@@ -53,16 +61,16 @@ export const add = command("add")
       }
 
       for (const name of plugin) {
-        await installPlugin({
+        await installPluginTask({
           directory: workspaceDirectory,
           name: name as string,
         });
       }
 
-      await loadPlugins({ directory: workspaceDirectory });
+      await loadPluginsTask({ directory: workspaceDirectory });
 
-      await updateDependencies({ directory: workspaceDirectory });
+      await updateDependenciesTask({ directory: workspaceDirectory });
     }
 
-    await format({ directory });
+    await formatTask({ directory });
   });

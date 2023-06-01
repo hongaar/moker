@@ -1,17 +1,17 @@
+import { task } from "../io.js";
 import {
-  exec,
-  hasPlugin,
   installPlugin as coreInstallPlugin,
+  hasPlugin,
   loadAllPlugins,
-  runDependencyQueues,
-  task,
-} from "@mokr/core";
+} from "../plugin.js";
+import { runDependencyQueues } from "../yarn.js";
+import { exec } from "./exec.js";
 
 type DirOption = {
   directory: string;
 };
 
-export async function format({ directory }: DirOption) {
+export async function formatTask({ directory }: DirOption) {
   if (await hasPlugin({ directory, name: "prettier" })) {
     await task(`Format code`, () =>
       exec("yarn", ["format"], { cwd: directory })
@@ -19,7 +19,7 @@ export async function format({ directory }: DirOption) {
   }
 }
 
-export async function installPlugin({
+export async function installPluginTask({
   directory,
   name,
 }: DirOption & { name: string }) {
@@ -28,10 +28,10 @@ export async function installPlugin({
   );
 }
 
-export async function loadPlugins({ directory }: DirOption) {
+export async function loadPluginsTask({ directory }: DirOption) {
   await task(`Load plugins`, () => loadAllPlugins({ directory }));
 }
 
-export async function updateDependencies({ directory }: DirOption) {
+export async function updateDependenciesTask({ directory }: DirOption) {
   await task(`Update dependencies`, () => runDependencyQueues({ directory }));
 }

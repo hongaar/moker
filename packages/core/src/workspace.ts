@@ -18,17 +18,22 @@ export async function addWorkspace({
   name: string;
 }) {
   const pkg = await readPackage({ directory });
+  const pkgName = pkg.name;
   const workspaceDirectory = join(
     getWorkspacesDirectory({ pkg, directory }),
     name
   );
+  const isScoped = getScoped({ pkg });
 
   if (await isReadableAndWritableDirectory({ directory: workspaceDirectory })) {
     throw new Error(`${workspaceDirectory} already exists`);
   }
 
-  const isScoped = getScoped({ pkg });
-  const packageName = isScoped ? `@${pkg.name}/${name}` : name;
+  if (isScoped && !pkgName) {
+    throw new Error("Root package name is required for namespaced workspaces");
+  }
+
+  const packageName = isScoped ? `@${getNamespace(pkgName!)}/${name}` : name;
 
   await writePackage({
     directory: workspaceDirectory,
@@ -45,7 +50,7 @@ export async function addWorkspace({
     },
   });
 
-  await writeReadme({ directory, name: packageName });
+  await writeReadme({ directory: workspaceDirectory, name: packageName });
 
   return workspaceDirectory;
 }
@@ -84,4 +89,8 @@ export async function getMonorepoDirectory({ directory }: DirOption) {
   return (await isMonorepo({ directory: parentPackageDirectory }))
     ? parentPackageDirectory
     : undefined;
+}
+
+export function getNamespace(pkgName: string) {
+  return pkgName.replace(/^@/, "").split("/")[0];
 }

@@ -2,6 +2,7 @@ import fs from "node:fs";
 import os from "node:os";
 import { dirname } from "node:path";
 import { createDirectory } from "./directory.js";
+import { debug } from "./io.js";
 
 export async function readFile({ path }: { path: string }) {
   return fs.promises.readFile(path, "utf8");
@@ -19,6 +20,8 @@ export async function writeFile({
   contents: string;
 }) {
   await createDirectory({ directory: dirname(path) });
+
+  debug(`writing "${contents}" to "${path}"`);
 
   return fs.promises.writeFile(path, `${contents.trim()}${os.EOL}`, "utf8");
 }

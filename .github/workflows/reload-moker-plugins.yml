@@ -1,0 +1,19 @@
+name: reload-moker-plugins
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  reload-moker-plugins:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: hongaar/moker@v1
+      - uses: peter-evans/create-pull-request@v5
+        with:
+          title: "chore: reload moker plugins"
+          body: |
+            Automated changes by [moker](https://github.com/hongaar/moker) GitHub action
+          token: ${{ secrets.GH_PAT }}

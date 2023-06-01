@@ -1,19 +1,19 @@
 import {
+  formatTask,
   getPlugins,
   getWorkspaces,
-  installPlugin,
+  installPluginTask,
   isMonorepo,
   loadAllPlugins,
   task,
+  updateDependenciesTask,
   warning,
 } from "@mokr/core";
 import { command } from "bandersnatch";
 import { resolve } from "node:path";
 import { REINSTALL_WARNING } from "../constants.js";
-import { format, updateDependencies } from "../tasks.js";
 
 export const reinstall = command("reinstall")
-  .hidden()
   .description("Reinstalls all plugins in the current directory")
   .option("recursive", {
     type: "boolean",
@@ -29,7 +29,7 @@ export const reinstall = command("reinstall")
 
     for (const name of plugins) {
       await task(`Reinstall plugin ${name}`, async () => {
-        await installPlugin({ directory, name });
+        await installPluginTask({ directory, name });
       });
     }
 
@@ -51,7 +51,7 @@ export const reinstall = command("reinstall")
           await task(
             `Reinstall plugin ${name} of ${workspace.name}`,
             async () => {
-              await installPlugin({ directory: workspaceDirectory, name });
+              await installPluginTask({ directory: workspaceDirectory, name });
             }
           );
         }
@@ -62,9 +62,9 @@ export const reinstall = command("reinstall")
       }
     }
 
-    await updateDependencies({ directory });
+    await updateDependenciesTask({ directory });
 
-    await format({ directory });
+    await formatTask({ directory });
 
     warning(REINSTALL_WARNING);
   });
