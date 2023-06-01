@@ -3,7 +3,7 @@ author: Joram van den Boezem
 description: Reload moker plugins
 runs:
   using: node16
-  main: packages/action/dist/index.cjs
+  main: packages/action/dist/index.js
 branding:
   icon: refresh-cw
   color: green
