@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/hongaar/moker/compare/v1.1.2...v1.2.0) (2023-06-01)
+
+### Features
+
+- add github action ([#178](https://github.com/hongaar/moker/issues/178))
+  ([97b41fe](https://github.com/hongaar/moker/commit/97b41fe58683b9fd465f6c77f84d624db09a8831))
+
 ## [1.1.2](https://github.com/hongaar/moker/compare/v1.1.1...v1.1.2) (2023-05-29)
 
 ### Bug Fixes
