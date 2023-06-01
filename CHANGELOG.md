@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/hongaar/moker/compare/v1.2.3...v1.2.4) (2023-06-01)
+
+### Bug Fixes
+
+- attempt to fix esbuild esm/cjs quirck
+  ([d43e308](https://github.com/hongaar/moker/commit/d43e30875922fcb0e469a9d85752727e20de554d))
+
 ## [1.2.3](https://github.com/hongaar/moker/compare/v1.2.2...v1.2.3) (2023-06-01)
 
 ### Bug Fixes
