@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/hongaar/moker/compare/v1.2.4...v1.2.5) (2023-06-02)
+
+### Bug Fixes
+
+- use own fork of git-hooks-list
+  ([adb7652](https://github.com/hongaar/moker/commit/adb7652a09a64f7a827275920a0b42c3f49eed0c))
+
 ## [1.2.4](https://github.com/hongaar/moker/compare/v1.2.3...v1.2.4) (2023-06-01)
 
 ### Bug Fixes
