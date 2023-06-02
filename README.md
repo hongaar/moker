@@ -271,10 +271,10 @@ repository:
 - `GH_PAT`: a GitHub token with read/write access to your repository
 - `NPM_TOKEN`: an NPM token with publish access to your packages
 
-If you have the `dependabot` plugin installed, this will also setup a
-`dependabot-automerge` workflow which enables auto-merge (squash) on dependabot
-PRs. You need to enable _Allow auto-merge_ in the GitHub repository settings and
-apply _Branch protection rules_ for the main branch.
+If you have the `dependabot` plugin installed, this will also setup two
+additional workflows. A `dependabot-automerge` workflow which enables auto-merge
+(squash) on dependabot PRs. You need to enable _Allow auto-merge_ in the GitHub
+repository settings and apply _Branch protection rules_ for the main branch.
 
 > **Note**: If you enabled _Require approvals_ in the branch protection rules,
 > this won't automatically approve the PR. You will need to add an additional
@@ -288,6 +288,10 @@ apply _Branch protection rules_ for the main branch.
 > +      gh pr merge --auto --squash "$PR_URL"
 >      env:
 > ```
+
+A `reload-moker-plugins` workflow is added to reload the moker plugins and
+create a pull request with changes made by moker whenever dependencies are
+updated by dependabot.
 
 > 🤓 _Default_: The workflows will use the `main` branch by default, but it is
 > trivial to change this.

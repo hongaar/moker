@@ -1,9 +1,10 @@
-name: moker
+name: reload-moker-plugins
 author: Joram van den Boezem
 description: Reload moker plugins
 runs:
-  using: node16
-  main: packages/action/dist/index.cjs
+  using: "composite"
+  steps:
+    - run: yarn dlx moker reload
 branding:
   icon: refresh-cw
   color: green
