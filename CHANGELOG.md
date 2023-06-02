@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/hongaar/moker/compare/v1.2.6...v1.3.0) (2023-06-02)
+
+### Features
+
+- recursive reload ([#180](https://github.com/hongaar/moker/issues/180))
+  ([8f0d90c](https://github.com/hongaar/moker/commit/8f0d90c6e445c0aae0500a8ea726c0bee2852116))
+
 ## [1.2.6](https://github.com/hongaar/moker/compare/v1.2.5...v1.2.6) (2023-06-02)
 
 ### Bug Fixes
