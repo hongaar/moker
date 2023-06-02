@@ -5,6 +5,7 @@ runs:
   using: "composite"
   steps:
     - run: yarn dlx moker reload
+      shell: bash
 branding:
   icon: refresh-cw
   color: green
