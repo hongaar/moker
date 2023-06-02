@@ -1,6 +1,4 @@
 import chalk from "chalk";
-import { join } from "node:path";
-import { URL } from "node:url";
 import ora from "ora";
 
 type Log =
@@ -125,16 +123,4 @@ export function containsMessage(search: string) {
 
 export function hasEncounteredErrors() {
   return encounteredErrors;
-}
-
-export function toPathName(
-  filename: string,
-  root: {
-    __dirname?: string;
-    importUrl?: string;
-  }
-) {
-  return typeof root.__dirname !== "undefined"
-    ? join(root.__dirname, filename)
-    : new URL(filename, root.importUrl).pathname;
 }

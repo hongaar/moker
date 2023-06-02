@@ -3,10 +3,10 @@ import {
   copyFile,
   hasPlugin,
   removeDirectory,
-  toPathName,
   type PluginArgs,
 } from "@mokr/core";
 import { join } from "node:path";
+import { URL } from "node:url";
 
 const WORKFLOWS_DIRECTORY = ".github/workflows";
 
@@ -23,18 +23,13 @@ async function install({ directory }: PluginArgs) {
   // workspace level
 
   await copyFile({
-    from: toPathName("../../static/ci.yml", {
-      __dirname,
-      importUrl: import.meta.url,
-    }),
+    from: new URL("../../static/ci.yml", import.meta.url).pathname,
     to: join(workflowDirectory, "ci.yml"),
   });
 
   await copyFile({
-    from: toPathName("../../static/update-node-versions.yml", {
-      __dirname,
-      importUrl: import.meta.url,
-    }),
+    from: new URL("../../static/update-node-versions.yml", import.meta.url)
+      .pathname,
     to: join(workflowDirectory, "update-node-versions.yml"),
   });
 }
@@ -52,31 +47,29 @@ async function load({ directory }: PluginArgs) {
 
   if (await hasPlugin({ directory, name: "semantic-release" })) {
     await copyFile({
-      from: toPathName("../../static/release.yml", {
-        __dirname,
-        importUrl: import.meta.url,
-      }),
+      from: new URL("../../static/release.yml", import.meta.url).pathname,
       to: join(workflowDirectory, "release.yml"),
     });
   }
 
   if (await hasPlugin({ directory, name: "prettier" })) {
     await copyFile({
-      from: toPathName("../../static/format-check.yml", {
-        __dirname,
-        importUrl: import.meta.url,
-      }),
+      from: new URL("../../static/format-check.yml", import.meta.url).pathname,
       to: join(workflowDirectory, "format-check.yml"),
     });
   }
 
   if (await hasPlugin({ directory, name: "dependabot" })) {
     await copyFile({
-      from: toPathName("../../static/dependabot-automerge.yml", {
-        __dirname,
-        importUrl: import.meta.url,
-      }),
+      from: new URL("../../static/dependabot-automerge.yml", import.meta.url)
+        .pathname,
       to: join(workflowDirectory, "dependabot-automerge.yml"),
+    });
+
+    await copyFile({
+      from: new URL("../../static/reload-moker-plugins.yml", import.meta.url)
+        .pathname,
+      to: join(workflowDirectory, "reload-moker-plugins.yml"),
     });
   }
 }

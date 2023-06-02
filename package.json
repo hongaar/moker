@@ -51,8 +51,5 @@
       "todos",
       "doctoc"
     ]
-  },
-  "resolutions": {
-    "git-hooks-list": "github:hongaar/git-hooks-list#main"
   }
 }
