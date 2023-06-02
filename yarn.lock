@@ -3484,10 +3484,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"git-hooks-list@npm:^3.0.0":
-  version: 3.1.0
-  resolution: "git-hooks-list@npm:3.1.0"
-  checksum: 05cbdb29e1e14f3b6fde78c876a34383e4476b1be32e8486ad03293f01add884c1a8df8c2dce2ca5d99119c94951b2ff9fa9cbd51d834ae6477b6813cefb998f
+"git-hooks-list@github:hongaar/git-hooks-list#main":
+  version: 4.0.0
+  resolution: "git-hooks-list@https://github.com/hongaar/git-hooks-list.git#commit=6f8313b86e7c6f77d4a355f192394011a3b6d772"
+  checksum: 9b77ffa5cc01e4d2029bc73aff7de2d564691831657b50d22dea2a145e971938872d43c197c370b54b1eb4168ef037528a1885fc9e0dd1a804ac739c6bdd59cc
   languageName: node
   linkType: hard
 
