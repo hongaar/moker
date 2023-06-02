@@ -4,7 +4,7 @@ description: Reload moker plugins
 runs:
   using: "composite"
   steps:
-    - run: yarn dlx moker reload
+    - run: yarn dlx moker reload --recursive
       shell: bash
 branding:
   icon: refresh-cw

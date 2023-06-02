@@ -5,6 +5,7 @@ import {
   installPluginTask,
   isMonorepo,
   loadAllPlugins,
+  loadPluginsTask,
   task,
   updateDependenciesTask,
   warning,
@@ -33,7 +34,7 @@ export const reinstall = command("reinstall")
       });
     }
 
-    await task(`Load plugins`, () => loadAllPlugins({ directory }));
+    await loadPluginsTask({ directory });
 
     if (recursive && (await isMonorepo({ directory }))) {
       const workspaces = await getWorkspaces({ directory });
