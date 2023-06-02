@@ -1,3 +1,10 @@
+## [1.2.6](https://github.com/hongaar/moker/compare/v1.2.5...v1.2.6) (2023-06-02)
+
+### Bug Fixes
+
+- remove action package
+  ([5f8246f](https://github.com/hongaar/moker/commit/5f8246f67d8129ab4b97e843ab1a8d793309fdf8))
+
 ## [1.2.5](https://github.com/hongaar/moker/compare/v1.2.4...v1.2.5) (2023-06-02)
 
 ### Bug Fixes
