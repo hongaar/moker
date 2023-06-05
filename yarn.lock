@@ -472,7 +472,7 @@ __metadata:
     ora: 6.3.1
     pkg-up: ^4.0.0
     sort-package-json: 2.4.1
-    tap: 16.3.4
+    tap: 16.3.6
     tempy: 3.0.0
     test: 3.3.0
     ts-node: 10.9.1
@@ -5317,7 +5317,7 @@ __metadata:
     "@mokr/templates": "workspace:*"
     "@types/node": 20.2.5
     bandersnatch: 1.12.4
-    tap: 16.3.4
+    tap: 16.3.6
     test: 3.3.0
     ts-node: 10.9.1
     typescript: 5.0.4
@@ -7515,9 +7515,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tap@npm:16.3.4":
-  version: 16.3.4
-  resolution: "tap@npm:16.3.4"
+"tap@npm:16.3.6":
+  version: 16.3.6
+  resolution: "tap@npm:16.3.6"
   dependencies:
     "@isaacs/import-jsx": ^4.0.1
     "@types/react": ^17.0.52
@@ -7561,7 +7561,7 @@ __metadata:
       optional: true
   bin:
     tap: bin/run.js
-  checksum: 058e630aa2efa1d28e6a8fa99070a8885e1f3434507cd196a37a28ff098ac80d958220520d5ad9b0abc2a38b295882814a1b4758bca34013ad2ab48de3417f9b
+  checksum: 0f1ec8fa094fbb9729d085a4ad3995c4853d70a97533524375311961a1fc20b5a09392dbbfd65ba575393ac5a34300a7830fe9333a8aae5060c0624d7b2c4a19
   languageName: node
   linkType: hard
 
