@@ -2,10 +2,10 @@ import os from "node:os";
 import { resolve } from "node:path";
 import { isReadableAndWritableFile, readFile, writeFile } from "./file.js";
 
-const FILENAME = ".gitignore";
+const GITIGNORE_FILENAME = ".gitignore";
 
 export async function readGitignore({ directory }: { directory: string }) {
-  return (await readFile({ path: resolve(directory, FILENAME) }))
+  return (await readFile({ path: resolve(directory, GITIGNORE_FILENAME) }))
     .trim()
     .split(os.EOL);
 }
@@ -19,7 +19,7 @@ export async function writeGitignore({
   lines: string[];
   append?: boolean;
 }) {
-  const path = resolve(directory, FILENAME);
+  const path = resolve(directory, GITIGNORE_FILENAME);
 
   if (append && (await isReadableAndWritableFile({ path }))) {
     let existingLines = await readGitignore({ directory });

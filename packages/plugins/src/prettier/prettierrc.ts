@@ -56,11 +56,11 @@ export type Prettierrc = {
   vueIndentScriptAndStyle?: boolean;
 };
 
-const FILENAME = ".prettierrc.yml";
+const PRETTIERRC_FILENAME = ".prettierrc.yml";
 
 export async function readPrettierrc({ directory }: { directory: string }) {
   return readYaml<Prettierrc>({
-    path: path.join(directory, FILENAME),
+    path: path.join(directory, PRETTIERRC_FILENAME),
   });
 }
 
@@ -71,9 +71,9 @@ export async function writePrettierrc({
   directory: string;
   data: Prettierrc;
 }) {
-  await writeYaml({ path: path.join(directory, FILENAME), data });
+  await writeYaml({ path: path.join(directory, PRETTIERRC_FILENAME), data });
 }
 
 export async function removePrettierrc({ directory }: { directory: string }) {
-  await removeFile({ path: path.join(directory, FILENAME) });
+  await removeFile({ path: path.join(directory, PRETTIERRC_FILENAME) });
 }

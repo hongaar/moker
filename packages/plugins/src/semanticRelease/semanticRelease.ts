@@ -9,7 +9,7 @@ import {
 } from "@mokr/core";
 import { join } from "node:path";
 
-const CONFIG_FILENAME = ".releaserc.json";
+const RELEASERC_FILENAME = ".releaserc.json";
 const CONFIG = {
   branches: ["main"],
   plugins: [
@@ -42,7 +42,7 @@ async function install({ directory }: PluginArgs) {
   });
 
   await writeJson({
-    path: join(directory, CONFIG_FILENAME),
+    path: join(directory, RELEASERC_FILENAME),
     data: CONFIG,
   });
 
@@ -68,7 +68,7 @@ async function remove({ directory }: PluginArgs) {
   });
 
   await removeFile({
-    path: join(directory, CONFIG_FILENAME),
+    path: join(directory, RELEASERC_FILENAME),
   });
 }
 

@@ -3,10 +3,10 @@ import { resolve } from "node:path";
 import { readFile, writeFile } from "./file.js";
 import type { AVAILABLE_LICENSES } from "./repo.js";
 
-const FILENAME = "LICENSE";
+const LICENSE_FILENAME = "LICENSE";
 
 export async function readLicense({ directory }: { directory: string }) {
-  return readFile({ path: resolve(directory, FILENAME) });
+  return readFile({ path: resolve(directory, LICENSE_FILENAME) });
 }
 
 export async function writeLicense({
@@ -16,7 +16,7 @@ export async function writeLicense({
   directory: string;
   contents: string;
 }) {
-  const path = resolve(directory, FILENAME);
+  const path = resolve(directory, LICENSE_FILENAME);
 
   return writeFile({
     path,
@@ -33,7 +33,7 @@ export async function generateLicense({
   license: (typeof AVAILABLE_LICENSES)[number];
   author: string;
 }) {
-  const path = resolve(directory, FILENAME);
+  const path = resolve(directory, LICENSE_FILENAME);
   const contents = getLicense(license, {
     author,
     year: String(new Date().getFullYear()),

@@ -19,9 +19,9 @@ export async function writeFile({
   path: string;
   contents: string;
 }) {
-  await createDirectory({ directory: dirname(path) });
-
   debug(`writing "${contents}" to "${path}"`);
+
+  await createDirectory({ directory: dirname(path) });
 
   return fs.promises.writeFile(path, `${contents.trim()}${os.EOL}`, "utf8");
 }
