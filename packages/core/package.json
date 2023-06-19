@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@types/hosted-git-info": "3.0.2",
-    "@types/node": "20.3.0",
+    "@types/node": "20.3.1",
     "tap": "16.3.6",
     "tempy": "3.0.0",
     "test": "3.3.0",
