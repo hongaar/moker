@@ -1,3 +1,11 @@
+## [1.3.2](https://github.com/hongaar/moker/compare/v1.3.1...v1.3.2) (2023-07-03)
+
+### Bug Fixes
+
+- **deps:** bump chalk from 5.2.0 to 5.3.0
+  ([#192](https://github.com/hongaar/moker/issues/192))
+  ([273de12](https://github.com/hongaar/moker/commit/273de122fecc2a3a58770b6bf98ffdf83e78a332))
+
 ## [1.3.1](https://github.com/hongaar/moker/compare/v1.3.0...v1.3.1) (2023-07-03)
 
 ### Bug Fixes
