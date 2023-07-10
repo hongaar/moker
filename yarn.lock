@@ -500,7 +500,7 @@ __metadata:
     pkg-up: ^4.0.0
     sort-package-json: 2.5.0
     tap: 16.3.7
-    tempy: 3.0.0
+    tempy: 3.1.0
     test: 3.3.0
     ts-node: 10.9.1
     typescript: 5.1.6
@@ -7679,7 +7679,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tempy@npm:3.0.0, tempy@npm:^3.0.0":
+"temp-dir@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "temp-dir@npm:3.0.0"
+  checksum: 577211e995d1d584dd60f1469351d45e8a5b4524e4a9e42d3bdd12cfde1d0bb8f5898311bef24e02aaafb69514c1feb58c7b4c33dcec7129da3b0861a4ca935b
+  languageName: node
+  linkType: hard
+
+"tempy@npm:3.1.0":
+  version: 3.1.0
+  resolution: "tempy@npm:3.1.0"
+  dependencies:
+    is-stream: ^3.0.0
+    temp-dir: ^3.0.0
+    type-fest: ^2.12.2
+    unique-string: ^3.0.0
+  checksum: c4ee8ce7700c6d0652f0828f15f7628e599e57f34352a7fe82abf8f1ebc36f10a5f83861b6c60cce55c321d8f7861d1fecbd9fb4c00de55bf460390bea42f7da
+  languageName: node
+  linkType: hard
+
+"tempy@npm:^3.0.0":
   version: 3.0.0
   resolution: "tempy@npm:3.0.0"
   dependencies:
