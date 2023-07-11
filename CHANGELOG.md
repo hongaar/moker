@@ -1,3 +1,11 @@
+## [1.3.4](https://github.com/hongaar/moker/compare/v1.3.3...v1.3.4) (2023-07-11)
+
+### Bug Fixes
+
+- **deps:** bump semver from 5.7.1 to 5.7.2
+  ([#203](https://github.com/hongaar/moker/issues/203))
+  ([0d17ffd](https://github.com/hongaar/moker/commit/0d17ffde9087351b4c2811ddff30aff396759dea))
+
 ## [1.3.3](https://github.com/hongaar/moker/compare/v1.3.2...v1.3.3) (2023-07-10)
 
 ### Bug Fixes
