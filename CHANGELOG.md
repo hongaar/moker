@@ -1,3 +1,11 @@
+## [1.3.6](https://github.com/hongaar/moker/compare/v1.3.5...v1.3.6) (2023-07-31)
+
+### Bug Fixes
+
+- **deps:** bump ora from 6.3.1 to 7.0.0
+  ([#209](https://github.com/hongaar/moker/issues/209))
+  ([62e1aef](https://github.com/hongaar/moker/commit/62e1aefbbf64790268429b9df3e6e1339c342f58))
+
 ## [1.3.5](https://github.com/hongaar/moker/compare/v1.3.4...v1.3.5) (2023-07-17)
 
 ### Bug Fixes
