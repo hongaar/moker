@@ -1599,16 +1599,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bandersnatch@npm:1.12.5":
-  version: 1.12.5
-  resolution: "bandersnatch@npm:1.12.5"
+"bandersnatch@npm:1.12.6":
+  version: 1.12.6
+  resolution: "bandersnatch@npm:1.12.6"
   dependencies:
     "@types/yargs": 17.0.24
     enquirer: ^2.3.6
     string-argv: ^0.3.1
     typed-emitter: ^2.1.0
     yargs: ^17.5.1
-  checksum: fa6892607d15bb08a26c24e1f53395888a56f75baad5128addd49e4f23c1cc4e2ec6db35c7be7d06312b857b0145d972d80cd05c17b1d53f382330c0f956877b
+  checksum: 07b364c93efe0293eeb5cf7eaea609160d2a2dd42af699ae586439d4bc056491accd58ccb371a227e910f0af818e722ab559d3f8389e05329438cbdac0f345e0
   languageName: node
   linkType: hard
 
@@ -5384,7 +5384,7 @@ __metadata:
     "@mokr/plugins": "workspace:*"
     "@mokr/templates": "workspace:*"
     "@types/node": 20.4.5
-    bandersnatch: 1.12.5
+    bandersnatch: 1.12.6
     tap: 16.3.8
     test: 3.3.0
     ts-node: 10.9.1
