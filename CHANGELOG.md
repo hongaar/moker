@@ -1,3 +1,11 @@
+## [1.3.8](https://github.com/hongaar/moker/compare/v1.3.7...v1.3.8) (2023-08-07)
+
+### Bug Fixes
+
+- **deps:** bump ora from 7.0.0 to 7.0.1
+  ([#214](https://github.com/hongaar/moker/issues/214))
+  ([039643f](https://github.com/hongaar/moker/commit/039643f511fe9805754e987aaf21bdc2fb04b409))
+
 ## [1.3.7](https://github.com/hongaar/moker/compare/v1.3.6...v1.3.7) (2023-07-31)
 
 ### Bug Fixes
