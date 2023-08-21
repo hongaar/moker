@@ -1,3 +1,11 @@
+## [1.3.9](https://github.com/hongaar/moker/compare/v1.3.8...v1.3.9) (2023-08-21)
+
+### Bug Fixes
+
+- **deps:** bump hosted-git-info from 6.1.1 to 7.0.0
+  ([#218](https://github.com/hongaar/moker/issues/218))
+  ([90e074b](https://github.com/hongaar/moker/commit/90e074bfcf1b883cc972599c186d36e4fba600ff))
+
 ## [1.3.8](https://github.com/hongaar/moker/compare/v1.3.7...v1.3.8) (2023-08-07)
 
 ### Bug Fixes
