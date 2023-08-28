@@ -27,7 +27,7 @@
     "ora": "7.0.1",
     "pkg-up": "^4.0.0",
     "sort-package-json": "2.5.1",
-    "yaml": "2.3.1"
+    "yaml": "2.3.2"
   },
   "devDependencies": {
     "@types/hosted-git-info": "3.0.2",
