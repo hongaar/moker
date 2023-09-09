@@ -174,11 +174,11 @@ type ReferencesDefinition = {
   [k: string]: any;
 };
 
-const FILENAME = "tsconfig.json";
+const TSCONFIG_FILENAME = "tsconfig.json";
 
 export async function readTsconfig({ directory }: { directory: string }) {
   return readJson<Tsconfig>({
-    path: path.join(directory, FILENAME),
+    path: path.join(directory, TSCONFIG_FILENAME),
   });
 }
 
@@ -189,9 +189,9 @@ export async function writeTsconfig({
   directory: string;
   data: Tsconfig;
 }) {
-  await writeJson({ path: path.join(directory, FILENAME), data });
+  await writeJson({ path: path.join(directory, TSCONFIG_FILENAME), data });
 }
 
 export async function removeTsconfig({ directory }: { directory: string }) {
-  await removeFile({ path: path.join(directory, FILENAME) });
+  await removeFile({ path: path.join(directory, TSCONFIG_FILENAME) });
 }

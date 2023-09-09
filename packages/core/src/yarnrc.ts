@@ -26,10 +26,12 @@ type Yarnrc = {
   npmPublishAccess: "public" | "restricted";
 };
 
-const FILENAME = ".yarnrc.yml";
+const YARNRC_FILENAME = ".yarnrc.yml";
 
 export async function readYarnrc({ directory }: { directory: string }) {
-  return readYaml<Partial<Yarnrc>>({ path: path.join(directory, FILENAME) });
+  return readYaml<Partial<Yarnrc>>({
+    path: path.join(directory, YARNRC_FILENAME),
+  });
 }
 
 export async function writeYarnrc({
@@ -39,5 +41,5 @@ export async function writeYarnrc({
   directory: string;
   data: Partial<Yarnrc>;
 }) {
-  await writeYaml({ path: path.join(directory, FILENAME), data });
+  await writeYaml({ path: path.join(directory, YARNRC_FILENAME), data });
 }

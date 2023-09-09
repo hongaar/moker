@@ -116,11 +116,11 @@ interface Registries {
   };
 }
 
-const FILENAME = ".github/dependabot.yml";
+const DEPENDABOT_FILENAME = ".github/dependabot.yml";
 
 async function install({ directory }: PluginArgs) {
   await writeYaml({
-    path: join(directory, FILENAME),
+    path: join(directory, DEPENDABOT_FILENAME),
     data: {
       version: 2,
       updates: [
@@ -142,11 +142,11 @@ async function install({ directory }: PluginArgs) {
 }
 
 async function remove({ directory }: PluginArgs) {
-  await removeFile({ path: join(directory, FILENAME) });
+  await removeFile({ path: join(directory, DEPENDABOT_FILENAME) });
 }
 
 async function load({ directory }: PluginArgs) {
-  const path = join(directory, FILENAME);
+  const path = join(directory, DEPENDABOT_FILENAME);
   if (await hasPlugin({ directory, name: "github-actions" })) {
     const existingData = await readYaml<GitHubDependabotV2Config>({ path });
 
@@ -156,7 +156,7 @@ async function load({ directory }: PluginArgs) {
       )
     ) {
       await writeYaml<GitHubDependabotV2Config>({
-        path: join(directory, FILENAME),
+        path: join(directory, DEPENDABOT_FILENAME),
         data: {
           updates: [
             {

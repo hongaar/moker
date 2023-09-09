@@ -116,18 +116,20 @@ type LintStagedOptions = {
   [key: string]: string | string[];
 };
 
-const FILENAME = "package.json";
+const PACKAGE_FILENAME = "package.json";
 
 export async function hasPackage({ directory }: { directory: string }) {
-  return isReadableAndWritableFile({ path: resolve(directory, FILENAME) });
+  return isReadableAndWritableFile({
+    path: resolve(directory, PACKAGE_FILENAME),
+  });
 }
 
 export async function readPackage({ directory }: { directory: string }) {
-  return readJson<Package>({ path: resolve(directory, FILENAME) });
+  return readJson<Package>({ path: resolve(directory, PACKAGE_FILENAME) });
 }
 
 export async function removePackage({ directory }: { directory: string }) {
-  return removeFile({ path: resolve(directory, FILENAME) });
+  return removeFile({ path: resolve(directory, PACKAGE_FILENAME) });
 }
 
 export async function writePackage({
@@ -139,7 +141,7 @@ export async function writePackage({
   data: Undefinable<Package>;
   append?: boolean;
 }) {
-  await writeJson({ path: resolve(directory, FILENAME), data, append });
+  await writeJson({ path: resolve(directory, PACKAGE_FILENAME), data, append });
   await sortPackage({ directory });
 }
 
@@ -150,7 +152,7 @@ export async function updatePackage({
   directory: string;
   merge: (existingData: Package) => Package;
 }) {
-  await updateJson({ path: resolve(directory, FILENAME), merge });
+  await updateJson({ path: resolve(directory, PACKAGE_FILENAME), merge });
   await sortPackage({ directory });
 }
 
@@ -158,7 +160,7 @@ export async function sortPackage({ directory }: { directory: string }) {
   debug(`sorting "package.json" in "${directory}"`);
 
   await updateJson({
-    path: resolve(directory, FILENAME),
+    path: resolve(directory, PACKAGE_FILENAME),
     merge: sortPackageJson,
   });
 }

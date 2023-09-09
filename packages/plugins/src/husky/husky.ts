@@ -17,7 +17,7 @@ import {
 import os from "node:os";
 import { join } from "node:path";
 
-const PRE_COMMIT_HOOK_FILE = ".husky/pre-commit";
+const PRE_COMMIT_FILENAME = ".husky/pre-commit";
 
 async function install({ directory }: PluginArgs) {
   // Don't enqueue because we need it immediately
@@ -71,7 +71,7 @@ export const husky = {
 };
 
 function getPreCommitHookPath({ directory }: PluginArgs) {
-  return join(directory, PRE_COMMIT_HOOK_FILE);
+  return join(directory, PRE_COMMIT_FILENAME);
 }
 
 async function getPreCommitHookCommands({ directory }: PluginArgs) {
@@ -121,7 +121,7 @@ export async function addPreCommitHookCommand({
     return;
   }
 
-  await exec("yarn", ["husky", "add", PRE_COMMIT_HOOK_FILE, `"${command}"`], {
+  await exec("yarn", ["husky", "add", PRE_COMMIT_FILENAME, `"${command}"`], {
     cwd: directory,
   });
 }

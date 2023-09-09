@@ -325,7 +325,7 @@ type DevcontainerJson = DevcontainerJsonBase &
   DevcontainerJsonVSCode &
   DevcontainerJsonCodespaces;
 
-const FILENAME = ".devcontainer/devcontainer.json";
+const DEVCONTAINER_FILENAME = ".devcontainer/devcontainer.json";
 
 export async function readDevcontainerJson({
   directory,
@@ -333,7 +333,7 @@ export async function readDevcontainerJson({
   directory: string;
 }) {
   return readJson<DevcontainerJson>({
-    path: join(directory, FILENAME),
+    path: join(directory, DEVCONTAINER_FILENAME),
   });
 }
 
@@ -344,7 +344,7 @@ export async function writeDevcontainerJson({
   directory: string;
   data: DevcontainerJson;
 }) {
-  await writeJson({ path: join(directory, FILENAME), data });
+  await writeJson({ path: join(directory, DEVCONTAINER_FILENAME), data });
 }
 
 export async function removeDevcontainerJson({
@@ -352,5 +352,5 @@ export async function removeDevcontainerJson({
 }: {
   directory: string;
 }) {
-  await removeFile({ path: join(directory, FILENAME) });
+  await removeFile({ path: join(directory, DEVCONTAINER_FILENAME) });
 }
