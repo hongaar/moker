@@ -93,7 +93,7 @@ export async function validateType({
     case PluginType.Repo:
       if (!repo) {
         throw new Error(
-          `Plugin or template ${name} can only be used at repo level`
+          `Plugin or template ${name} can only be used at repo level`,
         );
       }
       break;
@@ -101,7 +101,7 @@ export async function validateType({
     case PluginType.RepoOrWorkspace:
       if (!repo && !workspace) {
         throw new Error(
-          `Plugin or template ${name} can only be used at repo or workspace level`
+          `Plugin or template ${name} can only be used at repo or workspace level`,
         );
       }
       break;
@@ -109,7 +109,7 @@ export async function validateType({
     case PluginType.Monorepo:
       if (!monorepo) {
         throw new Error(
-          `Plugin or template ${name} can only be used at monorepo level`
+          `Plugin or template ${name} can only be used at monorepo level`,
         );
       }
       break;
@@ -117,7 +117,7 @@ export async function validateType({
     case PluginType.Workspace:
       if (!workspace) {
         throw new Error(
-          `Plugin or template ${name} can only be used at workspace level`
+          `Plugin or template ${name} can only be used at workspace level`,
         );
       }
       break;
@@ -155,7 +155,7 @@ export async function removePlugin({ directory, name }: PluginOptions) {
       moker: {
         ...existingData.moker,
         plugins: (existingData.moker?.plugins || []).filter(
-          (pluginName) => pluginName !== name
+          (pluginName) => pluginName !== name,
         ),
       },
     }),

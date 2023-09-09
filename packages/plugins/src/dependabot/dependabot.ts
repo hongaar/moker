@@ -152,7 +152,7 @@ async function load({ directory }: PluginArgs) {
 
     if (
       !existingData.updates?.find(
-        (update) => update["package-ecosystem"] === "github-actions"
+        (update) => update["package-ecosystem"] === "github-actions",
       )
     ) {
       await writeYaml<GitHubDependabotV2Config>({

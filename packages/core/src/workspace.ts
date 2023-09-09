@@ -21,7 +21,7 @@ export async function addWorkspace({
   const pkgName = pkg.name;
   const workspaceDirectory = join(
     getWorkspacesDirectory({ pkg, directory }),
-    name
+    name,
   );
   const isScoped = getScoped({ pkg });
 

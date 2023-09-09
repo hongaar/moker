@@ -15,7 +15,7 @@ export async function exec(
     cwd = process.cwd(),
     env = process.env,
     io = "return" as "return" | "passthrough",
-  } = {}
+  } = {},
 ) {
   debug(`spawning "${cmd} ${args.join(" ")}" in "${cwd}"`);
 
@@ -47,7 +47,7 @@ export async function exec(
 
   if (status !== 0) {
     const error = new Error(
-      `exec [${cmd}] returned with an error - ${JSON.stringify(result)}`
+      `exec [${cmd}] returned with an error - ${JSON.stringify(result)}`,
     );
     Object.assign(error, result);
 

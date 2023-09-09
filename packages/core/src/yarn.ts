@@ -30,7 +30,7 @@ const queues = {
 
 export async function runYarnCmd(
   args: string[],
-  { directory }: { directory: string }
+  { directory }: { directory: string },
 ) {
   return exec("yarn", args, {
     cwd: directory,

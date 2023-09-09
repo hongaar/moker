@@ -37,7 +37,7 @@ export const reload = command("reload")
         }
 
         await task(`Load plugins of ${workspace.name}`, () =>
-          loadAllPlugins({ directory: workspaceDirectory })
+          loadAllPlugins({ directory: workspaceDirectory }),
         );
       }
     }

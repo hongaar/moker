@@ -45,7 +45,7 @@ async function remove({ directory }: PluginArgs) {
     merge: (existingData) => {
       if (existingData.scripts?.["postinstall"] !== "husky install") {
         warning(
-          "Can't automatically remove 'husky install' from package.json, please manually review the 'postinstall' script."
+          "Can't automatically remove 'husky install' from package.json, please manually review the 'postinstall' script.",
         );
         return existingData;
       }
@@ -136,7 +136,7 @@ export async function removePreCommitHookCommand({
 
   // Remove the command from the pre-commit
   const newCommands = (await getPreCommitHookCommands({ directory })).filter(
-    (line) => line !== command
+    (line) => line !== command,
   );
 
   if (newCommands.length === 2) {

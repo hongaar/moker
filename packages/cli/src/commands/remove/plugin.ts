@@ -23,7 +23,7 @@ export const remove = command("plugin")
 
     for (const pluginName of name) {
       await task(`Remove plugin ${pluginName}`, () =>
-        removePlugin({ directory, name: pluginName })
+        removePlugin({ directory, name: pluginName }),
       );
     }
 

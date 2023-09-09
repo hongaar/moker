@@ -16,11 +16,13 @@ export const list = command("list")
 
     console.log(
       `Plugins:
-${plugins.map((plugin) => `- ${plugin}\n`).join("")}`
+${plugins.map((plugin) => `- ${plugin}\n`).join("")}`,
     );
 
     console.log(
       `Workspaces:
-${workspaces.map(({ location, name }) => `- ${name} (${location})\n`).join("")}`
+${workspaces
+  .map(({ location, name }) => `- ${name} (${location})\n`)
+  .join("")}`,
     );
   });
