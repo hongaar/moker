@@ -32,6 +32,12 @@ async function install({ directory }: PluginArgs) {
       .pathname,
     to: join(workflowDirectory, "update-node-versions.yml"),
   });
+
+  await copyFile({
+    from: new URL("../../static/dependency-review.yml", import.meta.url)
+      .pathname,
+    to: join(workflowDirectory, "dependency-review.yml"),
+  });
 }
 
 async function remove({ directory }: PluginArgs) {
