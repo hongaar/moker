@@ -63,7 +63,7 @@ export async function isMonorepo({ directory }: DirOption) {
 }
 
 function checkMonorepo(
-  options: PkgOption
+  options: PkgOption,
 ): options is { pkg: MonorepoPackage } {
   const { pkg } = options;
 

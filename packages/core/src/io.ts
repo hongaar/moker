@@ -18,7 +18,7 @@ resetState();
 
 export function log(
   message: string,
-  type: "debug" | "info" | "warning" = "info"
+  type: "debug" | "info" | "warning" = "info",
 ) {
   messages.push({ message, type });
 }

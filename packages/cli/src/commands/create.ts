@@ -81,12 +81,12 @@ export const create = command("create")
       }
 
       await task(`Create new ${type} in ${directory}`, () =>
-        initializer({ directory, upstream, ...options })
+        initializer({ directory, upstream, ...options }),
       );
 
       for (const name of template) {
         await task(`Apply template ${name}`, () =>
-          applyTemplate({ directory, name: name as string })
+          applyTemplate({ directory, name: name as string }),
         );
       }
 
@@ -99,5 +99,5 @@ export const create = command("create")
       await updateDependenciesTask({ directory });
 
       await formatTask({ directory });
-    }
+    },
   );

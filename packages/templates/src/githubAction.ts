@@ -141,7 +141,7 @@ ${description}
     warning(
       `Please modify your ".releaserc.json" file:
 - Set "semantic-release-yarn.npmPublish" to "false" to prevent uploading this package to NPM. See [semantic-release-yarn plugin options](https://github.com/hongaar/semantic-release-yarn#plugin-options) for more information.
-- Add "dist/index.cjs" to the "@semantic-release/git.assets" configuration to include the generated files in the release commit.`
+- Add "dist/index.cjs" to the "@semantic-release/git.assets" configuration to include the generated files in the release commit.`,
     );
   }
 }

@@ -53,12 +53,12 @@ export const reinstall = command("reinstall")
             `Reinstall plugin ${name} of ${workspace.name}`,
             async () => {
               await installPluginTask({ directory: workspaceDirectory, name });
-            }
+            },
           );
         }
 
         await task(`Load plugins of ${workspace.name}`, () =>
-          loadAllPlugins({ directory })
+          loadAllPlugins({ directory }),
         );
       }
     }

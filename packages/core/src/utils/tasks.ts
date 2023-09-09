@@ -14,7 +14,7 @@ type DirOption = {
 export async function formatTask({ directory }: DirOption) {
   if (await hasPlugin({ directory, name: "prettier" })) {
     await task(`Format code`, () =>
-      exec("yarn", ["format"], { cwd: directory })
+      exec("yarn", ["format"], { cwd: directory }),
     );
   }
 }
@@ -24,7 +24,7 @@ export async function installPluginTask({
   name,
 }: DirOption & { name: string }) {
   await task(`Install plugin ${name}`, () =>
-    coreInstallPlugin({ directory, name })
+    coreInstallPlugin({ directory, name }),
   );
 }
 

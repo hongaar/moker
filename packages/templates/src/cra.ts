@@ -27,7 +27,7 @@ async function apply({ directory }: TemplateArgs) {
     ],
     {
       cwd: dirname(directory),
-    }
+    },
   );
 
   // Weird problem where we are left with a package-lock.json file after installation
