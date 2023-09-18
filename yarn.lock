@@ -494,7 +494,7 @@ __metadata:
     "@types/node": 20.6.0
     chalk: 5.3.0
     deepmerge: 4.3.1
-    hosted-git-info: 7.0.0
+    hosted-git-info: 7.0.1
     license: 1.0.3
     ora: 7.0.1
     pkg-up: ^4.0.0
@@ -3545,12 +3545,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hosted-git-info@npm:7.0.0, hosted-git-info@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "hosted-git-info@npm:7.0.0"
+"hosted-git-info@npm:7.0.1":
+  version: 7.0.1
+  resolution: "hosted-git-info@npm:7.0.1"
   dependencies:
     lru-cache: ^10.0.1
-  checksum: b892237a3867f827f97e229e2b6ddf17d3ed674f003475c12ecbfc6269416db3a643c1ee3c5d4a989e3f3a596dd1470ee4017fe911710e47aeb7d9319737c05e
+  checksum: be5280f0a20d6153b47e1ab578e09f5ae8ad734301b3ed7e547dc88a6814d7347a4888db1b4f9635cc738e3c0ef1fbff02272aba7d07c75d4c5a50ff8d618db6
   languageName: node
   linkType: hard
 
@@ -3576,6 +3576,15 @@ __metadata:
   dependencies:
     lru-cache: ^7.5.1
   checksum: fcd3ca2eaa05f3201425ccbb8aa47f88cdda4a3a6d79453f8e269f7171356278bd1db08f059d8439eb5eaa91c6a8a20800fc49cca6e9e4e899b202a332d5ba6b
+  languageName: node
+  linkType: hard
+
+"hosted-git-info@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "hosted-git-info@npm:7.0.0"
+  dependencies:
+    lru-cache: ^10.0.1
+  checksum: b892237a3867f827f97e229e2b6ddf17d3ed674f003475c12ecbfc6269416db3a643c1ee3c5d4a989e3f3a596dd1470ee4017fe911710e47aeb7d9319737c05e
   languageName: node
   linkType: hard
 
