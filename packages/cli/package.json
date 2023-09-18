@@ -28,7 +28,7 @@
     "bandersnatch": "1.12.6"
   },
   "devDependencies": {
-    "@types/node": "20.6.0",
+    "@types/node": "20.6.2",
     "tap": "16.3.8",
     "test": "3.3.0",
     "ts-node": "10.9.1",
