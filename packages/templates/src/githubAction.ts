@@ -56,7 +56,7 @@ async function apply({ directory }: TemplateArgs) {
         },
       },
       runs: {
-        using: "node16",
+        using: "node20",
         main: "dist/index.cjs",
       },
     },
