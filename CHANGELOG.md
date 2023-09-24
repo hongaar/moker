@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/hongaar/moker/compare/v1.4.1...v1.5.0) (2023-09-24)
+
+### Features
+
+- update node.js versions ([#232](https://github.com/hongaar/moker/issues/232))
+  ([710408f](https://github.com/hongaar/moker/commit/710408f61834dc9f306424028339db5dd882903e))
+
 ## [1.4.1](https://github.com/hongaar/moker/compare/v1.4.0...v1.4.1) (2023-09-18)
 
 ### Bug Fixes
