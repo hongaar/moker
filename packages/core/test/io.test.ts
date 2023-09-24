@@ -1,9 +1,6 @@
 import assert from "node:assert";
-import test from "test";
+import { beforeEach, describe, it } from "node:test";
 import { hasEncounteredErrors, resetState, task } from "../src/io.js";
-
-/* @ts-expect-error */
-const { beforeEach, describe, it } = test;
 
 describe("task", () => {
   beforeEach(() => resetState());
