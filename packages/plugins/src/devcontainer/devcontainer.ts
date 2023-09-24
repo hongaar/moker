@@ -10,7 +10,7 @@ async function install({ directory }: PluginArgs) {
     directory,
     data: {
       name: "Node.js & TypeScript",
-      image: "mcr.microsoft.com/devcontainers/typescript-node:16-bullseye",
+      image: "mcr.microsoft.com/devcontainers/typescript-node:20",
       features: {},
       forwardPorts: [],
       postCreateCommand: "yarn install",
