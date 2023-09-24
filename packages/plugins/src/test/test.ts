@@ -23,7 +23,7 @@ async function install({ directory }: PluginArgs) {
       directory,
       data: {
         scripts: {
-          test: "node --test | tap --no-coverage",
+          test: "node --test | tap",
         },
       },
     });
@@ -38,7 +38,7 @@ async function install({ directory }: PluginArgs) {
       directory,
       data: {
         scripts: {
-          test: "NODE_OPTIONS='--loader=ts-node/esm --no-warnings' node --test test/*.test.ts | NODE_OPTIONS='--loader=ts-node/esm --no-warnings' tap --no-coverage",
+          test: "NODE_OPTIONS='--loader=ts-node/esm --no-warnings' node --test test/*.test.ts | tap",
         },
       },
     });
