@@ -14,7 +14,7 @@ async function install({ directory }: PluginArgs) {
 
   enqueueInstallDependency({
     directory,
-    identifier: ["test", "tap"],
+    identifier: ["tap"],
     dev: true,
   });
 
