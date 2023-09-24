@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/hongaar/moker/compare/v1.6.0...v1.6.1) (2023-09-24)
+
+### Bug Fixes
+
+- test plugin
+  ([a10f642](https://github.com/hongaar/moker/commit/a10f64284f793982fbd4249b02b9138ec147e285))
+
 # [1.6.0](https://github.com/hongaar/moker/compare/v1.5.1...v1.6.0) (2023-09-24)
 
 ### Features
