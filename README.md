@@ -80,7 +80,7 @@ yarn moker add --template bandersnatch cli
 
 ## Prerequisites
 
-You will need Node v14+ and Yarn v2+ in order to use `moker`.
+You will need Node v18+ and Yarn v2+ in order to use `moker`.
 
 - Install Node with [nvm](https://github.com/nvm-sh/nvm#install--update-script)
   or using [nodesource](https://github.com/nodesource/distributions#debinstall).
