@@ -1,3 +1,11 @@
+## [1.5.1](https://github.com/hongaar/moker/compare/v1.5.0...v1.5.1) (2023-09-24)
+
+### Bug Fixes
+
+- **deps:** bump semver from 6.3.0 to 6.3.1
+  ([#237](https://github.com/hongaar/moker/issues/237))
+  ([2adcb02](https://github.com/hongaar/moker/commit/2adcb025a740905d0ba34ba140e5112ee927aeca))
+
 # [1.5.0](https://github.com/hongaar/moker/compare/v1.4.1...v1.5.0) (2023-09-24)
 
 ### Features
