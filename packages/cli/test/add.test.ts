@@ -1,11 +1,8 @@
 import { createDirectory, isDirectory, writePackage } from "@mokr/core";
 import assert from "node:assert";
+import { beforeEach, describe, it } from "node:test";
 import { temporaryDirectory } from "tempy";
-import test from "test";
 import cli from "../src/cli.js";
-
-/* @ts-expect-error */
-const { describe, beforeEach, it } = test;
 
 describe("add", () => {
   let tempDir: string;
