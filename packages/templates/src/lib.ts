@@ -8,7 +8,7 @@ import { join } from "path";
 
 async function apply({ directory }: TemplateArgs) {
   await installPlugin({ directory, name: "typescript" });
-  await installPlugin({ directory, name: "jest" });
+  await installPlugin({ directory, name: "test" });
 
   await writeFile({
     path: join(directory, "src/sum.ts"),
@@ -25,12 +25,14 @@ export function sum(a: number, b: number) {
   });
 
   await writeFile({
-    path: join(directory, "tests/sum.test.ts"),
+    path: join(directory, "test/sum.test.ts"),
     contents: `
+import assert from "node:assert";
+import test from "node:test";
 import { sum } from "../src/sum.js";
 
 test("adds 1 + 2 to equal 3", () => {
-  expect(sum(1, 2)).toBe(3);
+  assert.strictEqual(sum(1, 2), 3);
 });
 `,
   });
