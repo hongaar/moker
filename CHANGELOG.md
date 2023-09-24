@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/hongaar/moker/compare/v1.5.1...v1.6.0) (2023-09-24)
+
+### Features
+
+- remove test dependency ([#239](https://github.com/hongaar/moker/issues/239))
+  ([08f47b3](https://github.com/hongaar/moker/commit/08f47b3cc833007c01f3eebb141f021c66890eca))
+
 ## [1.5.1](https://github.com/hongaar/moker/compare/v1.5.0...v1.5.1) (2023-09-24)
 
 ### Bug Fixes
