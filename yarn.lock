@@ -504,7 +504,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@mokr/core@workspace:packages/core"
   dependencies:
-    "@types/hosted-git-info": 3.0.2
+    "@types/hosted-git-info": 3.0.3
     "@types/node": 20.6.2
     chalk: 5.3.0
     deepmerge: 4.3.1
@@ -1268,10 +1268,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/hosted-git-info@npm:3.0.2":
-  version: 3.0.2
-  resolution: "@types/hosted-git-info@npm:3.0.2"
-  checksum: b922a6f13c79d0388762a92e943d098cbc950be20754508de4946d3529ecab730e3be01ebdbe0a235b85ddcc3f7251d8df3073d98978d43018a76200b47e548d
+"@types/hosted-git-info@npm:3.0.3":
+  version: 3.0.3
+  resolution: "@types/hosted-git-info@npm:3.0.3"
+  checksum: 4e18e3aef841edad8c100f5cc146eea730a8564870f16fd62d63988e961101bc848984b2782116819047c2ad581923770bb564c756b55148d1028203c41cc744
   languageName: node
   linkType: hard
 

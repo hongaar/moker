@@ -30,7 +30,7 @@
     "yaml": "2.3.2"
   },
   "devDependencies": {
-    "@types/hosted-git-info": "3.0.2",
+    "@types/hosted-git-info": "3.0.3",
     "@types/node": "20.6.2",
     "tap": "16.3.8",
     "tempy": "3.1.0",
