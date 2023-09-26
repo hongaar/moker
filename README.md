@@ -67,6 +67,8 @@ yarn moker add --template bandersnatch cli
   - [`express`](#express)
   - [`github-action`](#github-action)
   - [`lib`](#lib)
+  - [`next`](#next)
+  - [`sanity`](#sanity)
 - [Commands](#commands)
 - [Contributing](#contributing)
   - [Roadmap](#roadmap)
@@ -450,6 +452,21 @@ _Scope: repo or workspace_
 
 A plain shared library template with the [typescript](#typescript-workspace) and
 [jest](#jest-workspace) plugins.
+
+## `next`
+
+_Scope: repo or workspace_
+
+Uses
+[create-next-app](https://nextjs.org/docs/pages/api-reference/create-next-app)
+to scaffold a Next.js app.
+
+## `sanity`
+
+_Scope: repo or workspace_
+
+Uses [create-sanity](https://www.sanity.io/docs/installation) which
+interactively scaffolds a Sanity Studio package.
 
 # Commands
 

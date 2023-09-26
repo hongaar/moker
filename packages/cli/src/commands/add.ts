@@ -1,6 +1,6 @@
 import {
   addWorkspace,
-  applyTemplate,
+  applyTemplateTask,
   formatTask,
   installPluginTask,
   isMonorepo,
@@ -55,12 +55,10 @@ export const add = command("add")
       }
 
       for (const name of template) {
-        await task(`Apply template ${name}`, () =>
-          applyTemplate({
-            directory: workspaceDirectory,
-            name: name as string,
-          }),
-        );
+        await applyTemplateTask({
+          directory: workspaceDirectory,
+          name: name as string,
+        });
       }
 
       for (const name of plugin) {

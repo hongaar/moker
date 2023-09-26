@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import ora from "ora";
+import ora, { type Ora } from "ora";
 
 type Log =
   | {
@@ -88,12 +88,15 @@ export async function flushLogs() {
   resetMessages();
 }
 
-export async function task<T>(title: string, callback: () => Promise<T>) {
+export async function task<T>(
+  title: string,
+  callback: (spinner: Ora) => Promise<T>,
+) {
   const spinner = ora(title).start();
   let result: T;
 
   try {
-    result = await callback();
+    result = await callback(spinner);
   } catch (error: any) {
     spinner.fail();
     logError(error);

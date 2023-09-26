@@ -4,6 +4,7 @@ import {
   hasPlugin,
   loadAllPlugins,
 } from "../plugin.js";
+import { applyTemplate } from "../template.js";
 import { runDependencyQueues } from "../yarn.js";
 import { exec } from "./exec.js";
 
@@ -17,6 +18,31 @@ export async function formatTask({ directory }: DirOption) {
       exec("yarn", ["format"], { cwd: directory }),
     );
   }
+}
+
+export async function applyTemplateTask({
+  directory,
+  name,
+}: DirOption & { name: string }) {
+  await task(`Apply template ${name}`, (spinner) =>
+    applyTemplate({
+      directory,
+      name,
+      beforeApply: (template) => {
+        if (template.interactive) {
+          spinner.stopAndPersist({
+            suffixText: "(interactive mode)",
+            symbol: "…",
+          });
+        }
+      },
+      afterApply: (template) => {
+        if (template.interactive) {
+          spinner.start();
+        }
+      },
+    }),
+  );
 }
 
 export async function installPluginTask({
