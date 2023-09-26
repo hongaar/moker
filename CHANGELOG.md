@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/hongaar/moker/compare/v1.6.2...v1.7.0) (2023-09-26)
+
+### Features
+
+- next and sanity templates
+  ([c8fc20d](https://github.com/hongaar/moker/commit/c8fc20d3ac3ef4fa4b18959cada6eae1f6ed27df))
+
 ## [1.6.2](https://github.com/hongaar/moker/compare/v1.6.1...v1.6.2) (2023-09-25)
 
 ### Bug Fixes
