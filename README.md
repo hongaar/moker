@@ -372,8 +372,7 @@ this by setting the `private` property in `package.json` to `false`.
 _Scope: repo or workspace_
 
 This plugin enables testing with the native
-[node --test](https://nodejs.org/api/test.html) functionality. It uses
-[tap](https://node-tap.org) for formatting the TAP output.
+[node --test](https://nodejs.org/api/test.html) functionality.
 
 When the `typescript` plugin is also installed, it will use
 [ts-node](https://typestrong.org/ts-node/) to load TypeScript test files.

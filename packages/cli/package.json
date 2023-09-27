@@ -19,7 +19,7 @@
     "clean": "rm -rf dist && rm -rf types",
     "prepublish": "yarn build && cp ../../README.md .",
     "start": "node moker.js",
-    "test": "NODE_OPTIONS='--loader=ts-node/esm --no-warnings' node --test test/*.test.ts | NODE_OPTIONS='--loader=ts-node/esm --no-warnings' tap --no-coverage"
+    "test": "NODE_OPTIONS='--loader=ts-node/esm --no-warnings' node --test test/*.test.ts"
   },
   "dependencies": {
     "@mokr/core": "workspace:*",
@@ -29,7 +29,6 @@
   },
   "devDependencies": {
     "@types/node": "20.7.0",
-    "tap": "16.3.8",
     "ts-node": "10.9.1",
     "typescript": "5.2.2"
   },

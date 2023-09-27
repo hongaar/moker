@@ -12,18 +12,12 @@ import {
 async function install({ directory }: PluginArgs) {
   const monorepoDirectory = await getMonorepoDirectory({ directory });
 
-  enqueueInstallDependency({
-    directory,
-    identifier: ["tap"],
-    dev: true,
-  });
-
   if (!hasPlugin({ directory, name: "typescript" })) {
     await writePackage({
       directory,
       data: {
         scripts: {
-          test: "node --test | tap",
+          test: "node --test",
         },
       },
     });
@@ -38,7 +32,7 @@ async function install({ directory }: PluginArgs) {
       directory,
       data: {
         scripts: {
-          test: "NODE_OPTIONS='--loader=ts-node/esm --no-warnings' node --test test/*.test.ts | tap",
+          test: "NODE_OPTIONS='--loader=ts-node/esm --no-warnings' node --test test/*.test.ts",
         },
       },
     });
@@ -57,7 +51,7 @@ async function install({ directory }: PluginArgs) {
 }
 
 async function remove({ directory }: PluginArgs) {
-  enqueueRemoveDependency({ directory, identifier: ["tap", "ts-node"] });
+  enqueueRemoveDependency({ directory, identifier: ["ts-node"] });
 
   warning("Please review package.json manually");
 }
