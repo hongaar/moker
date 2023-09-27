@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/hongaar/moker/compare/v1.7.0...v1.8.0) (2023-09-27)
+
+### Features
+
+- remove tap from test plugin
+  ([967b466](https://github.com/hongaar/moker/commit/967b466fbf43f0bf1df283bec7cd73b801ef5d62))
+
 # [1.7.0](https://github.com/hongaar/moker/compare/v1.6.2...v1.7.0) (2023-09-26)
 
 ### Features
