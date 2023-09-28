@@ -5,7 +5,7 @@
     "outDir": "dist",
     "declarationDir": "types",
     "paths": {
-      "@mokr/core": ["../core"]
+      "@mokr/core": ["../core/src"]
     }
   },
   "references": [{ "path": "../core" }],

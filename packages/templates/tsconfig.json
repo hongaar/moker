@@ -5,8 +5,8 @@
     "outDir": "dist",
     "declarationDir": "types",
     "paths": {
-      "@mokr/core": ["../core"],
-      "@mokr/plugins": ["../plugins"]
+      "@mokr/core": ["../core/src"],
+      "@mokr/plugins": ["../plugins/src"]
     }
   },
   "references": [{ "path": "../core" }, { "path": "../plugins" }],

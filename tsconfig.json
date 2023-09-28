@@ -9,5 +9,5 @@
     { "path": "./packages/plugins" },
     { "path": "./packages/templates" }
   ],
-  "include": ["packages/**/*"]
+  "files": []
 }

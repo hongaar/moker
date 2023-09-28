@@ -5,9 +5,9 @@
     "outDir": "dist",
     "declarationDir": "types",
     "paths": {
-      "@mokr/core": ["../core"],
-      "@mokr/plugins": ["../plugins"],
-      "@mokr/templates": ["../templates"]
+      "@mokr/core": ["../core/src"],
+      "@mokr/plugins": ["../plugins/src"],
+      "@mokr/templates": ["../templates/src"]
     }
   },
   "references": [
