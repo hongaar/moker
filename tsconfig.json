@@ -1,8 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "compilerOptions": {
-    "incremental": true
-  },
   "references": [
     { "path": "./packages/cli" },
     { "path": "./packages/core" },

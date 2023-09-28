@@ -21,7 +21,7 @@
     "start": "node packages/cli/moker.js",
     "test": "yarn workspaces foreach --topological --verbose run test",
     "todos": "leasot --exit-nicely --reporter markdown --ignore \"**/node_modules\" \"**/*.ts\" > TODO.md",
-    "typescript": "yarn clean && tsc --build",
+    "typescript": "yarn clean && tsc --build --force",
     "typescript:watch": "tsc --watch"
   },
   "lint-staged": {

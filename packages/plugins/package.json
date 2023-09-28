@@ -16,7 +16,7 @@
     "static"
   ],
   "scripts": {
-    "build": "yarn clean && tsc",
+    "build": "yarn clean && tsc --build --force",
     "build:watch": "tsc --watch",
     "clean": "rm -rf dist && rm -rf types",
     "prepublish": "yarn build"
