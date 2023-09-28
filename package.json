@@ -12,7 +12,7 @@
   "scripts": {
     "build": "yarn workspaces foreach --topological --verbose run build",
     "build:watch": "yarn workspaces foreach --parallel --interlaced run build:watch",
-    "clean": "yarn workspaces foreach --topological --verbose run clean",
+    "build:clean": "yarn workspaces foreach --topological --verbose run build:clean",
     "doctoc": "doctoc README.md",
     "format": "prettier --write --ignore-unknown .",
     "format:check": "prettier --check --ignore-unknown .",
@@ -21,7 +21,7 @@
     "start": "node packages/cli/moker.js",
     "test": "yarn workspaces foreach --topological --verbose run test",
     "todos": "leasot --exit-nicely --reporter markdown --ignore \"**/node_modules\" \"**/*.ts\" > TODO.md",
-    "typescript": "yarn clean && tsc --build --force",
+    "typescript": "yarn build:clean && tsc --build --force",
     "typescript:watch": "tsc --build --watch"
   },
   "lint-staged": {

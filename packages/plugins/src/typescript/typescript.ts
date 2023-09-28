@@ -25,12 +25,7 @@ const TSCONFIG_WORKSPACE: Tsconfig = {
 
 const TSCONFIG_ROOT: Tsconfig = {
   $schema: "https://json.schemastore.org/tsconfig",
-  references: [
-    { path: "./packages/cli" },
-    { path: "./packages/core" },
-    { path: "./packages/plugins" },
-    { path: "./packages/templates" },
-  ],
+  references: [],
   files: [],
 };
 
@@ -92,16 +87,16 @@ async function install({ directory }: PluginArgs) {
       },
       files: ["dist", "types"],
       scripts: {
-        build: "yarn clean && tsc --build --force",
+        build: "yarn build:clean && tsc --build --force",
         "build:watch": "tsc --build --watch",
-        clean: "rm -rf dist && rm -rf types",
+        "build:clean": "tsc --build --clean",
         prepublish: "yarn build",
       },
     },
   });
 
   await writeTasks({
-    directory,
+    directory: monorepoDirectory ?? directory,
     data: {
       version: "2.0.0",
       tasks: [
@@ -127,7 +122,7 @@ async function install({ directory }: PluginArgs) {
     await writeTsconfig({
       directory,
       data: {
-        extends: "../../tsconfig.json",
+        extends: "../../tsconfig.base.json",
         compilerOptions: {
           paths: {},
           ...TSCONFIG_BASE.compilerOptions,
@@ -165,8 +160,9 @@ async function install({ directory }: PluginArgs) {
           build: "yarn workspaces foreach --topological --verbose run build",
           "build:watch":
             "yarn workspaces foreach --parallel --interlaced run build:watch",
-          clean: "yarn workspaces foreach --topological --verbose run clean",
-          typescript: "yarn clean && tsc --build --force",
+          "build:clean":
+            "yarn workspaces foreach --topological --verbose run build:clean",
+          typescript: "yarn build:clean && tsc --build --force",
           "typescript:watch": "tsc --build --watch",
         },
       },

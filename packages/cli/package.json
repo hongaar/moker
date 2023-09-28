@@ -18,7 +18,7 @@
   "scripts": {
     "build": "yarn clean && tsc --build --force",
     "build:watch": "tsc --watch",
-    "clean": "rm -rf dist && rm -rf types",
+    "build:clean": "tsc --build --clean",
     "prepublish": "yarn build && cp ../../README.md .",
     "start": "node moker.js",
     "test": "NODE_OPTIONS='--loader=ts-node/esm --no-warnings' node --test test/*.test.ts"
