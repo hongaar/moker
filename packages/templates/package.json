@@ -15,8 +15,8 @@
     "types"
   ],
   "scripts": {
-    "build:typescript": "yarn clean && tsc",
-    "watch:typescript": "tsc --watch",
+    "build": "yarn clean && tsc",
+    "build:watch": "tsc --watch",
     "clean": "rm -rf dist && rm -rf types",
     "prepublish": "yarn build"
   },
