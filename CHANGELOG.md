@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/hongaar/moker/compare/v1.8.0...v1.8.1) (2023-09-28)
+
+### Bug Fixes
+
+- trigger release
+  ([a2d1b93](https://github.com/hongaar/moker/commit/a2d1b930c6a76f74e178be04b0fad9f9daed2431))
+
 # [1.8.0](https://github.com/hongaar/moker/compare/v1.7.0...v1.8.0) (2023-09-27)
 
 ### Features
