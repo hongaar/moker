@@ -1,3 +1,13 @@
+# [2.0.0](https://github.com/hongaar/moker/compare/v1.8.1...v2.0.0) (2023-09-28)
+
+- feat!: typescript build / project references (#245)
+  ([220305b](https://github.com/hongaar/moker/commit/220305b34bec8cd243d2a7878bb20e197477f205)),
+  closes [#245](https://github.com/hongaar/moker/issues/245)
+
+### BREAKING CHANGES
+
+- typescript plugin now uses project references to use new tsc --build mode
+
 ## [1.8.1](https://github.com/hongaar/moker/compare/v1.8.0...v1.8.1) (2023-09-28)
 
 ### Bug Fixes
