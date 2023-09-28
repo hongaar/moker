@@ -1,9 +1,19 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
-    "declarationDir": "types"
+    "declarationDir": "types",
+    "paths": {
+      "@mokr/core": ["../core"],
+      "@mokr/plugins": ["../plugins"],
+      "@mokr/templates": ["../templates"]
+    }
   },
+  "references": [
+    { "path": "../core" },
+    { "path": "../plugins" },
+    { "path": "../templates" }
+  ],
   "include": ["src/**/*"]
 }

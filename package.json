@@ -10,8 +10,13 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspaces foreach --topological --verbose run build",
-    "build:watch": "yarn workspaces foreach --parallel --interlaced run build:watch",
+    "clean": "yarn workspaces foreach --topological --verbose run clean",
+    "build": "yarn clean && yarn build:typescript && yarn build:packages",
+    "build:packages": "yarn workspaces foreach --topological --verbose run build",
+    "build:typescript": "yarn clean && tsc --build",
+    "watch": "run-p \"watch:**\"",
+    "watch:typescript": "yarn clean && tsc --watch",
+    "watch:packages": "yarn workspaces foreach --parallel --interlaced run watch",
     "doctoc": "doctoc README.md",
     "format": "prettier --write --ignore-unknown .",
     "format:check": "prettier --check --ignore-unknown .",
@@ -33,9 +38,11 @@
     "husky": "8.0.3",
     "leasot": "13.3.0",
     "lint-staged": "14.0.1",
+    "npm-run-all": "4.1.5",
     "prettier": "3.0.3",
     "semantic-release": "22.0.5",
-    "semantic-release-yarn": "2.0.1"
+    "semantic-release-yarn": "2.0.1",
+    "typescript": "5.2.2"
   },
   "packageManager": "yarn@3.3.0",
   "moker": {
