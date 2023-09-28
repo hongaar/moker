@@ -42,8 +42,9 @@ export async function importTemplate({ directory, name }: TemplateOptions) {
   let template: Template;
 
   if (CORE_TEMPLATES.includes(name)) {
-    // @ts-ignore
-    const templates: any = await import("@mokr/templates");
+    // Workaround to prevent TS5055 errors
+    const packageName = "@mokr/templates" as string;
+    const templates: any = await import(packageName);
     template = templates[toCamelCase(name) as keyof typeof templates];
   } else {
     template = await import(name);
