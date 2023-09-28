@@ -50,8 +50,9 @@ async function load({ directory }: PluginArgs) {
       directory,
       data: {
         scripts: {
-          clean: "rm -rf dist",
-          build: "yarn clean && yarn build:typecheck && yarn build:bundle",
+          build:
+            "yarn build:clean && yarn build:typecheck && yarn build:bundle",
+          "build:clean": "rm -rf dist",
           "build:typecheck": "tsc --noEmit",
           "build:bundle":
             "esbuild --bundle --platform=node --format=esm --target=es2022 --outdir=dist src/index.ts",
@@ -66,9 +67,9 @@ async function load({ directory }: PluginArgs) {
         main: "dist/index.js",
         files: ["dist"],
         scripts: {
-          clean: "rm -rf dist",
           build:
-            "yarn clean && esbuild --bundle --platform=node --format=esm --target=es2022 --outdir=dist src/index.ts",
+            "yarn build:clean && esbuild --bundle --platform=node --format=esm --target=es2022 --outdir=dist src/index.ts",
+          "build:clean": "rm -rf dist",
           prepublish: "yarn build",
         },
       },

@@ -6,17 +6,19 @@
   "license": "MIT",
   "author": "joram@vandenboezem.nl",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "types/index.d.ts",
+  "exports": {
+    "import": "./dist/index.js",
+    "types": "./types/index.d.ts"
+  },
   "bin": "moker.js",
   "files": [
     "dist",
     "types"
   ],
   "scripts": {
-    "build": "yarn clean && tsc",
+    "build": "yarn build:clean && tsc --build --force",
     "build:watch": "tsc --watch",
-    "clean": "rm -rf dist && rm -rf types",
+    "build:clean": "tsc --build --clean",
     "prepublish": "yarn build && cp ../../README.md .",
     "start": "node moker.js",
     "test": "NODE_OPTIONS='--loader=ts-node/esm --no-warnings' node --test test/*.test.ts"

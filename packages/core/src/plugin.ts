@@ -64,8 +64,9 @@ export async function importPlugin({ directory, name }: PluginOptions) {
   let plugin: Plugin;
 
   if (CORE_PLUGINS.includes(name)) {
-    // @ts-ignore
-    const plugins: any = await import("@mokr/plugins");
+    // Workaround to prevent TS5055 errors
+    const packageName = "@mokr/plugins" as string;
+    const plugins: any = await import(packageName);
     plugin = plugins[toCamelCase(name) as keyof typeof plugins];
   } else {
     plugin = await import(name);

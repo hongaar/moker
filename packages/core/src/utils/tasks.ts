@@ -5,6 +5,7 @@ import {
   loadAllPlugins,
 } from "../plugin.js";
 import { applyTemplate } from "../template.js";
+import { getMonorepoDirectory } from "../workspace.js";
 import { runDependencyQueues } from "../yarn.js";
 import { exec } from "./exec.js";
 
@@ -59,5 +60,16 @@ export async function loadPluginsTask({ directory }: DirOption) {
 }
 
 export async function updateDependenciesTask({ directory }: DirOption) {
-  await task(`Update dependencies`, () => runDependencyQueues({ directory }));
+  const monorepoDirectory = await getMonorepoDirectory({ directory });
+
+  await task(
+    `Update${monorepoDirectory ? " workspace" : ""} dependencies`,
+    () => runDependencyQueues({ directory }),
+  );
+
+  if (monorepoDirectory) {
+    await task(`Update monorepo dependencies`, () =>
+      runDependencyQueues({ directory: monorepoDirectory }),
+    );
+  }
 }

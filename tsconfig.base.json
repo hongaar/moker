@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Node 20 + ESM + Strictest",
+  "compilerOptions": {
+    "composite": true,
+    "lib": ["es2023"],
+    "module": "node16",
+    "moduleResolution": "node16",
+    "target": "es2022",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "declaration": true,
+    "declarationMap": true
+  }
+}

@@ -172,6 +172,7 @@ __metadata:
     prettier: 3.0.3
     semantic-release: 22.0.5
     semantic-release-yarn: 2.0.1
+    typescript: 5.2.2
   languageName: unknown
   linkType: soft
 

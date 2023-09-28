@@ -390,9 +390,51 @@ If you have the `husky` plugin installed, it will also add a pre-commit hook.
 
 _Scope: repo or workspace_
 
+> 🧪 _Experimental_ Since v2, this plugin uses the new `--build` mode of
+> TypeScript, which makes building a lot faster but may require some additional
+> configuration.
+
 This plugin sets up [TypeScript](https://www.typescriptlang.org) and adds a
 `build` and `build:watch` script to the repo or both the workspace and the
 monorepo.
+
+In addition, this will add a `typescript` and `typescript:watch` script to the
+monorepo which can use
+[project references](https://www.typescriptlang.org/docs/handbook/project-references.html)
+to build workspaces which depend on each other faster and provides a better
+developer experience.
+
+In order to use this, add all TypeScript workspaces to `tsconfig.json` in the
+monorepo root directory:
+
+```json
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "references": [
+    { "path": "./packages/some-library" },
+    { "path": "./packages/some-dependency" }
+  ],
+  "files": []
+}
+```
+
+And reference dependant workspaces in the workspace `tsconfig.json`:
+
+```json
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "declarationDir": "types",
+    "paths": {
+      "@scope/some-dependency": ["../some-dependency/src"]
+    }
+  },
+  "references": [{ "path": "../some-dependency" }],
+  "include": ["src/**/*"]
+}
+```
 
 ## `xv`
 

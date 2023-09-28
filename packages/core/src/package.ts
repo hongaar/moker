@@ -31,6 +31,14 @@ export type Package = {
   contributors?: Person[];
   maintainers?: Person[];
   type?: "module" | "commonjs";
+  exports?: {
+    import?: string;
+    types?: string;
+    require?: string;
+    node?: string;
+    default?: string;
+    [k: string]: string | undefined;
+  };
   files?: string[];
   main?: string;
   bin?:

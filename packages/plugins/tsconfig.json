@@ -1,9 +1,13 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
-    "declarationDir": "types"
+    "declarationDir": "types",
+    "paths": {
+      "@mokr/core": ["../core/src"]
+    }
   },
+  "references": [{ "path": "../core" }],
   "include": ["src/**/*"]
 }

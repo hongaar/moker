@@ -8,6 +8,7 @@ import {
   warning,
   writeGitignore,
   writePackage,
+  writeTasks,
   type PluginArgs,
 } from "@mokr/core";
 import deepmerge from "deepmerge";
@@ -22,19 +23,26 @@ const TSCONFIG_WORKSPACE: Tsconfig = {
   include: ["src/**/*"],
 };
 
+const TSCONFIG_ROOT: Tsconfig = {
+  $schema: "https://json.schemastore.org/tsconfig",
+  references: [],
+  files: [],
+};
+
 // https://github.com/tsconfig/bases/tree/main/bases
 const TSCONFIG_BASE: Tsconfig = {
   $schema: "https://json.schemastore.org/tsconfig",
   display: "Node 20 + ESM + Strictest",
   compilerOptions: {
+    composite: true,
     lib: ["es2023"],
-    module: "es2022",
+    module: "node16",
+    moduleResolution: "node16",
     target: "es2022",
     strict: true,
     esModuleInterop: true,
     skipLibCheck: true,
     forceConsistentCasingInFileNames: true,
-    moduleResolution: "node",
     verbatimModuleSyntax: true,
     allowUnusedLabels: false,
     allowUnreachableCode: false,
@@ -73,15 +81,33 @@ async function install({ directory }: PluginArgs) {
     directory,
     data: {
       type: "module",
-      main: "dist/index.js",
-      types: "types/index.d.ts",
+      exports: {
+        import: "./dist/index.js",
+        types: "./types/index.d.ts",
+      },
       files: ["dist", "types"],
       scripts: {
-        clean: "rm -rf dist && rm -rf types",
-        build: "yarn clean && tsc",
-        "build:watch": "tsc --watch",
+        build: "yarn build:clean && tsc --build --force",
+        "build:watch": "tsc --build --watch",
+        "build:clean": "tsc --build --clean",
         prepublish: "yarn build",
       },
+    },
+  });
+
+  await writeTasks({
+    directory: monorepoDirectory ?? directory,
+    data: {
+      version: "2.0.0",
+      tasks: [
+        {
+          type: "typescript",
+          tsconfig: "tsconfig.json",
+          option: "watch",
+          group: "build",
+          label: "tsc: watch - tsconfig.json",
+        },
+      ],
     },
   });
 
@@ -96,15 +122,34 @@ async function install({ directory }: PluginArgs) {
     await writeTsconfig({
       directory,
       data: {
-        extends: "../../tsconfig.json",
+        extends: "../../tsconfig.base.json",
+        compilerOptions: {
+          paths: {},
+          ...TSCONFIG_BASE.compilerOptions,
+        },
+        references: [],
         ...TSCONFIG_WORKSPACE,
       },
     });
 
-    // Monorepo tsconfig
+    // Monorepo base tsconfig
     await writeTsconfig({
       directory: monorepoDirectory,
       data: TSCONFIG_BASE,
+      filename: "tsconfig.base.json",
+    });
+
+    // Monorepo root tsconfig
+    await writeTsconfig({
+      directory: monorepoDirectory,
+      data: TSCONFIG_ROOT,
+    });
+
+    // Monorepo dependencies
+    enqueueInstallDependency({
+      directory: monorepoDirectory,
+      identifier: ["typescript"],
+      dev: true,
     });
 
     // Monorepo scripts
@@ -115,6 +160,10 @@ async function install({ directory }: PluginArgs) {
           build: "yarn workspaces foreach --topological --verbose run build",
           "build:watch":
             "yarn workspaces foreach --parallel --interlaced run build:watch",
+          "build:clean":
+            "yarn workspaces foreach --topological --verbose run build:clean",
+          typescript: "yarn build:clean && tsc --build --force",
+          "typescript:watch": "tsc --build --watch",
         },
       },
     });
@@ -135,6 +184,11 @@ async function remove({ directory }: PluginArgs) {
 
   if (monorepoDirectory) {
     await removeTsconfig({ directory: monorepoDirectory });
+
+    enqueueRemoveDependency({
+      directory: monorepoDirectory,
+      identifier: ["typescript"],
+    });
   }
 
   warning("Please review your package.json manually");
