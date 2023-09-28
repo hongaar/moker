@@ -3,10 +3,7 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
-    "declarationDir": "types",
-    "paths": {
-      "@mokr/core": ["../core/src"]
-    }
+    "declarationDir": "types"
   },
   "references": [{ "path": "../core" }],
   "include": ["src/**/*"]

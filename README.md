@@ -426,15 +426,15 @@ And reference dependant workspaces in the workspace `tsconfig.json`:
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
-    "declarationDir": "types",
-    "paths": {
-      "@scope/some-dependency": ["../some-dependency/src"]
-    }
+    "declarationDir": "types"
   },
   "references": [{ "path": "../some-dependency" }],
   "include": ["src/**/*"]
 }
 ```
+
+You can optionally sync project references with
+`yarn dlx workspaces-to-typescript-project-references`.
 
 ## `xv`
 
