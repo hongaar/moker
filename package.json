@@ -22,7 +22,7 @@
     "test": "yarn workspaces foreach --topological --verbose run test",
     "todos": "leasot --exit-nicely --reporter markdown --ignore \"**/node_modules\" \"**/*.ts\" > TODO.md",
     "typescript": "yarn clean && tsc --build --force",
-    "typescript:watch": "tsc --watch"
+    "typescript:watch": "tsc --build --watch"
   },
   "lint-staged": {
     "*": "prettier --write --ignore-unknown"

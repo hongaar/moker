@@ -176,22 +176,36 @@ type ReferencesDefinition = {
 
 const TSCONFIG_FILENAME = "tsconfig.json";
 
-export async function readTsconfig({ directory }: { directory: string }) {
+export async function readTsconfig({
+  directory,
+  filename = TSCONFIG_FILENAME,
+}: {
+  directory: string;
+  filename?: string;
+}) {
   return readJson<Tsconfig>({
-    path: path.join(directory, TSCONFIG_FILENAME),
+    path: path.join(directory, filename),
   });
 }
 
 export async function writeTsconfig({
   directory,
   data,
+  filename = TSCONFIG_FILENAME,
 }: {
   directory: string;
   data: Tsconfig;
+  filename?: string;
 }) {
-  await writeJson({ path: path.join(directory, TSCONFIG_FILENAME), data });
+  await writeJson({ path: path.join(directory, filename), data });
 }
 
-export async function removeTsconfig({ directory }: { directory: string }) {
-  await removeFile({ path: path.join(directory, TSCONFIG_FILENAME) });
+export async function removeTsconfig({
+  directory,
+  filename = TSCONFIG_FILENAME,
+}: {
+  directory: string;
+  filename?: string;
+}) {
+  await removeFile({ path: path.join(directory, filename) });
 }
