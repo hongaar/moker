@@ -15,7 +15,7 @@
     "types"
   ],
   "scripts": {
-    "build": "yarn clean && tsc --build --force",
+    "build": "yarn build:clean && tsc --build --force",
     "build:watch": "tsc --build --watch",
     "build:clean": "tsc --build --clean",
     "prepublish": "yarn build",
