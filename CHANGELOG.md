@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/hongaar/moker/compare/v2.0.0...v2.0.1) (2023-10-02)
+
+### Bug Fixes
+
+- **template:sanity:** no tailwindcss by default
+  ([3f37c26](https://github.com/hongaar/moker/commit/3f37c26e0b160320c021e7ee02aa9f25efdda1fe))
+
 # [2.0.0](https://github.com/hongaar/moker/compare/v1.8.1...v2.0.0) (2023-09-28)
 
 - feat!: typescript build / project references (#245)
