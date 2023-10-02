@@ -21,7 +21,6 @@ async function apply({ directory }: TemplateArgs) {
       basename(directory),
       "--app",
       "--typescript",
-      "--tailwind",
       "--eslint",
       "--src-dir",
       '--import-alias "@/*"',
