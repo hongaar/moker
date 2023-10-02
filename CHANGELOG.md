@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/hongaar/moker/compare/v2.0.1...v2.0.2) (2023-10-02)
+
+### Bug Fixes
+
+- **template:sanity:** no tailwindcss (2)
+  ([cd9f0ba](https://github.com/hongaar/moker/commit/cd9f0ba15dd4a9aa5715a79695a45e063fe24143))
+
 ## [2.0.1](https://github.com/hongaar/moker/compare/v2.0.0...v2.0.1) (2023-10-02)
 
 ### Bug Fixes
