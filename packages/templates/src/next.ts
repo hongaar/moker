@@ -22,6 +22,7 @@ async function apply({ directory }: TemplateArgs) {
       "--app",
       "--typescript",
       "--eslint",
+      "--no-tailwind",
       "--src-dir",
       '--import-alias "@/*"',
       "--use-yarn",
