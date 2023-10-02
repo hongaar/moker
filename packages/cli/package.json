@@ -30,7 +30,7 @@
     "bandersnatch": "1.12.7"
   },
   "devDependencies": {
-    "@types/node": "20.7.0",
+    "@types/node": "20.8.1",
     "ts-node": "10.9.1",
     "typescript": "5.2.2"
   },
