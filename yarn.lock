@@ -132,7 +132,7 @@ __metadata:
   resolution: "@mokr/core@workspace:packages/core"
   dependencies:
     "@types/hosted-git-info": 3.0.3
-    "@types/node": 20.8.1
+    "@types/node": 20.8.4
     chalk: 5.3.0
     deepmerge: 4.3.1
     hosted-git-info: 7.0.1
@@ -152,7 +152,7 @@ __metadata:
   resolution: "@mokr/plugins@workspace:packages/plugins"
   dependencies:
     "@mokr/core": "workspace:*"
-    "@types/node": 20.8.1
+    "@types/node": 20.8.4
     typescript: 5.2.2
   languageName: unknown
   linkType: soft
@@ -182,7 +182,7 @@ __metadata:
   dependencies:
     "@mokr/core": "workspace:*"
     "@mokr/plugins": "workspace:*"
-    "@types/node": 20.8.1
+    "@types/node": 20.8.4
     typescript: 5.2.2
   languageName: unknown
   linkType: soft
@@ -918,10 +918,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.8.1":
-  version: 20.8.1
-  resolution: "@types/node@npm:20.8.1"
-  checksum: 2ae18915c44899766c5725d41a53f7519db7e16bdc70e558b906017b402ea03e641e5e2fb4a1204825f415570d2312dcaeb4c4e8667763a96ec1e227ba18bb87
+"@types/node@npm:20.8.4":
+  version: 20.8.4
+  resolution: "@types/node@npm:20.8.4"
+  dependencies:
+    undici-types: ~5.25.1
+  checksum: 2106b9ef9750297cac68249428d7067c4d22c26908854165b70a164e34e900f4c34bb9bf3887c9391206b500d3e87171d03b1846e25788925236a0354390d278
   languageName: node
   linkType: hard
 
@@ -4289,7 +4291,7 @@ __metadata:
     "@mokr/core": "workspace:*"
     "@mokr/plugins": "workspace:*"
     "@mokr/templates": "workspace:*"
-    "@types/node": 20.8.1
+    "@types/node": 20.8.4
     bandersnatch: 1.12.8
     ts-node: 10.9.1
     typescript: 5.2.2
@@ -6315,6 +6317,13 @@ __metadata:
   version: 1.13.6
   resolution: "underscore@npm:1.13.6"
   checksum: d5cedd14a9d0d91dd38c1ce6169e4455bb931f0aaf354108e47bd46d3f2da7464d49b2171a5cf786d61963204a42d01ea1332a903b7342ad428deaafaf70ec36
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~5.25.1":
+  version: 5.25.3
+  resolution: "undici-types@npm:5.25.3"
+  checksum: ec9d2cc36520cbd9fbe3b3b6c682a87fe5be214699e1f57d1e3d9a2cb5be422e62735f06e0067dc325fd3dd7404c697e4d479f9147dc8a804e049e29f357f2ff
   languageName: node
   linkType: hard
 
