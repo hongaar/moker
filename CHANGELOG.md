@@ -1,3 +1,11 @@
+## [2.0.6](https://github.com/hongaar/moker/compare/v2.0.5...v2.0.6) (2023-10-16)
+
+### Bug Fixes
+
+- **deps:** bump yaml from 2.3.2 to 2.3.3
+  ([#252](https://github.com/hongaar/moker/issues/252))
+  ([484589b](https://github.com/hongaar/moker/commit/484589bd9d85d2db62e9542d8cb0725e897bd1c5))
+
 ## [2.0.5](https://github.com/hongaar/moker/compare/v2.0.4...v2.0.5) (2023-10-09)
 
 ### Bug Fixes
