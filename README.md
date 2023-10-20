@@ -434,7 +434,7 @@ And reference dependant workspaces in the workspace `tsconfig.json`:
 ```
 
 You can optionally sync project references with
-`yarn dlx workspaces-to-typescript-project-references`.
+`yarn dlx @monorepo-utils/workspaces-to-typescript-project-references`.
 
 ## `xv`
 
