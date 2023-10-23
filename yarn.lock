@@ -957,12 +957,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/yargs@npm:17.0.28":
-  version: 17.0.28
-  resolution: "@types/yargs@npm:17.0.28"
+"@types/yargs@npm:17.0.29":
+  version: 17.0.29
+  resolution: "@types/yargs@npm:17.0.29"
   dependencies:
     "@types/yargs-parser": "*"
-  checksum: f78c5e5c29903933c0557b4ffcd1d0b8564d66859c8ca4aa51da3714e49109ed7c2644334a1918d033df19028f4cecc91fd2e502651bb8e8451f246c371da847
+  checksum: 8bbc0edd573a5a084cb13a9985c124490fd74e73b1ed8a3058861c13124e103b00a19770dc55c53215653a7845d7033e0695917b75153cfe9618d5b2fd3cf86e
   languageName: node
   linkType: hard
 
@@ -1239,16 +1239,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bandersnatch@npm:1.12.9":
-  version: 1.12.9
-  resolution: "bandersnatch@npm:1.12.9"
+"bandersnatch@npm:1.12.11":
+  version: 1.12.11
+  resolution: "bandersnatch@npm:1.12.11"
   dependencies:
-    "@types/yargs": 17.0.28
+    "@types/yargs": 17.0.29
     enquirer: ^2.3.6
     string-argv: ^0.3.1
     typed-emitter: ^2.1.0
     yargs: ^17.5.1
-  checksum: 09b59b137dbfd31acfe89b3fe533d2893ca01aec21d0cd778eb70f4eabe33d560885214627c31bcc306ff457372865d535672657162384b65e5d79be53842583
+  checksum: 37776472e160bb77102751e1c5a5274efbf360663503f7e1d833b2854bd301f2e4be9b3132d8ad15dec1c8af60a3e06ba78b423cb0cef87368ef9bf3e6552a99
   languageName: node
   linkType: hard
 
@@ -4263,7 +4263,7 @@ __metadata:
     "@mokr/plugins": "workspace:*"
     "@mokr/templates": "workspace:*"
     "@types/node": 20.8.6
-    bandersnatch: 1.12.9
+    bandersnatch: 1.12.11
     ts-node: 10.9.1
     typescript: 5.2.2
   bin:
