@@ -1,3 +1,15 @@
+# [2.1.0](https://github.com/hongaar/moker/compare/v2.0.7...v2.1.0) (2023-10-29)
+
+### Bug Fixes
+
+- --worktree to --all ([#262](https://github.com/hongaar/moker/issues/262))
+  ([5e153d5](https://github.com/hongaar/moker/commit/5e153d5eb617e669712edb8c0e7332cf2cae6604))
+
+### Features
+
+- yarn 4 ([#261](https://github.com/hongaar/moker/issues/261))
+  ([c2657f3](https://github.com/hongaar/moker/commit/c2657f3c6e9a71d0c69c78a6a0f7287755fc62c3))
+
 ## [2.0.7](https://github.com/hongaar/moker/compare/v2.0.6...v2.0.7) (2023-10-23)
 
 ### Bug Fixes
