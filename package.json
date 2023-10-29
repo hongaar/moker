@@ -10,16 +10,16 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspaces foreach --topological --verbose run build",
-    "build:watch": "yarn workspaces foreach --parallel --interlaced run build:watch",
-    "build:clean": "yarn workspaces foreach --topological --verbose run build:clean",
+    "build": "yarn workspaces foreach --worktree --topological --verbose run build",
+    "build:watch": "yarn workspaces foreach --worktree --parallel --interlaced run build:watch",
+    "build:clean": "yarn workspaces foreach --worktree --topological --verbose run build:clean",
     "doctoc": "doctoc README.md",
     "format": "prettier --write --ignore-unknown .",
     "format:check": "prettier --check --ignore-unknown .",
     "postinstall": "husky install",
     "release": "semantic-release",
     "start": "node packages/cli/moker.js",
-    "test": "yarn workspaces foreach --topological --verbose run test",
+    "test": "yarn workspaces foreach --worktree --topological --verbose run test",
     "todos": "leasot --exit-nicely --reporter markdown --ignore \"**/node_modules\" \"**/*.ts\" > TODO.md",
     "typescript": "yarn build:clean && tsc --build --force",
     "typescript:watch": "tsc --build --watch"
