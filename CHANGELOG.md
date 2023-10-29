@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/hongaar/moker/compare/v2.1.0...v2.1.1) (2023-10-29)
+
+### Bug Fixes
+
+- typo
+  ([2ca1ac4](https://github.com/hongaar/moker/commit/2ca1ac4178d1d829ba93aad30c197d5e220bb9d2))
+
 # [2.1.0](https://github.com/hongaar/moker/compare/v2.0.7...v2.1.0) (2023-10-29)
 
 ### Bug Fixes
