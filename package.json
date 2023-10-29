@@ -41,7 +41,7 @@
     "semantic-release-yarn": "2.0.1",
     "typescript": "5.2.2"
   },
-  "packageManager": "yarn@3.3.0",
+  "packageManager": "yarn@4.0.1",
   "moker": {
     "scoped": true,
     "plugins": [
