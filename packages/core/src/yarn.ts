@@ -94,10 +94,9 @@ export async function removeYarnPlugin({
 }
 
 export async function getYarnPlugins({ directory }: { directory: string }) {
-  const { stdout } = await runYarnCmd(
-    ["plugin", "plugin", "runtime", "--json"],
-    { directory },
-  );
+  const { stdout } = await runYarnCmd(["plugin", "runtime", "--json"], {
+    directory,
+  });
 
   return stdout.split("\n").reduce((acc, line) => {
     try {
