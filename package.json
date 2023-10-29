@@ -10,16 +10,16 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspaces foreach --worktree --topological --verbose run build",
-    "build:watch": "yarn workspaces foreach --worktree --parallel --interlaced run build:watch",
-    "build:clean": "yarn workspaces foreach --worktree --topological --verbose run build:clean",
+    "build": "yarn workspaces foreach --all --topological --verbose run build",
+    "build:watch": "yarn workspaces foreach --all --parallel --interlaced run build:watch",
+    "build:clean": "yarn workspaces foreach --all --topological --verbose run build:clean",
     "doctoc": "doctoc README.md",
     "format": "prettier --write --ignore-unknown .",
     "format:check": "prettier --check --ignore-unknown .",
     "postinstall": "husky install",
     "release": "semantic-release",
     "start": "node packages/cli/moker.js",
-    "test": "yarn workspaces foreach --worktree --topological --verbose run test",
+    "test": "yarn workspaces foreach --all --topological --verbose run test",
     "todos": "leasot --exit-nicely --reporter markdown --ignore \"**/node_modules\" \"**/*.ts\" > TODO.md",
     "typescript": "yarn build:clean && tsc --build --force",
     "typescript:watch": "tsc --build --watch"
@@ -38,7 +38,7 @@
     "lint-staged": "15.0.2",
     "prettier": "3.0.3",
     "semantic-release": "22.0.5",
-    "semantic-release-yarn": "2.0.1",
+    "semantic-release-yarn": "3.0.2",
     "typescript": "5.2.2"
   },
   "packageManager": "yarn@4.0.1",

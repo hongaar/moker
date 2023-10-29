@@ -83,7 +83,7 @@ async function load({ directory }: PluginArgs) {
       data: {
         scripts: {
           build:
-            "yarn workspaces foreach --worktree --topological --verbose run build",
+            "yarn workspaces foreach --all --topological --verbose run build",
         },
       },
     });
