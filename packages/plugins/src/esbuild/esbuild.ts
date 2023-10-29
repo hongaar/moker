@@ -82,7 +82,8 @@ async function load({ directory }: PluginArgs) {
       directory: monorepoDirectory,
       data: {
         scripts: {
-          build: "yarn workspaces foreach --topological --verbose run build",
+          build:
+            "yarn workspaces foreach --worktree --topological --verbose run build",
         },
       },
     });

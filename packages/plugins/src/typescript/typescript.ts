@@ -157,11 +157,12 @@ async function install({ directory }: PluginArgs) {
       directory: monorepoDirectory,
       data: {
         scripts: {
-          build: "yarn workspaces foreach --topological --verbose run build",
+          build:
+            "yarn workspaces foreach --worktree --topological --verbose run build",
           "build:watch":
-            "yarn workspaces foreach --parallel --interlaced run build:watch",
+            "yarn workspaces foreach --worktree --parallel --interlaced run build:watch",
           "build:clean":
-            "yarn workspaces foreach --topological --verbose run build:clean",
+            "yarn workspaces foreach --worktree --topological --verbose run build:clean",
           typescript: "yarn build:clean && tsc --build --force",
           "typescript:watch": "tsc --build --watch",
         },
