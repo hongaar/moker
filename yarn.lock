@@ -138,7 +138,7 @@ __metadata:
     hosted-git-info: "npm:7.0.1"
     license: "npm:1.0.3"
     ora: "npm:7.0.1"
-    pkg-up: "npm:^4.0.0"
+    pkg-up: "npm:^5.0.0"
     sort-package-json: "npm:2.6.0"
     tempy: "npm:3.1.0"
     ts-node: "npm:10.9.1"
@@ -5047,12 +5047,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pkg-up@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "pkg-up@npm:4.0.0"
+"pkg-up@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "pkg-up@npm:5.0.0"
   dependencies:
     find-up: "npm:^6.2.0"
-  checksum: 763d0f8227b075ddf05b197bfbd790bbe9c4a297a490f3520666d981f80205eee493129b4e72a1ff1aebf170a7e72038e2c1cd232b744bcbf0057d4b02d782b8
+  checksum: 12753de6249876cbc877462549a6fd6ee3c113a2cbcb64ed9acd9e48ef5a2bdc7a08479901834ec0bb91a20120a0f4b38cb895593aef8643307867885bdc2f07
   languageName: node
   linkType: hard
 
