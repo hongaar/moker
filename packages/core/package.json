@@ -32,7 +32,7 @@
     "yaml": "2.3.4"
   },
   "devDependencies": {
-    "@types/hosted-git-info": "3.0.4",
+    "@types/hosted-git-info": "3.0.5",
     "@types/node": "20.9.0",
     "tempy": "3.1.0",
     "ts-node": "10.9.1",
