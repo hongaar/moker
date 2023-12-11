@@ -36,7 +36,7 @@
     "husky": "8.0.3",
     "leasot": "13.3.0",
     "lint-staged": "15.2.0",
-    "prettier": "3.1.0",
+    "prettier": "3.1.1",
     "semantic-release": "22.0.8",
     "semantic-release-yarn": "3.0.2",
     "typescript": "5.3.2"
