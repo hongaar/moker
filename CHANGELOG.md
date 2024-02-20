@@ -1,3 +1,11 @@
+## [2.1.7](https://github.com/hongaar/moker/compare/v2.1.6...v2.1.7) (2024-02-20)
+
+### Bug Fixes
+
+- **deps:** bump ip from 2.0.0 to 2.0.1
+  ([#308](https://github.com/hongaar/moker/issues/308))
+  ([91ef4ab](https://github.com/hongaar/moker/commit/91ef4ab93ce4dd176583050e2894f1ff8fbdc297))
+
 ## [2.1.6](https://github.com/hongaar/moker/compare/v2.1.5...v2.1.6) (2024-01-29)
 
 ### Bug Fixes
