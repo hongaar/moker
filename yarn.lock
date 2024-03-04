@@ -160,7 +160,7 @@ __metadata:
   resolution: "@mokr/core@workspace:packages/core"
   dependencies:
     "@types/hosted-git-info": "npm:3.0.5"
-    "@types/node": "npm:20.11.20"
+    "@types/node": "npm:20.11.24"
     chalk: "npm:5.3.0"
     deepmerge: "npm:4.3.1"
     hosted-git-info: "npm:7.0.1"
@@ -180,7 +180,7 @@ __metadata:
   resolution: "@mokr/plugins@workspace:packages/plugins"
   dependencies:
     "@mokr/core": "workspace:*"
-    "@types/node": "npm:20.11.20"
+    "@types/node": "npm:20.11.24"
     typescript: "npm:5.3.3"
   languageName: unknown
   linkType: soft
@@ -210,7 +210,7 @@ __metadata:
   dependencies:
     "@mokr/core": "workspace:*"
     "@mokr/plugins": "workspace:*"
-    "@types/node": "npm:20.11.20"
+    "@types/node": "npm:20.11.24"
     typescript: "npm:5.3.3"
   languageName: unknown
   linkType: soft
@@ -946,12 +946,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.11.20":
-  version: 20.11.20
-  resolution: "@types/node@npm:20.11.20"
+"@types/node@npm:20.11.24":
+  version: 20.11.24
+  resolution: "@types/node@npm:20.11.24"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: ff449bdc94810dadb54e0f77dd587c6505ef79ffa5a208c16eb29b223365b188f4c935a3abaf0906a01d05257c3da1f72465594a841d35bcf7b6deac7a6938fb
+  checksum: 7f34bfae5f9b98b9910230af4b4c52dc7fb2d1e96fdebfbc3d7576f8ab3d100076f193f9469add9e7418b455294155e7e6a028498cc5e98f9d49349875a459cf
   languageName: node
   linkType: hard
 
@@ -4367,7 +4367,7 @@ __metadata:
     "@mokr/core": "workspace:*"
     "@mokr/plugins": "workspace:*"
     "@mokr/templates": "workspace:*"
-    "@types/node": "npm:20.11.20"
+    "@types/node": "npm:20.11.24"
     bandersnatch: "npm:1.12.13"
     ts-node: "npm:10.9.2"
     typescript: "npm:5.3.3"
