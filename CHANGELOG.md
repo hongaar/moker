@@ -1,3 +1,14 @@
+## [2.1.9](https://github.com/hongaar/moker/compare/v2.1.8...v2.1.9) (2024-03-04)
+
+### Bug Fixes
+
+- **deps:** bump bandersnatch from 1.12.13 to 1.12.14
+  ([#310](https://github.com/hongaar/moker/issues/310))
+  ([1d34a22](https://github.com/hongaar/moker/commit/1d34a227bbd6f9e331240da8ce2754ec8a7cb7f1))
+- **deps:** bump sort-package-json from 2.7.0 to 2.8.0
+  ([#312](https://github.com/hongaar/moker/issues/312))
+  ([08bd839](https://github.com/hongaar/moker/commit/08bd8396ec3e88672e35e4d53992af688e236f0b))
+
 ## [2.1.8](https://github.com/hongaar/moker/compare/v2.1.7...v2.1.8) (2024-02-26)
 
 ### Bug Fixes
