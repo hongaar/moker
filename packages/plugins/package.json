@@ -25,7 +25,7 @@
     "@mokr/core": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "20.11.24",
+    "@types/node": "20.11.25",
     "typescript": "5.4.2"
   },
   "publishConfig": {
