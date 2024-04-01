@@ -1,3 +1,11 @@
+## [2.1.11](https://github.com/hongaar/moker/compare/v2.1.10...v2.1.11) (2024-04-01)
+
+### Bug Fixes
+
+- **deps:** bump sort-package-json from 2.8.0 to 2.10.0
+  ([#322](https://github.com/hongaar/moker/issues/322))
+  ([c136e42](https://github.com/hongaar/moker/commit/c136e42d3ade2460cf12a02158b79045721565c7))
+
 ## [2.1.10](https://github.com/hongaar/moker/compare/v2.1.9...v2.1.10) (2024-03-11)
 
 ### Bug Fixes
