@@ -28,7 +28,7 @@
     "license": "1.0.3",
     "ora": "8.0.1",
     "pkg-up": "^5.0.0",
-    "sort-package-json": "2.8.0",
+    "sort-package-json": "2.10.0",
     "yaml": "2.4.1"
   },
   "devDependencies": {
