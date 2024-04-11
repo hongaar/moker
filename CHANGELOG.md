@@ -1,3 +1,11 @@
+## [2.1.12](https://github.com/hongaar/moker/compare/v2.1.11...v2.1.12) (2024-04-11)
+
+### Bug Fixes
+
+- **deps:** bump tar from 6.1.12 to 6.2.1
+  ([#327](https://github.com/hongaar/moker/issues/327))
+  ([6c10904](https://github.com/hongaar/moker/commit/6c10904a8ecec8b421efa90add0190ade0f934f5))
+
 ## [2.1.11](https://github.com/hongaar/moker/compare/v2.1.10...v2.1.11) (2024-04-01)
 
 ### Bug Fixes
