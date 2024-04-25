@@ -1,3 +1,16 @@
+# [3.0.0](https://github.com/hongaar/moker/compare/v2.1.13...v3.0.0) (2024-04-25)
+
+### Features
+
+- update node.js versions ([#255](https://github.com/hongaar/moker/issues/255))
+  ([17d1042](https://github.com/hongaar/moker/commit/17d1042797eb0dab49b2ca5e4dbdb5837e6ab3f8))
+
+### BREAKING CHANGES
+
+- This updates the supported node.js versions
+
+Co-authored-by: hongaar <205834+hongaar@users.noreply.github.com>
+
 ## [2.1.13](https://github.com/hongaar/moker/compare/v2.1.12...v2.1.13) (2024-04-15)
 
 ### Bug Fixes

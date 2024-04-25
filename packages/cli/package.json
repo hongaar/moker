@@ -1,6 +1,6 @@
 {
   "name": "moker",
-  "version": "2.1.13",
+  "version": "3.0.0",
   "description": "The moker CLI",
   "repository": "https://github.com/hongaar/moker",
   "license": "MIT",
