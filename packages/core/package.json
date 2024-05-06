@@ -24,7 +24,7 @@
   "dependencies": {
     "chalk": "5.3.0",
     "deepmerge": "4.3.1",
-    "hosted-git-info": "7.0.1",
+    "hosted-git-info": "7.0.2",
     "license": "1.0.3",
     "ora": "8.0.1",
     "pkg-up": "^5.0.0",
