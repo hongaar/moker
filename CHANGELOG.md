@@ -1,3 +1,11 @@
+## [3.0.1](https://github.com/hongaar/moker/compare/v3.0.0...v3.0.1) (2024-05-27)
+
+### Bug Fixes
+
+- **deps:** bump bandersnatch from 1.12.15 to 2.0.0
+  ([#340](https://github.com/hongaar/moker/issues/340))
+  ([b370ab8](https://github.com/hongaar/moker/commit/b370ab8b6cf5098f4d1e544992d22f7fa5ff2a11))
+
 # [3.0.0](https://github.com/hongaar/moker/compare/v2.1.13...v3.0.0) (2024-04-25)
 
 ### Features
