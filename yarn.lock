@@ -171,7 +171,7 @@ __metadata:
     tempy: "npm:3.1.0"
     ts-node: "npm:10.9.2"
     typescript: "npm:5.4.5"
-    yaml: "npm:2.4.1"
+    yaml: "npm:2.4.3"
   languageName: unknown
   linkType: soft
 
@@ -7031,12 +7031,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yaml@npm:2.4.1":
-  version: 2.4.1
-  resolution: "yaml@npm:2.4.1"
+"yaml@npm:2.4.3":
+  version: 2.4.3
+  resolution: "yaml@npm:2.4.3"
   bin:
     yaml: bin.mjs
-  checksum: 2c54fd69ef59126758ae710f9756405a7d41abcbb61aca894250d0e81e76057c14dc9bb00a9528f72f99b8f24077f694a6f7fd09cdd6711fcec2eebfbb5df409
+  checksum: a618d3b968e3fb601cf7266db6e250e5cdd3b81853039a59108145202d5055b47c2d23a8e1ab661f8ba3ba095dcf6b4bb55cea2c14b97a418e5b059d27f8814e
   languageName: node
   linkType: hard
 
