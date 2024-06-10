@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@types/hosted-git-info": "3.0.5",
-    "@types/node": "20.12.7",
+    "@types/node": "20.14.2",
     "tempy": "3.1.0",
     "ts-node": "10.9.2",
     "typescript": "5.4.5"
