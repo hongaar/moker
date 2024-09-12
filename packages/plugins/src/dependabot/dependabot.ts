@@ -118,27 +118,8 @@ interface Registries {
 
 const DEPENDABOT_FILENAME = ".github/dependabot.yml";
 
-async function install({ directory }: PluginArgs) {
-  await writeYaml({
-    path: join(directory, DEPENDABOT_FILENAME),
-    data: {
-      version: 2,
-      updates: [
-        {
-          "package-ecosystem": "npm",
-          directory: "/",
-          schedule: {
-            interval: "weekly",
-          },
-          "commit-message": {
-            prefix: "fix",
-            "prefix-development": "chore",
-            include: "scope",
-          },
-        },
-      ],
-    },
-  });
+async function install(_args: PluginArgs) {
+  // Nothing to do
 }
 
 async function remove({ directory }: PluginArgs) {
@@ -147,9 +128,46 @@ async function remove({ directory }: PluginArgs) {
 
 async function load({ directory }: PluginArgs) {
   const path = join(directory, DEPENDABOT_FILENAME);
-  if (await hasPlugin({ directory, name: "github-actions" })) {
-    const existingData = await readYaml<GitHubDependabotV2Config>({ path });
 
+  await writeYaml({
+    path,
+    data: {
+      version: 2,
+      updates: [],
+    },
+  });
+
+  const existingData = await readYaml<GitHubDependabotV2Config>({ path });
+
+  // NPM
+  if (
+    !existingData.updates?.find(
+      (update) => update["package-ecosystem"] === "npm"
+    )
+  ) {
+    await writeYaml<GitHubDependabotV2Config>({
+      path: join(directory, DEPENDABOT_FILENAME),
+      data: {
+        updates: [
+          {
+            "package-ecosystem": "npm",
+            directory: "/",
+            schedule: {
+              interval: "weekly",
+            },
+            "commit-message": {
+              prefix: "fix",
+              "prefix-development": "chore",
+              include: "scope",
+            },
+          },
+        ],
+      },
+    });
+  }
+
+  // Github-actions
+  if (await hasPlugin({ directory, name: "github-actions" })) {
     if (
       !existingData.updates?.find(
         (update) => update["package-ecosystem"] === "github-actions"
