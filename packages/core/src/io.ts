@@ -94,7 +94,7 @@ export async function task<T>(
   callback: (spinner: Ora) => Promise<T>,
 ) {
   const spinner = ora(title).start();
-  let result: T | null = null;
+  let result: T;
   let error: any;
 
   tasks.push(spinner);
@@ -102,7 +102,7 @@ export async function task<T>(
   try {
     result = await callback(spinner);
   } catch (err: any) {
-    error = error;
+    error = err;
     logError(err);
   }
 
@@ -117,10 +117,7 @@ export async function task<T>(
   flushLogs();
   tasks = tasks.filter((task) => task !== spinner);
 
-  return [
-    error ? null : (result as T),
-    error ? (error as Error) : null,
-  ] as const;
+  return error ? ([null, error as Error] as const) : ([result!, null] as const);
 }
 
 export function getMessages() {
