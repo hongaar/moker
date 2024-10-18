@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build": "yarn workspaces foreach --all --topological --verbose run build",
-    "build:watch": "yarn workspaces foreach --all --parallel --interlaced run build:watch",
+    "build:watch": "yarn workspaces foreach --all --parallel --jobs unlimited --interlaced run build:watch",
     "build:clean": "yarn workspaces foreach --all --topological --verbose run build:clean",
     "doctoc": "doctoc README.md",
     "format": "prettier --write --ignore-unknown .",

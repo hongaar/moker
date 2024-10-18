@@ -61,6 +61,7 @@ yarn moker add --template bandersnatch cli
   - [`typescript`](#typescript)
   - [`xv`](#xv)
 - [Available templates](#available-templates)
+  - [`angular`](#angular)
   - [`bandersnatch`](#bandersnatch)
   - [`common`](#common)
   - [`cra`](#cra)
@@ -446,6 +447,13 @@ This plugin sets up [xv](https://github.com/typicode/xv) and adds a `test`
 script to the repo or both the workspace and the monorepo.
 
 # Available templates
+
+## `angular`
+
+_Scope: repo or workspace_
+
+Uses the [Angular CLI](https://angular.dev/tools/cli) to scaffold an Angular app
+(web client).
 
 ## `bandersnatch`
 

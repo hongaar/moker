@@ -1,5 +1,5 @@
 import childProcess, { ChildProcess } from "node:child_process";
-import { debug } from "../io.js";
+import { debug, getLastTask } from "../io.js";
 
 function childAwaiter(child: ChildProcess): Promise<number> {
   return new Promise(function (resolve, reject) {
@@ -18,6 +18,10 @@ export async function exec(
   } = {},
 ) {
   debug(`spawning "${cmd} ${args.join(" ")}" in "${cwd}"`);
+
+  if (io === "passthrough") {
+    getLastTask()?.stop();
+  }
 
   const child = childProcess.spawn(cmd, args, {
     shell: true,
@@ -42,6 +46,10 @@ export async function exec(
   }
 
   const status = await childAwaiter(child);
+
+  if (io === "passthrough") {
+    getLastTask()?.start();
+  }
 
   const result = { status, stdout, stderr };
 

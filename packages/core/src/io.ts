@@ -11,6 +11,7 @@ type Log =
       type: "error";
     };
 
+let tasks: Ora[] = [];
 let messages: Log[];
 let encounteredErrors: boolean;
 
@@ -80,10 +81,10 @@ export async function flushLogs() {
     type === "warning"
       ? writeWarning(message)
       : type === "debug"
-      ? writeDebug(message)
-      : type === "error"
-      ? writeError(message)
-      : writeInfo(message);
+        ? writeDebug(message)
+        : type === "error"
+          ? writeError(message)
+          : writeInfo(message);
   }
   resetMessages();
 }
@@ -93,27 +94,33 @@ export async function task<T>(
   callback: (spinner: Ora) => Promise<T>,
 ) {
   const spinner = ora(title).start();
-  let result: T;
+  let result: T | null = null;
+  let error: any;
+
+  tasks.push(spinner);
 
   try {
     result = await callback(spinner);
-  } catch (error: any) {
-    spinner.fail();
-    logError(error);
-    flushLogs();
-
-    return [null, error as Error] as const;
+  } catch (err: any) {
+    error = error;
+    logError(err);
   }
 
-  if (messages.filter(({ type }) => type === "warning").length > 0) {
+  if (error) {
+    spinner.fail();
+  } else if (messages.filter(({ type }) => type === "warning").length > 0) {
     spinner.warn();
   } else {
     spinner.succeed();
   }
 
   flushLogs();
+  tasks = tasks.filter((task) => task !== spinner);
 
-  return [result, null] as const;
+  return [
+    error ? null : (result as T),
+    error ? (error as Error) : null,
+  ] as const;
 }
 
 export function getMessages() {
@@ -126,4 +133,8 @@ export function containsMessage(search: string) {
 
 export function hasEncounteredErrors() {
   return encounteredErrors;
+}
+
+export function getLastTask() {
+  return tasks[tasks.length - 1];
 }

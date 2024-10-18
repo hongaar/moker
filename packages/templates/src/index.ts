@@ -1,3 +1,4 @@
+export * from "./angular.js";
 export * from "./bandersnatch.js";
 export * from "./common.js";
 export * from "./cra.js";
