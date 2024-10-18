@@ -17,6 +17,7 @@ type TemplateOptions = {
 };
 
 const CORE_TEMPLATES = [
+  "angular",
   "bandersnatch",
   "common",
   "cra",
