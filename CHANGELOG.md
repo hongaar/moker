@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/hongaar/moker/compare/v3.0.1...v4.0.0) (2024-10-18)
+
+- feat!: update node.js versions (#332)
+  ([cc17582](https://github.com/hongaar/moker/commit/cc17582a27f8948dc2ec1df8be0f2e3c077a3f25)),
+  closes [#332](https://github.com/hongaar/moker/issues/332)
+
+### BREAKING CHANGES
+
+- This updates the supported node.js versions
+
+Co-authored-by: hongaar <205834+hongaar@users.noreply.github.com>
+
 ## [3.0.1](https://github.com/hongaar/moker/compare/v3.0.0...v3.0.1) (2024-05-27)
 
 ### Bug Fixes
