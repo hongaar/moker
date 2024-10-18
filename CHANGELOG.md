@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/hongaar/moker/compare/v4.0.0...v4.1.0) (2024-10-18)
+
+### Features
+
+- angular ([#363](https://github.com/hongaar/moker/issues/363))
+  ([5220f05](https://github.com/hongaar/moker/commit/5220f050fb8548345c94a4cda15e3ae97d09b16d))
+
 # [4.0.0](https://github.com/hongaar/moker/compare/v3.0.1...v4.0.0) (2024-10-18)
 
 - feat!: update node.js versions (#332)
