@@ -68,6 +68,7 @@ yarn moker add --template bandersnatch cli
   - [`express`](#express)
   - [`github-action`](#github-action)
   - [`lib`](#lib)
+  - [`nestjs`](#nestjs)
   - [`next`](#next)
   - [`sanity`](#sanity)
 - [Commands](#commands)
@@ -450,10 +451,10 @@ script to the repo or both the workspace and the monorepo.
 
 ## `angular`
 
-_Scope: repo or workspace_
+_Scope: workspace_
 
-Uses the [Angular CLI](https://angular.dev/tools/cli) to scaffold an Angular app
-(web client).
+Uses the [Angular CLI](https://angular.dev/tools/cli) to interactively scaffold
+an Angular app (web client).
 
 ## `bandersnatch`
 
@@ -472,7 +473,7 @@ available monorepo plugins.
 
 ## `cra`
 
-_Scope: repo or workspace_
+_Scope: workspace_
 
 Uses [create-react-app](https://create-react-app.dev/) to scaffold a React.js
 app (web client).
@@ -502,9 +503,17 @@ _Scope: repo or workspace_
 A plain shared library template with the [typescript](#typescript-workspace) and
 [jest](#jest-workspace) plugins.
 
+## `nestjs`
+
+_Scope: workspace_
+
+Uses the
+[TypeScript starter project](https://github.com/nestjs/typescript-starter) to
+scaffold a Nest.js server app.
+
 ## `next`
 
-_Scope: repo or workspace_
+_Scope: workspace_
 
 Uses
 [create-next-app](https://nextjs.org/docs/pages/api-reference/create-next-app)
@@ -512,7 +521,7 @@ to scaffold a Next.js app.
 
 ## `sanity`
 
-_Scope: repo or workspace_
+_Scope: workspace_
 
 Uses [create-sanity](https://www.sanity.io/docs/installation) which
 interactively scaffolds a Sanity Studio package.
