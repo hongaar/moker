@@ -121,8 +121,9 @@ export async function addPreCommitHookCommand({
     return;
   }
 
-  await exec("yarn", ["husky", "add", PRE_COMMIT_FILENAME, `"${command}"`], {
-    cwd: directory,
+  await setPreCommitHookCommands({
+    directory,
+    commands: [...(await getPreCommitHookCommands({ directory })), command],
   });
 }
 
@@ -139,15 +140,7 @@ export async function removePreCommitHookCommand({
     (line) => line !== command,
   );
 
-  if (newCommands.length === 2) {
-    /**
-     * We're left with only these lines:
-     *
-     * ```
-     * #!/usr/bin/env sh
-     * . "$(dirname -- "$0")/_/husky.sh"
-     * ```
-     */
+  if (newCommands.length === 0) {
     await removeFile({ path: getPreCommitHookPath({ directory }) });
     return;
   }
