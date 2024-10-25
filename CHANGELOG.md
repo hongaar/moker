@@ -1,3 +1,27 @@
+# [4.2.0](https://github.com/hongaar/moker/compare/v4.1.0...v4.2.0) (2024-10-25)
+
+### Features
+
+- nestjs ([#365](https://github.com/hongaar/moker/issues/365))
+  ([e57e956](https://github.com/hongaar/moker/commit/e57e95636af13fbbf8730a1d12fc52d9599c7c63)),
+  closes
+  [/#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5R71](https://github.com///issues/diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5R71)
+  [/#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5R71](https://github.com///issues/diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5R71)
+  [/#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5L453-R457](https://github.com///issues/diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5L453-R457)
+  [/#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5L475-R476](https://github.com///issues/diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5L475-R476)
+  [/#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5R506-R524](https://github.com///issues/diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5R506-R524)
+  [/#diff-5c6a1301c6b59b30a040d747d065e861d3dd98bde0e5a4356d92d594e9835986L4-R12](https://github.com///issues/diff-5c6a1301c6b59b30a040d747d065e861d3dd98bde0e5a4356d92d594e9835986L4-R12)
+  [/#diff-a00384074c972ef1fcbba57b53e443249ba635b63484b1eb1f7c4916e4339cc8R27](https://github.com///issues/diff-a00384074c972ef1fcbba57b53e443249ba635b63484b1eb1f7c4916e4339cc8R27)
+  [/#diff-e808eba3cb0d1f11d939ad3e832c543551d82e87ff0fd48759d89afcff94771fR8](https://github.com///issues/diff-e808eba3cb0d1f11d939ad3e832c543551d82e87ff0fd48759d89afcff94771fR8)
+  [/#diff-194e877e0e7ac2f869e0aa51d8b15c8005f3931802a297c74a98e3001aa2095bR1-R37](https://github.com///issues/diff-194e877e0e7ac2f869e0aa51d8b15c8005f3931802a297c74a98e3001aa2095bR1-R37)
+  [/#diff-e48f537ea43df65f2f733b68e321624fd34237257fab618884ade5c6a77ef438R17-R24](https://github.com///issues/diff-e48f537ea43df65f2f733b68e321624fd34237257fab618884ade5c6a77ef438R17-R24)
+  [/#diff-628da3ea0ff520d22fe287969fa70433369e80a5c5cca0f56155b5b3897c81b8R41-R43](https://github.com///issues/diff-628da3ea0ff520d22fe287969fa70433369e80a5c5cca0f56155b5b3897c81b8R41-R43)
+  [/#diff-07e537610a9f89af168891b69382d6a2ec4c627c83b6cb21f38edb707fb5ddb2R43-R45](https://github.com///issues/diff-07e537610a9f89af168891b69382d6a2ec4c627c83b6cb21f38edb707fb5ddb2R43-R45)
+  [/#diff-7b8c2ff5e3fec4265f94f6fadba1066c1a83370bef545fe260a5fc1f71331974R23-R30](https://github.com///issues/diff-7b8c2ff5e3fec4265f94f6fadba1066c1a83370bef545fe260a5fc1f71331974R23-R30)
+  [/#diff-7b8c2ff5e3fec4265f94f6fadba1066c1a83370bef545fe260a5fc1f71331974R23-R30](https://github.com///issues/diff-7b8c2ff5e3fec4265f94f6fadba1066c1a83370bef545fe260a5fc1f71331974R23-R30)
+  [/#diff-7b8c2ff5e3fec4265f94f6fadba1066c1a83370bef545fe260a5fc1f71331974R40-R42](https://github.com///issues/diff-7b8c2ff5e3fec4265f94f6fadba1066c1a83370bef545fe260a5fc1f71331974R40-R42)
+  [/#diff-16b5865fb81eb3b101433586384690b1108e06837f7c278eed18f01c9328ceb0R43-R45](https://github.com///issues/diff-16b5865fb81eb3b101433586384690b1108e06837f7c278eed18f01c9328ceb0R43-R45)
+
 # [4.1.0](https://github.com/hongaar/moker/compare/v4.0.0...v4.1.0) (2024-10-18)
 
 ### Features
