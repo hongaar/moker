@@ -80,10 +80,10 @@ export async function flushLogs() {
     type === "warning"
       ? writeWarning(message)
       : type === "debug"
-      ? writeDebug(message)
-      : type === "error"
-      ? writeError(message)
-      : writeInfo(message);
+        ? writeDebug(message)
+        : type === "error"
+          ? writeError(message)
+          : writeInfo(message);
   }
   resetMessages();
 }

@@ -228,8 +228,7 @@ configuration using the
 [`typescript-node`](https://hub.docker.com/_/microsoft-vscode-devcontainers)
 image.
 
-If you have the `prettier` plugin installed, it will add the [Prettier VS Code
-extension].
+If you have the `prettier` plugin installed, it will add the [Prettier VS Code extension].
 
 [Prettier VS Code extension]:
   https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode

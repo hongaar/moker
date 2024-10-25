@@ -1,6 +1,3 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 yarn todos && git add TODO.md
 yarn prettier --write TODO.md && git add TODO.md
 yarn doctoc && git add README.md
