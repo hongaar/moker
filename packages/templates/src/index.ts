@@ -5,5 +5,6 @@ export * from "./cra.js";
 export * from "./express.js";
 export * from "./githubAction.js";
 export * from "./lib.js";
+export * from "./nestjs.js";
 export * from "./next.js";
 export * from "./sanity.js";

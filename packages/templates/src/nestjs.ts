@@ -1,44 +1,37 @@
 import {
   PluginType,
+  emptyDirectory,
   exec,
   readPackage,
-  removeDirectory,
+  removeFile,
   writePackage,
   type TemplateArgs,
 } from "@mokr/core";
-import { basename, dirname } from "node:path";
+import { join } from "path";
 
 async function apply({ directory }: TemplateArgs) {
   const oldPackage = await readPackage({ directory });
 
-  await removeDirectory({ directory });
+  await emptyDirectory({ directory });
 
   await exec(
     "yarn",
-    [
-      "dlx",
-      "create-next-app",
-      basename(directory),
-      "--app",
-      "--turbopack",
-      "--typescript",
-      "--eslint",
-      "--no-tailwind",
-      "--src-dir",
-      '--import-alias "@/*"',
-      "--use-yarn",
-      "--yes",
-    ],
+    ["dlx", "degit", "https://github.com/nestjs/typescript-starter"],
     {
-      cwd: dirname(directory),
+      cwd: directory,
     },
   );
+
+  await removeFile({ path: join(directory, "package-lock.json") });
+
+  delete oldPackage.scripts?.["build"];
+  delete oldPackage.scripts?.["test"];
 
   await writePackage({ directory, data: oldPackage });
 }
 
 // @todo repo not supported atm, because we'd need to restore yarn and git state
-export const next = {
+export const nestjs = {
   type: PluginType.Workspace,
   apply,
 };

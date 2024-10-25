@@ -38,7 +38,8 @@ async function apply({ directory }: TemplateArgs) {
   await writePackage({ directory, data: oldPackage });
 }
 
+// @todo repo not supported atm, because we'd need to restore yarn and git state
 export const angular = {
-  type: PluginType.RepoOrWorkspace,
+  type: PluginType.Workspace,
   apply,
 };

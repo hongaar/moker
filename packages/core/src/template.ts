@@ -24,6 +24,7 @@ const CORE_TEMPLATES = [
   "express",
   "github-action",
   "lib",
+  "nestjs",
   "next",
   "sanity",
 ];
